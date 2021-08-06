@@ -1,0 +1,15 @@
+snippet fswrite
+require('fs').writeFileSync(__dirname + '/$1', JSON.stringify($2, null, 1))
+endsnippet
+
+snippet logjson
+console.log(JSON.stringify($1, null, 1))
+endsnippet
+
+snippet lodash
+const _ = require('lodash');
+endsnippet
+
+snippet bluebird
+const Promise = require('bluebird');
+endsnippet

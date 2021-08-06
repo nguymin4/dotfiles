@@ -1,0 +1,6 @@
+keysym Caps_Lock = Escape
+clear lock
+
+! add shift = Shift_L
+! clear shift
+! keycode 62 = BackSpace

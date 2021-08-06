@@ -1,0 +1,164 @@
+#!/usr/bin/env perl
+# Copyright (C) 2014 Tony Crisci <tony@dubstepdish.com>
+# Copyright (C) 2015 Thiago Perrotta <perrotta dot thiago at poli dot ufrj dot br>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Requires playerctl binary to be in your path (except cmus)
+# See: https://github.com/acrisci/playerctl
+
+# Set instance=NAME in the i3blocks configuration to specify a music player
+# (playerctl will attempt to connect to org.mpris.MediaPlayer2.[NAME] on your
+# DBus session).
+
+use Time::HiRes qw(usleep);
+use URI::Escape qw(uri_unescape);
+use Env qw(BLOCK_INSTANCE);
+
+use constant DELAY => 50; # Delay in ms to let network-based players (spotify) reflect new data.
+use constant SPOTIFY_STR => 'spotify';
+
+my @metadata = ();
+my $player_arg = "";
+
+if ($BLOCK_INSTANCE) {
+  $player_arg = "--player='$BLOCK_INSTANCE'";
+}
+
+sub buttons {
+  my $method = shift;
+
+  if($method eq 'mpd') {
+    if ($ENV{'BLOCK_BUTTON'} == 1) {
+      system("mpc prev");
+    } elsif ($ENV{'BLOCK_BUTTON'} == 2) {
+      system("mpc toggle");
+    } elsif ($ENV{'BLOCK_BUTTON'} == 3) {
+      system("mpc next");
+    } elsif ($ENV{'BLOCK_BUTTON'} == 4) {
+      system("mpc volume +10");
+    } elsif ($ENV{'BLOCK_BUTTON'} == 5) {
+      system("mpc volume -10");
+    }
+  } elsif ($method eq 'cmus') {
+    if ($ENV{'BLOCK_BUTTON'} == 1) {
+      system("cmus-remote --prev");
+    } elsif ($ENV{'BLOCK_BUTTON'} == 2) {
+      system("cmus-remote --pause");
+    } elsif ($ENV{'BLOCK_BUTTON'} == 3) {
+      system("cmus-remote --next");
+    }
+  } elsif ($method eq 'playerctl') {
+    if ($ENV{'BLOCK_BUTTON'} == 1) {
+      system("playerctl $player_arg previous");
+      usleep(DELAY * 1000) if $BLOCK_INSTANCE eq SPOTIFY_STR;
+    } elsif ($ENV{'BLOCK_BUTTON'} == 2) {
+      system("playerctl $player_arg play-pause");
+    } elsif ($ENV{'BLOCK_BUTTON'} == 3) {
+      system("playerctl $player_arg next");
+      usleep(DELAY * 1000) if $BLOCK_INSTANCE eq SPOTIFY_STR;
+    }
+  }
+}
+
+sub statusIcon {
+  my $status = shift;
+  my $icon = '';
+
+  if ($status =~ /Playing/i) { 
+    $icon = '';
+  } elsif ($status =~ /Paused/i) { 
+    $icon = '';
+  }
+
+  return $icon;
+}
+
+sub fileName {
+  my $filePath = shift;
+  my @file = split /\//, $filePath;
+  my @words = split /\./, @file[-1];
+  return join '.', @words[0 .. $#words-1];
+}
+
+sub printInfo {
+  print((shift @metadata) . '  ' . join('  -  ', @metadata)) if @metadata;
+}
+
+sub cmus {
+  my @cmus = split /^/, qx(cmus-remote -Q);
+  if ($? == 0) {
+    foreach my $line (@cmus) {
+      my @data = split /\s/, $line;
+      my $type = shift @data;
+      if ($type eq 'status') {
+        my $status = @data[-1];
+        @metadata[0] = statusIcon($status);
+      } elsif ($type eq 'file') {
+        my $filePath = join ' ', @data;
+        @metadata[2] = fileName($filePath); 
+      } elsif ($type eq 'tag') {
+        my $key = shift @data;
+        my $value = join ' ', @data;
+        @metadata[1] = $value if $key eq 'artist';
+        @metadata[2] = $value if $key eq 'title' and $value ne '';
+      }
+    }
+
+    printInfo();
+    if (@metadata) {
+      buttons('cmus');
+      exit 0;
+    }
+  }
+}
+
+sub mpd {
+  my $data = qx(mpc current);
+  if (not $data eq '') {
+    buttons("mpd");
+    print($data);
+    exit 0;
+  }
+}
+
+sub playerctl {
+  buttons('playerctl');
+
+  my $status = qx(playerctl $player_arg status); 
+  exit(0) if $? || $status eq '(null)';
+  my $icon = statusIcon($status);
+  push(@metadata, $icon) if $icon;
+
+  my $artist = qx(playerctl $player_arg metadata artist);
+  exit(0) if $? || $artist eq '(null)';
+  push(@metadata, $artist) if $artist;
+
+  my $filePath = uri_unescape qx(playerctl $player_arg metadata 'xesam:url');
+  my $fileName = fileName($filePath);
+  my $title = qx(playerctl $player_arg metadata title) || $fileName;
+  exit(0) if $? || $title eq '(null)';
+  push(@metadata, $title) if $title;
+
+  printInfo();
+}
+
+if ($player_arg =~ /mpd/) {
+  mpd;
+} elsif ($player_arg =~ /cmus/) {
+  cmus;
+} else {
+  playerctl;
+}
+
