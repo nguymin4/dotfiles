@@ -1,0 +1,1 @@
+/home/nguymin4/.vim/colorschemes/tomorrow.vim

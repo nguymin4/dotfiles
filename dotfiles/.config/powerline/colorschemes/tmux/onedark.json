@@ -1,0 +1,18 @@
+{
+	"groups": {
+		"background": 					{"fg": "solarized:blue",    "bg": "gray2",    "attrs": []},
+		"activity_status":      {"fg": "solarized:yellow",  "bg": "gray2",    "attrs": []},
+		"bell_status":          {"fg": "solarized:red",     "bg": "gray2",    "attrs": []},
+		"window":               {"fg": "gray90",            "bg": "gray2",    "attrs": []},
+		"window:divider":       {"fg": "gray90",            "bg": "gray2",    "attrs": []},
+		"window_status":        {"fg": "solarized:blue",    "bg": "gray2",    "attrs": []},
+		"active_window_status": {"fg": "solarized:blue",    "bg": "gray2",    "attrs": []},
+		"window_name":          {"fg": "gray90",            "bg": "solarized:blue", "attrs": ["bold"]},
+		"window:current":       {"fg": "gray90",            "bg": "solarized:blue", "attrs": []},
+		"session":              {"fg": "gray2",             "bg": "solarized:green",   "attrs": ["bold"]},
+		"session:prefix":       {"fg": "white",             "bg": "solarized:blue", "attrs": ["bold"]},
+		"external_ip": 					{"fg": "gray90",            "bg": "solarized:magenta", "attrs": []},
+		"date": 					      {"fg": "gray2",             "bg": "solarized:yellow", "attrs": ["bold"]},
+		"cpu_load_percent_gradient": {"bg": "gray2", "attrs": ["bold"]}
+	}
+}
