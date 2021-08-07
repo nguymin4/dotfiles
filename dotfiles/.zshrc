@@ -24,6 +24,7 @@ source $ZSH_CUSTOM/fzf.zsh # Always after vi-mode
 source $ZSH_CUSTOM/command-timestamp.zsh
 source $ZSH_CUSTOM/color.zsh
 source $ZSH_CUSTOM/syntax-highlighting.zsh
+# source $ZSH_CUSTOM/profiling-prompt.zsh
 
 # Disable Ctrl+D to logout and exit
 setopt ignoreeof
@@ -32,7 +33,7 @@ setopt ignoreeof
 stty -ixon
 
 # Load the shell dotfiles
-for file in ~/.{path,bash_aliases}; do
+for file in ~/.{bash_aliases,path,zprofile}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -48,12 +49,11 @@ fi
 
 export TFHUB_CACHE_DIR=$HOME/.tfhub_modules
 export PYTHONDONTWRITEBYTECODE=1
-if [ -s "$HOME/.pyenv/bin/pyenv" ]; then
-  export PATH="$HOME/.pyenv/bin:$PATH"
+if [ -s "$PYENV_ROOT/bin/pyenv" ]; then
+  export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+  export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
   eval "$(pyenv init - --no-rehash zsh)"
   eval "$(pyenv virtualenv-init -)"
-  export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-  export PIPENV_PYTHON="$HOME/.pyenv/shims/python"
 fi
 
 # End profiling

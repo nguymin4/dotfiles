@@ -14,6 +14,9 @@ function checkout_latest_tag() {
 rm -rf ~/.pyenv && git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
 cd ~/.pyenv && checkout_latest_tag
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
+echo '[ -s "$PYENV_ROOT/bin/pyenv" ] && eval "$(pyenv init --path)"' >> ~/.zprofile
 pip install -U pynvim
 
 rm -rf ~/.nvm && git clone https://github.com/nvm-sh/nvm.git ~/.nvm
