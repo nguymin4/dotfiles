@@ -17,6 +17,8 @@
 *.tmp
 *~
 *.cache
+temp
+tmp
 
 # Packages #
 ############
@@ -80,3 +82,5 @@ __pycache__/
 ##########################
 *.env
 .env*
+
+.ackrc
