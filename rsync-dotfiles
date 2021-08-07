@@ -9,14 +9,13 @@
 .config/albert/albert.conf
 .config/compton.conf
 .config/dunst
-.config/i3/blocks
-.config/i3/config
-.config/i3/i3blocks.conf
+.config/i3
 .config/nvim
 .config/powerline
 .config/ranger/rc.conf
 .config/variety/scripts
 .dircolors
+.fonts/
 .gitconfig
 .gitignore
 .profile
