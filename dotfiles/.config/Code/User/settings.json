@@ -26,7 +26,6 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  "terminal.integrated.shell.linux": "/usr/bin/zsh",
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.lineHeight": 1,
   "terminal.integrated.fontFamily": "UbuntuMono Nerd Font Mono",
@@ -49,8 +48,6 @@
   },
   "git.enableSmartCommit": true,
   "gitlens.keymap": "alternate",
-  "gitlens.views.fileHistory.enabled": true,
-  "gitlens.views.lineHistory.enabled": true,
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": false,
     "suppressCommitNotFoundWarning": false,
@@ -58,10 +55,6 @@
     "suppressGitVersionWarning": false,
     "suppressLineUncommittedWarning": false,
     "suppressNoRepositoryWarning": false,
-    "suppressResultsExplorerNotice": false,
-    "suppressShowKeyBindingsNotice": true,
-    "suppressUpdateNotice": true,
-    "suppressWelcomeNotice": false
   },
   "vsicons.dontShowNewVersionMessage": true,
   "javascript.preferences.quoteStyle": "single",
@@ -132,5 +125,5 @@
   },
   "extensions.ignoreRecommendations": true,
   "redhat.telemetry.enabled": false,
-  "vsicons.presets.hideExplorerArrows": true
+  "vsicons.presets.hideExplorerArrows": true,
 }
