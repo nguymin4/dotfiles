@@ -13,7 +13,7 @@ mkdir -p build && cd build
 meson ..
 ninja
 sudo meson install
-chmod +x -R ~/.config/i3/blocks
+chmod u+x -R ~/.config/i3/blocks
 
 
 # Icon
