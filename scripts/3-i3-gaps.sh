@@ -28,5 +28,5 @@ curl https://build.opensuse.org/projects/home:manuelschneid3r/public_key | sudo 
 sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_$(lsb_release -rs)/ /' > /etc/apt/sources.list.d/home:manuelschneid3r.list"
 wget -nv https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_$(lsb_release -rs)/Release.key -O - | sudo apt-key add
 
-sudo apt update && sudo apt install -y lxappearance arc-theme breeze-cursor-theme compton feh variety dunst xbacklight xautolock gnome-screensaver lm-sensors albert thunar thunar-archive-plugin acpi
+sudo apt update && sudo apt install -y lxappearance arc-theme breeze-cursor-theme compton feh variety dunst xbacklight xautolock gnome-screensaver lm-sensors albert thunar thunar-archive-plugin acpi sysstat
 
