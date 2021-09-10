@@ -5,26 +5,37 @@
 export LANG=en_US.UTF-8
 export EDITOR=$(which vim)
 export BAT_THEME="base16"
+
+# OMZ
 export ZSH=~/.oh-my-zsh
 export ZSH_CUSTOM=$ZSH/custom
-ZSH_THEME=${ZSH_THEME:-"honukai"}
-DISABLE_AUTO_UPDATE="true"
-
-plugins=(zsh_reload)
 if [[ ! -d $ZSH ]]; then
   git clone https://github.com/nguymin4/oh-my-zsh.git $ZSH
   bash $ZSH/install-custom-plugins.sh
 fi
+
+COMPLETION_WAITING_DOTS="false"
+DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_UPDATE="true"
+# ZSH_THEME=${ZSH_THEME:-"honukai"}
+ZSH_THEME=""
+
+plugins=(zsh_reload)
 source $ZSH/oh-my-zsh.sh
 
 # source $ZSH_CUSTOM/run-async.zsh
+# source $ZSH_CUSTOM/profiling-prompt.zsh
 source $ZSH_CUSTOM/misc.zsh
 source $ZSH_CUSTOM/syntax-highlighting.zsh # Always before vi-mode.zsh
 source $ZSH_CUSTOM/vi-mode.zsh
 source $ZSH_CUSTOM/fzf.zsh # Always after vi-mode
 source $ZSH_CUSTOM/command-timestamp.zsh
 source $ZSH_CUSTOM/color.zsh
-# source $ZSH_CUSTOM/profiling-prompt.zsh
+
+# pure-prompt
+fpath+=$ZSH_CUSTOM/plugins/pure
+autoload -U promptinit; promptinit
+prompt pure
 
 # Disable Ctrl+D to logout and exit
 setopt ignoreeof

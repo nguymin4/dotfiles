@@ -41,7 +41,7 @@ window:
   dynamic_padding: false
 
   # Allow terminal applications to change Alacritty's window title.
-  dynamic_title: false
+  dynamic_title: true
 
   # Window decorations
   #
