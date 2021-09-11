@@ -20,7 +20,7 @@ DISABLE_AUTO_UPDATE="true"
 # ZSH_THEME=${ZSH_THEME:-"honukai"}
 ZSH_THEME=""
 
-plugins=(zsh_reload)
+plugins=(conda-zsh-completion zsh_reload)
 source $ZSH/oh-my-zsh.sh
 
 # source $ZSH_CUSTOM/run-async.zsh
