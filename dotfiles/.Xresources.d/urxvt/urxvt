@@ -14,7 +14,7 @@ URxvt.secondaryScroll: 0
 URxvt.interalBorder: 0
 
 ! Fonts
-#define regularFont xft:UbuntuMono Nerd Font Mono:size=12
+#define regularFont xft:UbuntuMono Nerd Font Mono:size=12,xft:FontAwesome,xft:Font Awesome 5 Free;xft:Font Awesome 5 Brands
 #define italicFont xft:MesloLGM Nerd Font Mono:style=Italic:size=12
 
 URxvt.font: regularFont
