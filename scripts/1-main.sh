@@ -20,3 +20,6 @@ MKCERT_VERSION=$(get_latest_tag_from_github 'FiloSottile/mkcert')
 curl -L "https://github.com/FiloSottile/mkcert/releases/download/v${MKCERT_VERSION}/mkcert-v${MKCERT_VERSION}-linux-amd64" -o ~/.local/bin/mkcert
 sudo chmod u+x ~/.local/bin/mkcert
 ~/.local/bin/mkcert install
+
+# Enable firewall
+sudo ufw enable
