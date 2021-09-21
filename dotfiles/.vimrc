@@ -20,7 +20,7 @@ source ~/.vim/config/fzf.vim
 source ~/.vim/config/indent-line.vim
 source ~/.vim/config/limelight.vim
 source ~/.vim/config/startify.vim
-" source ~/.vim/config/quickscope.vim
+source ~/.vim/config/quickscope.vim
 " source ~/.vim/config/visual-mode.vim
 source ~/.vim/config/languages.vim
 source ~/.vim/config/theme.vim
