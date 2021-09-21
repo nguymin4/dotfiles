@@ -126,4 +126,5 @@
   "extensions.ignoreRecommendations": true,
   "redhat.telemetry.enabled": false,
   "vsicons.presets.hideExplorerArrows": true,
+  "remote.SSH.showLoginTerminal": true
 }
