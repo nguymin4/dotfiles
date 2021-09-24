@@ -26,7 +26,7 @@ URxvt.letterSpace: -1
 URxvt*skipBuiltinGlyphs: false
 
 ! Extensions
-URxvt.perl-ext-common: default,keyboard-select,selection-to-clipboard,font-size,vtwheel
+URxvt.perl-ext-common: default,keyboard-select,selection-to-clipboard,font-size
 URxvt.clipboard.autocopy: True
 URxvt.clipboard.copycmd: xclip -i -selection clipboard
 URxvt.clipboard.pastecmd: xclip -o -selection clipboard
