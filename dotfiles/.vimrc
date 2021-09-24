@@ -29,7 +29,6 @@ if has('nvim')
   " source ~/.vim/config/defx.vim
 else
   " source ~/.vim/config/defx.vim
-"   source ~/.vim/config/nerdtree.vim
 endif
 
 " source ~/.vim/config/ycm.vim
