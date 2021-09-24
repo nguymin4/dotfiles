@@ -26,18 +26,15 @@ URxvt.letterSpace: -1
 URxvt*skipBuiltinGlyphs: false
 
 ! Extensions
-URxvt.perl-ext-common: default,keyboard-select,selection-to-clipboard,resize-font,vtwheel
+URxvt.perl-ext-common: default,keyboard-select,selection-to-clipboard,font-size,vtwheel
 URxvt.clipboard.autocopy: True
 URxvt.clipboard.copycmd: xclip -i -selection clipboard
 URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
-URxvt.keysym.Shift-Control-space: perl:keyboard-select:activate
-URxvt.keysym.Shift-Control-F: perl:keyboard-select:search
-URxvt.keysym.C-minus: resize-font:smaller
-URxvt.keysym.C-equal: resize-font:bigger
-URxvt.keysym.C-0: resize-font:reset
-URxvt.resize-font.step: 2
+URxvt.keysym.Shift-Control-space: keyboard-select:activate
+URxvt.keysym.Shift-Control-F: keyboard-select:search
+URxvt.font-size.step: 4
 
 ! Colors
 URxvt.termName: xterm-256color
