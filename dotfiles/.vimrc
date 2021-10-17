@@ -31,7 +31,6 @@ else
   " source ~/.vim/config/defx.vim
 endif
 
-" source ~/.vim/config/ycm.vim
 " source ~/.vim/config/ale.vim
 " source ~/.vim/config/ultisnips.vim
 
