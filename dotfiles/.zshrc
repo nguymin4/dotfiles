@@ -14,13 +14,13 @@ if [[ ! -d $ZSH ]]; then
   bash $ZSH/install-custom-plugins.sh
 fi
 
-COMPLETION_WAITING_DOTS="false"
+COMPLETION_WAITING_DOTS="true"
 DISABLE_AUTO_TITLE="true"
 DISABLE_AUTO_UPDATE="true"
 # ZSH_THEME=${ZSH_THEME:-"honukai"}
 ZSH_THEME=""
 
-plugins=(conda-zsh-completion zsh_reload)
+plugins=(conda-zsh-completion gitfast)
 source $ZSH/oh-my-zsh.sh
 
 # source $ZSH_CUSTOM/run-async.zsh
