@@ -31,8 +31,6 @@ else
   " source ~/.vim/config/defx.vim
 endif
 
-" source ~/.vim/config/ultisnips.vim
-
 call plug#end()
 
 source ~/.vim/colorschemes/default.vim
