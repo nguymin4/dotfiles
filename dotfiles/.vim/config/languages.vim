@@ -7,6 +7,7 @@ Plug 'michaeljsmith/vim-indent-object'
 
 " Polygot
 Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['octave', 'matlab']
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks=0
 let g:vim_json_syntax_conceal=0
@@ -37,4 +38,4 @@ let g:livepreview_cursorhold_recompile = 0
 
 
 " Octave
-" Plug 'jvirtanen/vim-octave', { 'for': ['octave'] }
+" Plug 'jvirtanen/vim-octave', { 'for': ['octave', 'matlab'] }
