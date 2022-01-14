@@ -1,1 +1,1 @@
-/home/nguymin4/.vim/colorschemes/tomorrow.vim
+/home/nguymin4/.vim/colorschemes/onedark.vim
