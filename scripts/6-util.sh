@@ -17,7 +17,7 @@ sudo sh -c 'echo "deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt/ $(ls
 sudo add-apt-repository -y ppa:bamboo-engine/ibus-bamboo
 sudo add-apt-repository -y ppa:mmstick76/alacritty
 sudo add-apt-repository ppa:peek-developers/stable
-sudo apt install -y ibus-bamboo neofetch postgresql-client pgadmin4 vlc pinta alacritty cmus
+sudo apt install -y ibus-bamboo neofetch postgresql-client pgadmin4 vlc pinta cmus
 
 ibus restart
 

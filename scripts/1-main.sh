@@ -2,7 +2,7 @@
 
 sudo add-apt-repository -y ppa:git-core/ppa
 sudo apt update && sudo apt full-upgrade -y
-sudo apt install -y build-essential autoconf automake cmake git curl python3-dev python3-pip ruby-dev gem xclip ack htop nmap ranger tig rxvt-unicode docker.io libnss3-tools
+sudo apt install -y build-essential autoconf automake cmake git curl python3-dev python3-pip ruby-dev gem xclip ack htop nmap ranger tig rxvt-unicode docker.io libnss3-tools alacritty ministat 
 
 function get_latest_tag_from_github() {
   GITHUB_REPO_URL="https://github.com/$1"
