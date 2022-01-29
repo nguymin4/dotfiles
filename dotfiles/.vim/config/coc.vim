@@ -68,7 +68,6 @@ autocmd FileType coc-explorer set signcolumn=no
 nnoremap <Leader>t :CocCommand explorer<CR>
 nnoremap <Leader>e :call <SID>reveal_file()<CR>
 function! s:reveal_file()
-  " TODO: Remove this hack to make revealing file works in case the explorer has not been opened yet
   execute 'CocCommand explorer --no-toggle --reveal '.expand('%:p')
   call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:previousBuffer'], [['relative', 0, 'file']])
 endfunction
