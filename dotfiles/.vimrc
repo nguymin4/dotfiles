@@ -25,12 +25,6 @@ source ~/.vim/config/visual-mode.vim
 source ~/.vim/config/languages.vim
 source ~/.vim/config/theme.vim
 
-if has('nvim')
-  " source ~/.vim/config/defx.vim
-else
-  " source ~/.vim/config/defx.vim
-endif
-
 call plug#end()
 
 source ~/.vim/colorschemes/default.vim
