@@ -34,7 +34,8 @@
     "extension.vim_navigateUp",
     "extension.vim_navigateDown",
     "extension.vim_navigateLeft",
-    "extension.vim_navigateRight"
+    "extension.vim_navigateRight",
+    "language-julia.interrupt"
   ],
   "files.exclude": {
     "**/project.lock.json": true,
@@ -129,5 +130,8 @@
   "sql-formatter.uppercase": true,
   "terminal.integrated.inheritEnv": false,
   "python.formatting.provider": "black",
-  "jupyter.askForKernelRestart": false
+  "jupyter.askForKernelRestart": false,
+  "notebook.lineNumbers": "on",
+  "jupyter.debugJustMyCode": false,
+  "julia.symbolCacheDownload": true
 }
