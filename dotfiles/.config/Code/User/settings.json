@@ -133,5 +133,6 @@
   "jupyter.askForKernelRestart": false,
   "notebook.lineNumbers": "on",
   "jupyter.debugJustMyCode": false,
-  "julia.symbolCacheDownload": true
+  "julia.symbolCacheDownload": true,
+  "julia.enableTelemetry": false
 }

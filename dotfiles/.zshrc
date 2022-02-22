@@ -69,3 +69,12 @@ fi
 
 # End profiling
 # zprof
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/nguymin4/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<
