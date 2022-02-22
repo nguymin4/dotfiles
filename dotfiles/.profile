@@ -23,3 +23,13 @@ fi
 
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in *:/home/nguymin4/.juliaup/bin:*);; *)
+    export PATH=/home/nguymin4/.juliaup/bin${PATH:+:${PATH}};;
+esac
+
+# <<< juliaup initialize <<<
