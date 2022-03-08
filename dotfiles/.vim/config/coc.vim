@@ -5,6 +5,7 @@ let g:coc_global_extensions = [
       \'coc-eslint',
       \'coc-explorer',
       \'coc-json',
+      \'coc-julia',
       \'coc-html',
       \'coc-pyright',
       \'coc-snippets',

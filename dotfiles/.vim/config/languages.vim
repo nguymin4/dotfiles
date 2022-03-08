@@ -14,10 +14,13 @@ let g:vim_json_syntax_conceal=0
 
 " Latex
 Plug 'lervag/vimtex'
-let g:vimtex_syntax_conceal_default = 0
+let g:vimtex_syntax_conceal_disable = 1
 let g:vimtex_syntax_conceal_greek = 1
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 let g:livepreview_cursorhold_recompile = 0
+
+" Support ispell and aspell
+Plug 'vim-scripts/vimspell'
 
 
 " JavaScript
