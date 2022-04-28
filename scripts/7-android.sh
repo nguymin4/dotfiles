@@ -13,17 +13,22 @@ unzip commandlinetools.zip && rm commandlinetools.zip
 mv cmdline-tools latest
 mkdir cmdline-tools && mv latest cmdline-tools/
 
-cat <<-'EOH' >> $HOME/.path
-export ANDROID_SDK_ROOT=$HOME/Programs/android
-export PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$PATH
-export PATH=$ANDROID_SDK_ROOT/tools:$PATH
-export PATH=$ANDROID_SDK_ROOT/emulator:$PATH
+if ! grep -Fq "ANDROID_SDK_ROOT" $HOME/.path
+then
+  cat <<-'EOH' >> $HOME/.path
+  export ANDROID_SDK_ROOT=$HOME/Programs/android
+  export PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$PATH
+  export PATH=$ANDROID_SDK_ROOT/tools:$PATH
+  export PATH=$ANDROID_SDK_ROOT/emulator:$PATH
 
-EOH
+  EOH
+  source $HOME/.path
+fi
 
-source $HOME/.path
-sdkmanager --install "emulator" "platform-tools" "platforms;android-29" "build-tools;29.0.2" "system-images;android-29;google_apis_playstore;x86_64"
+function set_up_emulator() {
+  sdkmanager --install "emulator" "platform-tools" "platforms;android-29" "build-tools;29.0.2" "system-images;android-29;google_apis_playstore;x86_64"
 
-avdmanager create avd -n pixel-android -k "system-images;android-29;google_apis_playstore;x86_64"
+  avdmanager create avd -n pixel-android -k "system-images;android-29;google_apis_playstore;x86_64"
+}
 
 sudo apt install watchman
