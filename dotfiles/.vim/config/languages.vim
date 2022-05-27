@@ -22,23 +22,5 @@ let g:livepreview_cursorhold_recompile = 0
 " Support ispell and aspell
 Plug 'vim-scripts/vimspell'
 
-
-" JavaScript
-" Plug 'pangloss/vim-javascript'
-" Plug 'leafgarland/typescript-vim'
-" Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascriptreact'] }
-" Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescriptreact'] }
-" Plug 'jparise/vim-graphql', { 'for': ['graphql'] }
-" Plug 'elzr/vim-json'
-" let g:jsx_ext_required = 0
-" let g:vim_jsx_pretty_colorful_config = 1
-" let g:vim_json_syntax_conceal = 0
-
-
-" Python
-" Plug 'vim-python/python-syntax'
-" let g:python_highlight_all = 1
-
-
 " Octave
 " Plug 'jvirtanen/vim-octave', { 'for': ['octave', 'matlab'] }
