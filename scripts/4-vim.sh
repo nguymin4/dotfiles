@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -o errexit
+set -euo pipefail
 
 sudo add-apt-repository -y ppa:jonathonf/vim-daily
 sudo add-apt-repository -y ppa:neovim-ppa/unstable

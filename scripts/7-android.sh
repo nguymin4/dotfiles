@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -o errexit
+set -euo pipefail
 
 ANDROID_SDK_ROOT=$HOME/Programs/android
 CLI_TOOL_DOWNLOAD_LINK=$(curl -s https://developer.android.com/studio\#command-tools | grep -o 'https.*commandlinetools-linux.*\.zip')

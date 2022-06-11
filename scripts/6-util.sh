@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -o errexit
+set -euo pipefail
 
 # google-chrome, vscode, slack, viber, postman, robomongo
 sudo add-apt-repository -y ppa:bamboo-engine/ibus-bamboo
