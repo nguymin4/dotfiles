@@ -57,8 +57,6 @@ typings
 typings.json
 jsconfig.json
 tsd.json
-*.d.ts
-.editorconfig
 
 
 # VS Community #
