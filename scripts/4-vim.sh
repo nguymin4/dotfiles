@@ -10,13 +10,15 @@ function checkout_latest_tag() {
   git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
 }
 
-# pyenv install -> create virtualenv -> activate
+# pyenv
 rm -rf ~/.pyenv && git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
 cd ~/.pyenv && checkout_latest_tag
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
-echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
-echo '[ -s "$PYENV_ROOT/bin/pyenv" ] && eval "$(pyenv init --path)"' >> ~/.zprofile
+[[ ! $(grep 'PYENV' ~/.zprofile) ]] && cat <<-'EOH' >> ~/.zprofile
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+[ -s "$PYENV_ROOT/bin/pyenv" ] && eval "$(pyenv init --path)"
+EOH
 pip install -U pynvim
 
 # nvm

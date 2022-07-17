@@ -15,13 +15,12 @@ mkdir cmdline-tools && mv latest cmdline-tools/
 
 if ! grep -Fq "ANDROID_SDK_ROOT" $HOME/.path
 then
-  cat <<-'EOH' >> $HOME/.path
-  export ANDROID_SDK_ROOT=$HOME/Programs/android
-  export PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$PATH
-  export PATH=$ANDROID_SDK_ROOT/tools:$PATH
-  export PATH=$ANDROID_SDK_ROOT/emulator:$PATH
-
-  EOH
+  cat >> $HOME/.path <<-'EOH'
+export ANDROID_SDK_ROOT=$HOME/Programs/android
+export PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$PATH
+export PATH=$ANDROID_SDK_ROOT/tools:$PATH
+export PATH=$ANDROID_SDK_ROOT/emulator:$PATH
+EOH
   source $HOME/.path
 fi
 
