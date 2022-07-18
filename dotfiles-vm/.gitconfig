@@ -1,0 +1,40 @@
+[user]
+  name = Minh Son Nguyen
+  email = minh.son.nguyen.1209@gmail.com
+[github]
+  user = nguymin4
+  email = minh.son.nguyen.1209@gmail.com
+[core]
+  editor = vim
+  autocrlf = input
+  fileMode = false
+  excludesfile = ~/.gitignore
+[diff]
+  tool = vimdiff
+[difftool]
+  prompt = false
+[merge]
+  tool = vimdiff
+[mergetool]
+  prompt = false
+  keepBackup = false
+[alias]
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  lg = log --oneline --graph --decorate
+  la = "!git config -l | grep alias | cut -c 7-"
+  cp = cherry-pick
+  st = status
+  cl = clone
+  cm = commit
+  co = checkout
+  br = branch
+  count = rev-list --count
+  permission-reset = !git diff -p -R --no-color | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
+  co-unchanged = !sh -c 'git co $1 $2 && git reset $2 && git update-index --assume-unchanged $2' -
+[pull]
+  rebase = true
+[fetch]
+  prune = true
+[init]
+  defaultBranch = main
