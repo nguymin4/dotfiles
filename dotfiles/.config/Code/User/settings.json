@@ -134,5 +134,6 @@
   "notebook.lineNumbers": "on",
   "jupyter.debugJustMyCode": false,
   "julia.symbolCacheDownload": true,
-  "julia.enableTelemetry": false
+  "julia.enableTelemetry": false,
+  "remote.SSH.foldersSortOrder": "alphabetical"
 }
