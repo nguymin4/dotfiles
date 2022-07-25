@@ -9,3 +9,5 @@
 
 Plug 'dhruvasagar/vim-table-mode'
 let g:loaded_table_mode = 0
+
+Plug 'terryma/vim-expand-region'
