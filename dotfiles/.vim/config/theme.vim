@@ -1,6 +1,6 @@
 Plug 'ryanoasis/vim-devicons'
-Plug 'chriskempson/base16-vim'
-
+" Plug 'chriskempson/base16-vim'
+Plug 'base16-project/base16-vim'
 Plug 'joshdick/onedark.vim'
 let g:onedark_terminal_italics = 1
 
