@@ -1,10 +1,8 @@
 {
   "coc.preferences.useQuickfixForLocations": true,
   "diagnostic.warningSign": ">>",
-  "suggest.floatEnable": false,
   "suggest.minTriggerInputLength": 2,
   "suggest.timeout": 2000,
-  "suggest.triggerCompletionWait": 100,
   "hover.previewMaxHeight": 24,
   "explorer.width": 30,
   "explorer.previewAction.onHover": false,

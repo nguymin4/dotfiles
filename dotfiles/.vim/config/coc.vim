@@ -23,7 +23,7 @@ set completeopt-=preview
 set signcolumn=yes
 
 command! -nargs=0 CocFormat :call CocAction('format')
-inoremap <silent><expr> <c-n> coc#refresh()
+" inoremap <silent><expr> <c-n> coc#refresh()
 nnoremap <Leader>c :CocCommand<Space>
 nmap <F2> <Plug>(coc-rename)
 nmap <F8> <Plug>(coc-codeaction)
