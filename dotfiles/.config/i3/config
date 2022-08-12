@@ -81,7 +81,7 @@ bindsym $mod+c focus child
 # create empty container
 bindsym $mod+o open
 
-set $workspace1 "1: " 
+set $workspace1 "1: "
 set $workspace2 "2: "
 set $workspace3 "3: "
 set $workspace4 "4: "
@@ -139,7 +139,7 @@ for_window [title="Android Emulator.*"] floating enable
 
 # i3 gaps
 smart_gaps on
-gaps inner 10 
+gaps inner 10
 gaps outer 0
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
@@ -277,14 +277,14 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # exec --no-startup-id /usr/libexec/gsd-xsettings
-exec --no-startup-id /usr/bin/gnome-screensaver
+exec_always --no-startup-id xmodmap ~/.Xmodmap
+exec --no-startup-id ibus-daemon -dxrR
+exec --no-startup-id albert
+exec --no-startup-id powerline-daemon --replace -q
+exec --no-startup-id variety 2>&1 1>/dev/null
 exec --no-startup-id xrandr --auto
 exec --no-startup-id xrdb -merge ~/.Xresources
+exec --no-startup-id /usr/bin/gnome-screensaver
 exec --no-startup-id xautolock -time 10 -detectsleep -locker "gnome-screensaver-command --lock && xset dpms force off"
-exec --no-startup-id compton -b
-exec --no-startup-id albert
-exec --no-startup-id ibus-daemon -dxrR
-exec --no-startup-id variety 2>&1 1>/dev/null
 exec --no-startup-id nm-applet
-exec --no-startup-id powerline-daemon --replace -q
-exec_always --no-startup-id xmodmap ~/.Xmodmap
+exec --no-startup-id compton -b
