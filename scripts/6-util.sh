@@ -4,8 +4,8 @@ set -euo pipefail
 
 # google-chrome, vscode, slack, viber, postman, robomongo
 sudo add-apt-repository -y ppa:bamboo-engine/ibus-bamboo
-sudo add-apt-repository -y ppa:mmstick76/alacritty
-sudo add-apt-repository ppa:peek-developers/stable
+sudo add-apt-repository -y ppa:aslatter/ppa
+sudo add-apt-repository -y ppa:peek-developers/stable
 sudo apt install -y ibus-bamboo neofetch postgresql-client vlc pinta cmus piper
 
 ibus restart
