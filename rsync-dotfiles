@@ -13,7 +13,6 @@
 .config/picom.conf
 .config/powerline
 .config/ranger/rc.conf
-.config/variety/scripts
 .dircolors
 .fonts/
 .gitconfig
