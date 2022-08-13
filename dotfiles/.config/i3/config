@@ -273,8 +273,8 @@ bindsym $mod+F2 exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3bloc
 bindsym $mod+F1 exec amixer -D pulse set Master toggle && pkill -RTMIN+1 i3blocks
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec "brightnessctl -c backlight set +10%"
+bindsym XF86MonBrightnessDown exec "[ $(brightnessctl -c backlight info -m | awk -F ',' '{print int($4)}' | sort -n | head -1) -gt 10 ] && brightnessctl -c backlight set 10%-"
 
 # exec --no-startup-id /usr/libexec/gsd-xsettings
 exec_always --no-startup-id xmodmap ~/.Xmodmap
