@@ -24,7 +24,7 @@ sudo make install
 fc-cache -f
 
 # X11
-sudo apt install -y picom xautolock
+sudo apt install -y picom xautolock gnome-screensaver
 
 # brightnessctl
 sudo apt install -y brightnessctl
