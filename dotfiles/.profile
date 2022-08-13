@@ -16,7 +16,7 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-if [ "$DESKTOP_SESSION" = "i3" ]; 
+if [[ "$DESKTOP_SESSION" = "i3" || "$DESKTOP_SESSION" = "sway" ]];
 then
     export $(gnome-keyring-daemon -s)
 fi

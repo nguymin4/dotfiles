@@ -1,0 +1,113 @@
+/* =============================================================================
+ *
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ * =========================================================================== */
+
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+}
+
+/* The whole bar */
+#waybar {
+    background: #2f343f;
+    color: #f3f4f5;
+    font-family: Ubuntu, FreeMono, sans-serif;
+}
+
+/* Each module */
+#battery,
+#clock,
+#cpu,
+#custom-keyboard-layout,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-left: solid 1px #757575;
+}
+
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+
+#battery.warning {
+    color: #e5c07b;
+}
+
+#battery.critical {
+    color: #e06c75;
+}
+
+#cpu {
+    min-width: 50px;
+}
+
+#cpu.warning {
+    color: #e5c07b;
+}
+
+#cpu.critical {
+    color: #e06c75;
+}
+
+#memory.critical {
+    color: #e06c75;
+}
+
+#mode {
+    background: #e06c75;
+    color: #f3f4f5;
+}
+
+#pulseaudio {
+    border-left: none;
+}
+
+#pulseaudio.muted {
+    color: #676e7d; 
+}
+
+#temperature.critical {
+    background-color: #e06c75;
+    color: #f3f4f5;
+}
+
+#workspaces button {
+    font-size: 1rem;
+    padding: 2px 5px;
+    color: #676e7d;
+    background-color: #2f343f;
+}
+
+#workspaces button.visible:hover {
+    font-size: 1rem;
+    color: #676e7d;
+    background-color: #2f343f;
+}
+
+#workspaces button.focused {
+    color: #f3f4f5;
+    background-color: #2f343f;
+}
+
+#workspaces button.urgent {
+    background-color: #e06c75;
+    color: #f3f4f5;
+}
