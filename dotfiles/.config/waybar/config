@@ -1,0 +1,117 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 24,
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode"
+    ],
+    "modules-center": [],
+    "modules-right": [
+        "pulseaudio",
+        "cpu",
+        "temperature",
+        "memory",
+        "battery",
+        "clock#time",
+        "custom/keyboard-layout",
+        "tray"
+    ],
+    // -------------------------------------------------------------------------
+    // Modules
+    // -------------------------------------------------------------------------
+    "battery": {
+        "interval": 10,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "  {icon}  {capacity}%",
+        "format-discharging": "{icon}  {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "tooltip": false
+    },
+    "clock#time": {
+        "interval": 1,
+        "format": "  {:%e %b %Y  %H:%M:%S}",
+        "tooltip": false
+    },
+    "cpu": {
+        "interval": 5,
+        "format": "  {usage}%", // Icon: microchip
+        "states": {
+            "warning": 60,
+            "critical": 80
+        }
+    },
+    "custom/keyboard-layout": {
+        "exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
+        "interval": 30,
+        "format": "  {}",
+        "signal": 1,
+        "tooltip": false
+    },
+    "memory": {
+        "interval": 5,
+        "format": "  {}%", // Icon: memory
+        "states": {
+            "warning": 70,
+            "critical": 90
+        },
+        "tooltip": false
+    },
+    "sway/mode": {
+        "format": "{}",
+        "tooltip": false
+    },
+    "sway/window": {
+        "format": "{}",
+        "max-length": 120
+    },
+    "sway/workspaces": {
+        "all-outputs": true,
+        "disable-scroll": true,
+        "format": "{value}"
+    },
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "{icon}  {volume}%  [{desc}]",
+        "format-icons": {
+            "muted": "",
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "BLOCK_BUTTON=1 ~/.config/waybar/blocks/volume-pulseaudio",
+        "on-click-middle": "BLOCK_BUTTON=2 ~/.config/waybar/blocks/volume-pulseaudio",
+        "on-click-right": "BLOCK_BUTTON=3 ~/.config/waybar/blocks/volume-pulseaudio",
+        "tooltip": false
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "interval": 5,
+        "format": "{icon}  {temperatureC}°C",
+        "format-icons": [
+            "", // Icon: temperature-empty
+            "", // Icon: temperature-quarter
+            "", // Icon: temperature-half
+            "", // Icon: temperature-three-quarters
+            ""  // Icon: temperature-full
+        ],
+        "tooltip": false
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    }
+}
