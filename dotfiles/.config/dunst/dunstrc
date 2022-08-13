@@ -1,33 +1,33 @@
 [global]
   allow_markup = yes
-  corner_radius = 2 
+  corner_radius = 5
   follow = keyboard
   font = Ubuntu 11
   format = "<b>%s</b>\n%b"
-  frame_color = "#eeeeec"
-  frame_width = 2
+  frame_color = "#f3f4f5"
+  frame_width = 1
   geometry = "320x40-10+32"
   horizontal_padding = 12
   ignore_newline = no
-  padding = 12
-  separator_color = "#eeeeec"
-  separator_height = 2
-  transparency = 20 
+  padding = 16
+  separator_color = "#f3f4f5"
+  separator_height = 1
+  transparency = 0 
   word_wrap = yes
 
 [urgency_low]
-  background = "#54123C"
-  foreground = "#eeeeec"
+  foreground = "#f3f4f5"
+  background = "#e06c75"
   timeout = 10
 
 [urgency_normal]
-  background = "#54123C"
-  foreground = "#eeeeec"
+  foreground = "#f3f4f5"
+  background = "#e06c75"
   timeout = 10
 
 [urgency_critical]
-  background = "#54123C"
-  foreground = "#eeeeec"
+  background = "#ffffff"
+  foreground = "#e06c75"
   timeout = 10
 
 # vim: ft=cfg
