@@ -23,9 +23,16 @@ cd ~/Programs/arc-icon-theme
 sudo make install
 fc-cache -f
 
+# X11
+sudo apt install -y picom xautolock
+
+# brightnessctl
+sudo apt install -y brightnessctl
+sudo usermod -aG video ${USER}
+
 # Albert launcher
 echo "deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_$(lsb_release -rs)/ /" | sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.list
 curl -fsSL "https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_$(lsb_release -rs)/Release.key" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_manuelschneid3r.gpg > /dev/null
 
-sudo apt update && sudo apt install -y lxappearance arc-theme breeze-cursor-theme picom feh variety dunst xbacklight xautolock gnome-screensaver lm-sensors albert thunar thunar-archive-plugin acpi sysstat
+sudo apt update && sudo apt install -y lxappearance arc-theme breeze-cursor-theme feh variety dunst gnome-screensaver lm-sensors albert thunar thunar-archive-plugin acpi sysstat
 
