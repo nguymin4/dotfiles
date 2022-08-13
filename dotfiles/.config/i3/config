@@ -228,12 +228,12 @@ bindsym $mod+Ctrl+l exec "dbus-send --type=method_call --dest=org.gnome.ScreenSa
 # bindsym $mod+Ctrl+l exec "gnome-screensaver-command --lock && xset dpms force off"
 
 set $bg-color 	              #2f343f
-set $bg-color-alpha           #2f343fda
-set $inactive-bg-color        #2f343fda
+set $bg-color-alpha           #2f343ff2
+set $inactive-bg-color        #2f343ff2
 set $text-color               #f3f4f5
 set $inactive-text-color      #676e7d
 set $urgent-bg-color          #e06c75
-set $color-green              #98c379da
+set $color-green              #98c379f2
 
 # window colors
 #                       border                background          text                  indicator
@@ -287,4 +287,4 @@ exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id /usr/bin/gnome-screensaver
 exec --no-startup-id xautolock -time 10 -detectsleep -locker "gnome-screensaver-command --lock && xset dpms force off"
 exec --no-startup-id nm-applet
-exec --no-startup-id compton -b
+exec --no-startup-id picom -b
