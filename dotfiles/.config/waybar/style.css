@@ -36,39 +36,28 @@
 #mode,
 #network,
 #pulseaudio,
-#temperature,
+#custom-temperature,
 #tray {
     padding-left: 10px;
     padding-right: 10px;
-    border-left: solid 1px #757575;
+    border-left: solid 1px #454545;
 }
 
 /* -----------------------------------------------------------------------------
  * Module styles
  * -------------------------------------------------------------------------- */
 
-#battery.warning {
-    color: #e5c07b;
+*.warning {
+    color: #2f343f;
+    background-color: #e5c07b;
 }
 
-#battery.critical {
-    color: #e06c75;
+*.critical {
+    background-color: #e06c75;
 }
 
 #cpu {
     min-width: 50px;
-}
-
-#cpu.warning {
-    color: #e5c07b;
-}
-
-#cpu.critical {
-    color: #e06c75;
-}
-
-#memory.critical {
-    color: #e06c75;
 }
 
 #mode {
@@ -76,17 +65,8 @@
     color: #f3f4f5;
 }
 
-#pulseaudio {
-    border-left: none;
-}
-
 #pulseaudio.muted {
     color: #676e7d; 
-}
-
-#temperature.critical {
-    background-color: #e06c75;
-    color: #f3f4f5;
 }
 
 #workspaces button {
@@ -96,15 +76,14 @@
     background-color: #2f343f;
 }
 
-#workspaces button.visible:hover {
-    font-size: 1rem;
+#workspaces button:hover {
+    background-color: #f3f4f5;
     color: #676e7d;
-    background-color: #2f343f;
 }
 
 #workspaces button.focused {
-    color: #f3f4f5;
-    background-color: #2f343f;
+    background-color: #f3f4f5;
+    color: #676e7d;
 }
 
 #workspaces button.urgent {
