@@ -14,7 +14,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start a program launcher
-bindsym $mod+d exec --no-startup-id albert show
+bindsym $mod+d exec albert show
 
 # change focus
 bindsym $mod+h focus left
@@ -134,40 +134,41 @@ bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
   bindsym o      mode "$mode_gaps_outer"
-    bindsym i      mode "$mode_gaps_inner"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+  bindsym i      mode "$mode_gaps_inner"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
 mode "$mode_gaps_inner" {
   bindsym plus  gaps inner current plus 5
-    bindsym minus gaps inner current minus 5
-    bindsym 0     gaps inner current set 0
+  bindsym minus gaps inner current minus 5
+  bindsym 0     gaps inner current set 0
 
-    bindsym Shift+plus  gaps inner all plus 5
-    bindsym Shift+minus gaps inner all minus 5
-    bindsym Shift+0     gaps inner all set 0
+  bindsym Shift+plus  gaps inner all plus 5
+  bindsym Shift+minus gaps inner all minus 5
+  bindsym Shift+0     gaps inner all set 0
 
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
+
 mode "$mode_gaps_outer" {
   bindsym plus  gaps outer current plus 5
-    bindsym minus gaps outer current minus 5
-    bindsym 0     gaps outer current set 0
+  bindsym minus gaps outer current minus 5
+  bindsym 0     gaps outer current set 0
 
-    bindsym Shift+plus  gaps outer all plus 5
-    bindsym Shift+minus gaps outer all minus 5
-    bindsym Shift+0     gaps outer all set 0
+  bindsym Shift+plus  gaps outer all plus 5
+  bindsym Shift+minus gaps outer all minus 5
+  bindsym Shift+0     gaps outer all set 0
 
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
-# restart sway inplace (preserves your layout/session, can be used to upgrade sway)
+# restart sway inplace: currently doesn't work
 bindsym $mod+Shift+r restart
 
 # exit sway
@@ -176,9 +177,9 @@ bindsym $mod+Shift+e mode "$mode_sway_exit"
 
 mode "$mode_sway_exit" {
   bindsym Y      exit
-    bindsym n      mode "default"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+  bindsym n      mode "default"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
 # Disable mouse focus window
@@ -187,26 +188,18 @@ focus_follows_mouse no
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
-# These bindings trigger as soon as you enter the resize mode
-
-# Pressing left will shrink the window’s width.
-# Pressing right will grow the window’s width.
-# Pressing up will shrink the window’s height.
-# Pressing down will grow the window’s height.
   bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
+  bindsym j resize grow height 10 px or 10 ppt
+  bindsym k resize shrink height 10 px or 10 ppt
+  bindsym l resize grow width 10 px or 10 ppt
 
-# same bindings, but for the arrow keys
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
 
-# back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
 
@@ -227,29 +220,21 @@ client.unfocused        $bg-color             $bg-color           $inactive-text
 client.focused_inactive $bg-color             $bg-color           $inactive-text-color  $inactive-bg-color
 client.urgent           $inactive-bg-color    $urgent-bg-color    $text-color           $urgent-bg-color
 
+# GTK+ applications takes too much time to start
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 # Start swaybar to display a workspace bar
 bar swaybar_command waybar
-# bar {
-#   status_command i3blocks -c ~/.config/i3/i3blocks.conf
-#     position top
-#     colors {
-#       background $bg-color
-#         separator #757575
-#         #                  border             background        text
-#         focused_workspace  $bg-color          $bg-color         $text-color
-#         inactive_workspace $bg-color          $bg-color         $inactive-text-color
-#         urgent_workspace   $urgent-bg-color   $urgent-bg-color  $text-color
-#     }
-# }
+
+exec_always {
+  gsettings set org.gnome.desktop.interface gtk-theme "Arc-Darker"
+  gsettings set org.gnome.desktop.interface icon-theme "Arc"
+}
 
 input type:keyboard {
   # Capslock key should work as escape key
   # See /usr/share/X11/xkb/rules/xorg.lst for options
   xkb_options caps:escape
-
-  # repeat_delay 250
-  # repeat_rate 45
 }
 
 # Pulse Audio controls
@@ -264,13 +249,13 @@ bindsym $mod+F1 exec amixer -D pulse set Master toggle && pkill -RTMIN+1 i3block
 bindsym XF86MonBrightnessUp exec "brightnessctl -c backlight set +10%"
 bindsym XF86MonBrightnessDown exec "[ $(brightnessctl -c backlight info -m | awk -F ',' '{print int($4)}' | sort -n | head -1) -gt 10 ] && brightnessctl -c backlight set 10%-"
 
-# exec --no-startup-id ibus-daemon -dxrR
+# exec ibus-daemon -dxrR
 exec albert
 exec dunst
 exec powerline-daemon --replace -q
 exec variety 2>&1 1>/dev/null
 exec nm-applet
-exec kanshi
+exec_always pkill kanshi; exec kanshi
 exec swayidle -w \
   timeout 600 'swaylock -f --font Ubuntu -i /usr/share/backgrounds/Cherry_Tree_in_Lakones_by_elenastravoravdi.jpg' \
   timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
