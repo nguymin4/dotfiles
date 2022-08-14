@@ -124,7 +124,7 @@ for_window [title="Android Emulator.*"] floating enable
 
 
 # sway gaps
-smart_gaps on
+smart_gaps off
 gaps inner 10
 gaps outer 0
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -204,6 +204,7 @@ mode "resize" {
 
 
 bindsym $mod+Ctrl+l exec 'swaylock -f --font Ubuntu -i /usr/share/backgrounds/Cherry_Tree_in_Lakones_by_elenastravoravdi.jpg'
+bindsym $mod+question exec "swayinfo | xargs -0 notify-send 'Window Info'"
 
 set $bg-color 	              #2f343f
 set $bg-color-alpha           #2f343ff2

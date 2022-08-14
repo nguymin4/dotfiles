@@ -9,9 +9,9 @@
     "modules-center": [],
     "modules-right": [
         "pulseaudio",
-        "cpu",
-        "temperature",
         "memory",
+        "cpu",
+        "custom/temperature",
         "battery",
         "clock#time",
         "custom/keyboard-layout",
@@ -27,7 +27,8 @@
             "critical": 15
         },
         "format": "  {icon}  {capacity}%",
-        "format-discharging": "{icon}  {capacity}%",
+        "format-time": "{H}:{M}",
+        "format-discharging": "{icon}  {capacity}% ({time})",
         "format-icons": [
             "",
             "",
@@ -44,11 +45,14 @@
     },
     "cpu": {
         "interval": 5,
-        "format": "  {usage}%", // Icon: microchip
+        "format": "  {load:2.1f}%",
         "states": {
             "warning": 60,
             "critical": 80
-        }
+        },
+        "align": 0,
+        "min-length": 4,
+        "tooltip": false
     },
     "custom/keyboard-layout": {
         "exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
@@ -97,21 +101,14 @@
         "on-click-right": "BLOCK_BUTTON=3 ~/.config/waybar/blocks/volume-pulseaudio",
         "tooltip": false
     },
-    "temperature": {
-        "critical-threshold": 80,
+    "custom/temperature": {
         "interval": 5,
-        "format": "{icon}  {temperatureC}°C",
-        "format-icons": [
-            "", // Icon: temperature-empty
-            "", // Icon: temperature-quarter
-            "", // Icon: temperature-half
-            "", // Icon: temperature-three-quarters
-            ""  // Icon: temperature-full
-        ],
+        "exec": "~/.config/waybar/blocks/temperature --chip coretemp-isa-0000 -w 65 -c 85",
+        "format": "  {}",
         "tooltip": false
     },
     "tray": {
-        "icon-size": 20,
+        "icon-size": 18,
         "spacing": 6
     }
 }
