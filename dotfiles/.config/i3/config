@@ -138,7 +138,7 @@ for_window [title="Android Emulator.*"] floating enable
 
 
 # i3 gaps
-smart_gaps on
+smart_gaps off
 gaps inner 10
 gaps outer 0
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -237,9 +237,9 @@ set $color-green              #98c379f2
 
 # window colors
 #                       border                background          text                  indicator
-client.focused          $bg-color             $bg-color           $text-color           $bg-color
-client.unfocused        $bg-color             $bg-color           $inactive-text-color  $inactive-bg-color
-client.focused_inactive $bg-color             $bg-color           $inactive-text-color  $inactive-bg-color
+client.focused          $bg-color-alpha       $bg-color-alpha     $text-color           $bg-color-alpha
+client.unfocused        $bg-color-alpha       $bg-color-alpha     $inactive-text-color  $inactive-bg-color
+client.focused_inactive $bg-color-alpha       $bg-color-alpha     $inactive-text-color  $inactive-bg-color
 client.urgent           $inactive-bg-color    $urgent-bg-color    $text-color           $urgent-bg-color
 
 
@@ -258,7 +258,7 @@ bar {
           background $bg-color
           separator #757575
           #                  border             background        text
-          focused_workspace  $bg-color          $bg-color         $text-color
+          focused_workspace  $text-color        $text-color       $bg-color
           inactive_workspace $bg-color          $bg-color         $inactive-text-color
           urgent_workspace   $urgent-bg-color   $urgent-bg-color  $text-color
         }
