@@ -134,7 +134,8 @@ for_window [window_type="menu"] floating enable
 for_window [window_role="Preferences"] floating enable
 for_window [class="robomongo"] floating disable
 for_window [title="Android Emulator.*"] floating enable
-# for_window [class="^.*"] border pixel 0
+for_window [class="Alacritty"] border none
+for_window [class="Alacritty" instance="__focused__"] border pixel 1
 
 
 # i3 gaps
@@ -234,13 +235,14 @@ set $text-color               #f3f4f5
 set $inactive-text-color      #676e7d
 set $urgent-bg-color          #e06c75
 set $color-green              #98c379f2
+set $border-color             #b3b3b3
 
 # window colors
-#                       border                background          text                  indicator
-client.focused          $bg-color-alpha       $bg-color-alpha     $text-color           $bg-color-alpha
-client.unfocused        $bg-color-alpha       $bg-color-alpha     $inactive-text-color  $inactive-bg-color
-client.focused_inactive $bg-color-alpha       $bg-color-alpha     $inactive-text-color  $inactive-bg-color
-client.urgent           $inactive-bg-color    $urgent-bg-color    $text-color           $urgent-bg-color
+#                       border                  background              text                  indicator                 child_border
+client.focused          $bg-color               $bg-color               $text-color           $bg-color                 $border-color
+client.unfocused        $bg-color               $bg-color               $inactive-text-color  $inactive-bg-color
+client.focused_inactive $bg-color               $bg-color               $inactive-text-color  $inactive-bg-color
+client.urgent           $inactive-bg-color      $urgent-bg-color        $text-color           $urgent-bg-color
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -282,9 +284,9 @@ exec --no-startup-id ibus-daemon -dxrR
 exec --no-startup-id albert
 exec --no-startup-id powerline-daemon --replace -q
 exec --no-startup-id variety 2>&1 1>/dev/null
+exec --no-startup-id nm-applet
 exec --no-startup-id xrandr --auto
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id /usr/bin/gnome-screensaver
 exec --no-startup-id xautolock -time 10 -detectsleep -locker "gnome-screensaver-command --lock && xset dpms force off"
-exec --no-startup-id nm-applet
-exec --no-startup-id picom -b
+exec --no-startup-id picom -b --experimental-backends
