@@ -10,9 +10,8 @@
   horizontal_padding = 12
   ignore_newline = no
   padding = 16
-  separator_color = "#f3f4f5"
   separator_height = 1
-  transparency = 0 
+  transparency = 0
   word_wrap = yes
 
 [urgency_low]
@@ -26,8 +25,8 @@
   timeout = 10
 
 [urgency_critical]
-  background = "#ffffff"
-  foreground = "#e06c75"
+  foreground = "#f3f4f5"
+  background = "#e06c75"
   timeout = 10
 
 # vim: ft=cfg
