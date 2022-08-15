@@ -22,7 +22,7 @@
 
 /* The whole bar */
 #waybar {
-    background: #2f343f;
+    background: rgba(47, 52, 63, 0.85);
     color: #f3f4f5;
     font-family: Ubuntu, FreeMono, sans-serif;
 }
@@ -40,7 +40,7 @@
 #tray {
     padding-left: 10px;
     padding-right: 10px;
-    border-left: solid 1px #454545;
+    border-left: solid 1px #555555;
 }
 
 /* -----------------------------------------------------------------------------
@@ -73,7 +73,6 @@
     font-size: 1rem;
     padding: 2px 5px;
     color: #676e7d;
-    background-color: #2f343f;
 }
 
 #workspaces button:hover {
