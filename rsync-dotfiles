@@ -16,6 +16,7 @@
 .config/ranger/rc.conf
 .config/sway
 .config/waybar
+.local/bin/pipes.sh
 .dircolors
 .fonts/
 .gitconfig
