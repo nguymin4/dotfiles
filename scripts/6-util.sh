@@ -6,7 +6,7 @@ set -euo pipefail
 sudo add-apt-repository -y ppa:bamboo-engine/ibus-bamboo
 sudo add-apt-repository -y ppa:aslatter/ppa
 sudo add-apt-repository -y ppa:peek-developers/stable
-sudo apt install -y ibus-bamboo neofetch postgresql-client vlc pinta cmus piper
+sudo apt install -y ibus-bamboo neofetch postgresql-client vlc pinta cmus piper flameshot
 
 ibus restart
 
