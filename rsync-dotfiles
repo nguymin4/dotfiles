@@ -8,6 +8,7 @@
 .config/alacritty
 .config/albert/albert.conf
 .config/dunst
+.config/flameshot
 .config/i3
 .config/kanshi
 .config/nvim
