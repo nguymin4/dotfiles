@@ -21,6 +21,12 @@ then
     export $(gnome-keyring-daemon -s)
 fi
 
+export QT_QPA_PLATFORMTHEME=qt5ct
+if [[ "$DESKTOP_SESSION" = "sway" ]];
+then
+    export QT_QPA_PLATFORM=wayland
+fi
+
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
