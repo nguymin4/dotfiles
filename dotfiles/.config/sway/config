@@ -250,7 +250,6 @@ bindsym $mod+F1 exec amixer -D pulse set Master toggle && pkill -RTMIN+1 i3block
 bindsym XF86MonBrightnessUp exec "brightnessctl -c backlight set +10%"
 bindsym XF86MonBrightnessDown exec "[ $(brightnessctl -c backlight info -m | awk -F ',' '{print int($4)}' | sort -n | head -1) -gt 10 ] && brightnessctl -c backlight set 10%-"
 
-# exec ibus-daemon -dxrR
 exec albert
 exec dunst
 exec powerline-daemon --replace -q
@@ -260,3 +259,4 @@ exec_always pkill kanshi; exec kanshi
 exec swayidle -w \
   timeout 600 'swaylock -f --font Ubuntu -i /usr/share/backgrounds/Cherry_Tree_in_Lakones_by_elenastravoravdi.jpg' \
   timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+exec fcitx5 -dr
