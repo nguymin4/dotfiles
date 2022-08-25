@@ -6,9 +6,15 @@ set -euo pipefail
 sudo add-apt-repository -y ppa:bamboo-engine/ibus-bamboo
 sudo add-apt-repository -y ppa:aslatter/ppa
 sudo add-apt-repository -y ppa:peek-developers/stable
-sudo apt install -y ibus-bamboo neofetch postgresql-client vlc pinta cmus piper flameshot
+sudo apt install -y neofetch postgresql-client vlc pinta cmus piper flameshot
 
-ibus restart
+# ibus
+# sudo apt install ibus-bamboo
+# ibus restart
+
+# fcitx5
+sudo apt install fcitx5 fcitx5-unikey
+fcitx5 -dr
 
 # juliaup
 curl -fsSL https://install.julialang.org | sh
