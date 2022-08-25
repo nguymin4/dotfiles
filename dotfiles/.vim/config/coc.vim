@@ -27,7 +27,6 @@ autocmd VimEnter,ColorScheme * hi! link CocMenuSel PMenuSel
 autocmd VimEnter,ColorScheme * hi! link CocSearch Identifier
 
 command! -nargs=0 CocFormat :call CocAction('format')
-" inoremap <silent><expr> <c-n> coc#refresh()
 nnoremap <Leader>c :CocCommand<Space>
 nmap <F2> <Plug>(coc-rename)
 nmap <F8> <Plug>(coc-codeaction)
@@ -69,7 +68,6 @@ endfunction
 
 
 " coc-explorer
-autocmd FileType coc-explorer set signcolumn=no
 nnoremap <Leader>t :CocCommand explorer<CR>
 nnoremap <Leader>e :call <SID>reveal_file()<CR>
 function! s:reveal_file()

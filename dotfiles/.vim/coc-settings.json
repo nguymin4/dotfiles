@@ -5,15 +5,15 @@
   "suggest.timeout": 3000,
   "suggest.noselect": true,
   "hover.previewMaxHeight": 24,
-  "explorer.width": 30,
+  "explorer.width": 40,
   "explorer.previewAction.onHover": false,
   "explorer.sources": [
     { "name": "file", "expand": true }
   ],
   "explorer.buffer.child.template": "[selection | 1] [bufnr] [name] [modified][readonly]",
   "explorer.file.reveal.auto": false,
-  "explorer.file.child.template": "[indent][git | 2] [selection | clip & 1][icon | 2] [diagnosticError & 1][filename omitCenter 1]",
-  "explorer.file.column.indent.indentLine": false,
+  "explorer.file.child.template": "[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1]",
+  "explorer.file.column.indent.indentLine": true,
   "explorer.icon.enableNerdfont": true,
   "explorer.icon.source": "vim-devicons",
   "explorer.icon.selected": "",
