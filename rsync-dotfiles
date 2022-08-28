@@ -15,6 +15,7 @@
 .config/picom.conf
 .config/powerline
 .config/sway
+.config/swaylock
 .config/waybar
 .local/bin/pipes.sh
 .dircolors

@@ -203,7 +203,7 @@ mode "resize" {
 }
 
 
-bindsym $mod+Ctrl+l exec 'swaylock -f --font Ubuntu -i /usr/share/backgrounds/Cherry_Tree_in_Lakones_by_elenastravoravdi.jpg'
+bindsym $mod+Ctrl+l exec 'swaylock --config ~/.config/swaylock/config'
 bindsym $mod+question exec "swayinfo | xargs -0 notify-send 'Window Info'"
 
 set $bg-color 	              #2f343f
@@ -257,6 +257,6 @@ exec variety 2>&1 1>/dev/null
 exec nm-applet
 exec_always pkill kanshi; exec kanshi
 exec swayidle -w \
-  timeout 600 'swaylock -f --font Ubuntu -i /usr/share/backgrounds/Cherry_Tree_in_Lakones_by_elenastravoravdi.jpg' \
+  timeout 600 'swaylock --config ~/.config/swaylock/config' \
   timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
 exec fcitx5 -dr
