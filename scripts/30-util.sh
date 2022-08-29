@@ -3,14 +3,14 @@
 set -euo pipefail
 
 # google-chrome, vscode, slack, viber, postman, robomongo
-sudo add-apt-repository -y ppa:bamboo-engine/ibus-bamboo
 sudo add-apt-repository -y ppa:aslatter/ppa
 sudo add-apt-repository -y ppa:peek-developers/stable
 sudo apt install -y neofetch postgresql-client vlc pinta cmus piper flameshot ministat 
 
 # ibus
+sudo add-apt-repository -y ppa:bamboo-engine/ibus-bamboo
 sudo apt install ibus-bamboo
-# ibus restart
+ibus restart
 
 # fcitx5
 sudo apt install fcitx5 fcitx5-unikey

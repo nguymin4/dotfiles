@@ -9,6 +9,7 @@
 .config/albert/albert.conf
 .config/dunst
 .config/flameshot
+.config/hypr
 .config/i3
 .config/kanshi
 .config/nvim
