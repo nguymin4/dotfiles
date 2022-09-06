@@ -20,24 +20,36 @@
 
 /* The whole bar */
 #waybar {
-    background: rgba(47, 52, 63, 0.85);
+    background: transparent;
     color: #f3f4f5;
     font-family: Ubuntu, FreeMono, sans-serif;
 }
+
+.modules-left {
+    background: rgba(47, 52, 63, 0.85);
+    padding: 2px 0px;
+    margin: 1px 2px 0px 2px;
+    border-radius: 20px;
+}
+
+.modules-right {
+    background: rgba(47, 52, 63, 0.85);
+    padding: 6px;
+    margin: 1px 2px 0px 2px;
+    border-radius: 20px;
+}
+
 
 /* Each module */
 #battery,
 #clock,
 #cpu,
 #memory,
-#mode,
 #network,
-#pulseaudio,
 #custom-temperature,
 #tray {
-    padding-left: 10px;
-    padding-right: 10px;
-    border-left: solid 1px #555555;
+    padding: 0px 10px;
+    border-left: solid 1px #676e7d;
 }
 
 /* -----------------------------------------------------------------------------
@@ -60,6 +72,13 @@
 #mode {
     background: #e06c75;
     color: #f3f4f5;
+    padding: 0px 10px;
+    margin: 0px 2px 0px 4px;
+    border-radius: 20px;
+}
+
+#pulseaudio {
+    padding: 0px 10px;
 }
 
 #pulseaudio.muted {
@@ -68,8 +87,10 @@
 
 #workspaces button {
     font-size: 1rem;
-    padding: 2px 5px;
+    padding: 0px 10px;
+    margin: 0px 2px;
     color: #676e7d;
+    border-radius: 20px;
 }
 
 #workspaces button:hover {

@@ -140,7 +140,7 @@ for_window [class="Alacritty" instance="__focused__"] border pixel 1
 
 # i3 gaps
 smart_gaps off
-gaps inner 10
+gaps inner 5
 gaps outer 0
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
