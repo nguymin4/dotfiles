@@ -22,7 +22,7 @@
 #waybar {
     background: transparent;
     color: #f3f4f5;
-    font-family: Ubuntu, FreeMono, sans-serif;
+    font-family: Ubuntu, sans-serif;
 }
 
 .modules-left {
@@ -82,7 +82,7 @@
 }
 
 #pulseaudio.muted {
-    color: #676e7d; 
+    color: #676e7d;
 }
 
 #workspaces button {
