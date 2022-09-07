@@ -34,11 +34,9 @@
 
 .modules-right {
     background: rgba(47, 52, 63, 0.85);
-    padding: 6px;
     margin: 1px 2px 0px 2px;
     border-radius: 20px;
 }
-
 
 /* Each module */
 #battery,
@@ -47,22 +45,32 @@
 #memory,
 #network,
 #custom-temperature,
-#tray {
-    padding: 0px 10px;
-    border-left: solid 1px #676e7d;
+#date,
+#pulseaudio {
+    margin: 1px 0px;
+    padding: 6px 12px;
+    border-right: solid 1px #676e7d;
 }
 
 /* -----------------------------------------------------------------------------
  * Module styles
  * -------------------------------------------------------------------------- */
 
-*.warning {
+#cpu.warning,
+#memory.warning,
+#custom-temperature.warning,
+#battery.warning {
     color: #2f343f;
     background-color: #e5c07b;
+    border-color: #e5c07b;
 }
 
-*.critical {
+#cpu.critical,
+#memory.critical,
+#custom-temperature.critical,
+#battery.critical {
     background-color: #e06c75;
+    border-color: #e06c75;
 }
 
 #cpu {
@@ -78,11 +86,15 @@
 }
 
 #pulseaudio {
-    padding: 0px 10px;
+    margin-left: 8px;
 }
 
 #pulseaudio.muted {
     color: #676e7d;
+}
+
+#tray {
+    margin: 1px 16px 1px 12px;
 }
 
 #workspaces button {
