@@ -14,6 +14,7 @@
 .config/kanshi
 .config/nvim
 .config/picom.conf
+.config/polybar
 .config/powerline
 .config/sway
 .config/swaylock
