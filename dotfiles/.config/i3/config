@@ -135,7 +135,6 @@ for_window [window_role="Preferences"] floating enable
 for_window [class="robomongo"] floating disable
 for_window [title="Android Emulator.*"] floating enable
 for_window [class="Alacritty"] border none
-for_window [class="Alacritty" instance="__focused__"] border pixel 1
 
 
 # i3 gaps
@@ -239,7 +238,7 @@ set $border-color             #b3b3b3
 
 # window colors
 #                       border                  background              text                  indicator                 child_border
-client.focused          $bg-color               $bg-color               $text-color           $bg-color                 $border-color
+client.focused          $bg-color               $bg-color               $text-color           $bg-color
 client.unfocused        $bg-color               $bg-color               $inactive-text-color  $inactive-bg-color
 client.focused_inactive $bg-color               $bg-color               $inactive-text-color  $inactive-bg-color
 client.urgent           $inactive-bg-color      $urgent-bg-color        $text-color           $urgent-bg-color
@@ -259,7 +258,7 @@ bindsym XF86MonBrightnessDown exec "[ $(brightnessctl -c backlight info -m | awk
 
 # exec --no-startup-id /usr/libexec/gsd-xsettings
 exec_always --no-startup-id xmodmap ~/.Xmodmap
-exec_always --no-startup-id polybar main -q -r -c ~/.config/polybar/config.ini
+exec --no-startup-id polybar main -c ~/.config/polybar/config.ini
 exec --no-startup-id ibus-daemon -dxrR
 exec --no-startup-id albert
 exec --no-startup-id powerline-daemon --replace -q
