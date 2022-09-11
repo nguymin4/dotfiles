@@ -1,16 +1,15 @@
 {
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.cursorBlinking": "solid",
+  "editor.detectIndentation": true,
   "editor.fontFamily": "UbuntuMono Nerd Font Mono",
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
-  "editor.tabSize": 2,
   "editor.insertSpaces": true,
-  "editor.detectIndentation": false,
-  "editor.wrappingIndent": "none",
-  "editor.mouseWheelZoom": false,
-  "editor.minimap.enabled": false,
-  "editor.cursorBlinking": "solid",
   "editor.lineNumbers": "relative",
-  "editor.wordWrap": "on",
+  "editor.minimap.enabled": false,
+  "editor.mouseWheelZoom": false,
+  "editor.tabSize": 2,
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
@@ -23,20 +22,11 @@
       }
     ]
   },
-  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.wordWrap": "on",
+  "editor.wrappingIndent": "none",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  "terminal.integrated.fontSize": 16,
-  "terminal.integrated.lineHeight": 1,
-  "terminal.integrated.fontFamily": "UbuntuMono Nerd Font Mono",
-  "terminal.integrated.fontWeightBold": "normal",
-  "terminal.integrated.commandsToSkipShell": [
-    "extension.vim_navigateUp",
-    "extension.vim_navigateDown",
-    "extension.vim_navigateLeft",
-    "extension.vim_navigateRight",
-    "language-julia.interrupt"
-  ],
+  "extensions.ignoreRecommendations": true,
   "files.exclude": {
     "**/project.lock.json": true,
     "**/node_modules*": true,
@@ -44,11 +34,6 @@
     "**/*pyc": true,
     "**/.idea": true
   },
-  "files.associations": {
-    "*.graphqls": "graphql"
-  },
-  "git.enableSmartCommit": true,
-  "gitlens.keymap": "alternate",
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": false,
     "suppressCommitNotFoundWarning": false,
@@ -57,12 +42,62 @@
     "suppressLineUncommittedWarning": false,
     "suppressNoRepositoryWarning": false,
   },
-  "vsicons.dontShowNewVersionMessage": true,
+  "git.enableSmartCommit": true,
+  "gitlens.keymap": "alternate",
   "javascript.preferences.quoteStyle": "single",
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "julia.enableTelemetry": true,
+  "julia.symbolCacheDownload": true,
+  "jupyter.askForKernelRestart": false,
+  "jupyter.debugJustMyCode": false,
+  "notebook.lineNumbers": "on",
+  "python.formatting.provider": "black",
+  "redhat.telemetry.enabled": false,
+  "remote.SSH.foldersSortOrder": "alphabetical",
+  "remote.SSH.showLoginTerminal": true,
+  "sql-formatter.uppercase": true,
+  "terminal.integrated.commandsToSkipShell": [
+    "extension.vim_navigateUp",
+    "extension.vim_navigateDown",
+    "extension.vim_navigateLeft",
+    "extension.vim_navigateRight",
+    "language-julia.interrupt"
+  ],
+  "terminal.integrated.fontFamily": "UbuntuMono Nerd Font Mono",
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.fontWeightBold": "normal",
+  "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.lineHeight": 1,
   "typescript.check.npmIsInstalled": false,
   "typescript.preferences.quoteStyle": "single",
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/usr/bin/nvim",
+  "vim.replaceWithRegister": true,
+  "vim.ignorecase": false,
+  "vim.mouseSelectionGoesIntoVisualMode": false,
+  "vim.hlsearch": true,
+  "vim.handleKeys": {
+    "<C-f>": true,
+    "<C-b>": true,
+    "<C-h>": true,
+    "<C-j>": true,
+    "<C-k>": true,
+    "<C-l>": true
+  },
+  "vim.statusBarColorControl": true,
+  "vim.statusBarColors.insert": "#718c00",
+  "vim.statusBarColors.normal": "#4271ae",
+  "vim.statusBarColors.replace": "#005f87",
+  "vim.statusBarColors.visual": "#3e999f",
+  "vim.statusBarColors.visualblock": "#8959a8",
+  "vim.statusBarColors.visualline": "#8959a8",
+  "vim.useSystemClipboard": true,
+  "vim.visualstar": true,
+  "vsicons.dontShowNewVersionMessage": true,
   "window.titleBarStyle": "native",
   "window.menuBarVisibility": "toggle",
   "workbench.activityBar.visible": true,
@@ -94,46 +129,7 @@
     "statusBar.noFolderBackground": "#4271ae",
     "statusBar.debuggingBackground": "#4271ae"
   },
-  "vim.enableNeovim": true,
-  "vim.neovimPath": "/usr/bin/nvim",
-  "vim.replaceWithRegister": true,
-  "vim.ignorecase": false,
-  "vim.mouseSelectionGoesIntoVisualMode": true,
-  "vim.hlsearch": true,
-  "vim.handleKeys": {
-    "<C-f>": true,
-    "<C-b>": true,
-    "<C-h>": true,
-    "<C-j>": true,
-    "<C-k>": true,
-    "<C-l>": true
-  },
-  "vim.statusBarColorControl": true,
-  "vim.statusBarColors.insert": "#718c00",
-  "vim.statusBarColors.normal": "#4271ae",
-  "vim.statusBarColors.replace": "#005f87",
-  "vim.statusBarColors.visual": "#3e999f",
-  "vim.statusBarColors.visualblock": "#8959a8",
-  "vim.statusBarColors.visualline": "#8959a8",
-  "vim.useSystemClipboard": true,
-  "vim.visualstar": true,
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
   "workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb"
+    "*.ipynb": "jupyter-notebook"
   },
-  "extensions.ignoreRecommendations": true,
-  "redhat.telemetry.enabled": false,
-  "vsicons.presets.hideExplorerArrows": true,
-  "remote.SSH.showLoginTerminal": true,
-  "sql-formatter.uppercase": true,
-  "terminal.integrated.inheritEnv": false,
-  "python.formatting.provider": "black",
-  "jupyter.askForKernelRestart": false,
-  "notebook.lineNumbers": "on",
-  "jupyter.debugJustMyCode": false,
-  "julia.symbolCacheDownload": true,
-  "julia.enableTelemetry": false,
-  "remote.SSH.foldersSortOrder": "alphabetical"
 }
