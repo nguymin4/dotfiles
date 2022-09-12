@@ -258,7 +258,7 @@ bindsym XF86MonBrightnessDown exec "[ $(brightnessctl -c backlight info -m | awk
 
 # exec --no-startup-id /usr/libexec/gsd-xsettings
 exec_always --no-startup-id xmodmap ~/.Xmodmap
-exec --no-startup-id polybar main -c ~/.config/polybar/config.ini
+exec --no-startup-id polybar main -r -c ~/.config/polybar/config.ini
 exec --no-startup-id ibus-daemon -dxrR
 exec --no-startup-id albert
 exec --no-startup-id powerline-daemon --replace -q
