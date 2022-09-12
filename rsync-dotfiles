@@ -7,6 +7,7 @@
 .config/Code/User/snippets
 .config/alacritty
 .config/albert/albert.conf
+.config/btop/btop.conf
 .config/dunst
 .config/flameshot
 .config/hypr
