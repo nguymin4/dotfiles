@@ -5,7 +5,7 @@ set -euo pipefail
 # google-chrome, vscode, slack, viber, postman, robomongo
 sudo add-apt-repository -y ppa:aslatter/ppa
 sudo add-apt-repository -y ppa:peek-developers/stable
-sudo apt install -y neofetch postgresql-client vlc pinta cmus piper flameshot ministat 
+sudo apt install -y neofetch postgresql-client vlc pinta cmus piper flameshot ministat stress-ng btop
 
 # ibus
 sudo add-apt-repository -y ppa:bamboo-engine/ibus-bamboo
