@@ -2,10 +2,14 @@
 
 set -euo pipefail
 
-# google-chrome, vscode, slack, viber, postman, robomongo
+# google-chrome, vscode, slack, viber
 sudo add-apt-repository -y ppa:aslatter/ppa
 sudo add-apt-repository -y ppa:peek-developers/stable
 sudo apt install -y neofetch postgresql-client vlc pinta cmus piper flameshot ministat stress-ng btop
+
+# thunar
+sudo apt install -y thunar thunar-archive-plugin
+xdg-mime default thunar.desktop inode/directory
 
 # ibus
 sudo add-apt-repository -y ppa:bamboo-engine/ibus-bamboo
