@@ -125,9 +125,13 @@ for_window [title=".*Emulator.*"] floating enable
 # - Alacritty: should not have title bar but have border on focused
 # - Albert: should not have title bar noor border
 # - Others: should have title bar and border with thickness 0 on focused
-for_window [class="^.*"] border normal 0
 for_window [floating] border normal 1
+for_window [class="^.*"] border normal 0
+for_window [class="xdg-desktop-portal-gnome" floating] border none
+for_window [app_id=".*gnome.*"] border normal 0
 for_window [app_id="Alacritty"] border pixel 1
+for_window [app_id="thunar"] border normal 0
+for_window [app_id="thunar" floating] border none
 for_window [app_id="albert"] border none
 
 
@@ -237,8 +241,10 @@ exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSO
 bar swaybar_command waybar
 
 exec_always {
-  gsettings set org.gnome.desktop.interface gtk-theme "Arc-Darker"
-  gsettings set org.gnome.desktop.interface icon-theme "Arc"
+  gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Darker'
+  gsettings set org.gnome.desktop.interface.wm.preferences theme 'Arc-Darker'
+  gsettings set org.gnome.desktop.interface icon-theme 'Arc'
+  gsettings set org.gnome.desktop.interface font-name 'Ubuntu 11'
 }
 
 input type:keyboard {
