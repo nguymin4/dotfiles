@@ -8,6 +8,7 @@ curl -fsSL "https://download.opensuse.org/repositories/home:manuelschneid3r/xUbu
 
 sudo apt update && sudo apt install -y variety dunst lm-sensors albert thunar thunar-archive-plugin
 
+xdg-mime default thunar.desktop inode/directory
 
 # GTK
 sudo apt install -y lxappearance arc-theme breeze-cursor-theme

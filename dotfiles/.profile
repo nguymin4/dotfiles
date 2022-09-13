@@ -24,7 +24,9 @@ fi
 export QT_QPA_PLATFORMTHEME=qt5ct
 if [[ "$DESKTOP_SESSION" = "sway" ]];
 then
-    export QT_QPA_PLATFORM=wayland
+    # This doesn't work with Android Emulator
+    # export QT_QPA_PLATFORM=wayland
+    export QT_QPA_PLATFORM=xcb
 fi
 
 # set PATH so it includes user's private bin directories
