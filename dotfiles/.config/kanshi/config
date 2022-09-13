@@ -1,4 +1,13 @@
-profile home-dell-precision-intel {
+profile docked-dell-latitude {
+	output eDP-1 disable
+	output HDMI-A-1 enable
+}
+
+profile mobile-dell-latitude {
+	output eDP-1 enable
+}
+
+profile docked-dell-precision-intel {
 	output eDP-1 disable
 	output DP-3 enable
 }
@@ -7,7 +16,7 @@ profile mobile-dell-precision-intel {
 	output eDP-1 enable
 }
 
-profile home-dell-precision-nvidia {
+profile docked-dell-precision-nvidia {
 	output eDP-1-1 disable
 	output DP-1-3 enable
 }
