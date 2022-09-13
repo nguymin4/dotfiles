@@ -117,8 +117,9 @@ for_window [window_role="task_dialog"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 for_window [window_role="Preferences"] floating enable
+for_window [app_id="zoom"] floating disable
 for_window [class="robomongo"] floating disable
-for_window [title="Android Emulator.*"] floating enable
+for_window [title=".*Emulator.*"] floating enable
 
 # set borders for windows
 # - Alacritty: should not have title bar but have border on focused
