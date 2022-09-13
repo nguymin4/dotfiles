@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-sudo apt install -y wl-clipboard wlr-randr kanshi sway swaylock swayidle waybar slurp
+sudo apt install -y wl-clipboard wlr-randr kanshi sway swaylock swayidle waybar slurp grimshot
 
 pip install --user swaytools
 
