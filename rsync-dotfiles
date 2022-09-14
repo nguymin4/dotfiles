@@ -20,6 +20,7 @@
 .config/sway
 .config/swaylock
 .config/waybar
+.config/xdg-desktop-portal-wlr
 .local/bin/pipes.sh
 .dircolors
 .fonts/

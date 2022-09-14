@@ -27,6 +27,7 @@ then
     # This doesn't work with Android Emulator
     # export QT_QPA_PLATFORM=wayland
     export QT_QPA_PLATFORM=xcb
+    export XDG_CURRENT_DESKTOP=sway
 fi
 
 # set PATH so it includes user's private bin directories

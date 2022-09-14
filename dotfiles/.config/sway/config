@@ -114,6 +114,7 @@ for_window [title=".*Emulator.*"] floating enable
 # - Albert: should not have title bar noor border
 # - Others: should have title bar and border with thickness 0 on focused
 for_window [floating] border normal 1
+for_window [floating title=".*sharing your screen.*"] border none
 for_window [class="^.*"] border normal 0
 for_window [class="xdg-desktop-portal-gnome" floating] border none
 for_window [app_id=".*gnome.*"] border normal 0
@@ -251,6 +252,12 @@ bindsym XF86MonBrightnessDown exec "[ $(brightnessctl -c backlight info -m | awk
 bindsym $mod+F12 exec "brightnessctl -c backlight set +10%"
 bindsym $mod+F11 exec "[ $(brightnessctl -c backlight info -m | awk -F ',' '{print int($4)}' | sort -n | head -1) -gt 10 ] && brightnessctl -c backlight set 10%-"
 
+# Support screen sharing in Google Meet
+exec {
+  dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+  systemctl --user stop pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
+  systemctl --user start pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
+}
 exec albert
 exec dunst
 exec powerline-daemon --replace -q
