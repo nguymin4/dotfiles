@@ -34,23 +34,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+Shift+v split h
@@ -193,7 +181,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-set $mode_i3_exit EXIT : Do you really want to exit i3? This will end your X session (y/N)
+set $mode_i3_exit EXIT : Do you really want to exit i3? (y/N)
 bindsym $mod+Shift+e mode "$mode_i3_exit"
 
 mode "$mode_i3_exit" {
@@ -219,12 +207,6 @@ mode "resize" {
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -263,6 +245,8 @@ bindsym $mod+F1 exec amixer -D pulse set Master toggle && pkill -RTMIN+1 i3block
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec "brightnessctl -c backlight set +10%"
 bindsym XF86MonBrightnessDown exec "[ $(brightnessctl -c backlight info -m | awk -F ',' '{print int($4)}' | sort -n | head -1) -gt 10 ] && brightnessctl -c backlight set 10%-"
+bindsym $mod+F12 exec "brightnessctl -c backlight set +10%"
+bindsym $mod+F11 exec "[ $(brightnessctl -c backlight info -m | awk -F ',' '{print int($4)}' | sort -n | head -1) -gt 10 ] && brightnessctl -c backlight set 10%-"
 
 # exec --no-startup-id /usr/libexec/gsd-xsettings
 exec_always --no-startup-id xmodmap ~/.Xmodmap
