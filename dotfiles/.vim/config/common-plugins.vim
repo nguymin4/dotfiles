@@ -12,10 +12,10 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'jasonccox/vim-wayland-clipboard'
 
 " Supertab
-Plug 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = '<C-p>'
-let g:SuperTabMappingForward = '<Nop>'
-let g:SuperTabMappingBackward = '<Nop>'
+" Plug 'ervandew/supertab'
+" let g:SuperTabDefaultCompletionType = '<C-p>'
+" let g:SuperTabMappingForward = '<Nop>'
+" let g:SuperTabMappingBackward = '<Nop>'
 
 Plug 'machakann/vim-highlightedyank'
 let g:highlightedyank_highlight_duration = 250
