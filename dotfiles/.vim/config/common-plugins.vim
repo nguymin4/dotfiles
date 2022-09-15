@@ -9,6 +9,7 @@ Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'christoomey/vim-tmux-navigator'
 " Plug 'Raimondi/delimitMate'
+Plug 'jasonccox/vim-wayland-clipboard'
 
 " Supertab
 Plug 'ervandew/supertab'
