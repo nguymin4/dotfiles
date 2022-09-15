@@ -22,10 +22,6 @@ set updatetime=250
 set completeopt-=preview
 set signcolumn=yes
 
-" Coc menu highlighting issue
-autocmd VimEnter,ColorScheme * hi! link CocMenuSel PMenuSel
-autocmd VimEnter,ColorScheme * hi! link CocSearch Identifier
-
 command! -nargs=0 CocFormat :call CocAction('format')
 nnoremap <Leader>c :CocCommand<Space>
 nmap <F2> <Plug>(coc-rename)

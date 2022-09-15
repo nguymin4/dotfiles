@@ -4,7 +4,7 @@ set -euo pipefail
 
 sudo add-apt-repository -y ppa:jonathonf/vim-daily
 sudo add-apt-repository -y ppa:neovim-ppa/unstable
-sudo apt install -y vim-gtk3 neovim python3-neovim libbz2-dev libreadline-dev libsqlite3-dev libssl-dev libffi-dev liblzma-dev tk-dev texlive textlive-luatex textlive-pictures texlive-latex-extra latexmk
+sudo apt install -y vim-gtk3 neovim libbz2-dev libreadline-dev libsqlite3-dev libssl-dev libffi-dev liblzma-dev tk-dev texlive textlive-luatex textlive-pictures texlive-latex-extra latexmk
 
 # pyenv
 rm -rf ~/.pyenv && git clone https://github.com/pyenv/pyenv.git ~/.pyenv
