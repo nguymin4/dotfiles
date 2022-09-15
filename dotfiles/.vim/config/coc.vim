@@ -34,6 +34,14 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> ge <Plug>(coc-references)
 nmap <silent> gE <Plug>(coc-implementation)
 
+" Support both <c-n> and tab for completion
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Use <c-space> to trigger completion in insert mode and show documentation in normal mode
 if has('nvim')
   nnoremap <silent> <c-space> :call <SID>show_documentation()<CR>
   inoremap <silent><expr> <c-space> <SID>trigger_completion()
@@ -51,7 +59,7 @@ function! s:show_documentation() abort
 endfunction
 
 function! s:trigger_completion() abort
-  return pumvisible() ? coc#_select_confirm() :
+  return coc#pum#visible() ? coc#_select_confirm() :
     \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
     \ <SID>check_back_space() ? "\<c-n>" :
     \ coc#refresh()
