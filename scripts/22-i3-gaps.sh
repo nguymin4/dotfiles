@@ -7,7 +7,7 @@ sudo apt install -y ninja-build meson libxcb1-dev libxcb-keysyms1-dev libpango1.
 
 # i3-gaps
 sudo apt install -y --no-install-recommends i3status i3blocks polybar
-git clone https://github.com/Airblader/i3.git ~/Programs/i3
+rm -rf ~/Programs/i3 && git clone https://github.com/Airblader/i3.git ~/Programs/i3
 cd ~/Programs/i3
 mkdir -p build && cd build
 meson ..
@@ -16,8 +16,10 @@ sudo meson install
 chmod u+x -R ~/.config/i3/blocks
 
 # X11
-sudo apt install -y picom xclip xautolock gnome-screensaver feh
+sudo add-apt-repository -y ppa:peek-developers/stable
+sudo apt install -y picom xclip xautolock gnome-screensaver feh flameshot rxvt-unicode peek
 
-# brightnessctl
-sudo apt install -y brightnessctl
-sudo usermod -aG video ${USER}
+# ibus
+sudo add-apt-repository -y ppa:bamboo-engine/ibus-bamboo
+sudo apt install -y ibus-bamboo
+ibus restart
