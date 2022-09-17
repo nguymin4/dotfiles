@@ -11,9 +11,12 @@ git checkout `git describe --abbrev=0 --tags --match "[0-9]*" $(git rev-list --t
 sh autogen.sh && ./configure && make
 sudo make install
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# tpm - plugin manager
+rm -rf ~/.tmux/plugins/tpm && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
+# powerline-status
 pip install --user git+https://github.com/powerline/powerline
 
+# tmuxinator
 gem install --user-install tmuxinator
