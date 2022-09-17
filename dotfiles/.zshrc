@@ -52,8 +52,9 @@ unset file;
 export NVM_DIR="$HOME/.nvm"
 if [ -s "$NVM_DIR/nvm.sh" ]; then
   . "$NVM_DIR/nvm.sh" --no-use
-  if [ -f "$NVM_DIR/alias/default" ]; then
-    NODE_VERSION=$(tr -d 'v' < $NVM_DIR/alias/default)
+  if [ -f $NVM_DIR/alias/lts/'*' ]; then
+    NODE_LTS=$(cat $NVM_DIR/alias/lts/'*')
+    NODE_VERSION=$(tr -d 'v' < $NVM_DIR/alias/$NODE_LTS)
     export PATH="$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH"
   fi
 fi
