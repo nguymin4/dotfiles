@@ -8,15 +8,11 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:Ubuntu, FreeMono, FontAwesome, Font Awesome 5 Free 11
 
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# Disable mouse focus window
+focus_follows_mouse no
 
 # start a terminal
 # bindsym $mod+Return exec urxvt
@@ -126,11 +122,26 @@ for_window [title=".*Emulator.*"] floating enable
 # set borders for windows
 # - Alacritty: should not have title bar but have border on focused
 # - Albert: should not have title bar noor border
-# - Others: should have title bar and border with thickness 0 on focused
 for_window [class="^.*"] border normal 0
 for_window [floating] border normal 1
 for_window [class="Alacritty"] border pixel 1
 for_window [class="albert"] border none
+
+set $bg-color 	              #2f343f
+set $bg-color-alpha           #2f343ff2
+set $inactive-bg-color        #2f343ff2
+set $text-color               #f3f4f5
+set $inactive-text-color      #676e7d
+set $urgent-bg-color          #e06c75
+set $color-green              #98c379f2
+set $border-color             #b3b3b3
+
+# window colors
+#                       border                  background              text                  indicator                 child_border
+client.focused          $bg-color               $bg-color               $text-color           $bg-color                 $border-color
+client.unfocused        $bg-color               $bg-color               $inactive-text-color  $inactive-bg-color
+client.focused_inactive $bg-color               $bg-color               $inactive-text-color  $inactive-bg-color
+client.urgent           $inactive-bg-color      $urgent-bg-color        $text-color           $urgent-bg-color
 
 
 # i3 gaps
@@ -174,26 +185,6 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-
-# exit i3 (logs you out of your X session)
-set $mode_i3_exit EXIT : Do you really want to exit i3? (y/N)
-bindsym $mod+Shift+e mode "$mode_i3_exit"
-
-mode "$mode_i3_exit" {
-        bindsym Y      exit
-        bindsym n      mode "default"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-# Disable mouse focus window
-focus_follows_mouse no
-
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
@@ -214,25 +205,25 @@ mode "resize" {
 }
 
 
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+set $mode_i3_exit EXIT : Do you really want to exit i3? (y/N)
+bindsym $mod+Shift+e mode "$mode_i3_exit"
+
+mode "$mode_i3_exit" {
+        bindsym Y      exit
+        bindsym n      mode "default"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
 bindsym $mod+Ctrl+l exec "dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock && xset dpms force off"
 # bindsym $mod+Ctrl+l exec "gnome-screensaver-command --lock && xset dpms force off"
-
-set $bg-color 	              #2f343f
-set $bg-color-alpha           #2f343ff2
-set $inactive-bg-color        #2f343ff2
-set $text-color               #f3f4f5
-set $inactive-text-color      #676e7d
-set $urgent-bg-color          #e06c75
-set $color-green              #98c379f2
-set $border-color             #b3b3b3
-
-# window colors
-#                       border                  background              text                  indicator                 child_border
-client.focused          $bg-color               $bg-color               $text-color           $bg-color                 $border-color
-client.unfocused        $bg-color               $bg-color               $inactive-text-color  $inactive-bg-color
-client.focused_inactive $bg-color               $bg-color               $inactive-text-color  $inactive-bg-color
-client.urgent           $inactive-bg-color      $urgent-bg-color        $text-color           $urgent-bg-color
-
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
@@ -248,7 +239,6 @@ bindsym XF86MonBrightnessDown exec "[ $(brightnessctl -c backlight info -m | awk
 bindsym $mod+F12 exec "brightnessctl -c backlight set +10%"
 bindsym $mod+F11 exec "[ $(brightnessctl -c backlight info -m | awk -F ',' '{print int($4)}' | sort -n | head -1) -gt 10 ] && brightnessctl -c backlight set 10%-"
 
-# exec --no-startup-id /usr/libexec/gsd-xsettings
 exec_always --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id polybar main -r -c ~/.config/polybar/config.ini
 exec --no-startup-id ibus-daemon -dxrR
@@ -261,3 +251,4 @@ exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id /usr/bin/gnome-screensaver
 exec --no-startup-id xautolock -time 10 -detectsleep -locker "gnome-screensaver-command --lock && xset dpms force off"
 exec --no-startup-id picom -b --experimental-backends
+exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
