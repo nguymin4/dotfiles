@@ -5,6 +5,9 @@ font pango:Ubuntu, FontAwesome, Font Awesome 5 Free 11
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Disable mouse focus window
+focus_follows_mouse no
+
 # start a terminal
 bindsym $mod+Return exec alacritty
 
@@ -112,16 +115,33 @@ for_window [title=".*Emulator.*"] floating enable
 # set borders for windows
 # - Alacritty: should not have title bar but have border on focused
 # - Albert: should not have title bar noor border
-# - Others: should have title bar and border with thickness 0 on focused
+for_window [class="^.*"] border normal 0
 for_window [floating] border normal 1
 for_window [floating title=".*sharing your screen.*"] border none
-for_window [class="^.*"] border normal 0
-for_window [class="xdg-desktop-portal-gnome" floating] border none
 for_window [app_id=".*gnome.*"] border normal 0
+for_window [app_id="albert"] border none
 for_window [app_id="Alacritty"] border pixel 1
 for_window [app_id="thunar"] border normal 0
 for_window [app_id="thunar" floating] border none
-for_window [app_id="albert"] border none
+for_window [class="Code" title=".*Open.*"] border normal 1
+for_window [class="Xdg-desktop-portal-gtk" title=".*Open.*"] border none
+for_window [window_role="GtkFileChooserDialog"] border none
+
+set $bg-color 	              #2f343f
+set $bg-color-alpha           #2f343ff2
+set $inactive-bg-color        #2f343ff2
+set $text-color               #f3f4f5
+set $inactive-text-color      #676e7d
+set $urgent-bg-color          #e06c75
+set $color-green              #98c379f2
+set $border-color             #b3b3b3
+
+# window colors
+#                       border                background          text                  indicator             chilld_border
+client.focused          $bg-color             $bg-color           $text-color           $bg-color             $border-color
+client.unfocused        $bg-color             $bg-color           $inactive-text-color  $inactive-bg-color
+client.focused_inactive $bg-color             $bg-color           $inactive-text-color  $inactive-bg-color
+client.urgent           $inactive-bg-color    $urgent-bg-color    $text-color           $urgent-bg-color
 
 
 # sway gaps
@@ -166,26 +186,6 @@ mode "$mode_gaps_outer" {
   bindsym Escape mode "default"
 }
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-
-# restart sway inplace: currently doesn't work
-bindsym $mod+Shift+r restart
-
-# exit sway
-set $mode_sway_exit EXIT : Do you really want to exit sway? (y/N)
-bindsym $mod+Shift+e mode "$mode_sway_exit"
-
-mode "$mode_sway_exit" {
-  bindsym Y      exit
-  bindsym n      mode "default"
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
-
-# Disable mouse focus window
-focus_follows_mouse no
-
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
@@ -199,43 +199,30 @@ mode "resize" {
 }
 
 
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart sway inplace: currently doesn't work
+bindsym $mod+Shift+r restart
+
+# lock session
 bindsym $mod+Ctrl+l exec 'swaylock --config ~/.config/swaylock/config'
+
+# query window info
 bindsym $mod+question exec "swayinfo | xargs -0 notify-send 'Window Info'"
+
+# take screenshot of current workspace
 bindsym $mod+insert exec "grimshot --notify save output"
 
-set $bg-color 	              #2f343f
-set $bg-color-alpha           #2f343ff2
-set $inactive-bg-color        #2f343ff2
-set $text-color               #f3f4f5
-set $inactive-text-color      #676e7d
-set $urgent-bg-color          #e06c75
-set $color-green              #98c379f2
-set $border-color             #b3b3b3
+# exit sway
+set $mode_sway_exit EXIT : Do you really want to exit sway? (y/N)
+bindsym $mod+Shift+e mode "$mode_sway_exit"
 
-# window colors
-#                       border                background          text                  indicator             chilld_border
-client.focused          $bg-color             $bg-color           $text-color           $bg-color             $border-color
-client.unfocused        $bg-color             $bg-color           $inactive-text-color  $inactive-bg-color
-client.focused_inactive $bg-color             $bg-color           $inactive-text-color  $inactive-bg-color
-client.urgent           $inactive-bg-color    $urgent-bg-color    $text-color           $urgent-bg-color
-
-# GTK+ applications takes too much time to start
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-
-# Start swaybar to display a workspace bar
-bar swaybar_command waybar
-
-exec_always {
-  gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Darker'
-  gsettings set org.gnome.desktop.interface.wm.preferences theme 'Arc-Darker'
-  gsettings set org.gnome.desktop.interface icon-theme 'Arc'
-  gsettings set org.gnome.desktop.interface font-name 'Ubuntu 11'
-}
-
-input type:keyboard {
-  # Capslock key should work as escape key
-  # See /usr/share/X11/xkb/rules/xorg.lst for options
-  xkb_options caps:escape
+mode "$mode_sway_exit" {
+  bindsym Y      exit
+  bindsym n      mode "default"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
 # Pulse Audio controls
@@ -252,12 +239,28 @@ bindsym XF86MonBrightnessDown exec "[ $(brightnessctl -c backlight info -m | awk
 bindsym $mod+F12 exec "brightnessctl -c backlight set +10%"
 bindsym $mod+F11 exec "[ $(brightnessctl -c backlight info -m | awk -F ',' '{print int($4)}' | sort -n | head -1) -gt 10 ] && brightnessctl -c backlight set 10%-"
 
+input type:keyboard {
+  # Capslock key should work as escape key
+  # See /usr/share/X11/xkb/rules/xorg.lst for options
+  xkb_options caps:escape
+}
+
+# GTK+ applications takes too much time to start
 # Support screen sharing in Google Meet
 exec {
-  dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+  dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
   systemctl --user stop pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
   systemctl --user start pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
 }
+
+exec_always {
+  gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Darker'
+  gsettings set org.gnome.desktop.interface.wm.preferences theme 'Arc-Darker'
+  gsettings set org.gnome.desktop.interface icon-theme 'Arc'
+  gsettings set org.gnome.desktop.interface font-name 'Ubuntu 11'
+}
+
+exec /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
 exec albert
 exec dunst
 exec powerline-daemon --replace -q
@@ -268,3 +271,4 @@ exec swayidle -w \
   timeout 600 'swaylock --config ~/.config/swaylock/config' \
   timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
 exec fcitx5 -dr
+exec waybar
