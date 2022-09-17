@@ -119,13 +119,15 @@ for_window [class="^.*"] border normal 0
 for_window [floating] border normal 1
 for_window [floating title=".*sharing your screen.*"] border none
 for_window [app_id=".*gnome.*"] border normal 0
-for_window [app_id="albert"] border none
 for_window [app_id="Alacritty"] border pixel 1
 for_window [app_id="thunar"] border normal 0
 for_window [app_id="thunar" floating] border none
-for_window [class="Code" title=".*Open.*"] border normal 1
-for_window [class="Xdg-desktop-portal-gtk" title=".*Open.*"] border none
-for_window [window_role="GtkFileChooserDialog"] border none
+for_window [title=".*albert.*"] border none; focus
+# Wayland is insconsistent about FileChooserDialog
+for_window [class="Code" title=".*Open.*"] floating enable; border normal 1; resize set 900 600
+for_window [class="Xdg-desktop-portal-gtk" title=".*Open.*"] floating enable; border none; resize set 900 600
+for_window [app_id="xdg-desktop-portal-gtk"] floating enable; border none; resize set 900 600
+for_window [window_role="GtkFileChooserDialog"] floating enable; border none; resize set 900 600
 
 set $bg-color 	              #2f343f
 set $bg-color-alpha           #2f343ff2
