@@ -17,7 +17,7 @@ chmod u+x -R ~/.config/i3/blocks
 
 # X11
 sudo add-apt-repository -y ppa:peek-developers/stable
-sudo apt install -y picom xclip xautolock gnome-screensaver feh flameshot rxvt-unicode peek
+sudo apt install -y picom xclip xautolock gnome-screensaver feh flameshot peek
 
 # ibus
 sudo add-apt-repository -y ppa:bamboo-engine/ibus-bamboo

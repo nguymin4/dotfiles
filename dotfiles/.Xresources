@@ -1,5 +1,3 @@
-#include "./.Xresources.d/urxvt/urxvt"
-
 Xcursor.size:   24
 Xcursor.theme:  Breeze_Snow
 Xft.antialias:  1

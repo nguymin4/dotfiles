@@ -1,6 +1,5 @@
 .Xmodmap
 .Xresources
-.Xresources.d
 .bash_aliases
 .config/Code/User/keybindings.json
 .config/Code/User/settings.json
@@ -28,7 +27,6 @@
 .gitignore
 .profile
 .tmux.conf
-.urxvt
 .vim/UltiSnips
 .vim/coc-settings.json
 .vim/colorschemes
