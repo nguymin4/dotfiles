@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # Allow GUI application authentication as root
-sudo apt install -y polkit-kde-agent-1
+sudo apt install -y lxpolkit libcanberra-gtk-module
 
 # Core utils
 sudo apt install -y dunst lm-sensors variety
