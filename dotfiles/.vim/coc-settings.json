@@ -1,10 +1,6 @@
 {
   "coc.preferences.useQuickfixForLocations": true,
   "diagnostic.warningSign": ">>",
-  "suggest.minTriggerInputLength": 2,
-  "suggest.timeout": 3000,
-  "suggest.noselect": true,
-  "hover.previewMaxHeight": 24,
   "explorer.width": 40,
   "explorer.previewAction.onHover": false,
   "explorer.sources": [
@@ -74,5 +70,10 @@
     "?": "help",
     "q": "quit",
     "<esc>": "esc"
-  }
+  },
+  "explorer.trash.command": "trash-put %l",
+  "hover.previewMaxHeight": 24,
+  "suggest.minTriggerInputLength": 2,
+  "suggest.timeout": 3000,
+  "suggest.noselect": true
 }
