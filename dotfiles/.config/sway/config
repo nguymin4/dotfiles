@@ -250,6 +250,8 @@ exec {
   # Support screen sharing in Google Meet
   systemctl --user stop pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
   systemctl --user start pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
+  # GUI authentication as root
+  lxpolkit
 }
 
 exec_always {
@@ -259,7 +261,6 @@ exec_always {
   gsettings set org.gnome.desktop.interface font-name 'Ubuntu 11'
 }
 
-exec /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
 exec albert
 exec dunst
 exec powerline-daemon --replace -q
