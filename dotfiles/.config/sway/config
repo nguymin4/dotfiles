@@ -211,7 +211,8 @@ bindsym $mod+Ctrl+l exec 'swaylock --config ~/.config/swaylock/config'
 bindsym $mod+question exec "swayinfo | xargs -0 notify-send 'Window Info'"
 
 # take screenshot of current workspace
-bindsym $mod+insert exec "grimshot --notify save output"
+bindsym $mod+insert exec "grimshot --notify save area"
+bindsym $mod+Shift+insert exec "grimshot --notify save output"
 
 # exit sway
 set $mode_sway_exit EXIT : Do you really want to exit sway? (y/N)
