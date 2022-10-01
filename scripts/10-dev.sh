@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+function get_latest_tag_from_github() {
+  GITHUB_REPO_URL="https://github.com/$1"
+  curl -s "${GITHUB_REPO_URL}/tags" | grep -w releases | grep -o '[0-9]\.[0-9]*\.[0-9-]*' | grep -v - | head -n 1
+}
+
 # nvm
 rm -rf ~/.nvm && git clone https://github.com/nvm-sh/nvm.git ~/.nvm
 zsh -c "source ~/.zshrc && nvm install --lts && npm install -g yarn"
@@ -21,6 +26,13 @@ curl -fsSL https://install.julialang.org | sh
 # tfenv
 rm -rf ~/.tfenv && git clone https://github.com/tfutils/tfenv.git ~/.tfenv
 ln -s ~/.tfenv/bin/* ~/.local/bin
+
+# mkcert
+sudo apt install -y libnss3-tools
+MKCERT_VERSION=$(get_latest_tag_from_github 'FiloSottile/mkcert')
+curl -L "https://github.com/FiloSottile/mkcert/releases/download/v${MKCERT_VERSION}/mkcert-v${MKCERT_VERSION}-linux-amd64" -o ~/.local/bin/mkcert
+sudo chmod u+x ~/.local/bin/mkcert
+# ~/.local/bin/mkcert install
 
 # PgAdmin4
 # curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add -
