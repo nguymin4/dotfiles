@@ -112,18 +112,17 @@ for_window [class="zoom" title="Zoom.*Account"] floating disable
 for_window [class="zoom" title="Zoom.*Meeting"] floating disable
 
 # set borders for windows - order is important
-# - Alacritty: should not have title bar but have border on focused
-# - Albert: should not have title bar nor border
 for_window [class="^.*"] border normal 0
 for_window [app_id="^.*" title=".+"] border normal 0
 for_window [app_id="Alacritty"] border pixel 1
-for_window [class="zoom" title="zoom"] border none
+for_window [class="zoom" title="zoom"] floating enable; border none
 for_window [floating title=".+"] border normal 1
 for_window [floating title=".*sharing your screen.*"] border none
 for_window [title="albert — Albert"] border none; focus
 # Wayland is insconsistent about FileChooserDialog
 for_window [class="Code" title=".*Open.*"] floating enable; border normal 1; resize set 900 600
 for_window [class="Xdg-desktop-portal-gtk" title=".*Open.*"] floating enable; border none; resize set 900 600
+for_window [class="Xdg-desktop-portal-gtk" title="All Files"] floating enable; border none; resize set 900 600
 for_window [app_id="xdg-desktop-portal-gtk"] floating enable; border none; resize set 900 600
 
 set $bg-color 	              #2f343f
