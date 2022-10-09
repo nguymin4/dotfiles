@@ -37,8 +37,8 @@ PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # !! Contents within this block are managed by juliaup !!
 
-case ":$PATH:" in *:/home/nguymin4/.juliaup/bin:*);; *)
-    export PATH=/home/nguymin4/.juliaup/bin${PATH:+:${PATH}};;
+case ":$PATH:" in *:/home/nguymin4/.julia/juliaup/bin:*);; *)
+    export PATH=/home/nguymin4/.julia/juliaup/bin${PATH:+:${PATH}};;
 esac
 
 # <<< juliaup initialize <<<

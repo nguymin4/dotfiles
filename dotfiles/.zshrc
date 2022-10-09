@@ -75,7 +75,7 @@ fi
 
 # !! Contents within this block are managed by juliaup !!
 
-path=('/home/nguymin4/.juliaup/bin' $path)
+path=('/home/nguymin4/.julia/juliaup/bin' $path)
 export PATH
 
 # <<< juliaup initialize <<<
