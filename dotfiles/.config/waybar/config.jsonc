@@ -91,9 +91,9 @@
             "car": "",
             "default": ["", ""]
         },
-        "on-click": "BLOCK_BUTTON=1 ~/.config/waybar/blocks/volume-pulseaudio",
+        "on-click": "BLOCK_BUTTON=1 ~/.config/waybar/blocks/volume-pulseaudio -dF 1",
         "on-click-middle": "BLOCK_BUTTON=2 ~/.config/waybar/blocks/volume-pulseaudio",
-        "on-click-right": "BLOCK_BUTTON=3 ~/.config/waybar/blocks/volume-pulseaudio",
+        "on-click-right": "BLOCK_BUTTON=3 ~/.config/waybar/blocks/volume-pulseaudio -dF 1",
         "tooltip": false
     },
     "custom/temperature": {
