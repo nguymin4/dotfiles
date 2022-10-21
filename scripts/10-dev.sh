@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+sudo apt install watchman
+
 function get_latest_tag_from_github() {
   GITHUB_REPO_URL="https://github.com/$1"
   curl -s "${GITHUB_REPO_URL}/tags" | grep -w releases | grep -o '[0-9]\.[0-9]*\.[0-9-]*' | grep -v - | head -n 1
