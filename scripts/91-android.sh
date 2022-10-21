@@ -18,6 +18,7 @@ then
   cat >> $HOME/.path <<-'EOH'
 export ANDROID_SDK_ROOT=$HOME/Programs/android
 export PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$PATH
+export PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH
 export PATH=$ANDROID_SDK_ROOT/tools:$PATH
 export PATH=$ANDROID_SDK_ROOT/emulator:$PATH
 EOH
@@ -25,9 +26,10 @@ EOH
 fi
 
 function set_up_emulator() {
-  sdkmanager --install "emulator" "platform-tools" "platforms;android-29" "build-tools;29.0.2" "system-images;android-29;google_apis_playstore;x86_64"
+  sdkmanager --install "emulator" "platform-tools" "platforms;android-31" "build-tools;31.0.0" "system-images;android-31;google_apis_playstore;x86_64"
 
-  avdmanager create avd -n pixel-android -k "system-images;android-29;google_apis_playstore;x86_64"
+  avdmanager create avd -n pixel-android -k "system-images;android-31;google_apis_playstore;x86_64"
+
+  # emulator -avd pixel-android
+  # adb devices
 }
-
-sudo apt install watchman
