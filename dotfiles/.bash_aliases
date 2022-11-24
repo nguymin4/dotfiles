@@ -2,6 +2,7 @@ alias backup-dotfiles='bash $HOME/dotfiles/backup.sh'
 alias check-gpu='glxinfo | egrep "OpenGL vendor|OpenGL renderer*"'
 alias fd=fdfind
 alias mux=tmuxinator
+alias nvm=fnm
 # alias pbcopy="xclip -selection clipboard"
 # alias pbpaste="xclip -selection clipboard -o"
 # alias rg="rg --hidden --glob '!.git'"
