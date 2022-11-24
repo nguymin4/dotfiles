@@ -15,10 +15,6 @@ chmod u+x ~/.local/bin/fnm
 rm ~/.local/bin/fnm.zip
 fnm install --lts && npm install -g yarn
 
-# # nvm
-# rm -rf ~/.nvm && git clone https://github.com/nvm-sh/nvm.git ~/.nvm
-# zsh -c "source ~/.zshrc && nvm install --lts && npm install -g yarn"
-
 # pyenv
 rm -rf ~/.pyenv && git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
