@@ -2,23 +2,27 @@
 # setopt SOURCE_TRACE
 # zmodload zsh/zprof
 
+# Disable Ctrl+D to logout and exit
+setopt ignoreeof
+# Disable lock scroll Ctrl+S
+stty -ixon
+
 export LANG=en_US.UTF-8
-export EDITOR=$(which vim)
+export EDITOR=$(which nvim)
 export BAT_THEME="base16"
 
 # OMZ
 export ZSH=~/.oh-my-zsh
 export ZSH_CUSTOM=$ZSH/custom
+COMPLETION_WAITING_DOTS="true"
+DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_UPDATE="true"
+ZSH_THEME=""
+
 if [[ ! -d $ZSH ]]; then
   git clone https://github.com/nguymin4/oh-my-zsh.git $ZSH
   bash $ZSH/install-custom-plugins.sh
 fi
-
-COMPLETION_WAITING_DOTS="true"
-DISABLE_AUTO_TITLE="true"
-DISABLE_AUTO_UPDATE="true"
-# ZSH_THEME=${ZSH_THEME:-"honukai"}
-ZSH_THEME=""
 
 plugins=(conda-zsh-completion gitfast)
 source $ZSH/oh-my-zsh.sh
@@ -37,12 +41,6 @@ fpath+=$ZSH_CUSTOM/plugins/pure
 autoload -U promptinit; promptinit
 prompt pure
 
-# Disable Ctrl+D to logout and exit
-setopt ignoreeof
-
-# Disable lock scroll Ctrl+S
-stty -ixon
-
 # Load the shell dotfiles
 for file in ~/.{bash_aliases,path,zprofile}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
@@ -54,6 +52,7 @@ if command -v fnm &> /dev/null; then
   eval "`fnm env --use-on-cd`"
 fi
 
+# pyenv
 export TFHUB_CACHE_DIR=$HOME/.tfhub_modules
 export PYTHONDONTWRITEBYTECODE=1
 if [ -s "$PYENV_ROOT/bin/pyenv" ]; then
@@ -63,9 +62,6 @@ if [ -s "$PYENV_ROOT/bin/pyenv" ]; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
-# End profiling
-# zprof
-
 # >>> juliaup initialize >>>
 
 # !! Contents within this block are managed by juliaup !!
@@ -74,3 +70,6 @@ path=('/home/nguymin4/.julia/juliaup/bin' $path)
 export PATH
 
 # <<< juliaup initialize <<<
+
+# End profiling
+# zprof
