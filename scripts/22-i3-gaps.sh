@@ -2,17 +2,14 @@
 
 set -euo pipefail
 
-# Dependencies
-sudo apt install -y ninja-build meson libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev libxcb-xrm0 libxcb-xrm-dev automake libxcb-shape0-dev
-
-# i3-gaps
-sudo apt install -y --no-install-recommends i3status i3blocks polybar
-rm -rf ~/Programs/i3 && git clone https://github.com/Airblader/i3.git ~/Programs/i3
-cd ~/Programs/i3
-mkdir -p build && cd build
-meson ..
-ninja
-sudo meson install
+# i3
+/usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2022.02.17_all.deb /tmp/keyring.deb SHA256:52053550c4ecb4e97c48900c61b2df4ec50728249d054190e8a0925addb12fc6
+sudo dpkg -i /tmp/keyring.deb
+echo \
+  "deb [arch=$(dpkg --print-architecture)] http://debian.sur5r.net/i3/ $(lsb_release -cs) universe" \
+  | sudo tee /etc/apt/sources.list.d/sur5r-i3.list > /dev/null
+sudo apt update
+sudo apt install -y --no-install-recommends i3 i3blocks polybar
 chmod u+x -R ~/.config/i3/blocks
 
 # X11
