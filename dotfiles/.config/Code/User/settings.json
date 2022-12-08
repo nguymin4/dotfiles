@@ -132,4 +132,8 @@
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+  "terminal.integrated.enablePersistentSessions": false,
+  "python.terminal.activateEnvironment": false,
 }
