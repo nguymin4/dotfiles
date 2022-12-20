@@ -59,7 +59,6 @@ if [ -s "$PYENV_ROOT/bin/pyenv" ]; then
   export PYENV_VIRTUALENV_DISABLE_PROMPT=1
   export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
   eval "$(pyenv init - --no-rehash zsh)"
-  eval "$(pyenv virtualenv-init -)"
 fi
 
 # >>> juliaup initialize >>>
