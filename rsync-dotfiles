@@ -5,7 +5,7 @@
 .config/Code/User/settings.json
 .config/Code/User/snippets
 .config/alacritty
-.config/albert/albert.conf
+.config/albert.conf
 .config/btop/btop.conf
 .config/dunst
 .config/flameshot
