@@ -15,7 +15,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start a program launcher
-bindsym $mod+d exec albertctl show
+bindsym $mod+d exec albert show
 
 # change focus
 bindsym $mod+h focus left
@@ -265,11 +265,11 @@ exec_always {
 exec albert
 exec dunst
 exec powerline-daemon --replace -q
-exec variety 2>&1 1>/dev/null
 exec nm-applet
 exec_always pkill kanshi; exec kanshi
 exec swayidle -w \
   timeout 600 'swaylock --config ~/.config/swaylock/config' \
-  timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+  timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
 exec fcitx5 -dr
 exec waybar
+exec variety > /dev/null 2>&1
