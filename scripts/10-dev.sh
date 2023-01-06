@@ -9,12 +9,8 @@ function get_latest_tag_from_github() {
 
 # fnm
 function install_fnm() {
-  FNM_VERSION=$(get_latest_tag_from_github 'Schniz/fnm')
-  curl -L "https://github.com/Schniz/fnm/releases/download/v${FNM_VERSION}/fnm-linux.zip" -o ~/.local/bin/fnm.zip
-  unzip -o ~/.local/bin/fnm.zip -d ~/.local/bin
-  chmod u+x ~/.local/bin/fnm
-  rm ~/.local/bin/fnm.zip
-  fnm install --lts && npm install -g yarn
+  curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "$HOME/.local/bin" --skip-shell
+  fnm install --lts && fnm use lts-latest && npm install -g yarn
 }
 
 
