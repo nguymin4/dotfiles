@@ -126,7 +126,7 @@ for_window [class="Alacritty"] border pixel 1
 for_window [class="zoom" title="zoom"] border none
 for_window [floating] border normal 1
 for_window [floating title=".*sharing your screen.*"] border none
-for_window [title="albert — Albert"] border none; focus
+for_window [class="albert"] border none; focus
 
 set $bg-color 	              #2f343f
 set $bg-color-alpha           #2f343ff2
