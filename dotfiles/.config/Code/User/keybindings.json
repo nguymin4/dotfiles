@@ -66,5 +66,9 @@
     "key": "shift+alt+.",
     "command": "-editor.action.autoFix",
     "when": "editorTextFocus && !editorReadonly && supportedCodeAction =~ /(\\s|^)quickfix\\b/"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "editor.action.showDefinitionPreviewHover"
   }
 ]
