@@ -17,9 +17,9 @@ window:
   #
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
-  dimensions:
-    columns: 0
-    lines: 0
+  # dimensions:
+  #   columns: 0
+  #   lines: 0
 
   # Window position (changes require restart)
   #
@@ -58,21 +58,25 @@ window:
   #   - Fullscreen
   startup_mode: Windowed
 
-  # Window class (Linux only):
-  class: Alacritty
+  # Window class (Linux/BSD only):
+  class:
+    # Application instance name
+    instance: Alacritty
+    # General application class
+    general: Alacritty
 
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
   opacity: 0.90
 
-scrolling:
-  # Maximum number of lines in the scrollback buffer.
-  # Specifying '0' will disable scrolling.
-  history: 40000
+  scrolling:
+    # Maximum number of lines in the scrollback buffer.
+    # Specifying '0' will disable scrolling.
+    history: 40000
 
-  # Number of lines the viewport will move for every line scrolled when
-  # scrollback is enabled (history > 0).
-  multiplier: 3
+    # Number of lines the viewport will move for every line scrolled when
+    # scrollback is enabled (history > 0).
+    multiplier: 3
 
 # Font configuration (changes require restart)
 font:
@@ -108,8 +112,8 @@ font:
     x: 0
     y: 0
 
-# If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: true
+  # If `true`, bold text is drawn using the bright color variants.
+  draw_bold_text_with_bright_colors: true
 
 # Color schemes
 schemes:
@@ -282,7 +286,7 @@ colors: *dark
 bell:
   animation: EaseOutExpo
   duration: 0
-  color: '0xffffff'
+  color: '#ffffff'
 
 # Mouse bindings
 #
@@ -327,7 +331,9 @@ cursor:
   #   - ▇ Block
   #   - _ Underline
   #   - | Beam
-  style: Block
+  style:
+    shape: Block
+    blinking: Off
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
@@ -341,9 +347,6 @@ live_config_reload: true
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
 working_directory: None
-
-# Send ESC (\x1b) before characters when alt is pressed.
-alt_send_esc: true
 
 debug:
   # Display the time it takes to redraw each frame.
@@ -365,6 +368,3 @@ debug:
 
   # Print all received window events.
   print_events: false
-
-  # Record all characters and escape sequences as test data.
-  ref_test: false
