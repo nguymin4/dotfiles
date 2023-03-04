@@ -53,8 +53,15 @@
   "julia.symbolCacheDownload": true,
   "jupyter.askForKernelRestart": false,
   "jupyter.debugJustMyCode": false,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
   "notebook.lineNumbers": "on",
-  "python.formatting.provider": "black",
+  "python.terminal.activateEnvironment": false,
+  "[python]": {
+    "editor.formatOnType": false
+  },
   "redhat.telemetry.enabled": false,
   "remote.SSH.foldersSortOrder": "alphabetical",
   "remote.SSH.showLoginTerminal": true,
@@ -134,6 +141,5 @@
   },
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.persistentSessionReviveProcess": "never",
-  "terminal.integrated.enablePersistentSessions": false,
-  "python.terminal.activateEnvironment": false,
+  "terminal.integrated.enablePersistentSessions": false
 }
