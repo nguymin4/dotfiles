@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+# Install OpenJDK
+sudo apt install openjdk-11-jdk-headless openjdk-11-jre-headless openjdk-11-jre
+
 ANDROID_SDK_ROOT=$HOME/Programs/android
 CLI_TOOL_DOWNLOAD_LINK=$(curl -s https://developer.android.com/studio\#command-tools | grep -o 'https.*commandlinetools-linux.*\.zip')
 echo "Downloading $CLI_TOOL_DOWNLOAD_LINK..."
