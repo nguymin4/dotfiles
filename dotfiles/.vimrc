@@ -3,6 +3,7 @@ let g:python3_host_prog='/usr/bin/python'
 
 " Plugins
 set nocompatible
+
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -27,6 +28,10 @@ source ~/.vim/config/quickscope.vim
 source ~/.vim/config/visual-mode.vim
 source ~/.vim/config/languages.vim
 source ~/.vim/config/theme.vim
+
+if !has('nvim') && !empty($WAYLAND_DISPLAY)
+  source ~/.vim/config/wl_clipboard.vim
+endif
 
 call plug#end()
 
