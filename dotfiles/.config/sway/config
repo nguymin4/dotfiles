@@ -262,6 +262,7 @@ exec_always {
   gsettings set org.gnome.desktop.interface font-name 'Ubuntu 11'
 }
 
+exec waybar
 exec albert
 exec dunst
 exec powerline-daemon --replace -q
@@ -271,5 +272,5 @@ exec swayidle -w \
   timeout 600 'swaylock --config ~/.config/swaylock/config' \
   timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
 exec fcitx5 -dr
-exec waybar
 exec variety > /dev/null 2>&1
+
