@@ -15,9 +15,8 @@ DEFAULT_COLOR="#ffffff"
 MUTED_COLOR="#a0a0a0"
 
 LONG_FORMAT=0
-SHORT_FORMAT=2
+SHORT_FORMAT=1
 USE_PERCENT=1
-USE_ALSA_NAME=0
 USE_DESCRIPTION=0
 
 SUBSCRIBE=0
@@ -28,7 +27,6 @@ while getopts F:Sf:padH:M:L:X:T:t:C:c:h opt; do
         F) LONG_FORMAT="$OPTARG" ;;
         f) SHORT_FORMAT="$OPTARG" ;;
         p) USE_PERCENT=0 ;;
-        a) USE_ALSA_NAME=1 ;;
         d) USE_DESCRIPTION=1 ;;
         H) AUDIO_HIGH_SYMBOL="$OPTARG" ;;
         M) AUDIO_MED_SYMBOL="$OPTARG" ;;
@@ -49,7 +47,6 @@ Options:
 \t3\t symb vol
 -S\tSubscribe to volume events (requires persistent block, always uses long format)
 -p\tOmit the percent sign (%%) in volume
--a\tUse ALSA name if possible
 -d\tUse device description instead of name if possible
 -H\tSymbol to use when audio level is high. Default: '$AUDIO_HIGH_SYMBOL'
 -M\tSymbol to use when audio level is medium. Default: '$AUDIO_MED_SYMBOL'
@@ -64,23 +61,14 @@ Options:
     esac
 done
 
-function move_sinks_to_new_default {
-    DEFAULT_SINK=$1
-    pacmd list-sink-inputs | grep index: | grep -o '[0-9]\+' | while read SINK
-    do
-        pacmd move-sink-input $SINK $DEFAULT_SINK
-    done
-}
-
 function set_default_playback_device_next {
     inc=${1:-1}
-    num_devices=$(pacmd list-sinks | grep -c index:)
-    sink_arr=($(pacmd list-sinks | grep index: | grep -o '[0-9]\+'))
-    default_sink_index=$(( $(pacmd list-sinks | grep index: | grep -no '*' | grep -o '^[0-9]\+') - 1 ))
+    sink_arr=($(pactl list sinks short | cut -f1))
+    num_devices=${#sink_arr[@]}
+    default_sink_index=$(( $(pactl list sinks short | grep -no RUNNING | grep -o '^[0-9]\+') - 1 ))
     default_sink_index=$(( ($default_sink_index + $num_devices + $inc) % $num_devices ))
     default_sink=${sink_arr[$default_sink_index]}
-    pacmd set-default-sink $default_sink
-    move_sinks_to_new_default $default_sink
+    pactl set-default-sink $default_sink
 }
 
 case "$BLOCK_BUTTON" in
@@ -95,17 +83,17 @@ function print_format {
     PERCENT="%"
     [[ $USE_PERCENT == 0 ]] && PERCENT=""
     case "$1" in
-        1) echo "$SYMBOL$VOL$PERCENT [$NAME]" ;;
-        2) echo "$SYMBOL$VOL$PERCENT [$INDEX]";;
-        3) echo "$SYMBOL$VOL$PERCENT" ;;
-        *) echo "$SYMBOL$VOL$PERCENT [$INDEX:$NAME]" ;;
+        1) echo "%{F$COLOR}$SYMBOL$VOL$PERCENT [$NAME]" ;;
+        2) echo "%{F$COLOR}$SYMBOL$VOL$PERCENT [$INDEX]";;
+        3) echo "%{F$COLOR}$SYMBOL$VOL$PERCENT";;
+        *) echo "%{F$COLOR}$SYMBOL$VOL$PERCENT [$INDEX:$NAME]" ;;
     esac
 }
 
 function print_block {
-    for name in INDEX NAME VOL MUTED; do
+    for name in INDEX STATE NAME MUTED VOL DESCRIPTION; do
         read $name
-    done < <(pacmd list-sinks | grep "index:\|name:\|volume: front\|muted:" | grep -A3 '*')
+    done < <(pactl list sinks | grep "Sink #\|State:\|Name:\|Mute:\|Volume: front\|device.description" | grep RUNNING -B1 -A4)
     INDEX=$(echo "$INDEX" | grep -o '[0-9]\+')
     VOL=$(echo "$VOL" | grep -o "[0-9]*%" | head -1 )
     VOL="${VOL%?}"
@@ -115,19 +103,9 @@ function print_block {
 's/.*<\(.*\)>.*/\1/; t;'\
 's/.*/unknown/')
 
-    if [[ $USE_ALSA_NAME == 1 ]] ; then
-        ALSA_NAME=$(pacmd list-sinks |\
-awk '/^\s*\*/{f=1}/^\s*index:/{f=0}f' |\
-grep "alsa.name\|alsa.mixer_name" |\
-head -n1 |\
-sed 's/.*= "\(.*\)".*/\1/')
-        NAME=${ALSA_NAME:-$NAME}
-    elif [[ $USE_DESCRIPTION == 1 ]] ; then
-        DESCRIPTION=$(pacmd list-sinks |\
-awk '/\* index:/{f=1}f' |\
-grep "device.description" |\
-head -n1 |\
-sed 's/.*= "\(.*\)".*/\1/')
+    DESCRIPTION=$(echo "$DESCRIPTION" | sed 's/.*= "\(.*\)".*/\1/')
+
+    if [[ $USE_DESCRIPTION == 1 ]] ; then
         NAME=${DESCRIPTION:-$NAME}
     fi
 
@@ -142,7 +120,7 @@ sed 's/.*= "\(.*\)".*/\1/')
     fi
 
     if [[ $SUBSCRIBE == 1 ]] ; then
-        print_format "$LONG_FORMAT"
+        print_format "$SHORT_FORMAT"
     else
         print_format "$LONG_FORMAT"
         print_format "$SHORT_FORMAT"
