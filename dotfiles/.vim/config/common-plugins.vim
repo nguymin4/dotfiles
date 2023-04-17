@@ -19,3 +19,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'machakann/vim-highlightedyank'
 let g:highlightedyank_highlight_duration = 250
 let g:highlightedyank_max_lines = 100
+
+if !has('nvim') && !empty($WAYLAND_DISPLAY)
+  Plug 'kana/vim-fakeclip'
+endif
