@@ -29,10 +29,6 @@ source ~/.vim/config/visual-mode.vim
 source ~/.vim/config/languages.vim
 source ~/.vim/config/theme.vim
 
-if !has('nvim') && !empty($WAYLAND_DISPLAY)
-  source ~/.vim/config/wl_clipboard.vim
-endif
-
 call plug#end()
 
 source ~/.vim/colorschemes/default.vim
