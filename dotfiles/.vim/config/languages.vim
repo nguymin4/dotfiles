@@ -19,8 +19,5 @@ let g:vimtex_syntax_conceal_greek = 1
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 let g:livepreview_cursorhold_recompile = 0
 
-" Support ispell and aspell
-Plug 'vim-scripts/vimspell'
-
 " Octave
 " Plug 'jvirtanen/vim-octave', { 'for': ['octave', 'matlab'] }

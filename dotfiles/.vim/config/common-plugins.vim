@@ -16,9 +16,13 @@ Plug 'christoomey/vim-tmux-navigator'
 " let g:SuperTabMappingForward = '<Nop>'
 " let g:SuperTabMappingBackward = '<Nop>'
 
-Plug 'machakann/vim-highlightedyank'
-let g:highlightedyank_highlight_duration = 250
-let g:highlightedyank_max_lines = 100
+if has('nvim')
+  au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=250}
+else
+  Plug 'machakann/vim-highlightedyank'
+  let g:highlightedyank_highlight_duration = 250
+  let g:highlightedyank_max_lines = 100
+endif
 
 if !has('nvim') && !empty($WAYLAND_DISPLAY)
   Plug 'kana/vim-fakeclip'
