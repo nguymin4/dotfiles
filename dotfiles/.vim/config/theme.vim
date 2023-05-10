@@ -1,6 +1,7 @@
 Plug 'ryanoasis/vim-devicons'
 " Plug 'chriskempson/base16-vim'
-Plug 'base16-project/base16-vim'
+Plug 'tinted-theming/base16-vim'
+let base16_background_transparent = 1
 Plug 'joshdick/onedark.vim'
 let g:onedark_terminal_italics = 1
 
