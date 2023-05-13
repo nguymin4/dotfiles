@@ -53,6 +53,8 @@
   "julia.symbolCacheDownload": true,
   "jupyter.askForKernelRestart": false,
   "jupyter.debugJustMyCode": false,
+  "markdown-pdf.displayHeaderFooter": false,
+  "markdown-pdf.highlightStyle": "tomorrow.css",
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
@@ -73,11 +75,14 @@
     "extension.vim_navigateRight",
     "language-julia.interrupt"
   ],
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.enablePersistentSessions": false,
   "terminal.integrated.fontFamily": "UbuntuMono Nerd Font Mono",
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.fontWeightBold": "normal",
   "terminal.integrated.inheritEnv": false,
   "terminal.integrated.lineHeight": 1,
+  "terminal.integrated.persistentSessionReviveProcess": "never",
   "typescript.check.npmIsInstalled": false,
   "typescript.preferences.quoteStyle": "single",
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -132,14 +137,11 @@
     "terminal.ansiBrightCyan": "#3E999F",
     "terminal.ansiYellow": "#C99E00",
     "terminal.ansiBrightYellow": "#C99E00",
-    "statusBar.background": "#4271ae",
-    "statusBar.noFolderBackground": "#4271ae",
-    "statusBar.debuggingBackground": "#4271ae"
+    "statusBar.background": "#718c00",
+    "statusBar.noFolderBackground": "#718c00",
+    "statusBar.debuggingBackground": "#718c00"
   },
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
-  },
-  "terminal.integrated.defaultProfile.linux": "zsh",
-  "terminal.integrated.persistentSessionReviveProcess": "never",
-  "terminal.integrated.enablePersistentSessions": false
+  }
 }
