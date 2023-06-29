@@ -13,6 +13,13 @@ function install_fnm() {
   fnm install --lts && fnm use lts-latest && npm install -g yarn
 }
 
+# gcloud
+function install_gcloud() {
+  echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
+  curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
+  sudo apt update && sudo apt install google-cloud-cli google-cloud-cli-gke-gcloud-auth-plugin kubectl
+}
+
 
 # Heroku
 function install_heroku() {
@@ -79,6 +86,7 @@ Usage: $0 [OPTIONS]
     --help               Show this message
     --all                Install all dev tools
     --fnm
+    --gcloud
     --heroku
     --juliaup
     --misc
@@ -109,6 +117,7 @@ for opt in "$@"; do
       break
       ;;
     --fnm)        install_fns+=(install_fnm) ;;
+    --gcloud)     install_fns+=(install_gcloud) ;;
     --heroku)     install_fns+=(install_heroku) ;;
     --juliaup)    install_fns+=(install_juliaup) ;;
     --misc)       install_fns+=(install_misc) ;;
