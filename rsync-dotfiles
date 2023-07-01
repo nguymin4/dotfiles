@@ -32,4 +32,5 @@
 .vim/colorschemes
 .vim/config
 .vimrc
+.zprofile
 .zshrc
