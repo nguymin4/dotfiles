@@ -42,7 +42,7 @@ autoload -U promptinit; promptinit
 prompt pure
 
 # Load the shell dotfiles
-for file in ~/.{bash_aliases,path,zprofile}; do
+for file in ~/.{bash_aliases,path}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -65,7 +65,7 @@ fi
 
 # !! Contents within this block are managed by juliaup !!
 
-path=('/home/nguymin4/.julia/juliaup/bin' $path)
+path=('/home/nguymin4/.juliaup/bin' $path)
 export PATH
 
 # <<< juliaup initialize <<<
