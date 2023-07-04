@@ -3,7 +3,12 @@
 set -euo pipefail
 
 # Enable firewall
-sudo ufw enable
+if [[ $(uname -a) =~ (microsoft|WSL) ]]; then
+  echo "Skip enabling firewall in WSL"
+else
+  echo "Enabling firewall"
+  sudo ufw enable
+fi
 
 # Install core dependencies
 sudo add-apt-repository -y ppa:git-core/ppa
