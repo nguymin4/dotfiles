@@ -10,6 +10,7 @@ function get_latest_tag_from_github() {
 # fnm
 function install_fnm() {
   curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "$HOME/.local/bin" --skip-shell
+  eval "`fnm env --use-on-cd`"
   fnm install --lts && fnm use lts-latest && npm install -g yarn
 }
 
