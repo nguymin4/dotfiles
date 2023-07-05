@@ -27,13 +27,6 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "extensions.ignoreRecommendations": true,
-  "files.exclude": {
-    "**/project.lock.json": true,
-    "**/node_modules*": true,
-    "**/bower_components": true,
-    "**/*pyc": true,
-    "**/.idea": true
-  },
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": false,
     "suppressCommitNotFoundWarning": false,
@@ -49,17 +42,17 @@
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "julia.enableTelemetry": true,
+  "julia.enableTelemetry": false,
   "julia.symbolCacheDownload": true,
   "jupyter.askForKernelRestart": false,
   "jupyter.debugJustMyCode": false,
   "markdown-pdf.displayHeaderFooter": false,
-  "markdown-pdf.highlightStyle": "tomorrow.css",
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
   },
   "notebook.lineNumbers": "on",
+  "notebook.markup.fontSize": 16,
   "python.terminal.activateEnvironment": false,
   "[python]": {
     "editor.formatOnType": false
@@ -67,7 +60,6 @@
   "redhat.telemetry.enabled": false,
   "remote.SSH.foldersSortOrder": "alphabetical",
   "remote.SSH.showLoginTerminal": true,
-  "sql-formatter.uppercase": true,
   "terminal.integrated.commandsToSkipShell": [
     "extension.vim_navigateUp",
     "extension.vim_navigateDown",
@@ -100,7 +92,7 @@
     "<C-k>": true,
     "<C-l>": true
   },
-  "vim.statusBarColorControl": true,
+  "vim.statusBarColorControl": false,
   "vim.statusBarColors.insert": "#718c00",
   "vim.statusBarColors.normal": "#4271ae",
   "vim.statusBarColors.replace": "#005f87",
@@ -137,9 +129,6 @@
     "terminal.ansiBrightCyan": "#3E999F",
     "terminal.ansiYellow": "#C99E00",
     "terminal.ansiBrightYellow": "#C99E00",
-    "statusBar.background": "#718c00",
-    "statusBar.noFolderBackground": "#718c00",
-    "statusBar.debuggingBackground": "#718c00"
   },
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
