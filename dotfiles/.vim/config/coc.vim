@@ -79,12 +79,5 @@ function! s:reveal_file()
   call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:previousBuffer'], [['relative', 0, 'file']])
 endfunction
 
-" Custom text objects - very slow
-" xmap if <Plug>(coc-funcobj-i)
-" omap if <Plug>(coc-funcobj-i)
-" xmap af <Plug>(coc-funcobj-a)
-" omap af <Plug>(coc-funcobj-a)
-" xmap ic <Plug>(coc-classobj-i)
-" omap ic <Plug>(coc-classobj-i)
-" xmap ac <Plug>(coc-classobj-a)
-" omap ac <Plug>(coc-classobj-a)
+" Disable coc.nvim for certain filetypes
+autocmd FileType gitcommit,gitrebase let b:coc_suggest_disable = 1
