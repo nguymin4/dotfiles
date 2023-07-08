@@ -21,6 +21,7 @@ source ~/.vim/config/git.vim
 source ~/.vim/config/ack.vim
 source ~/.vim/config/coc.vim
 source ~/.vim/config/fzf.vim
+source ~/.vim/config/nvim-tree.vim
 source ~/.vim/config/indent-line.vim
 source ~/.vim/config/startify.vim
 source ~/.vim/config/quickscope.vim
@@ -32,3 +33,9 @@ call plug#end()
 
 source ~/.vim/colorschemes/default.vim
 highlight HighlightedyankRegion cterm=reverse gui=reverse
+
+if has('nvim')
+  call SetupNvimTree()
+else
+  nnoremap <Leader>t :Lexplore<CR>
+endif
