@@ -3,7 +3,6 @@ let g:coc_config_home = '~/.vim'
 let g:coc_global_extensions = [
       \'coc-css',
       \'coc-eslint',
-      \'coc-explorer',
       \'coc-json',
       \'coc-julia',
       \'coc-html',
@@ -13,6 +12,7 @@ let g:coc_global_extensions = [
       \'coc-vimtex',
       \'coc-yaml'
       \]
+      "\'coc-explorer',
 set hidden
 set nobackup
 set nowritebackup
@@ -72,12 +72,12 @@ endfunction
 
 
 " coc-explorer
-nnoremap <Leader>t :CocCommand explorer<CR>
-nnoremap <Leader>e :call <SID>reveal_file()<CR>
-function! s:reveal_file()
-  execute 'CocCommand explorer --no-toggle --reveal '.expand('%:p')
-  call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:previousBuffer'], [['relative', 0, 'file']])
-endfunction
+" nnoremap <Leader>t :CocCommand explorer<CR>
+" nnoremap <Leader>e :call <SID>reveal_file()<CR>
+" function! s:reveal_file()
+"   execute 'CocCommand explorer --no-toggle --reveal '.expand('%:p')
+"   call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:previousBuffer'], [['relative', 0, 'file']])
+" endfunction
 
 " Disable coc.nvim for certain filetypes
-autocmd FileType gitcommit,gitrebase let b:coc_suggest_disable = 1
+autocmd FileType gitcommit,gitrebase,NvimTree let b:coc_suggest_disable = 1
