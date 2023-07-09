@@ -53,8 +53,9 @@ if command -v fnm &> /dev/null; then
 fi
 
 # pyenv
-export TFHUB_CACHE_DIR=$HOME/.tfhub_modules
+export GIT_INTERNAL_GETTEXT_TEST_FALLBACKS=1
 export PYTHONDONTWRITEBYTECODE=1
+export TFHUB_CACHE_DIR=$HOME/.tfhub_modules
 if [ -s "$PYENV_ROOT/bin/pyenv" ]; then
   export PYENV_VIRTUALENV_DISABLE_PROMPT=1
   export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
