@@ -19,8 +19,9 @@ source ~/.vim/config/basic-settings.vim
 source ~/.vim/config/common-plugins.vim
 source ~/.vim/config/git.vim
 source ~/.vim/config/ack.vim
-source ~/.vim/config/coc.vim
+" source ~/.vim/config/coc.vim
 source ~/.vim/config/fzf.vim
+source ~/.vim/config/nvim-cmp.vim
 source ~/.vim/config/nvim-tree.vim
 source ~/.vim/config/indent-line.vim
 source ~/.vim/config/startify.vim
@@ -35,6 +36,7 @@ source ~/.vim/colorschemes/default.vim
 highlight HighlightedyankRegion cterm=reverse gui=reverse
 
 if has('nvim')
+  call SetupNvimCmp()
   call SetupNvimTree()
 else
   nnoremap <Leader>t :Lexplore<CR>
