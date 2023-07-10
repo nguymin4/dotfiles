@@ -348,6 +348,9 @@ live_config_reload: true
 # directory of the parent process will be used.
 working_directory: None
 
+# shell:
+#   program: zsh
+
 debug:
   # Display the time it takes to redraw each frame.
   render_timer: false
@@ -368,3 +371,7 @@ debug:
 
   # Print all received window events.
   print_events: false
+
+key_bindings:
+  # Fix Ctrl-Space issue on Windows
+  - { key: Space, mods: Control, chars: "\x00" }
