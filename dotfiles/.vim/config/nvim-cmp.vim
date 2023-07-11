@@ -20,9 +20,6 @@ Plug 'williamboman/mason-lspconfig.nvim'
 if has("nvim")
   Plug 'folke/trouble.nvim'
 endif
-Plug 'mfussenegger/nvim-lint'
-Plug 'mhartington/formatter.nvim'
-nnoremap <silent> <leader>f :Format<CR>
 
 set hidden
 set nobackup
@@ -36,6 +33,4 @@ function SetupNvimCmp()
   lua require('custom/nvim-cmp')
   lua require('custom/mason')
   lua require('custom/lsp')
-  lua require('custom/linter')
-  lua require('custom/formatter')
 endfunction

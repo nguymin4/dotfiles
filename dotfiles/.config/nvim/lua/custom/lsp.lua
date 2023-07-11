@@ -20,6 +20,29 @@ for _, server_name in ipairs(mason_lspconfig.get_installed_servers()) do
   lspconfig[server_name].setup({})
 end
 
+-- EFM-langserver
+lspconfig.efm.setup({
+  init_options = { documentFormatting = true },
+  settings = {
+    rootMarkers = { '.git/' },
+    languages = {
+      python = {
+        {
+          formatCommand = 'black -q -',
+          formatStdin = true
+        },
+        {
+          lintCommand = 'flake8 --stdin-display-name ${INPUT} -',
+          lintStdin = true,
+          lintIgnoreExitCode = true,
+          lintFormats = { '%f:%l:%c: %m' },
+          lintSource = 'flake8',
+        },
+      }
+    }
+  }
+})
+
 -- LSP actions
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
@@ -35,7 +58,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
 
     vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    -- vim.keymap.set('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+    vim.keymap.set('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({ async = true })<cr>', opts)
     vim.keymap.set('n', '<F8>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 
     vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
@@ -55,3 +78,23 @@ end, { desc = 'List workspace folders' })
 vim.api.nvim_create_user_command('LspWorkspaceRemove', function()
   vim.lsp.buf.remove_workspace_folder()
 end, { desc = 'Remove folder from workspace' })
+
+-- Diagnostics
+vim.diagnostic.config({
+  severity_sort = true,
+  virtual_text = false,
+})
+
+local trouble_setup, trouble = pcall(require, 'trouble')
+if trouble_setup then
+  trouble.setup({
+    auto_preview = false,
+    mode = 'document_diagnostics',
+    signs = {
+      error = "E",
+      warning = "W",
+      hint = "H",
+      information = "I"
+    },
+  })
+end
