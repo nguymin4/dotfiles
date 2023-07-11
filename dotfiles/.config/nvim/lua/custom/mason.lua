@@ -19,7 +19,7 @@ mason.setup({
 })
 
 mason_lspconfig.setup({
-  automatic_installation = true,
+  automatic_installation = false,
   ensure_installed = {
     'cssls',
     'eslint',
