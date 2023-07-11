@@ -3,6 +3,6 @@ Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
-nmap ghs <Plug>(GitGutterStageHunk)
-vmap ghs <Plug>(GitGutterStageHunk)
+nmap <leader>gs <Plug>(GitGutterStageHunk)
+vmap <leader>gs <Plug>(GitGutterStageHunk)
 nnoremap <F4> :GitGutterLineHighlightsToggle<CR>
