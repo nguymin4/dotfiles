@@ -37,7 +37,7 @@ function install_juliaup() {
 
 # misc
 function install_misc() {
-  sudo apt install watchman
+  sudo apt install -y watchman ranger tig neofetch btop stress-ng
 }
 
 

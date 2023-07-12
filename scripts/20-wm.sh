@@ -36,7 +36,7 @@ fc-cache -f
 
 # Optional utils
 # google-chrome, vscode, slack
-sudo apt install -y btop stress-ng ranger tig neofetch postgresql-client vlc pinta cmus piper ministat
+sudo apt install -y postgresql-client vlc pinta cmus piper ministat
 
 # brightnessctl
 sudo apt install -y brightnessctl
