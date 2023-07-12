@@ -20,7 +20,13 @@ source ~/.vim/config/common-plugins.vim
 source ~/.vim/config/git.vim
 source ~/.vim/config/ack.vim
 " source ~/.vim/config/coc.vim
-source ~/.vim/config/fzf.vim
+
+if has('nvim')
+  source ~/.vim/config/telescope.vim
+else
+  source ~/.vim/config/fzf.vim
+endif
+
 source ~/.vim/config/nvim-cmp.vim
 source ~/.vim/config/nvim-tree.vim
 source ~/.vim/config/indent-line.vim
@@ -38,6 +44,7 @@ highlight HighlightedyankRegion cterm=reverse gui=reverse
 if has('nvim')
   call SetupNvimCmp()
   call SetupNvimTree()
+  call SetupTelescopeNvim()
 else
   nnoremap <Leader>t :Lexplore<CR>
 endif
