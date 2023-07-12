@@ -38,6 +38,7 @@ source ~/.vim/config/theme.vim
 
 call plug#end()
 
+set termguicolors
 source ~/.vim/colorschemes/default.vim
 highlight HighlightedyankRegion cterm=reverse gui=reverse
 
