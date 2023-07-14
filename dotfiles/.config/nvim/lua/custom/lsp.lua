@@ -20,6 +20,18 @@ for _, server_name in ipairs(mason_lspconfig.get_installed_servers()) do
   lspconfig[server_name].setup({})
 end
 
+-- LSP function signature
+local lsp_signature_setup, lsp_signature = pcall(require, 'lsp_signature')
+if lsp_signature_setup then
+  lsp_signature.setup({
+    bind = true,
+    hint_prefix = '',
+    handler_opts = {
+      border = 'rounded'
+    }
+  })
+end
+
 -- EFM-langserver
 lspconfig.efm.setup({
   init_options = { documentFormatting = true },
