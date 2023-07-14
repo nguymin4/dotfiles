@@ -12,19 +12,30 @@ end
 cmp_nvim_ultisnips.setup({})
 
 -- Completion
+local function get_formatter()
+  local lspkind_setup, lspkind = pcall(require, 'lspkind')
+  if not lspkind_setup then
+    return
+  end
+
+  return lspkind.cmp_format({
+    mode = 'symbol',
+    preset = 'default',
+    maxwidth = 64,
+    ellipsis_char = '...',
+    menu = {
+      buffer = '[BUF]',
+      nvim_lsp = '[LSP]',
+      nvim_lua = '[API]',
+      path = '[PATH]',
+      luasnip = '[SNIP]',
+    },
+  })
+end
+
 cmp.setup({
   formatting = {
-    fields = {'abbr', 'menu', 'kind'},
-    format = function(entry, item)
-      local short_name = {
-        nvim_lsp = 'LSP',
-        nvim_lua = 'NVIM'
-      }
-
-      local menu_name = short_name[entry.source.name] or entry.source.name
-      item.menu = string.format('[%s]', menu_name)
-      return item
-    end,
+    format = get_formatter(),
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-Space>'] = cmp.mapping.confirm({ select = true }),
