@@ -2,6 +2,7 @@
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-buffer'
+Plug 'onsails/lspkind.nvim'
 
 " Ultisnips
 Plug 'SirVer/ultisnips'
