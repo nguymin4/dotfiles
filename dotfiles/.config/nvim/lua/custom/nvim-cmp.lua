@@ -34,7 +34,7 @@ cmp.setup({
   }),
   snippet = {
     expand = function(args)
-      vim.fn["UltiSnips#Anon"](args.body)
+      vim.fn['UltiSnips#Anon'](args.body)
     end,
   },
   sources = cmp.config.sources({
@@ -52,4 +52,12 @@ cmp.setup({
     },
     { name = 'path' },
   }),
+  window = {
+    completion = {
+      border = 'rounded'
+    },
+    documentation = {
+      border = 'rounded'
+    },
+  },
 })
