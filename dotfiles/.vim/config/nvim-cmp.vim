@@ -17,7 +17,7 @@ Plug 'williamboman/mason-lspconfig.nvim'
 
 " Diagnostics
 " trouble.nvim is enabled even in vim which causes startup issue
-if has("nvim")
+if has('nvim')
   Plug 'folke/trouble.nvim'
 endif
 

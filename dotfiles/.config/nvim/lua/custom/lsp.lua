@@ -67,6 +67,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end
 })
 
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = 'rounded'
+})
+
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = 'rounded'
+})
+
 vim.api.nvim_create_user_command('LspWorkspaceAdd', function()
   vim.lsp.buf.add_workspace_folder()
 end, { desc = 'Add folder to workspace' })
@@ -81,6 +89,9 @@ end, { desc = 'Remove folder from workspace' })
 
 -- Diagnostics
 vim.diagnostic.config({
+  float = {
+    border = 'rounded'
+  },
   severity_sort = true,
   virtual_text = false,
 })
@@ -91,10 +102,10 @@ if trouble_setup then
     auto_preview = false,
     mode = 'document_diagnostics',
     signs = {
-      error = "E",
-      warning = "W",
-      hint = "H",
-      information = "I"
+      error = 'E',
+      warning = 'W',
+      hint = 'H',
+      information = 'I'
     },
   })
 end
