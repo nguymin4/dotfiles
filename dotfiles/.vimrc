@@ -1,5 +1,11 @@
 " For nvim
-let g:python3_host_prog='/usr/bin/python'
+if has('win32')
+  let g:python3_host_prog=expand('~/scoop/shims/python3.exe', ':p')
+else
+  let g:python3_host_prog='/usr/bin/python'
+endif
+let g:loaded_node_provider = 0
+let g:loaded_perl_provider = 0
 
 " Plugins
 set nocompatible
@@ -29,6 +35,7 @@ endif
 
 source ~/.vim/config/nvim-cmp.vim
 source ~/.vim/config/nvim-tree.vim
+source ~/.vim/config/mux-navigator.vim
 source ~/.vim/config/indent-line.vim
 source ~/.vim/config/startify.vim
 source ~/.vim/config/quickscope.vim
@@ -46,6 +53,7 @@ if has('nvim')
   call SetupNvimCmp()
   call SetupNvimTree()
   call SetupTelescopeNvim()
+  call SetupWezTermNavigator()
 else
   nnoremap <Leader>t :Lexplore<CR>
 endif
