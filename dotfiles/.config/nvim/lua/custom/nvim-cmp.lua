@@ -3,14 +3,6 @@ if not setup then
   return
 end
 
-local cmp_nvim_ultisnips_setup, cmp_nvim_ultisnips = pcall(require, 'cmp_nvim_ultisnips')
-if not cmp_nvim_ultisnips_setup then
-  return
-end
-
--- Ultisnips
-cmp_nvim_ultisnips.setup({})
-
 -- Completion
 local function get_formatter()
   local lspkind_setup, lspkind = pcall(require, 'lspkind')
@@ -45,13 +37,13 @@ cmp.setup({
   }),
   snippet = {
     expand = function(args)
-      vim.fn['UltiSnips#Anon'](args.body)
+      vim.fn['vsnip#anonymous'](args.body)
     end,
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
-    { name = 'ultisnips' },
+    { name = 'vsnip' },
     {
       name = 'buffer',
       option = {

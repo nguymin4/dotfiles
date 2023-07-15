@@ -27,7 +27,7 @@
 .gitignore
 .profile
 .tmux.conf
-.vim/UltiSnips
+.vim/snippets
 .vim/coc-settings.json
 .vim/colorschemes
 .vim/config
