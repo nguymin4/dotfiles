@@ -63,3 +63,17 @@ cmp.setup({
     },
   },
 })
+
+-- Disable completion in command line window
+-- due to a bug with popup window
+vim.api.nvim_create_autocmd('CmdWinEnter', {
+  callback = function()
+    cmp.setup({ enabled = false })
+  end
+})
+
+vim.api.nvim_create_autocmd('CmdWinLeave', {
+  callback = function()
+    cmp.setup({ enabled = true })
+  end
+})
