@@ -14,9 +14,9 @@ export BAT_THEME="base16"
 # OMZ
 export ZSH=~/.oh-my-zsh
 export ZSH_CUSTOM=$ZSH/custom
-COMPLETION_WAITING_DOTS="true"
-DISABLE_AUTO_TITLE="true"
+export DISABLE_AUTO_TITLE="true"
 DISABLE_AUTO_UPDATE="true"
+COMPLETION_WAITING_DOTS="true"
 ZSH_THEME=""
 
 if [[ ! -d $ZSH ]]; then
