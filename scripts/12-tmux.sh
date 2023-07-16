@@ -18,5 +18,5 @@ bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 # powerline-status
 pip install --user git+https://github.com/powerline/powerline
 
-# tmuxinator
-gem install --user-install tmuxinator
+# tmuxp
+pip install --user tmuxp
