@@ -47,5 +47,8 @@ nnoremap <c-w>< :vertical resize -20<CR>
 vnoremap > >gv
 vnoremap < <gv
 
+" Clear previous session jumplist
+autocmd VimEnter * :clearjumps
+
 syntax on
 filetype plugin indent on

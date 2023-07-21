@@ -19,5 +19,11 @@ let g:vimtex_syntax_conceal_greek = 1
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 let g:livepreview_cursorhold_recompile = 0
 
+" Improve gf
+Plug 'tomarrell/vim-npr'
+let g:vim_npr_file_names = ['', '.js', '/index.js', '.ts', '/index.ts']
+let g:vim_npr_file_types = ['js', 'jsx', 'ts', 'tsx']
+autocmd BufEnter *.ts,*.tsx nmap <buffer> gf :call VimNPRFindFile('')<CR>
+
 " Octave
 " Plug 'jvirtanen/vim-octave', { 'for': ['octave', 'matlab'] }
