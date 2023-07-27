@@ -17,8 +17,28 @@ end
 -- LSP default settings
 local lsp_capabilities = cmp_nvim_lsp.default_capabilities()
 for _, server_name in ipairs(mason_lspconfig.get_installed_servers()) do
-  lspconfig[server_name].setup({})
+  if server_name ~= 'pyright' then
+    lspconfig[server_name].setup({
+      capabilities = lsp_capabilities
+    })
+  end
 end
+
+-- LSP custom settings
+lspconfig.pyright.setup({
+  capabilities = lsp_capabilities,
+  settings = {
+    python = {
+      analysis = {
+        autoImportCompletions = true,
+        autoSearchPaths = true,
+        diagnosticMode = 'openFilesOnly',
+        typeCheckingMode = 'basic',
+        useLibraryCodeForTypes = true,
+      },
+    },
+  },
+})
 
 -- LSP function signature
 local lsp_signature_setup, lsp_signature = pcall(require, 'lsp_signature')
