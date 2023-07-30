@@ -12,7 +12,6 @@ let g:coc_global_extensions = [
       \'coc-vimtex',
       \'coc-yaml'
       \]
-      "\'coc-explorer',
 set hidden
 set nobackup
 set nowritebackup
@@ -22,54 +21,60 @@ set updatetime=250
 set completeopt-=preview
 set signcolumn=yes
 
-command! -nargs=0 CocFormat :call CocAction('format')
 nnoremap <Leader>c :CocCommand<Space>
-nmap <F2> <Plug>(coc-rename)
-nmap <F8> <Plug>(coc-codeaction)
-nmap <leader>f :call CocAction('format')<CR>
-xmap <leader>f <Plug>(coc-format-selected)
-nmap <silent> [w <Plug>(coc-diagnostic-prev)
-nmap <silent> ]w <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> ge <Plug>(coc-references)
-nmap <silent> gE <Plug>(coc-implementation)
+nnoremap <F2> <Plug>(coc-rename)
+nnoremap <F8> <Plug>(coc-codeaction)
+nnoremap <leader>f :call CocAction('format')<CR>
+xnoremap <leader>f <Plug>(coc-format-selected)
+nnoremap <silent> [w <Plug>(coc-diagnostic-prev)
+nnoremap <silent> ]w <Plug>(coc-diagnostic-next)
+nnoremap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> go <Plug>(coc-type-definition)
+nnoremap <silent> ge <Plug>(coc-references)
+nnoremap <silent> gi <Plug>(coc-implementation)
+nnoremap <silent> gh :call CocAction('diagnosticInfo')<CR>
 
 " Support both <c-n> and tab for completion
+let g:coc_snippet_next = '<tab>'
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
-      \ <SID>check_back_space() ? "\<Tab>" :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Use <c-space> to trigger completion in insert mode and show documentation in normal mode
 if has('nvim')
-  nnoremap <silent> <c-space> :call <SID>show_documentation()<CR>
-  inoremap <silent><expr> <c-space> <SID>trigger_completion()
+  nnoremap <silent> <c-space> :call ShowDocumentation()<CR>
+  inoremap <silent><expr> <c-space> TriggerCompletion()
 else
-  nnoremap <silent> <c-@> :call <SID>show_documentation()<CR>
-  inoremap <silent><expr> <c-@> <SID>trigger_completion()
+  nnoremap <silent> <c-@> :call ShowDocumentation()<CR>
+  inoremap <silent><expr> <c-@> TriggerCompletion()
 endif
 
-function! s:show_documentation() abort
- if (index(['vim','help'], &filetype) >= 0)
-   execute 'h '.expand('<cword>')
- else
-   call CocActionAsync('doHover')
- endif
+nnoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-d>"
+nnoremap <silent><nowait><expr> <C-u> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-u>"
+inoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <silent><nowait><expr> <C-u> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+
+function! ShowDocumentation() abort
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('definitionHover')
+  else
+    call feedkeys('K', 'in')
+  endif
 endfunction
 
-function! s:trigger_completion() abort
+function! TriggerCompletion() abort
   return coc#pum#visible() ? coc#_select_confirm() :
     \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-    \ <SID>check_back_space() ? "\<c-n>" :
+    \ CheckBackspace() ? "\<c-n>" :
     \ coc#refresh()
 endfunction
 
-function! s:check_back_space() abort
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
 
 " coc-explorer
 " nnoremap <Leader>t :CocCommand explorer<CR>
@@ -80,4 +85,4 @@ endfunction
 " endfunction
 
 " Disable coc.nvim for certain filetypes
-autocmd FileType gitcommit,gitrebase,NvimTree let b:coc_suggest_disable = 1
+" autocmd FileType gitcommit,gitrebase,NvimTree let b:coc_suggest_disable = 1

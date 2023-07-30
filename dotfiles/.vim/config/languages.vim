@@ -5,6 +5,9 @@ Plug 'haya14busa/vim-textobj-function-syntax'
 Plug 'bps/vim-textobj-python'
 Plug 'michaeljsmith/vim-indent-object'
 
+" snippets
+Plug 'rafamadriz/friendly-snippets'
+
 " Polygot
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['octave', 'matlab']
@@ -20,6 +23,7 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 let g:livepreview_cursorhold_recompile = 0
 
 " Improve gf
+Plug 'sam4llis/nvim-lua-gf'
 Plug 'tomarrell/vim-npr'
 let g:vim_npr_file_names = ['', '.js', '/index.js', '.ts', '/index.ts']
 let g:vim_npr_file_types = ['js', 'jsx', 'ts', 'tsx']
