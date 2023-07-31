@@ -4,7 +4,7 @@
 	},
 	"ext": {
 		"tmux": {
-			"colorscheme": "default",
+			"colorscheme": "onedark",
 			"theme": "default"
 		},
 		"shell": {
