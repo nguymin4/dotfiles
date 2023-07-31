@@ -1,1 +1,0 @@
-/home/nguymin4/.vim/colorschemes/edge-dark.vim
