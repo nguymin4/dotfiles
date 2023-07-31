@@ -26,12 +26,16 @@ source ~/.vim/config/basic-settings.vim
 source ~/.vim/config/common-plugins.vim
 source ~/.vim/config/git.vim
 source ~/.vim/config/ack.vim
-source ~/.vim/config/coc.vim
 
 if has('nvim')
   source ~/.vim/config/telescope.vim
 else
   source ~/.vim/config/fzf.vim
+endif
+
+" Only enable coc.nvim if nodejs is installed
+if executable('node')
+  source ~/.vim/config/coc.vim
 endif
 
 " source ~/.vim/config/nvim-cmp.vim
