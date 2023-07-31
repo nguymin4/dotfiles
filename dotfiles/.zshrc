@@ -47,15 +47,6 @@ for file in ~/.{bash_aliases,path}; do
 done;
 unset file;
 
-# Attempt to set TERM correctly
-TERMINAL_EMULATOR="$(ps --pid $(ps --pid $$ -o ppid=) -o comm=)"
-if [[ "${TERMINAL_EMULATOR}" =~ tmux ]]; then
-  TERMINAL_EMULATOR=$(ps --pid "$(($(ps --pid $(ps --pid $(tmux display-message -p "#{client_pid}") -o sid=) -o ppid=)))" -o comm=)
-fi
-if [[ "$TERMINAL_EMULATOR" == 'alacritty' ]]; then
-  export TERM=alacritty
-fi
-
 # fnm
 if command -v fnm &> /dev/null; then
   eval "`fnm env --use-on-cd`"
