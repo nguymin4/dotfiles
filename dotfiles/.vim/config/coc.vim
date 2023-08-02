@@ -35,7 +35,6 @@ nnoremap <silent> gi <Plug>(coc-implementation)
 nnoremap <silent> gh :call CocAction('diagnosticInfo')<CR>
 
 " Support both <c-n> and tab for completion
-let g:coc_snippet_next = '<tab>'
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
       \ CheckBackspace() ? "\<Tab>" :
