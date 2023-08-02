@@ -1,16 +1,15 @@
--- nvim-lspconfig
-local lspconfig_setup, lspconfig = pcall(require, 'lspconfig')
-if not lspconfig_setup then
+local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
+if not lspconfig_ok then
   return
 end
 
-local cmp_nvim_lsp_setup, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-if not cmp_nvim_lsp_setup then
+local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+if not cmp_nvim_lsp_ok then
   return
 end
 
-local mason_lspconfig_setup, mason_lspconfig = pcall(require, 'mason-lspconfig')
-if not mason_lspconfig_setup then
+local mason_lspconfig_ok, mason_lspconfig = pcall(require, 'mason-lspconfig')
+if not mason_lspconfig_ok then
   return
 end
 
@@ -73,8 +72,8 @@ lspconfig.efm.setup({
 })
 
 -- LSP function signature
-local lsp_signature_setup, lsp_signature = pcall(require, 'lsp_signature')
-if lsp_signature_setup then
+local lsp_signature_ok, lsp_signature = pcall(require, 'lsp_signature')
+if lsp_signature_ok then
   lsp_signature.setup({
     bind = true,
     hint_prefix = '',
@@ -137,8 +136,8 @@ vim.diagnostic.config({
   virtual_text = false,
 })
 
-local trouble_setup, trouble = pcall(require, 'trouble')
-if trouble_setup then
+local trouble_ok, trouble = pcall(require, 'trouble')
+if trouble_ok then
   trouble.setup({
     auto_preview = false,
     mode = 'document_diagnostics',

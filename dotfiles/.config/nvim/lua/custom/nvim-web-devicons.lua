@@ -1,5 +1,5 @@
-local setup, nvim_web_devicons = pcall(require, 'nvim-web-devicons')
-if not setup then
+local nvim_web_devicons_ok, nvim_web_devicons = pcall(require, 'nvim-web-devicons')
+if not nvim_web_devicons_ok then
   return
 end
 
