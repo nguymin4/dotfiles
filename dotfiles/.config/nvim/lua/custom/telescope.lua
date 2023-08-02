@@ -1,5 +1,5 @@
-local lspconfig_setup, telescope = pcall(require, 'telescope')
-if not lspconfig_setup then
+local telescope_ok, telescope = pcall(require, 'telescope')
+if not telescope_ok then
   return
 end
 

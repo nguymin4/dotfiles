@@ -1,12 +1,12 @@
-local setup, cmp = pcall(require, 'cmp')
-if not setup then
+local cmp_ok, cmp = pcall(require, 'cmp')
+if not cmp_ok then
   return
 end
 
 -- Completion menu
 local function get_formatter()
-  local lspkind_setup, lspkind = pcall(require, 'lspkind')
-  if not lspkind_setup then
+  local lspkind_ok, lspkind = pcall(require, 'lspkind')
+  if not lspkind_ok then
     return
   end
 
