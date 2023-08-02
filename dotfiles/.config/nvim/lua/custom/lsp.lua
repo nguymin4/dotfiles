@@ -14,6 +14,15 @@ if not mason_lspconfig_setup then
   return
 end
 
+-- Disable LSP watcher - Too slow on linux
+-- TODO: Remove this https://github.com/neovim/neovim/issues/23291
+local lsp_wf_ok, lsp_wf = pcall(require, 'vim.lsp._watchfiles')
+if lsp_wf_ok then
+   lsp_wf._watchfunc = function()
+     return function() end
+   end
+end
+
 -- LSP default settings
 local lsp_capabilities = cmp_nvim_lsp.default_capabilities()
 for _, server_name in ipairs(mason_lspconfig.get_installed_servers()) do
@@ -40,18 +49,6 @@ lspconfig.pyright.setup({
   },
 })
 
--- LSP function signature
-local lsp_signature_setup, lsp_signature = pcall(require, 'lsp_signature')
-if lsp_signature_setup then
-  lsp_signature.setup({
-    bind = true,
-    hint_prefix = '',
-    handler_opts = {
-      border = 'rounded'
-    }
-  })
-end
-
 -- EFM-langserver
 lspconfig.efm.setup({
   init_options = { documentFormatting = true },
@@ -74,6 +71,18 @@ lspconfig.efm.setup({
     }
   }
 })
+
+-- LSP function signature
+local lsp_signature_setup, lsp_signature = pcall(require, 'lsp_signature')
+if lsp_signature_setup then
+  lsp_signature.setup({
+    bind = true,
+    hint_prefix = '',
+    handler_opts = {
+      border = 'rounded'
+    }
+  })
+end
 
 -- LSP actions
 vim.api.nvim_create_autocmd('LspAttach', {
