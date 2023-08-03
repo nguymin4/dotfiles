@@ -4,6 +4,7 @@
 
 # Disable Ctrl+D to logout and exit
 setopt ignoreeof
+
 # Disable lock scroll Ctrl+S
 stty -ixon
 
@@ -36,11 +37,6 @@ source $ZSH_CUSTOM/fzf.zsh # Always after vi-mode
 source $ZSH_CUSTOM/command-timestamp.zsh
 source $ZSH_CUSTOM/color.zsh
 
-# pure-prompt
-fpath+=$ZSH_CUSTOM/plugins/pure
-autoload -U promptinit; promptinit
-prompt pure
-
 # Load the shell dotfiles
 for file in ~/.{bash_aliases,path}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
@@ -60,6 +56,16 @@ if [ -s "$PYENV_ROOT/bin/pyenv" ]; then
   export PYENV_VIRTUALENV_DISABLE_PROMPT=1
   export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
   eval "$(pyenv init - --no-rehash zsh)"
+fi
+
+# Setup prompt
+if command -v starship &> /dev/null; then
+  eval "$(starship init zsh)"
+else
+  # pure-prompt
+  fpath+=$ZSH_CUSTOM/plugins/pure
+  autoload -U promptinit; promptinit
+  prompt pure
 fi
 
 # >>> juliaup initialize >>>
