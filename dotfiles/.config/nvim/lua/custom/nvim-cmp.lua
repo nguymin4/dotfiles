@@ -74,7 +74,6 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
-    { name = 'vsnip' },
     {
       name = 'buffer',
       option = {
@@ -83,6 +82,7 @@ cmp.setup({
         end
       }
     },
+    { name = 'vsnip' },
     { name = 'path' },
   }),
   window = {
