@@ -1,0 +1,86 @@
+format = """
+$username\
+$hostname\
+$shlvl\
+$kubernetes\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$time\
+$java\
+$julia\
+$nodejs\
+$python\
+$terraform\
+$conda\
+$sudo\
+$jobs\
+$cmd_duration\
+$line_break\
+$status\
+$shell\
+$character"""
+
+[cmd_duration]
+format = "[\uf43a $duration]($style) "
+
+# [character]
+# format='$symbol'
+# success_symbol='[ INSERT ](fg:white bg:blue)'
+# error_symbol='[ INSERT ](fg:white bg:blue)'
+# vimcmd_symbol='[ NORMAL ](fg:black bg:green)'
+# vimcmd_replace_one_symbol='[ REPLACE ](bold purple)'
+# vimcmd_replace_symbol='[ REPLACE ](bold purple)'
+# vimcmd_visual_symbol='[ VISUAL ](bold yellow)'
+
+[conda]
+format = '[$symbol$environment]($style) '
+symbol = ' '
+
+[directory]
+read_only = ' 󰌾'
+style = 'bold yellow'
+truncate_to_repo = false
+
+[hostname]
+format = '[$ssh_symbol$hostname]($style) '
+ssh_only = true
+ssh_symbol = ' '
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style) '
+style = 'bold cyan'
+
+[java]
+format = '[${symbol}(${version} )]($style)'
+symbol = ' '
+
+[julia]
+format = '[$symbol($version )]($style)'
+symbol = ' '
+
+[nodejs]
+format = '[$symbol($version )]($style)'
+symbol = ' '
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+symbol = ' '
+
+[shell]
+disabled = false
+format = '[ $indicator ]($style)[](bold cyan) '
+style = 'bg:cyan bold'
+bash_indicator = 'bash'
+powershell_indicator = 'pwsh'
+zsh_indicator = 'zsh'
+
+[username]
+format = '[$user@]($style)'
+show_always = false
+
+[time]
+disabled = false
+format = '\[$time\] '

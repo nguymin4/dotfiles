@@ -1,6 +1,6 @@
 .bashrc
+.fzf.bash
 .gitconfig
 .gitignore
-.fzf.bash
 .profile
 .vimrc
