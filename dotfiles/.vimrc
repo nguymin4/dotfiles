@@ -1,16 +1,7 @@
-" For nvim
-if has('win32')
-  let g:python3_host_prog=expand('~/scoop/shims/python3.exe', ':p')
-else
-  let g:python3_host_prog='/usr/bin/python'
-endif
-let g:loaded_node_provider = 0
-let g:loaded_perl_provider = 0
-let g:loaded_ruby_provider = 0
-
-" Plugins
+" In vim, many plugins setup will break without this
 set nocompatible
 
+" Setup vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -20,10 +11,11 @@ if empty(glob('~/.vim/bundles'))
   autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
 endif
 
+" Install plugins
 call plug#begin('~/.vim/bundles')
 
 source ~/.vim/config/basic-settings.vim
-source ~/.vim/config/common-plugins.vim
+source ~/.vim/config/core-plugins.vim
 source ~/.vim/config/git.vim
 source ~/.vim/config/ack.vim
 
@@ -33,27 +25,22 @@ else
   source ~/.vim/config/fzf.vim
 endif
 
-" Only enable coc.nvim if nodejs is installed
 if executable('node')
+  " coc.nvim requires nodejs
   source ~/.vim/config/coc.vim
 endif
 
 " source ~/.vim/config/nvim-cmp.vim
 source ~/.vim/config/nvim-tree.vim
 source ~/.vim/config/mux-navigator.vim
-source ~/.vim/config/indent-line.vim
-source ~/.vim/config/startify.vim
-source ~/.vim/config/quickscope.vim
-source ~/.vim/config/visual-mode.vim
 source ~/.vim/config/languages.vim
+source ~/.vim/config/visual.vim
 source ~/.vim/config/theme.vim
+source ~/.vim/config/misc.vim
 
 call plug#end()
 
-set termguicolors
-source ~/.vim/colorschemes/edge-dark.vim
-highlight HighlightedyankRegion cterm=reverse gui=reverse
-
+" Setup nvim after plugins are installed
 if has('nvim')
   " call SetupNvimCmp()
   call SetupNvimTree()
@@ -63,9 +50,7 @@ else
   nnoremap <Leader>t :Lexplore<CR>
 endif
 
-function ProfilingPerf(log_name)
-  echo 'Start profiling ' . fnamemodify(a:log_name, ':p')
-  execute 'profile start' a:log_name
-  profile file *
-  profile func *
-endfunction
+" Setup themes
+set termguicolors
+source ~/.vim/colorschemes/edge-dark.vim
+highlight HighlightedYankRegion cterm=reverse gui=reverse
