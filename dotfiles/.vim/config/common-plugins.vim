@@ -7,13 +7,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
 Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'editorconfig/editorconfig-vim'
-" Plug 'Raimondi/delimitMate'
-
-" Supertab
-" Plug 'ervandew/supertab'
-" let g:SuperTabDefaultCompletionType = '<C-p>'
-" let g:SuperTabMappingForward = '<Nop>'
-" let g:SuperTabMappingBackward = '<Nop>'
 
 if has('nvim')
   au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=250}
