@@ -15,7 +15,7 @@ set mouse=
 set nrformats=
 set number
 set relativenumber
-" set cursorline
+set cursorline
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 set timeoutlen=1000 ttimeoutlen=10
 set splitbelow
@@ -52,3 +52,13 @@ autocmd VimEnter * :clearjumps
 
 syntax on
 filetype plugin indent on
+
+" For nvim
+if has('win32')
+  let g:python3_host_prog=expand('~/scoop/shims/python3.exe', ':p')
+else
+  let g:python3_host_prog='/usr/bin/python'
+endif
+let g:loaded_node_provider = 0
+let g:loaded_perl_provider = 0
+let g:loaded_ruby_provider = 0
