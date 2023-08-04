@@ -25,12 +25,13 @@ else
   source ~/.vim/config/fzf.vim
 endif
 
-if executable('node')
+let use_nvim_lsp = 1
+if !use_nvim_lsp && executable('node')
   " coc.nvim requires nodejs
   source ~/.vim/config/coc.vim
 endif
 
-" source ~/.vim/config/nvim-cmp.vim
+source ~/.vim/config/nvim-cmp.vim
 source ~/.vim/config/nvim-tree.vim
 source ~/.vim/config/mux-navigator.vim
 source ~/.vim/config/languages.vim
@@ -42,7 +43,9 @@ call plug#end()
 
 " Setup nvim after plugins are installed
 if has('nvim')
-  " call SetupNvimCmp()
+  if use_nvim_lsp
+    call SetupNvimCmp()
+  endif
   call SetupNvimTree()
   call SetupTelescopeNvim()
   call SetupWezTermNavigator()
