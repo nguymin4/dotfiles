@@ -1,0 +1,7 @@
+.bashrc
+.config/fish/config.fish
+.config/wezterm/wezterm.lua
+.glazewm
+.wslconfig
+default.ahk
+scoop/persist/pwsh/Microsoft.PowerShell_profile.ps1
