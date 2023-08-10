@@ -2,37 +2,50 @@
 
 set -euo pipefail
 
-print_usage() {
-    echo 'Usage: bash backup.sh [--config $config_file] --target $target_folder'
-    exit 1
+help() {
+    cat << EOF
+Usage: bash backup.sh [OPTIONS]
+--help        Show this message
+--linux
+--vm
+--windows
+EOF
 }
 
-CONFIG_FILE='rsync-dotfiles'
-TARGET_FOLDER='dotfiles'
+DOTFILES_ROOT="$(dirname $(realpath -s $0))"
 
-while getopts ':-:' flag; do
-  case "${flag}" in
-    -)
-      case "${OPTARG}" in
-        config)
-          CONFIG_FILE="${!OPTIND}";
-          OPTIND=$(( $OPTIND + 1 ))
-          ;;
-        target)
-          TARGET_FOLDER="${!OPTIND}";
-          OPTIND=$(( $OPTIND + 1 ))
-          ;;
-      esac;;
-    *) print_usage ;;
+function run_rsync() {
+  rsync_list="$DOTFILES_ROOT/$1"
+  target_folder="$DOTFILES_ROOT/$2"
+
+  rsync -avi --recursive --relative --delete --exclude='*.swp' --files-from="$rsync_list" $HOME $target_folder
+
+  echo ""
+  echo "Finished syncing dotfiles from $HOME to $target_folder"
+  echo "==============================================================="
+  echo ""
+}
+
+for opt in "$@"; do
+  case $opt in
+    --linux)
+      run_rsync rsync-dotfiles-core dotfiles
+      run_rsync rsync-dotfiles-linux dotfiles
+      ;;
+    --vm)
+      run_rsync rsync-dotfiles-vm dotfiles-vm ;;
+    --windows)
+      run_rsync rsync-dotfiles-core dotfiles
+      run_rsync rsync-dotfiles-windows dotfiles-windows
+      ;;
+    --help)
+      help
+      exit 0
+      ;;
+    *)
+      echo "unknown option: $opt"
+      help
+      exit 1
+      ;;
   esac
 done
-
-SOURCE_FOLDER=$HOME
-TARGET_FOLDER=$(realpath -s $TARGET_FOLDER)
-RSYNC_LIST="$(dirname $(realpath -s $0))/$CONFIG_FILE"
-
-rsync -avi --recursive --relative --delete --exclude='*.swp' --files-from="$RSYNC_LIST" $SOURCE_FOLDER $TARGET_FOLDER
-
-echo ""
-echo "---------------------------------------------------------------"
-echo "Finished syncing dotfiles from $SOURCE_FOLDER to $TARGET_FOLDER"

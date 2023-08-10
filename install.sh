@@ -2,35 +2,79 @@
 
 set -euo pipefail
 
-print_usage() {
-    echo 'Usage: bash install.sh [--src $source_folder] --target $target_folder'
-    exit 1
+help() {
+    cat <<- EOF
+Usage: bash install.sh [OPTIONS] --target \$target_folder
+--help        Show this message
+--linux
+--vm
+--windows
+EOF
 }
 
-SRC_FOLDER='dotfiles'
+TYPE=''
 TARGET_FOLDER=''
 
 while getopts ':-:' flag; do
   case "${flag}" in
     -)
       case "${OPTARG}" in
-        src)
-          SRC_FOLDER="${!OPTIND}";
-          OPTIND=$(( $OPTIND + 1 ))
+        linux|vm|windows)
+          TYPE=$OPTARG
           ;;
         target)
           TARGET_FOLDER="${!OPTIND}";
           OPTIND=$(( $OPTIND + 1 ))
           ;;
+        help)
+          help
+          exit 0
+          ;;
       esac;;
-    *) print_usage ;;
+    *)
+      echo "unknown option: $flag"
+      help
+      exit 1
+      ;;
   esac
 done
 
-if [ ! "$TARGET_FOLDER" ]
+if [[ -z $TARGET_FOLDER || -z $TYPE ]]
 then
-    print_usage
+    help
+    exit 1
 fi
 
-rsync -avi $SRC_FOLDER/ $TARGET_FOLDER
-echo "Synced dotfiles from $SRC_FOLDER to $TARGET_FOLDER"
+DOTFILES_ROOT="$(dirname $(realpath -s $0))"
+
+function run_rsync() {
+  rsync_list="$DOTFILES_ROOT/$1"
+  source_folder="$DOTFILES_ROOT/$2"
+
+  rsync -avi --recursive --relative --exclude='*.swp' --files-from="$rsync_list" $source_folder $TARGET_FOLDER
+
+  echo ""
+  echo "Finished syncing dotfiles from $source_folder to $TARGET_FOLDER"
+  echo "==============================================================="
+  echo ""
+}
+
+case $TYPE in
+  linux)
+    run_rsync rsync-dotfiles-core dotfiles
+    run_rsync rsync-dotfiles-linux dotfiles
+    ;;
+  vm)
+    run_rsync rsync-dotfiles-vm dotfiles-vm
+    ;;
+  windows)
+    run_rsync rsync-dotfiles-core dotfiles
+    run_rsync rsync-dotfiles-windows dotfiles-windows
+    ;;
+  *)
+    echo "unknown type: $TYPE"
+    help
+    exit 1
+    ;;
+esac
+
