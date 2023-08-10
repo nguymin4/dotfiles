@@ -4,7 +4,7 @@ set -euo pipefail
 
 help() {
     cat << EOF
-Usage: bash backup.sh [OPTIONS] 
+Usage: bash backup.sh [OPTIONS]
 --help        Show this message
 --linux
 --vm
@@ -21,18 +21,23 @@ function run_rsync() {
   rsync -avi --recursive --relative --delete --exclude='*.swp' --files-from="$rsync_list" $HOME $target_folder
 
   echo ""
-  echo "---------------------------------------------------------------"
   echo "Finished syncing dotfiles from $HOME to $target_folder"
+  echo "==============================================================="
+  echo ""
 }
 
 for opt in "$@"; do
   case $opt in
     --linux)
-      run_rsync rsync-dotfiles dotfiles ;;
+      run_rsync rsync-dotfiles-core dotfiles
+      run_rsync rsync-dotfiles-linux dotfiles
+      ;;
     --vm)
       run_rsync rsync-dotfiles-vm dotfiles-vm ;;
     --windows)
-      run_rsync rsync-dotfiles-windows dotfiles-windows ;;
+      run_rsync rsync-dotfiles-core dotfiles
+      run_rsync rsync-dotfiles-windows dotfiles-windows
+      ;;
     --help)
       help
       exit 0

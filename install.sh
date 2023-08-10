@@ -39,24 +39,42 @@ while getopts ':-:' flag; do
   esac
 done
 
-if [[ -z $TARGET_FOLDER || -z $TYPE ]] 
+if [[ -z $TARGET_FOLDER || -z $TYPE ]]
 then
     help
     exit 1
 fi
 
+DOTFILES_ROOT="$(dirname $(realpath -s $0))"
+
 function run_rsync() {
-  source_folder=$1
-  rsync -avi $source_folder/ $TARGET_FOLDER
-  echo "Synced dotfiles from $source_folder to $TARGET_FOLDER"
+  rsync_list="$DOTFILES_ROOT/$1"
+  source_folder="$DOTFILES_ROOT/$2"
+
+  rsync -avi --recursive --relative --exclude='*.swp' --files-from="$rsync_list" $source_folder $TARGET_FOLDER
+
+  echo ""
+  echo "Finished syncing dotfiles from $source_folder to $TARGET_FOLDER"
+  echo "==============================================================="
+  echo ""
 }
 
 case $TYPE in
   linux)
-    run_rsync dotfiles ;;
+    run_rsync rsync-dotfiles-core dotfiles
+    run_rsync rsync-dotfiles-linux dotfiles
+    ;;
   vm)
-    run_rsync dotfiles-vm ;;
+    run_rsync rsync-dotfiles-vm dotfiles-vm
+    ;;
   windows)
-    run_rsync dotfiles-windows ;;
+    run_rsync rsync-dotfiles-core dotfiles
+    run_rsync rsync-dotfiles-windows dotfiles-windows
+    ;;
+  *)
+    echo "unknown type: $TYPE"
+    help
+    exit 1
+    ;;
 esac
 
