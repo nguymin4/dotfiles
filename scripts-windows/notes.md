@@ -1,9 +1,3 @@
-#### Copy between WSL and Windows via neovim
-```bash
-sudo ln -s "/mnt/c/Users/son_nguyen/scoop/apps/neovim/current/bin/win32yank.exe" "/usr/local/bin/win32yank.exe"
-```
-Notes: we can use clip.exe also
-
 #### Setup locales for wsl
 ```bash
 sudo locale-gen "en_US.UTF-8"
