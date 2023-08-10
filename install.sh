@@ -4,7 +4,7 @@ set -euo pipefail
 
 help() {
     cat <<- EOF
-Usage: bash install.sh [OPTIONS] --target \$target_folder
+Usage: bash install.sh [OPTIONS] --target [\$target_folder]
 --help        Show this message
 --linux
 --vm
@@ -39,12 +39,12 @@ while getopts ':-:' flag; do
   esac
 done
 
-if [[ -z $TARGET_FOLDER || -z $TYPE ]]
-then
-    help
-    exit 1
+if [[ -z $TYPE ]]; then
+  help
+  exit 1
 fi
 
+TARGET_FOLDER="${TARGET_FOLDER:-$HOME}"
 DOTFILES_ROOT="$(dirname $(realpath -s $0))"
 
 function run_rsync() {

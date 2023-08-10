@@ -1,16 +1,23 @@
 # dotfiles
 
+Use `rsync` to backup and restore platform-specific dotfiles
+
 ## Installation
-Sync all files in `dotfiles` folder to a target folder
+Sync platform-specific dotfiles to a folder (default: `$HOME`)
 
 ```bash
-bash install.sh --src dotfiles --target $HOME
+bash install.sh --linux
+
+# OR
+
+bash install.sh --linux --target $HOME
 ```
 
 ## Backup
-Sync all files specified in `rsync-dotfiles` file in `$HOME` to a target folder (*default*: current directory `dotfiles` folder)
+Back up all platform-specific dotfiles
+
 ```bash
-bash backup.sh --config rsync-dotfiles --target dotfiles
+bash backup.sh --linux
 ```
 
 ## Scanning for hardcoded secrets
