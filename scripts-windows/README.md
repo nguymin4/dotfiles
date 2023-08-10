@@ -11,5 +11,8 @@ e.g `GlazeVM`, `default.ahk`
 
 #### Config location
 Some configs are stored in `%APPDATA%` instead of `$HOME\.config`
-- Alacritty
-- NeoVim
+
+```bash
+cp -fR $HOME/.config/alacritty $HOME/AppData/Roaming
+cp -fR $HOME/.config/nvim $HOME/AppData/Local
+```
