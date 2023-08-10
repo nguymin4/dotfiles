@@ -1,0 +1,14 @@
+.Xmodmap
+.Xresources
+.config/albert.conf
+.config/dunst
+.config/hypr
+.config/i3
+.config/kanshi
+.config/picom.conf
+.config/polybar
+.config/sway
+.config/swaylock
+.config/waybar
+.config/xdg-desktop-portal-wlr
+.fonts/
