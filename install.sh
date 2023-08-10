@@ -7,6 +7,7 @@ help() {
 Usage: bash install.sh [OPTIONS] --target [\$target_folder]
 --help        Show this message
 --linux
+--mac
 --vm
 --windows
 EOF
@@ -19,7 +20,7 @@ while getopts ':-:' flag; do
   case "${flag}" in
     -)
       case "${OPTARG}" in
-        linux|vm|windows)
+        linux|mac|vm|windows)
           TYPE=$OPTARG
           ;;
         target)
@@ -65,17 +66,16 @@ case $TYPE in
     run_rsync rsync-dotfiles-core dotfiles
     run_rsync rsync-dotfiles-linux dotfiles
     ;;
+  mac)
+    run_rsync rsync-dotfiles-core dotfiles
+    run_rsync rsync-dotfiles-mac dotfiles-mac
+    ;;
   vm)
     run_rsync rsync-dotfiles-vm dotfiles-vm
     ;;
   windows)
     run_rsync rsync-dotfiles-core dotfiles
     run_rsync rsync-dotfiles-windows dotfiles-windows
-    ;;
-  *)
-    echo "unknown type: $TYPE"
-    help
-    exit 1
     ;;
 esac
 
