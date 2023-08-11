@@ -1,0 +1,7 @@
+channels:
+  - conda-forge
+auto_activate_base: false
+changeps1: false
+envs_dirs:
+  - D:\conda_envs
+  - C:\conda_envs
