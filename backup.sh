@@ -7,6 +7,7 @@ help() {
 Usage: bash backup.sh [OPTIONS]
 --help        Show this message
 --linux
+--mac
 --vm
 --windows
 EOF
@@ -32,6 +33,10 @@ for opt in "$@"; do
     --linux)
       run_rsync rsync-dotfiles-core dotfiles
       run_rsync rsync-dotfiles-linux dotfiles
+      ;;
+    --mac)
+      run_rsync rsync-dotfiles-core dotfiles
+      run_rsync rsync-dotfiles-mac dotfiles-mac
       ;;
     --vm)
       run_rsync rsync-dotfiles-vm dotfiles-vm ;;
