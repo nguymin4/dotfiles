@@ -1,1 +1,1 @@
-pacman -Ss git zsh fish
+pacman -S git rsync zsh fish

@@ -3,7 +3,7 @@ wsl --install -d Ubuntu-22.04
 
 # Plugins:
 # - usbipd-win
-# - vscode wsl 2 plugin
+# - vscode wsl plugin
 
 # If we want to customize location
 function Change-WSL-Location {
