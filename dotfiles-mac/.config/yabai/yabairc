@@ -1,0 +1,37 @@
+#!/usr/bin/env sh
+
+# default layout (can be bsp, stack or float)
+yabai -m config layout bsp
+
+# new window spawns to the right if vertical split, or bottom if horizontal split
+yabai -m config window_placement second_child
+
+# padding
+yabai -m config                             \
+    top_padding                 5           \
+    bottom_padding              5           \
+    left_padding                5           \
+    right_padding               5           \
+    window_gap                  5
+
+# mouse
+yabai -m config                             \
+    mouse_follows_focus         off         \
+    focus_follows_mouse         off         \
+    mouse_modifier              fn          \
+    mouse_action1               move        \
+    mouse_action2               resize      \
+    mouse_drop_action           swap
+
+# windows apperances
+# TODO: Recheck. This may not work with SIP enabled
+# yabai -m config                             \
+#     window_shadow               float       \
+#     window_opacity              on          \
+#     active_window_opacity       1.0         \
+#     normal_window_opacity       0.9
+
+## float system preferences
+yabai -m rule --add app="(Preferences|Install|Parallels)" manage=off
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
