@@ -49,33 +49,32 @@ TARGET_FOLDER="${TARGET_FOLDER:-$HOME}"
 DOTFILES_ROOT="$(dirname $(realpath -s $0))"
 
 function run_rsync() {
-  rsync_file=$1
-  rsync_file_path="$DOTFILES_ROOT/$1"
-  source_folder="$DOTFILES_ROOT/$2"
+  rsync_file_path="$DOTFILES_ROOT/$1/rsync.conf"
+  source_folder="$DOTFILES_ROOT/$1/dotfiles"
 
   rsync -avi --recursive --relative --exclude='*.swp' --files-from="$rsync_file_path" $source_folder $TARGET_FOLDER
 
   echo ""
-  echo "Finished installing $rsync_file to $TARGET_FOLDER"
-  echo "================================================="
+  echo "Finished installing ${source_folder/$HOME/\~} to $TARGET_FOLDER"
+  echo "==============================================================="
   echo ""
 }
 
 case $TYPE in
   linux)
-    run_rsync rsync-dotfiles-core dotfiles
-    run_rsync rsync-dotfiles-linux dotfiles
+    run_rsync shared
+    run_rsync linux
     ;;
   mac)
-    run_rsync rsync-dotfiles-core dotfiles
-    run_rsync rsync-dotfiles-mac dotfiles-mac
+    run_rsync shared
+    run_rsync mac
     ;;
   vm)
-    run_rsync rsync-dotfiles-vm dotfiles-vm
+    run_rsync vm
     ;;
   windows)
-    run_rsync rsync-dotfiles-core dotfiles
-    run_rsync rsync-dotfiles-windows dotfiles-windows
+    run_rsync shared
+    run_rsync windows
     ;;
 esac
 
