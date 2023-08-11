@@ -8,4 +8,3 @@ scoop install go
 if (Check-Command -cmdname 'go') {
   go install github.com/mattn/efm-langserver@latest
 }
-
