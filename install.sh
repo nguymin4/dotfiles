@@ -48,14 +48,15 @@ TARGET_FOLDER="${TARGET_FOLDER:-$HOME}"
 DOTFILES_ROOT="$(dirname $(realpath -s $0))"
 
 function run_rsync() {
-  rsync_list="$DOTFILES_ROOT/$1"
+  rsync_file=$1
+  rsync_file_path="$DOTFILES_ROOT/$1"
   source_folder="$DOTFILES_ROOT/$2"
 
-  rsync -avi --recursive --relative --exclude='*.swp' --files-from="$rsync_list" $source_folder $TARGET_FOLDER
+  rsync -avi --recursive --relative --exclude='*.swp' --files-from="$rsync_file_path" $source_folder $TARGET_FOLDER
 
   echo ""
-  echo "Finished syncing dotfiles from $source_folder to $TARGET_FOLDER"
-  echo "==============================================================="
+  echo "Finished installing $rsync_file to $TARGET_FOLDER"
+  echo "================================================="
   echo ""
 }
 

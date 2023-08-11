@@ -15,14 +15,15 @@ EOF
 DOTFILES_ROOT="$(dirname $(realpath -s $0))"
 
 function run_rsync() {
-  rsync_list="$DOTFILES_ROOT/$1"
+  rsync_file=$1
+  rsync_file_path="$DOTFILES_ROOT/$rsync_file"
   target_folder="$DOTFILES_ROOT/$2"
 
-  rsync -avi --recursive --relative --delete --exclude='*.swp' --files-from="$rsync_list" $HOME $target_folder
+  rsync -avi --recursive --relative --delete --exclude='*.swp' --files-from="$rsync_file_path" $HOME $target_folder
 
   echo ""
-  echo "Finished syncing dotfiles from $HOME to $target_folder"
-  echo "==============================================================="
+  echo "Finished backing up $rsync_file to $target_folder"
+  echo "================================================="
   echo ""
 }
 
