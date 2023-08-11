@@ -16,33 +16,33 @@ EOF
 DOTFILES_ROOT="$(dirname $(realpath -s $0))"
 
 function run_rsync() {
-  rsync_file=$1
-  rsync_file_path="$DOTFILES_ROOT/$rsync_file"
-  target_folder="$DOTFILES_ROOT/$2"
+  rsync_file_path="$DOTFILES_ROOT/$1/rsync.conf"
+  target_folder="$DOTFILES_ROOT/$1/dotfiles"
 
   rsync -avi --recursive --relative --delete --exclude='*.swp' --files-from="$rsync_file_path" $HOME $target_folder
 
   echo ""
-  echo "Finished backing up $rsync_file to $target_folder"
-  echo "================================================="
+  echo "Finished backing up dotfiles to ${target_folder/$HOME/\~}"
+  echo "========================================================="
   echo ""
 }
 
 for opt in "$@"; do
   case $opt in
     --linux)
-      run_rsync rsync-dotfiles-core dotfiles
-      run_rsync rsync-dotfiles-linux dotfiles
+      run_rsync shared
+      run_rsync linux
       ;;
     --mac)
-      run_rsync rsync-dotfiles-core dotfiles
-      run_rsync rsync-dotfiles-mac dotfiles-mac
+      run_rsync shared
+      run_rsync mac
       ;;
     --vm)
-      run_rsync rsync-dotfiles-vm dotfiles-vm ;;
+      run_rsync vm
+      ;;
     --windows)
-      run_rsync rsync-dotfiles-core dotfiles
-      run_rsync rsync-dotfiles-windows dotfiles-windows
+      run_rsync shared
+      run_rsync windows
       ;;
     --help)
       help
