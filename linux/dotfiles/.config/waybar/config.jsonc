@@ -1,7 +1,6 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 24,
     "modules-left": [
         "sway/workspaces",
         "sway/mode"
@@ -44,7 +43,7 @@
     },
     "cpu": {
         "interval": 5,
-        "format": "  {usage}%",
+        "format": "  {usage}%",
         "states": {
             "warning": 60,
             "critical": 80
@@ -54,7 +53,7 @@
     },
     "memory": {
         "interval": 5,
-        "format": "  {}%", // Icon: memory
+        "format": "  {}%",
         "states": {
             "warning": 70,
             "critical": 90
@@ -82,14 +81,14 @@
         "scroll-step": 5,
         "format": "{icon}  {volume}%  [{desc}]",
         "format-icons": {
-            "muted": "",
+            "muted": "󰖁",
             "headphones": "",
             "handsfree": "",
             "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", ""]
+            "default": ["󰕾"]
         },
         "on-click": "BLOCK_BUTTON=1 ~/.config/waybar/blocks/volume-pulseaudio -dF 1",
         "on-click-middle": "BLOCK_BUTTON=2 ~/.config/waybar/blocks/volume-pulseaudio -dF 1",
