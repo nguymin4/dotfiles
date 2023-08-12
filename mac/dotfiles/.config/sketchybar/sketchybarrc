@@ -1,0 +1,72 @@
+#!/bin/bash
+
+source "$CONFIG_DIR/colors.sh"
+source "$CONFIG_DIR/icons.sh"
+
+ITEM_DIR="$CONFIG_DIR/items"
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+FONT="Ubuntu Nerd Font"
+PADDINGS=2
+
+# Bar Appearance
+bar=(
+  border_color=$BAR_BORDER_COLOR
+  border_width=2
+  color=$BAR_COLOR
+  height=32
+  margin=-2
+  padding_left=10
+  padding_right=10
+  position=top
+  shadow=off
+  sticky=on
+  topmost=window
+  y_offset=-5
+)
+
+sketchybar --bar "${bar[@]}"
+
+
+# Changing Defaults
+# https://felixkratz.github.io/SketchyBar/config/items
+defaults=(
+  background.border_width=2
+  background.corner_radius=9
+  background.height=26
+  icon.color=$ICON_COLOR
+  icon.font="$FONT:Bold:14.0"
+  icon.padding_left=$PADDINGS
+  icon.padding_right=$PADDINGS
+  label.color=$LABEL_COLOR
+  label.font="$FONT:Semibold:13.0"
+  label.padding_left=$PADDINGS
+  label.padding_right=$PADDINGS
+  padding_left=$PADDINGS
+  padding_right=$PADDINGS
+  popup.background.border_color=$POPUP_BORDER_COLOR
+  popup.background.border_width=2
+  popup.background.color=$POPUP_BACKGROUND_COLOR
+  popup.background.corner_radius=9
+  popup.background.shadow.drawing=on
+  popup.blur_radius=20
+  updates=when_shown
+)
+
+sketchybar --default "${defaults[@]}"
+
+# Left
+source "$ITEM_DIR/apple.sh"
+source "$ITEM_DIR/spaces.sh"
+
+# Right
+source "$ITEM_DIR/volume.sh"
+source "$ITEM_DIR/cpu.sh"
+source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/wifi.sh"
+source "$ITEM_DIR/calendar.sh"
+
+# Forcing all item scripts to run (never do this outside of sketchybarrc)
+sketchybar --update
+
+echo "sketchybar configuation loaded.."
