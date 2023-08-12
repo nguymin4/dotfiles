@@ -2,6 +2,7 @@ alias backup-dotfiles='bash $HOME/dotfiles/backup.sh'
 alias check-gpu='glxinfo | egrep "OpenGL vendor|OpenGL renderer*"'
 alias mux=tmuxp
 alias nvm=fnm
+alias restore-dotfiles='bash $HOME/dotfiles/restore.sh'
 alias switch-monitor='[[ $(xrandr | grep -w connected | wc -l) -gt 1 ]] && xrandr --output $(xrandr | grep eDP | cut -d " " -f 1) --off'
 alias system-clean='sudo apt autoremove --purge && sudo apt autoclean'
 alias system-update='sudo apt update && sudo apt full-upgrade -y'

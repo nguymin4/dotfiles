@@ -4,7 +4,7 @@ set -euo pipefail
 
 help() {
     cat <<- EOF
-Usage: bash install.sh [OPTIONS] --target [\$target_folder]
+Usage: bash restore.sh [OPTIONS] [TARGET_FOLDER]
 --help        Show this message
 --linux
 --mac
@@ -13,19 +13,13 @@ Usage: bash install.sh [OPTIONS] --target [\$target_folder]
 EOF
 }
 
-TYPE=''
-TARGET_FOLDER=''
-
+PLATFORM=''
 while getopts ':-:' flag; do
   case "${flag}" in
     -)
       case "${OPTARG}" in
         linux|mac|vm|windows)
-          TYPE=$OPTARG
-          ;;
-        target)
-          TARGET_FOLDER="${!OPTIND}";
-          OPTIND=$(( $OPTIND + 1 ))
+          PLATFORM=$OPTARG
           ;;
         help)
           help
@@ -33,18 +27,23 @@ while getopts ':-:' flag; do
           ;;
       esac;;
     *)
-      echo "unknown option: $flag"
+      echo "Unknown option: $flag"
       help
       exit 1
       ;;
   esac
 done
 
-if [[ -z $TYPE ]]; then
+# Last args
+shift $((OPTIND - 1))
+TARGET_FOLDER=$@
+
+if [[ -z $PLATFORM || $# > 1 ]]; then
   help
   exit 1
 fi
 
+# Execute syncing process
 TARGET_FOLDER="${TARGET_FOLDER:-$HOME}"
 DOTFILES_ROOT="$(dirname $(realpath -s $0))"
 
@@ -55,12 +54,12 @@ function run_rsync() {
   rsync -avi --recursive --relative --exclude='*.swp' --files-from="$rsync_file_path" $source_folder $TARGET_FOLDER
 
   echo ""
-  echo "Finished installing ${source_folder/$HOME/\~} to $TARGET_FOLDER"
+  echo "Finished restoring ${source_folder/$HOME/\~} to $TARGET_FOLDER"
   echo "==============================================================="
   echo ""
 }
 
-case $TYPE in
+case $PLATFORM in
   linux)
     run_rsync shared
     run_rsync linux
@@ -77,4 +76,3 @@ case $TYPE in
     run_rsync windows
     ;;
 esac
-
