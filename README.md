@@ -2,15 +2,15 @@
 
 Use `rsync` to backup and restore platform-specific dotfiles
 
-## Installation
+## Restore
 Sync platform-specific dotfiles to a folder (default: `$HOME`)
 
 ```bash
-bash install.sh --linux
+bash restore.sh --linux
 
 # OR
 
-bash install.sh --linux --target $HOME
+bash restore.sh --linux $HOME
 ```
 
 ## Backup

@@ -13,6 +13,30 @@ Usage: bash backup.sh [OPTIONS]
 EOF
 }
 
+PLATFORM=""
+for opt in "$@"; do
+  case $opt in
+    --linux|mac|vm|windows)
+      PLATFORM=$opt
+      ;;
+    --help)
+      help
+      exit 0
+      ;;
+    *)
+      echo "Unknown option: $opt"
+      help
+      exit 1
+      ;;
+  esac
+done
+
+if [[ -z $PLATFORM ]]; then
+  help
+  exit 1
+fi
+
+# Execute syncing process
 DOTFILES_ROOT="$(dirname $(realpath -s $0))"
 
 function run_rsync() {
@@ -27,31 +51,20 @@ function run_rsync() {
   echo ""
 }
 
-for opt in "$@"; do
-  case $opt in
-    --linux)
-      run_rsync shared
-      run_rsync linux
-      ;;
-    --mac)
-      run_rsync shared
-      run_rsync mac
-      ;;
-    --vm)
-      run_rsync vm
-      ;;
-    --windows)
-      run_rsync shared
-      run_rsync windows
-      ;;
-    --help)
-      help
-      exit 0
-      ;;
-    *)
-      echo "unknown option: $opt"
-      help
-      exit 1
-      ;;
-  esac
-done
+case $PLATFORM in
+  --linux)
+    run_rsync shared
+    run_rsync linux
+    ;;
+  --mac)
+    run_rsync shared
+    run_rsync mac
+    ;;
+  --vm)
+    run_rsync vm
+    ;;
+  --windows)
+    run_rsync shared
+    run_rsync windows
+    ;;
+esac
