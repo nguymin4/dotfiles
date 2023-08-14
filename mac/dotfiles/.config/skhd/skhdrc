@@ -1,20 +1,19 @@
 # focus window
-alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
 alt - h : yabai -m window --focus west
 alt - l : yabai -m window --focus east
 
-# swap managed window
-shift + alt - j : yabai -m window --swap south
-shift + alt - k : yabai -m window --swap north
-shift + alt - h : yabai -m window --swap west
-shift + alt - l : yabai -m window --swap east
-
 # move managed window
-ctrl + alt - j : yabai -m window --warp south
-ctrl + alt - k : yabai -m window --warp north
-ctrl + alt - h : yabai -m window --warp west
-ctrl + alt - l : yabai -m window --warp east
+# shift + alt - j : yabai -m window --swap south
+# shift + alt - k : yabai -m window --swap north
+# shift + alt - h : yabai -m window --swap west
+# shift + alt - l : yabai -m window --swap east
+
+shift + alt - j : ~/.config/yabai/yabai_move.sh south
+shift + alt - k : ~/.config/yabai/yabai_move.sh north
+shift + alt - h : ~/.config/yabai/yabai_move.sh west
+shift + alt - l : ~/.config/yabai/yabai_move.sh east
 
 # move window to prev and next workspace
 shift + alt - p : yabai -m window --space prev;
@@ -32,27 +31,58 @@ shift + alt - 8 : yabai -m window --space 8;
 shift + alt - 9 : yabai -m window --space 9;
 
 # Focus to a workspace - Prerequisite: Setup in Mission Control
-alt - 1 : yabai -m display --focus $(yabai -m query --displays --space 1 | jq '.index'); skhd -k "ctrl - 1"
-alt - 2 : yabai -m display --focus $(yabai -m query --displays --space 2 | jq '.index'); skhd -k "ctrl - 2"
-alt - 3 : yabai -m display --focus $(yabai -m query --displays --space 3 | jq '.index'); skhd -k "ctrl - 3"
-alt - 4 : yabai -m display --focus $(yabai -m query --displays --space 4 | jq '.index'); skhd -k "ctrl - 4"
-alt - 5 : yabai -m display --focus $(yabai -m query --displays --space 5 | jq '.index'); skhd -k "ctrl - 5"
-alt - 6 : yabai -m display --focus $(yabai -m query --displays --space 6 | jq '.index'); skhd -k "ctrl - 6"
-alt - 7 : yabai -m display --focus $(yabai -m query --displays --space 7 | jq '.index'); skhd -k "ctrl - 7"
-alt - 8 : yabai -m display --focus $(yabai -m query --displays --space 8 | jq '.index'); skhd -k "ctrl - 8"
-alt - 9 : yabai -m display --focus $(yabai -m query --displays --space 9 | jq '.index'); skhd -k "ctrl - 9"
+alt - 1 : yabai -m display --focus $(yabai -m query --displays --space 1 | jq '.index'); skhd -k "ctrl - 1";
+alt - 2 : yabai -m display --focus $(yabai -m query --displays --space 2 | jq '.index'); skhd -k "ctrl - 2";
+alt - 3 : yabai -m display --focus $(yabai -m query --displays --space 3 | jq '.index'); skhd -k "ctrl - 3";
+alt - 4 : yabai -m display --focus $(yabai -m query --displays --space 4 | jq '.index'); skhd -k "ctrl - 4";
+alt - 5 : yabai -m display --focus $(yabai -m query --displays --space 5 | jq '.index'); skhd -k "ctrl - 5";
+alt - 6 : yabai -m display --focus $(yabai -m query --displays --space 6 | jq '.index'); skhd -k "ctrl - 6";
+alt - 7 : yabai -m display --focus $(yabai -m query --displays --space 7 | jq '.index'); skhd -k "ctrl - 7";
+alt - 8 : yabai -m display --focus $(yabai -m query --displays --space 8 | jq '.index'); skhd -k "ctrl - 8";
+alt - 9 : yabai -m display --focus $(yabai -m query --displays --space 9 | jq '.index'); skhd -k "ctrl - 9";
 
-# manage yabai services
-shift + alt - e : yabai --stop-service
-shift + alt - s : yabai --start-service
-shift + alt - r : yabai --restart-service
+# split in vertical
+alt - v : yabai -m config split_type vertical;
+
+# split in horizontal
+shift + alt - v : yabai -m window --toggle split;
 
 # toggle window zoom
 # alt - d : yabai -m window --toggle zoom-parent
 alt - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window float
-alt - space : yabai -m window --toggle float --grid 4:4:1:1:2:2
+shift + alt - space : yabai -m window --toggle float --grid 4:4:1:1:2:2
+
+# resize windows
+ctrl + cmd - h : yabai -m window --resize right:-40:0 2> /dev/null || yabai -m window --resize left:-40:0 2> /dev/null
+ctrl + cmd - j : yabai -m window --resize bottom:0:40 2> /dev/null || yabai -m window --resize top:0:40 2> /dev/null
+ctrl + cmd - k : yabai -m window --resize bottom:0:-40 2> /dev/null || yabai -m window --resize top:0:-40 2> /dev/null
+ctrl + cmd - l : yabai -m window --resize right:40:0 2> /dev/null || yabai -m window --resize left:40:0 2> /dev/null
 
 # disable hide windows
 cmd - h : :
+
+# quit app -> close window
+cmd - q : skhd -k "cmd - w";
+shift + alt - q : skhd -k "cmd - w";
+
+# lock screen
+ctrl + alt - l : skhd -k "ctrl + cmd - q";
+
+# movement
+ctrl - left: skhd -k "alt - left"
+ctrl - right: skhd -k "alt - right"
+shift + ctrl - left: skhd -k "shift + alt - left"
+shift + ctrl - right: skhd -k "shift + alt - right"
+
+# applications
+alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty -o \
+  font.size=16 \
+  window.decorations=buttonless \
+  window.padding.y=10
+
+# manage yabai services
+shift + alt - e : yabai --stop-service
+shift + alt - s : yabai --start-service
+shift + alt - r : yabai --restart-service
