@@ -1,0 +1,136 @@
+{
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.cursorBlinking": "solid",
+  "editor.detectIndentation": true,
+  "editor.fontFamily": "UbuntuMono Nerd Font Mono",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.insertSpaces": true,
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false,
+  "editor.mouseWheelZoom": false,
+  "editor.tabSize": 2,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          "comment"
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      }
+    ]
+  },
+  "editor.wordWrap": "on",
+  "editor.wrappingIndent": "none",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "extensions.ignoreRecommendations": true,
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": false,
+    "suppressNoRepositoryWarning": false,
+  },
+  "git.enableSmartCommit": true,
+  "gitlens.keymap": "alternate",
+  "javascript.preferences.quoteStyle": "single",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "julia.enableTelemetry": false,
+  "julia.symbolCacheDownload": true,
+  "jupyter.askForKernelRestart": false,
+  "jupyter.debugJustMyCode": false,
+  "markdown-pdf.displayHeaderFooter": false,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "notebook.lineNumbers": "on",
+  "notebook.markup.fontSize": 16,
+  "python.terminal.activateEnvironment": false,
+  "[python]": {
+    "editor.formatOnType": false
+  },
+  "redhat.telemetry.enabled": false,
+  "remote.SSH.foldersSortOrder": "alphabetical",
+  "remote.SSH.showLoginTerminal": true,
+  "terminal.integrated.commandsToSkipShell": [
+    "extension.vim_navigateUp",
+    "extension.vim_navigateDown",
+    "extension.vim_navigateLeft",
+    "extension.vim_navigateRight",
+    "language-julia.interrupt"
+  ],
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.enablePersistentSessions": false,
+  "terminal.integrated.fontFamily": "UbuntuMono Nerd Font Mono",
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.fontWeightBold": "normal",
+  "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.lineHeight": 1,
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+  "typescript.check.npmIsInstalled": false,
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/usr/bin/nvim",
+  "vim.replaceWithRegister": true,
+  "vim.ignorecase": false,
+  "vim.mouseSelectionGoesIntoVisualMode": false,
+  "vim.hlsearch": true,
+  "vim.handleKeys": {
+    "<C-f>": true,
+    "<C-b>": true,
+    "<C-h>": true,
+    "<C-j>": true,
+    "<C-k>": true,
+    "<C-l>": true
+  },
+  "vim.statusBarColorControl": false,
+  "vim.statusBarColors.insert": "#718c00",
+  "vim.statusBarColors.normal": "#4271ae",
+  "vim.statusBarColors.replace": "#005f87",
+  "vim.statusBarColors.visual": "#3e999f",
+  "vim.statusBarColors.visualblock": "#8959a8",
+  "vim.statusBarColors.visualline": "#8959a8",
+  "vim.useSystemClipboard": true,
+  "vim.visualstar": true,
+  "vsicons.dontShowNewVersionMessage": true,
+  "window.titleBarStyle": "native",
+  "window.menuBarVisibility": "toggle",
+  "workbench.activityBar.visible": true,
+  "workbench.sideBar.location": "left",
+  "workbench.tree.indent": 20,
+  "workbench.editor.showTabs": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.colorTheme": "Tomorrow",
+  "workbench.colorCustomizations": {
+    "terminal.background": "#FFFFFF",
+    "terminal.foreground": "#4D4D4C",
+    "terminal.ansiWhite": "#EFEFEF",
+    "terminal.ansiBrightWhite": "#EFEFEF",
+    "terminal.ansiBlack": "#8E908C",
+    "terminal.ansiBrightBlack": "#AEAFAD",
+    "terminal.ansiRed": "#C82829",
+    "terminal.ansiBrightRed": "#C82829",
+    "terminal.ansiGreen": "#718C00",
+    "terminal.ansiBrightGreen": "#718C00",
+    "terminal.ansiMagenta": "#8959A8",
+    "terminal.ansiBrightMagenta": "#8959A8",
+    "terminal.ansiBlue": "#4171AE",
+    "terminal.ansiBrightBlue": "#4171AE",
+    "terminal.ansiCyan": "#3E999F",
+    "terminal.ansiBrightCyan": "#3E999F",
+    "terminal.ansiYellow": "#C99E00",
+    "terminal.ansiBrightYellow": "#C99E00",
+  },
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  }
+}
