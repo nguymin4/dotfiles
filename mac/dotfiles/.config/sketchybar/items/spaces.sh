@@ -6,10 +6,7 @@ SPACE_ICONS=(
   "3: "
   "4: "
   "5: "
-  "6: "
-  "7: 󰦨"
-  "8: 󰦨"
-  "9: 󰦨"
+  "6: 󰦨"
 )
 
 for i in "${!SPACE_ICONS[@]}"; do
@@ -20,7 +17,7 @@ for i in "${!SPACE_ICONS[@]}"; do
     background.color=$BACKGROUND_1
     background.drawing=off
     click_script="skhd -k 'alt - $sid'"
-    icon.highlight_color=$RED
+    icon.highlight_color=$GREEN
     icon.padding_left=10
     icon.padding_right=10
     icon="${SPACE_ICONS[i]}"
