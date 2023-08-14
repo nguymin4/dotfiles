@@ -2,10 +2,14 @@
 
 set -euo pipefail
 
-brew install bat cmake fd git gnu-sed htop jq mkcert neofetch nmap ranger tig watchman
+brew install bat cmake coreutils fd git gnu-sed htop jq mkcert neofetch nmap ranger tig watchman
+
+sudo ln -sf /opt/homebrew/bin/python3 /opt/homebrew/bin/python
+sudo ln -sf /opt/homebrew/bin/pip3 /opt/homebrew/bin/pip
 
 # Check cloud components installation
 brew install --cask alacritty google-cloud-sdk visual-studio-code
+xattr -rd com.apple.quarantine /Applications/Alacritty.app
 
 # Fonts
 brew tap homebrew/cask-fonts
