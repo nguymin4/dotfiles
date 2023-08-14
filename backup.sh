@@ -16,7 +16,7 @@ EOF
 PLATFORM=""
 for opt in "$@"; do
   case $opt in
-    --linux|mac|vm|windows)
+    --linux|--mac|--vm|--windows)
       PLATFORM=$opt
       ;;
     --help)
@@ -37,7 +37,7 @@ if [[ -z $PLATFORM ]]; then
 fi
 
 # Execute syncing process
-DOTFILES_ROOT="$(dirname $(realpath -s $0))"
+DOTFILES_ROOT="$(dirname $(realpath $0))"
 
 function run_rsync() {
   rsync_file_path="$DOTFILES_ROOT/$1/rsync.conf"

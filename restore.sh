@@ -45,7 +45,7 @@ fi
 
 # Execute syncing process
 TARGET_FOLDER="${TARGET_FOLDER:-$HOME}"
-DOTFILES_ROOT="$(dirname $(realpath -s $0))"
+DOTFILES_ROOT="$(dirname $(realpath $0))"
 
 function run_rsync() {
   rsync_file_path="$DOTFILES_ROOT/$1/rsync.conf"
