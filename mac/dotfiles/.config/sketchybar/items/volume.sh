@@ -9,7 +9,7 @@ volume_slider=(
   slider.background.height=5
   slider.highlight_color=$BLUE
   slider.knob.drawing=off
-  slider.knob=􀀁
+  slider.knob=
   updates=on
 )
 

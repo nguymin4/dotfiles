@@ -9,4 +9,4 @@ rm -rf ~/.tmux/plugins/tpm && git clone https://github.com/tmux-plugins/tpm ~/.t
 bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
 # powerline-status
-pip install --user git+https://github.com/powerline/powerline
+pip install git+https://github.com/powerline/powerline
