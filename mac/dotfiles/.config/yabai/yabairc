@@ -27,3 +27,4 @@ yabai -m config                             \
 yabai -m rule --add app="(Preferences|Install|Parallels)" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app=ueli sticky=on manage=off
