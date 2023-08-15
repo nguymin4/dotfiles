@@ -1,9 +1,7 @@
-[user]
-  name = Minh Son Nguyen
-  email = minh.son.nguyen.1209@gmail.com
-[github]
-  user = nguymin4
-  email = minh.son.nguyen.1209@gmail.com
+[includeIf "hasconfig:remote.*.url:git@github.com:nguymin4/**"]
+  path = ~/.gitconfig-github
+[includeIf "gitdir:~/Work/"]
+  path = ~/.gitconfig-work
 [core]
   editor = vim
   autocrlf = input
