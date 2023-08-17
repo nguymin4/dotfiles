@@ -20,7 +20,7 @@ function install_fnm() {
 
 # Optional
 function install_misc() {
-  brew install btop juliaup libpq ministati stress-ng tfenv
+  brew install ansible btop juliaup libpq ministat stress-ng tfenv
 }
 
 # pyenv
