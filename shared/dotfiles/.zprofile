@@ -7,7 +7,6 @@ HOMEBREW_BINS=(
 )
 
 for HOMEBREW_BIN in $HOMEBREW_BINS; do
-  echo $HOMEBREW_BIN
   if [[ -f $HOMEBREW_BIN ]]; then
     eval "$($HOMEBREW_BIN shellenv)"
     break
