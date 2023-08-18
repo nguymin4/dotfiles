@@ -2,5 +2,5 @@
 
 - [ ] Run installation scripts
 - [ ] Change keyboard modifiers: `System Settings > Keyboard > Keyboard Shortcuts > Modifier Keys`
-- [ ] Change keyboard shortcuts e.g spotlight: `System Settings > Keyboard > Keyboard Shortcuts`
-- [ ] Disable autostart apps: `System Preferences > Users & Groups > Login Items`
+    - MacBook internal keyboard: CapsLock -> Esc
+    - PC external keyboard: CapsLock -> Esc, Options -> Cmd, Cmd -> Options

@@ -11,10 +11,10 @@ brew install koekeishiya/formulae/skhd
 # NOTES: Change these settings
 # - Accessibility > Reduce Motion -> on
 # - Desktop & Dock > Automatically rearrange Spaces based on recently used -> off
+# - Setup multiple spaces
 # - Mission Control
-#   - > Enable Switch to Desktop 1, 2, 3
-#   - > Disable move to next and previous Desktop (to navigate between words instead)
-# Note: This requires setup multiple spaces first
+#   - > Enable: Switch to Desktop 1, 2, 3
+#   - > Disable: Move to next and previous Desktop (to navigate between words instead)
 
 # TODO:
 # - Check window stack: https://github.com/AdamWagner/stackline

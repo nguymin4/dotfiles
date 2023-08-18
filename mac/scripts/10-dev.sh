@@ -18,7 +18,7 @@ function install_fnm() {
   fnm install --lts && fnm use lts-latest && npm install -g yarn
 }
 
-# Optional
+# misc
 function install_misc() {
   brew install ansible btop juliaup libpq ministat stress-ng tfenv
 }
@@ -37,7 +37,6 @@ EOH
 # Print CLI usage
 help() {
   cat << EOF
-
 Usage: $0 [OPTIONS]
 
     --help               Show this message
