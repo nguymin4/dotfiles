@@ -33,7 +33,6 @@ endif
 
 source ~/.vim/config/nvim-cmp.vim
 source ~/.vim/config/nvim-tree.vim
-source ~/.vim/config/mux-navigator.vim
 source ~/.vim/config/languages.vim
 source ~/.vim/config/visual.vim
 source ~/.vim/config/theme.vim
@@ -48,7 +47,6 @@ if has('nvim')
   endif
   call SetupNvimTree()
   call SetupTelescopeNvim()
-  call SetupWezTermNavigator()
 else
   nnoremap <Leader>t :Lexplore<CR>
 endif
