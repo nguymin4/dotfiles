@@ -7,7 +7,7 @@ scoop bucket add versions
 scoop install git neovim starship ack wget fnm fd bat pwsh refreshenv msys2
 
 # UI
-scoop install vscode alacritty wezterm glazewm flow-launcher autohotkey
+scoop install vscode alacritty glazewm flow-launcher autohotkey
 
 # Fonts
 scoop bucket add nerd-fonts
