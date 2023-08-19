@@ -18,11 +18,3 @@ brew install koekeishiya/formulae/skhd
 
 # TODO:
 # - Check window stack: https://github.com/AdamWagner/stackline
-
-
-# sketchybar
-brew install FelixKratz/formulae/sketchybar
-chmod u+x ~/.config/sketchybar/plugins/*
-# brew services start sketchybar
-
-# Hide the default macOS menu bar in System Settings -> Desktop & Dock -> Automatically hide and show the menu bar -> Always
