@@ -49,6 +49,12 @@ if command -v fnm &> /dev/null; then
   eval "`fnm env --use-on-cd`"
 fi
 
+# homebrew
+if command -v brew &> /dev/null; then
+  gcloud_autocomplete="$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+  [ -f "$gcloud_autocomplete" ] && source $gcloud_autocomplete;
+fi
+
 # pyenv
 export GIT_INTERNAL_GETTEXT_TEST_FALLBACKS=1
 export PYTHONDONTWRITEBYTECODE=1
