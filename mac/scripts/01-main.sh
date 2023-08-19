@@ -4,8 +4,9 @@ set -euo pipefail
 
 brew install bat cmake coreutils fd git gnu-sed htop jq mkcert neofetch nmap ranger tig watchman
 
-sudo ln -sf /opt/homebrew/bin/python3 /opt/homebrew/bin/python
+ln -sf /opt/homebrew/opt/gnu-sed/libexec/gnubin/sed ~/.local/bin/sed
 sudo ln -sf /opt/homebrew/bin/pip3 /opt/homebrew/bin/pip
+sudo ln -sf /opt/homebrew/bin/python3 /opt/homebrew/bin/python
 
 # Check cloud components installation
 brew install --cask alacritty google-cloud-sdk spaceid stats ueli visual-studio-code
