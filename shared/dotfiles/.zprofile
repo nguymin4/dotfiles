@@ -3,6 +3,7 @@
 # homebrew
 HOMEBREW_BINS=(
   /opt/homebrew/bin/brew
+  /home/linuxbrew/.linuxbrew/bin/brew
   ~/.homebrew/bin/brew
 )
 
