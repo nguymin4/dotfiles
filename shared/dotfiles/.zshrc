@@ -51,8 +51,13 @@ fi
 
 # homebrew
 if command -v brew &> /dev/null; then
+  # gcloud
   gcloud_autocomplete="$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
   [ -f "$gcloud_autocomplete" ] && source $gcloud_autocomplete;
+
+  # sdkman
+  export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+  [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 fi
 
 # pyenv

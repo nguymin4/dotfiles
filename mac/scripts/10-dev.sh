@@ -27,10 +27,26 @@ function install_misc() {
 function install_pyenv() {
   brew install pyenv pyenv-virtualenv
   [[ ! $(grep 'PYENV' ~/.zprofile) ]] && cat <<-'EOH' >> ~/.zprofile
+
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 [ -s "$PYENV_ROOT/bin/pyenv" ] && eval "$(pyenv init --path)"
 EOH
+}
+
+# skdman
+function install_sdkman() {
+  brew tap sdkman/tap
+  brew install sdkman-cli
+
+  # there is an issue with sdkman-init.sh unbound shell variables
+  set +u
+  SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+  [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+  sdk install java 11.0.19-ms
+  sdk install maven
+  set -u
 }
 
 
@@ -44,6 +60,7 @@ Usage: $0 [OPTIONS]
     --fnm
     --misc
     --pyenv
+    --sdkman
 EOF
 }
 
@@ -62,9 +79,10 @@ for opt in "$@"; do
       )
       break
       ;;
-    --fnm)        install_fns+=(install_fnm) ;;
-    --misc)      install_fns+=(install_misc) ;;
-    --pyenv)      install_fns+=(install_pyenv) ;;
+    --fnm)      install_fns+=(install_fnm) ;;
+    --misc)     install_fns+=(install_misc) ;;
+    --pyenv)    install_fns+=(install_pyenv) ;;
+    --sdkman)   install_fns+=(install_sdkman) ;;
     *)
       echo "unknown option: $opt"
       help
