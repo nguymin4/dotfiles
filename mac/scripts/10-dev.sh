@@ -39,6 +39,7 @@ EOH
 function install_sdkman() {
   brew tap sdkman/tap
   brew install sdkman-cli
+  brew install jdtls
 
   # there is an issue with sdkman-init.sh unbound shell variables
   set +u

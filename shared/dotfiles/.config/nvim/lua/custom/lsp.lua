@@ -71,6 +71,13 @@ lspconfig.efm.setup({
   }
 })
 
+-- jdtls
+if vim.fn.executable('jdtls') == 1 then
+  lspconfig.jdtls.setup({
+    capabilities = lsp_capabilities
+  })
+end
+
 -- LSP function signature
 local lsp_signature_ok, lsp_signature = pcall(require, 'lsp_signature')
 if lsp_signature_ok then
