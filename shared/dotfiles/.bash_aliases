@@ -9,8 +9,3 @@ alias system-update='sudo apt update && sudo apt full-upgrade -y'
 alias test-truecolor='printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"'
 alias vi=nvim
 alias vscode=code
-
-# In Ubuntu, fd is fdfind
-if command -v fdfind &> /dev/null; then
-  alias fd=fdfind
-fi
