@@ -13,4 +13,4 @@ bash ./install-custom-plugins.sh
 # fzf
 sudo apt install -y fd-find bat
 rm -rf ~/.fzf && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install --bin --completion --key-bindings
+~/.fzf/install --all --no-update-rc
