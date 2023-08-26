@@ -49,27 +49,28 @@ lspconfig.pyright.setup({
 })
 
 -- EFM-langserver
-lspconfig.efm.setup({
-  init_options = { documentFormatting = true },
-  settings = {
-    rootMarkers = { '.git/' },
-    languages = {
-      python = {
-        {
-          formatCommand = 'black -q -',
-          formatStdin = true
-        },
-        {
-          lintCommand = 'flake8 --stdin-display-name ${INPUT} -',
-          lintStdin = true,
-          lintIgnoreExitCode = true,
-          lintFormats = { '%f:%l:%c: %m' },
-          lintSource = 'flake8',
-        },
-      }
-    }
+local efmls_configs_ok, _ = pcall(require, 'efmls-configs.defaults')
+if efmls_configs_ok then
+  local efmls_languages = {
+    python = {
+      require('efmls-configs.formatters.black'),
+      require('efmls-configs.linters.flake8'),
+    },
   }
-})
+
+  lspconfig.efm.setup({
+    capabilities = lsp_capabilities,
+    filetypes = vim.tbl_keys(efmls_languages),
+    settings = {
+      rootMarkers = { '.git/' },
+      languages = efmls_languages,
+    },
+    init_options = {
+      documentFormatting = true,
+      documentRangeFormatting = true,
+    },
+  })
+end
 
 -- jdtls
 if vim.fn.executable('jdtls') == 1 then

@@ -11,6 +11,7 @@ Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'creativenull/efmls-configs-nvim'
 
 " vsnip
 Plug 'hrsh7th/cmp-vsnip'
