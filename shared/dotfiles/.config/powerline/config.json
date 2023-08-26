@@ -6,10 +6,6 @@
 		"tmux": {
 			"colorscheme": "onedark",
 			"theme": "default"
-		},
-		"shell": {
-			"colorscheme": "default",
-			"theme": "default_leftonly"
 		}
 	}
 }
