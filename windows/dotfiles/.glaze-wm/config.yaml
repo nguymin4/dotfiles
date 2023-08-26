@@ -3,11 +3,10 @@ gaps:
   outer_gap: 10
 
 general:
-  # Whether to show floating windows as always on top.
   show_floating_on_top: true
 
 bar:
-  height: "36px"
+  height: "32px"
   position: "top"
   opacity: 1.0
   background: "#2f343fd9"
@@ -37,7 +36,6 @@ bar:
       label_power_saver: "   {battery_level}% (power saver)"
       label_charging: " {battery_level}%"
     - type: "clock"
-      # Documentation on formatting date/time string:
       # https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings
       time_formatting: "ddd MMM d   hh:mm tt"
       margin: "0 5px 0 10px"
@@ -60,8 +58,7 @@ workspaces:
   - name: "9"
 
 window_rules:
-  # Task Manager requires admin privileges to manage and should be ignored unless running
-  # the WM as admin.
+  # Task Manager requires admin privileges to manage and should be ignored unless running the WM as admin.
   - command: "ignore"
     match_process_name: "Taskmgr"
 
@@ -157,8 +154,7 @@ keybindings:
   - command: "reload config"
     binding: "Alt+Shift+R"
 
-  # Launch CMD terminal (alternatively `exec wt` or `exec %ProgramFiles%/Git/git-bash.exe`
-  # to start Windows Terminal and Git Bash respectively.
+  # Launch terminal (alternatively `exec wt`)
   - command: "exec \"%HOME%/scoop/apps/alacritty/current/alacritty.exe\" --config-file .config/alacritty/alacritty.yml -e pwsh.exe"
     binding: "Alt+Enter"
 
