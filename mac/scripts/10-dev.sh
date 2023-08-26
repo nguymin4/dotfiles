@@ -4,7 +4,7 @@ set -euo pipefail
 
 # docker
 function install_docker() {
-  brew install docker
+  brew install colima docker docker-compose kubectl
 
   # docker compose as plugin
   mkdir -p ~/.docker/cli-plugins
@@ -25,7 +25,8 @@ function install_misc() {
 
 # pyenv
 function install_pyenv() {
-  brew install pyenv pyenv-virtualenv
+  rm -rf ~/.pyenv && git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+  git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
   [[ ! $(grep 'PYENV' ~/.zprofile) ]] && cat <<-'EOH' >> ~/.zprofile
 
 # pyenv
@@ -58,6 +59,7 @@ Usage: $0 [OPTIONS]
 
     --help               Show this message
     --all                Install all dev tools
+    --docker
     --fnm
     --misc
     --pyenv
@@ -80,6 +82,7 @@ for opt in "$@"; do
       )
       break
       ;;
+    --docker)   install_fns+=(install_docker) ;;
     --fnm)      install_fns+=(install_fnm) ;;
     --misc)     install_fns+=(install_misc) ;;
     --pyenv)    install_fns+=(install_pyenv) ;;
