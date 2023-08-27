@@ -67,7 +67,7 @@ fi
 export GIT_INTERNAL_GETTEXT_TEST_FALLBACKS=1
 export PYTHONDONTWRITEBYTECODE=1
 export TFHUB_CACHE_DIR=$HOME/.tfhub_modules
-if [ -s "$PYENV_ROOT/bin/pyenv" ]; then
+if command -v pyenv &> /dev/null; then
   export PYENV_VIRTUALENV_DISABLE_PROMPT=1
   export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
   eval "$(pyenv init - --no-rehash zsh)"
