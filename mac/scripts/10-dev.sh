@@ -54,8 +54,9 @@ function install_sdkman() {
 
   # there is an issue with sdkman-init.sh unbound shell variables
   set +u
-  SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
-  [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+  export SDKMAN_DIR="$HOMEBREW_PREFIX/opt/sdkman-cli/libexec"
+  sdkman_init="${SDKMAN_DIR}/bin/sdkman-init.sh"
+  [[ -s "$sdkman_init" ]] && source "$sdkman_init"
   sdk install java 11.0.19-ms
   sdk install maven
   set -u
