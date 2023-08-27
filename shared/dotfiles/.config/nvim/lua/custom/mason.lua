@@ -22,12 +22,15 @@ mason.setup({
 mason_lspconfig.setup({
   automatic_installation = false,
   ensure_installed = {
+    'ansiblels',
+    'bashls',
     'cssls',
     'eslint',
     'html',
     'jsonls',
     'julials',
     'pyright',
+    'terraformls',
     'tsserver',
     'yamlls',
   },

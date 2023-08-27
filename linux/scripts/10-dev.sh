@@ -32,7 +32,7 @@ function install_juliaup() {
 
 # misc
 function install_misc() {
-  brew install ansible btop mkcert stress-ng tfenv watchman
+  brew install ansible ansible-lint btop mkcert stress-ng tfenv watchman
 }
 
 # PgAdmin4
@@ -87,6 +87,7 @@ for opt in "$@"; do
         install_juliaup
         install_misc
         install_pyenv
+        install_sdkman
       )
       break
       ;;
