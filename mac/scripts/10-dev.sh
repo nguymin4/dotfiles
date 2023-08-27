@@ -8,13 +8,13 @@ function install_docker() {
 
   # docker compose as plugin
   mkdir -p ~/.docker/cli-plugins
-  ln -sfn $HOMEBREW_PREFIX/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
+  ln -sfn "$HOMEBREW_PREFIX/opt/docker-compose/bin/docker-compose" ~/.docker/cli-plugins/docker-compose
 }
 
 # fnm
 function install_fnm() {
   brew install fnm
-  eval "`fnm env --use-on-cd`"
+  eval "$(fnm env --use-on-cd)"
   fnm install --lts && fnm use lts-latest && npm install -g yarn
 }
 
@@ -32,15 +32,15 @@ function install_misc() {
 # pyenv
 function install_pyenv() {
   brew install pyenv pyenv-virtualenv
-
-  [[ ! $(grep 'pyenv init' ~/.zprofile) ]] && cat <<-'EOH' >> ~/.zprofile
-
+  if ! grep -Fq 'pyenv init' ~/.zprofile; then
+    cat <<-'EOH' >> ~/.zprofile
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 if command -v pyenv &> /dev/null; then
   eval "$(pyenv init --path)"
 fi
 EOH
+  fi
 }
 
 # skdman

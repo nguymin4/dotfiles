@@ -2,13 +2,14 @@
 
 set -euo pipefail
 
-dotfiles_root="$(dirname $(realpath $0))/../.."
-mac_script=$(realpath $dotfiles_root/mac/scripts/10-dev.sh)
+linux_script_folder=$(dirname "$(realpath "$0")")
+dotfiles_root="$linux_script_folder/../.."
+mac_dev_script=$(realpath "$dotfiles_root/mac/scripts/10-dev.sh")
 
 
 # fnm
 function install_fnm() {
-  bash $mac_script --fnm
+  bash "$mac_dev_script" --fnm
 }
 
 # gcloud
@@ -26,7 +27,7 @@ function install_heroku() {
 
 # juliaup
 function install_juliaup() {
-  bash $mac_script --juliaup
+  bash "$mac_dev_script" --juliaup
 }
 
 # misc
@@ -43,12 +44,12 @@ function install_pgadmin4() {
 
 # pyenv
 function install_pyenv() {
-  bash $mac_script --pyenv
+  bash "$mac_dev_script" --pyenv
 }
 
 # sdkman
 function install_sdkman() {
-  bash $mac_script --sdkman
+  bash "$mac_dev_script" --sdkman
 }
 
 

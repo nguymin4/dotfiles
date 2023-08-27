@@ -40,4 +40,4 @@ sudo apt install -y postgresql-client vlc pinta cmus piper ministat youtubedl-gu
 
 # brightnessctl
 sudo apt install -y brightnessctl
-sudo usermod -aG video ${USER}
+sudo usermod -aG video "$(whoami)"

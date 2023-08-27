@@ -37,13 +37,13 @@ if [[ -z $PLATFORM ]]; then
 fi
 
 # Execute syncing process
-DOTFILES_ROOT="$(dirname $(realpath $0))"
+DOTFILES_ROOT=$(dirname "$(realpath "$0")")
 
 function run_rsync() {
   rsync_file_path="$DOTFILES_ROOT/$1/rsync.conf"
   target_folder="$DOTFILES_ROOT/$1/dotfiles"
 
-  rsync -avi --recursive --relative --delete --exclude='*.swp' --files-from="$rsync_file_path" $HOME $target_folder
+  rsync -avi --recursive --relative --delete --exclude='*.swp' --files-from="$rsync_file_path" "$HOME" "$target_folder"
 
   echo ""
   echo "Finished backing up dotfiles to ${target_folder/$HOME/\~}"

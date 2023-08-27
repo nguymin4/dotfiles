@@ -36,22 +36,22 @@ done
 
 # Last args
 shift $((OPTIND - 1))
-TARGET_FOLDER=$@
+TARGET_FOLDER="$*"
 
-if [[ -z $PLATFORM || $# > 1 ]]; then
+if [[ -z $PLATFORM || $# -gt 1 ]]; then
   help
   exit 1
 fi
 
 # Execute syncing process
 TARGET_FOLDER="${TARGET_FOLDER:-$HOME}"
-DOTFILES_ROOT="$(dirname $(realpath $0))"
+DOTFILES_ROOT=$(dirname "$(realpath "$0")")
 
 function run_rsync() {
   rsync_file_path="$DOTFILES_ROOT/$1/rsync.conf"
   source_folder="$DOTFILES_ROOT/$1/dotfiles"
 
-  rsync -avi --recursive --relative --exclude='*.swp' --files-from="$rsync_file_path" $source_folder $TARGET_FOLDER
+  rsync -avi --recursive --relative --exclude='*.swp' --files-from="$rsync_file_path" "$source_folder" "$TARGET_FOLDER"
 
   echo ""
   echo "Finished restoring ${source_folder/$HOME/\~} to $TARGET_FOLDER"
