@@ -25,7 +25,7 @@ function install_juliaup() {
 
 # misc
 function install_misc() {
-  brew install ansible ansible-lint btop libpq mkcert stress-ng tfenv watchman
+  brew install ansible ansible-lint libpq mkcert stress-ng tfenv watchman
 }
 
 

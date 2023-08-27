@@ -32,7 +32,7 @@ function install_juliaup() {
 
 # misc
 function install_misc() {
-  brew install ansible ansible-lint btop mkcert stress-ng tfenv watchman
+  bash "$mac_dev_script" --misc
 }
 
 # PgAdmin4
