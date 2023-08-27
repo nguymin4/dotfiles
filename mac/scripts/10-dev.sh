@@ -18,14 +18,21 @@ function install_fnm() {
   fnm install --lts && fnm use lts-latest && npm install -g yarn
 }
 
+# juliaup
+function install_juliaup() {
+  curl -fsSL https://install.julialang.org | sh
+}
+
 # misc
 function install_misc() {
-  brew install ansible btop juliaup libpq ministat stress-ng tfenv
+  brew install ansible btop libpq mkcert stress-ng tfenv watchman
 }
+
 
 # pyenv
 function install_pyenv() {
   brew install pyenv pyenv-virtualenv
+
   [[ ! $(grep 'pyenv init' ~/.zprofile) ]] && cat <<-'EOH' >> ~/.zprofile
 
 # pyenv
@@ -52,6 +59,7 @@ function install_sdkman() {
 }
 
 
+#---------------------------------------------#
 # Print CLI usage
 help() {
   cat << EOF
@@ -61,6 +69,7 @@ Usage: $0 [OPTIONS]
     --all                Install all dev tools
     --docker
     --fnm
+    --juliaup
     --misc
     --pyenv
     --sdkman
@@ -84,6 +93,7 @@ for opt in "$@"; do
       ;;
     --docker)   install_fns+=(install_docker) ;;
     --fnm)      install_fns+=(install_fnm) ;;
+    --juliaup)  install_fns+=(install_juliaup) ;;
     --misc)     install_fns+=(install_misc) ;;
     --pyenv)    install_fns+=(install_pyenv) ;;
     --sdkman)   install_fns+=(install_sdkman) ;;

@@ -14,7 +14,7 @@ fi
 sudo add-apt-repository -y ppa:git-core/ppa
 sudo add-apt-repository -y ppa:aslatter/ppa
 sudo apt update && sudo apt full-upgrade -y
-sudo apt install -y build-essential autoconf automake cmake git git-filter-repo git-lfs curl python3-dev python3-pip ruby-dev gem alacritty htop nmap jq
+sudo apt install -y build-essential autoconf automake cmake git git-filter-repo git-lfs curl python3-dev python3-pip alacritty htop nmap
 
 if [ -f /usr/bin/python3 ]
 then
@@ -24,3 +24,4 @@ fi
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+brew install jq neofetch ranger tig

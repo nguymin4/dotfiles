@@ -2,16 +2,13 @@
 
 set -euo pipefail
 
-function get_latest_tag_from_github() {
-  GITHUB_REPO_URL="https://github.com/$1"
-  curl -s "${GITHUB_REPO_URL}/tags" | grep -w releases | grep -o '[0-9]\.[0-9]*\.[0-9-]*' | grep -v - | head -n 1
-}
+dotfiles_root="$(dirname $(realpath $0))/../.."
+mac_script=$(realpath $dotfiles_root/mac/scripts/10-dev.sh)
+
 
 # fnm
 function install_fnm() {
-  curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "$HOME/.local/bin" --skip-shell
-  eval "`fnm env --use-on-cd`"
-  fnm install --lts && fnm use lts-latest && npm install -g yarn
+  bash $mac_script --fnm
 }
 
 # gcloud
@@ -21,35 +18,21 @@ function install_gcloud() {
   sudo apt update && sudo apt install google-cloud-cli google-cloud-cli-gke-gcloud-auth-plugin kubectl
 }
 
-
 # Heroku
 function install_heroku() {
   curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
   heroku plugins:install heroku-accounts
 }
 
-
 # juliaup
 function install_juliaup() {
-  curl -fsSL https://install.julialang.org | sh
+  bash $mac_script --juliaup
 }
-
 
 # misc
 function install_misc() {
-  sudo apt install -y watchman ranger tig neofetch btop stress-ng
+  brew install ansible btop mkcert stress-ng tfenv watchman
 }
-
-
-# mkcert
-function install_mkcert() {
-  sudo apt install -y libnss3-tools
-  MKCERT_VERSION=$(get_latest_tag_from_github 'FiloSottile/mkcert')
-  curl -L "https://github.com/FiloSottile/mkcert/releases/download/v${MKCERT_VERSION}/mkcert-v${MKCERT_VERSION}-linux-amd64" -o ~/.local/bin/mkcert
-  chmod u+x ~/.local/bin/mkcert
-  # ~/.local/bin/mkcert install
-}
-
 
 # PgAdmin4
 function install_pgadmin4() {
@@ -58,28 +41,18 @@ function install_pgadmin4() {
   sudo apt install -y pgadmin4
 }
 
-
 # pyenv
 function install_pyenv() {
-  rm -rf ~/.pyenv && git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-  git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
-  [[ ! $(grep 'PYENV' ~/.zprofile) ]] && cat <<-'EOH' >> ~/.zprofile
+  bash $mac_script --pyenv
+}
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-[ -s "$PYENV_ROOT/bin/pyenv" ] && eval "$(pyenv init --path)"
-EOH
+# sdkman
+function install_sdkman() {
+  bash $mac_script --sdkman
 }
 
 
-# tfenv
-function install_tfenv() {
-  rm -rf ~/.tfenv && git clone https://github.com/tfutils/tfenv.git ~/.tfenv
-  ln -s ~/.tfenv/bin/* ~/.local/bin
-}
-
-
+#---------------------------------------------#
 # Print CLI usage
 help() {
   cat << EOF
@@ -93,10 +66,9 @@ Usage: $0 [OPTIONS]
     --heroku
     --juliaup
     --misc
-    --mkcert
     --pgadmin4
     --pyenv
-    --tfenv
+    --sdkman
 EOF
 }
 
@@ -113,9 +85,7 @@ for opt in "$@"; do
         install_fnm
         install_juliaup
         install_misc
-        install_mkcert
         install_pyenv
-        install_tfenv
       )
       break
       ;;
@@ -124,10 +94,9 @@ for opt in "$@"; do
     --heroku)     install_fns+=(install_heroku) ;;
     --juliaup)    install_fns+=(install_juliaup) ;;
     --misc)       install_fns+=(install_misc) ;;
-    --mkcert)     install_fns+=(install_mkcert) ;;
     --pgadmin4)   install_fns+=(install_pgadmin4) ;;
     --pyenv)      install_fns+=(install_pyenv) ;;
-    --tfenv)      install_fns+=(install_tfenv) ;;
+    --sdkman)     install_fns+=(install_sdkman) ;;
     *)
       echo "unknown option: $opt"
       help
