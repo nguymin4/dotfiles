@@ -36,7 +36,7 @@ fc-cache -f
 
 # Optional utils
 # google-chrome, vscode, slack
-sudo apt install -y postgresql-client vlc pinta cmus piper ministat youtubedl-gui
+sudo apt install -y vlc pinta cmus piper ministat youtubedl-gui
 
 # brightnessctl
 sudo apt install -y brightnessctl
