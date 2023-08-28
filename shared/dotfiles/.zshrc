@@ -27,7 +27,7 @@ if [[ ! -d $ZSH ]]; then
   bash $ZSH/install-custom-plugins.sh
 fi
 
-plugins=(conda-zsh-completion gitfast)
+plugins=(conda-zsh-completion gitfast kubectl minikube)
 source $ZSH/oh-my-zsh.sh
 
 # Custom plugins

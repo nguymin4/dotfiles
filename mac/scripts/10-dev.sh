@@ -4,7 +4,8 @@ set -euo pipefail
 
 # docker
 function install_docker() {
-  brew install colima docker docker-compose kubectl
+  brew install colima docker docker-compose kompose kubectl minikube
+  minikube config set driver docker
 
   # docker compose as plugin
   mkdir -p ~/.docker/cli-plugins

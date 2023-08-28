@@ -11,3 +11,7 @@ echo \
 sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 sudo usermod -aG docker "$(whoami)"
+
+# kubernetes
+brew install kompose kubectl minikube
+minikube config set driver docker
