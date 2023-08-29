@@ -5,11 +5,6 @@ alt - h : yabai -m window --focus west
 alt - l : yabai -m window --focus east
 
 # move managed window
-# shift + alt - j : yabai -m window --swap south
-# shift + alt - k : yabai -m window --swap north
-# shift + alt - h : yabai -m window --swap west
-# shift + alt - l : yabai -m window --swap east
-
 shift + alt - j : ~/.config/yabai/yabai_move.sh south
 shift + alt - k : ~/.config/yabai/yabai_move.sh north
 shift + alt - h : ~/.config/yabai/yabai_move.sh west
@@ -41,18 +36,19 @@ alt - 7 : yabai -m display --focus $(yabai -m query --displays --space 7 | jq '.
 alt - 8 : yabai -m display --focus $(yabai -m query --displays --space 8 | jq '.index'); skhd -k "ctrl - 8";
 alt - 9 : yabai -m display --focus $(yabai -m query --displays --space 9 | jq '.index'); skhd -k "ctrl - 9";
 
-# split in vertical
-alt - v : yabai -m config split_type vertical;
-
-# split in horizontal
-shift + alt - v : yabai -m window --toggle split;
+# toggle split
+alt - v : yabai -m window --toggle split;
 
 # toggle window zoom
-# alt - d : yabai -m window --toggle zoom-parent
 alt - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window float
 shift + alt - space : yabai -m window --toggle float --grid 4:4:1:1:2:2
+
+# manage yabai services
+shift + alt - e : yabai --stop-service
+shift + alt - s : yabai --start-service
+shift + alt - r : yabai --restart-service
 
 # resize windows
 ctrl + cmd - h : yabai -m window --resize right:-40:0 2> /dev/null || yabai -m window --resize left:-40:0 2> /dev/null
@@ -70,7 +66,7 @@ shift + alt - q : skhd -k "cmd - w";
 # lock screen
 ctrl + alt - l : skhd -k "ctrl + cmd - q";
 
-# movement
+# cursor movement
 ctrl - left: skhd -k "alt - left"
 ctrl - right: skhd -k "alt - right"
 shift + ctrl - left: skhd -k "shift + alt - left"
@@ -81,8 +77,3 @@ alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty -o \
   font.size=16 \
   window.decorations=buttonless \
   window.padding.y=10
-
-# manage yabai services
-shift + alt - e : yabai --stop-service
-shift + alt - s : yabai --start-service
-shift + alt - r : yabai --restart-service
