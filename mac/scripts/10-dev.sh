@@ -30,6 +30,9 @@ function install_misc() {
   if ! grep -Fq 'libpq/bin' ~/.path; then
     echo 'export PATH="$HOMEBREW_PREFIX/opt/libpq/bin:$PATH"' >> ~/.path
   fi
+
+  # To build python pymssql
+  brew install freetds
 }
 
 
