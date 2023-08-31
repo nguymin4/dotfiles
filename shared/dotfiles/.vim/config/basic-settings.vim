@@ -56,6 +56,8 @@ filetype plugin indent on
 " For nvim
 if has('win32')
   let g:python3_host_prog=expand('~/scoop/shims/python3.exe', ':p')
+elseif has('macunix')
+  let g:python3_host_prog='/opt/homebrew/bin/python'
 else
   let g:python3_host_prog='/usr/bin/python'
 endif

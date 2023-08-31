@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-brew install bat coreutils fd git gnu-sed grep htop jq neofetch nmap ranger tig
+brew install bat coreutils fd git gnu-sed grep htop jq neofetch nmap ranger tig wget
 
 ln -sf /opt/homebrew/opt/gnu-sed/libexec/gnubin/sed ~/.local/bin/sed
 ln -sf /opt/homebrew/bin/ggrep ~/.local/bin/grep
