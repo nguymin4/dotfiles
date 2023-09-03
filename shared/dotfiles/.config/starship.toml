@@ -46,8 +46,9 @@ truncate_to_repo = false
 
 [hostname]
 format = '[$ssh_symbol$hostname]($style) '
-ssh_only = true
+ssh_only = false
 ssh_symbol = ' '
+style = 'green'
 
 [git_branch]
 format = '[$symbol$branch(:$remote_branch)]($style) '
@@ -79,7 +80,8 @@ zsh_indicator = 'zsh'
 
 [username]
 format = '[$user@]($style)'
-show_always = false
+show_always = true
+style_user = 'green'
 
 [time]
 disabled = false
