@@ -1,9 +1,3 @@
-" Extra helpful text objects, may not be needed
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-function'
-Plug 'haya14busa/vim-textobj-function-syntax'
-Plug 'bps/vim-textobj-python'
-
 " snippets
 Plug 'rafamadriz/friendly-snippets'
 
