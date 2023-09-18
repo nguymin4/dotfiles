@@ -1,9 +1,11 @@
-[includeIf "hasconfig:remote.*.url:https://github.com/nguymin4/**"]
-  path = ~/.gitconfig-github
-[includeIf "hasconfig:remote.*.url:git@github.com:nguymin4/**"]
+[include]
   path = ~/.gitconfig-github
 [includeIf "gitdir:~/Work/"]
   path = ~/.gitconfig-work
+[includeIf "hasconfig:remote.*.url:https://github.com/*/**"]
+  path = ~/.gitconfig-github
+[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
+  path = ~/.gitconfig-github
 [core]
   editor = vim
   autocrlf = input
