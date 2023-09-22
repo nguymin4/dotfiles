@@ -13,7 +13,7 @@ fnm env --use-on-cd | Out-String | Invoke-Expression
 #region conda initialize
 # !! Contents within this block are managed by 'conda init' !!
 If (Test-Path "$HOME\scoop\apps\mambaforge\current\Scripts\conda.exe") {
-    (& "$HOME\apps\mambaforge\current\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | ?{$_} | Invoke-Expression
+    (& "$HOME\scoop\apps\mambaforge\current\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | ?{$_} | Invoke-Expression
 }
 #endregion
 
