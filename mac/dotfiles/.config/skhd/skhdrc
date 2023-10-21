@@ -11,19 +11,19 @@ shift + alt - h : ~/.config/yabai/yabai_move.sh west
 shift + alt - l : ~/.config/yabai/yabai_move.sh east
 
 # move window to prev and next workspace
-shift + alt - p : yabai -m window --space prev;
-shift + alt - n : yabai -m window --space next;
+# shift + alt - p : yabai -m window --space prev
+# shift + alt - n : yabai -m window --space next
 
 # move window to workspace
-shift + alt - 1 : yabai -m window --space 1;
-shift + alt - 2 : yabai -m window --space 2;
-shift + alt - 3 : yabai -m window --space 3;
-shift + alt - 4 : yabai -m window --space 4;
-shift + alt - 5 : yabai -m window --space 5;
-shift + alt - 6 : yabai -m window --space 6;
-shift + alt - 7 : yabai -m window --space 7;
-shift + alt - 8 : yabai -m window --space 8;
-shift + alt - 9 : yabai -m window --space 9;
+shift + alt - 1 : yabai -m window --space 1
+shift + alt - 2 : yabai -m window --space 2
+shift + alt - 3 : yabai -m window --space 3
+shift + alt - 4 : yabai -m window --space 4
+shift + alt - 5 : yabai -m window --space 5
+shift + alt - 6 : yabai -m window --space 6
+shift + alt - 7 : yabai -m window --space 7
+shift + alt - 8 : yabai -m window --space 8
+shift + alt - 9 : yabai -m window --space 9
 
 # Focus to a workspace - Prerequisite: Setup in Mission Control
 alt - 1 : yabai -m display --focus $(yabai -m query --displays --space 1 | jq '.index'); skhd -k "ctrl - 1";
@@ -37,7 +37,7 @@ alt - 8 : yabai -m display --focus $(yabai -m query --displays --space 8 | jq '.
 alt - 9 : yabai -m display --focus $(yabai -m query --displays --space 9 | jq '.index'); skhd -k "ctrl - 9";
 
 # toggle split
-alt - v : yabai -m window --toggle split;
+alt - v : yabai -m window --toggle split
 
 # toggle window zoom
 alt - f : yabai -m window --toggle zoom-fullscreen
@@ -60,17 +60,18 @@ ctrl + cmd - l : yabai -m window --resize right:40:0 2> /dev/null || yabai -m wi
 cmd - h : :
 
 # quit app -> close window
-cmd - q : skhd -k "cmd - w";
-shift + alt - q : skhd -k "cmd - w";
+cmd - q : skhd -k "cmd - w"
+shift + alt - q : skhd -k "cmd - w"
 
 # lock screen
-ctrl + alt - l : skhd -k "ctrl + cmd - q";
+ctrl + alt - l : skhd -k "ctrl + cmd - q"
 
 # cursor movement
 ctrl - left: skhd -k "alt - left"
 ctrl - right: skhd -k "alt - right"
 shift + ctrl - left: skhd -k "shift + alt - left"
 shift + ctrl - right: skhd -k "shift + alt - right"
+ctrl - backspace: skhd -k "cmd - backspace"
 
 # applications
 alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty -o \
