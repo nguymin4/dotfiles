@@ -52,8 +52,11 @@ fi
 # homebrew
 if command -v brew &> /dev/null; then
   # gcloud
-  gcloud_autocomplete="$HOMEBREW_PREFIX/share/google-cloud-sdk/completion.zsh.inc"
-  [ -f "$gcloud_autocomplete" ] && source "$gcloud_autocomplete"
+  gcloud_zsh_files=(
+    "$HOMEBREW_PREFIX/share/google-cloud-sdk/path.zsh.inc"
+    "$HOMEBREW_PREFIX/share/google-cloud-sdk/completion.zsh.inc"
+  )
+  for file in $gcloud_zsh_files; do [ -f "$file" ] && source "$file"; done
 
   # sdkman
   export SDKMAN_DIR="$HOMEBREW_PREFIX/opt/sdkman-cli/libexec"
