@@ -37,6 +37,7 @@ function install_juliaup() {
 function install_misc() {
   brew install ansible ansible-lint libpq mkcert stress-ng tfenv watchman
   if ! grep -Fq 'libpq/bin' ~/.path; then
+    # shellcheck disable=SC2016
     echo 'export PATH="$HOMEBREW_PREFIX/opt/libpq/bin:$PATH"' >> ~/.path
   fi
 
@@ -65,10 +66,12 @@ function install_sdkman() {
   brew install sdkman-cli
   brew install jdtls
 
-  # there is an issue with sdkman-init.sh unbound shell variables
+  # There is an issue with sdkman-init.sh unbound shell variables
   set +u
   export SDKMAN_DIR="$HOMEBREW_PREFIX/opt/sdkman-cli/libexec"
   sdkman_init="${SDKMAN_DIR}/bin/sdkman-init.sh"
+
+  # shellcheck disable=SC1090
   [[ -s "$sdkman_init" ]] && source "$sdkman_init"
   sdk install java 11.0.19-ms
   sdk install maven

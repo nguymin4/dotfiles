@@ -25,6 +25,7 @@ export PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH
 export PATH=$ANDROID_SDK_ROOT/tools:$PATH
 export PATH=$ANDROID_SDK_ROOT/emulator:$PATH
 EOH
+  # shellcheck disable=SC1091
   source "$HOME/.path"
 fi
 
