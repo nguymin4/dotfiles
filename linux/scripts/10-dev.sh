@@ -19,6 +19,11 @@ function install_gcloud() {
   sudo apt update && sudo apt install google-cloud-cli google-cloud-cli-gke-gcloud-auth-plugin kubectl
 }
 
+# goenv
+function install_goenv() {
+  bash "$mac_dev_script" --goenv
+}
+
 # Heroku
 function install_heroku() {
   curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
@@ -64,6 +69,7 @@ Usage: $0 [OPTIONS]
     --all                Install all dev tools
     --fnm
     --gcloud
+    --goenv
     --heroku
     --juliaup
     --misc
@@ -84,6 +90,7 @@ for opt in "$@"; do
     --all)
       install_fns=(
         install_fnm
+        install_goenv
         install_juliaup
         install_misc
         install_pyenv
@@ -93,6 +100,7 @@ for opt in "$@"; do
       ;;
     --fnm)        install_fns+=(install_fnm) ;;
     --gcloud)     install_fns+=(install_gcloud) ;;
+    --goenv)      install_fns+=(install_goenv) ;;
     --heroku)     install_fns+=(install_heroku) ;;
     --juliaup)    install_fns+=(install_juliaup) ;;
     --misc)       install_fns+=(install_misc) ;;

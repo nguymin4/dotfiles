@@ -20,6 +20,14 @@ function install_fnm() {
   fnm install --lts && fnm use lts-latest && npm install -g yarn
 }
 
+# goenv
+function install_goenv() {
+  brew install goenv
+  latest_version=$(goenv install --list | tail -n1 | xargs)
+  goenv install "$latest_version"
+  goenv global "$latest_version"
+}
+
 # juliaup
 function install_juliaup() {
   curl -fsSL https://install.julialang.org | sh
@@ -96,6 +104,7 @@ for opt in "$@"; do
     --all)
       install_fns=(
         install_fnm
+        install_goenv
         install_misc
         install_pyenv
         install_sdkman
@@ -104,6 +113,7 @@ for opt in "$@"; do
       ;;
     --docker)   install_fns+=(install_docker) ;;
     --fnm)      install_fns+=(install_fnm) ;;
+    --goenv)    install_fns+=(install_goenv) ;;
     --juliaup)  install_fns+=(install_juliaup) ;;
     --misc)     install_fns+=(install_misc) ;;
     --pyenv)    install_fns+=(install_pyenv) ;;
