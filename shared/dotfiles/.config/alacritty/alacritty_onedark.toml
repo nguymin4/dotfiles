@@ -1,0 +1,105 @@
+live_config_reload = true
+
+[bell]
+animation = "EaseOutExpo"
+color = "#ffffff"
+duration = 0
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "0x5d696d"
+blue = "0x729fcf"
+cyan = "0x729fcf"
+green = "0x98c379"
+magenta = "0xa872cf"
+red = "0xe06c75"
+white = "0xeeeeec"
+yellow = "0xe5c07b"
+
+[colors.cursor]
+cursor = "0xffffff"
+
+[colors.normal]
+black = "0x2f343f"
+blue = "0x729fcf"
+cyan = "0x729fcf"
+green = "0x98c379"
+magenta = "0xa872cf"
+red = "0xe06c75"
+white = "0x5c6370"
+yellow = "0xe5c07b"
+
+[colors.primary]
+background = "0x2f343f"
+foreground = "0xeeeeec"
+
+[cursor]
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "Off"
+shape = "Block"
+
+[font]
+size = 12.0
+
+[font.bold]
+family = "UbuntuMono Nerd Font Mono"
+style = "Regular"
+
+[font.bold_italic]
+family = "UbuntuMono Nerd Font Mono"
+style = "Regular"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "UbuntuMono Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "UbuntuMono Nerd Font Mono"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 1
+
+[[keyboard.bindings]]
+chars = "\u0000"
+key = "Space"
+mods = "Control"
+
+[mouse]
+hide_when_typing = false
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+[selection]
+save_to_clipboard = false
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[window]
+decorations = "Full"
+dynamic_padding = false
+dynamic_title = true
+opacity = 0.9
+startup_mode = "Windowed"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+x = 2
+y = 0
+
+[scrolling]
+history = 40000
+multiplier = 3
