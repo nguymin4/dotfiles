@@ -26,6 +26,8 @@ mason_lspconfig.setup({
     'bashls',
     'cssls',
     'eslint',
+    'golangci_lint_ls',
+    'gopls',
     'html',
     'jsonls',
     'julials',
