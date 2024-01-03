@@ -11,6 +11,5 @@ cd ~/.oh-my-zsh
 bash ./install-custom-plugins.sh
 
 # fzf
-brew install fd bat
-rm -rf ~/.fzf && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install --all --no-update-rc
+brew install fzf fd bat
+"$HOMEBREW_PREFIX"/opt/fzf/install --all --no-update-rc
