@@ -6,5 +6,4 @@ function SetupNvimTree()
   nnoremap <Leader>e :NvimTreeFindFile!<CR>
 
   lua require('custom/nvim-tree')
-  lua require('custom/nvim-web-devicons')
 endfunction

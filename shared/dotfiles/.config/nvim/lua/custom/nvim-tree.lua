@@ -60,3 +60,16 @@ nvim_tree.setup({
   },
   on_attach = on_attach,
 })
+
+-- Setup file icons for nvim tree
+local nvim_web_devicons_ok, nvim_web_devicons = pcall(require, 'nvim-web-devicons')
+if nvim_web_devicons_ok then
+  nvim_web_devicons.set_icon({
+    tf = {
+      icon = '',
+      color = '#e79aff',
+      cterm_color = '98',
+      name = 'Terraform'
+    }
+  })
+end
