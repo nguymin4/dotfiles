@@ -46,6 +46,7 @@
   "julia.symbolCacheDownload": true,
   "jupyter.askForKernelRestart": false,
   "jupyter.debugJustMyCode": false,
+  "markdown.validate.enabled": true,
   "markdown-pdf.displayHeaderFooter": false,
   "notebook.cellToolbarLocation": {
     "default": "right",
@@ -104,10 +105,9 @@
   "vsicons.dontShowNewVersionMessage": true,
   "window.titleBarStyle": "native",
   "window.menuBarVisibility": "toggle",
-  "workbench.activityBar.visible": true,
   "workbench.sideBar.location": "left",
   "workbench.tree.indent": 20,
-  "workbench.editor.showTabs": false,
+  "workbench.editor.showTabs": "single",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.colorTheme": "Tomorrow",
   "workbench.colorCustomizations": {
