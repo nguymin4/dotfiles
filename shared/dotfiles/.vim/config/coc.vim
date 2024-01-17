@@ -21,9 +21,9 @@ set updatetime=250
 set completeopt-=preview
 set signcolumn=yes
 
-nnoremap <Leader>c :CocCommand<Space>
-nnoremap <F2> <Plug>(coc-rename)
-nnoremap <F8> <Plug>(coc-codeaction)
+nnoremap <leader>c :CocCommand<Space>
+nnoremap <leader>2 <Plug>(coc-rename)
+nnoremap <leader>8 <Plug>(coc-codeaction)
 nnoremap <leader>f :call CocAction('format')<CR>
 xnoremap <leader>f <Plug>(coc-format-selected)
 nnoremap <silent> [w <Plug>(coc-diagnostic-prev)
