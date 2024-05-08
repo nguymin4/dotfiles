@@ -35,5 +35,6 @@ mason_lspconfig.setup({
     'terraformls',
     'tsserver',
     'yamlls',
+    'zls',
   },
 })

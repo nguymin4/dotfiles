@@ -77,6 +77,11 @@ function install_sdkman() {
   set -u
 }
 
+# zig
+function install_zig() {
+  brew install zig
+}
+
 
 #---------------------------------------------#
 # Print CLI usage
@@ -120,6 +125,7 @@ for opt in "$@"; do
     --misc)     install_fns+=(install_misc) ;;
     --pyenv)    install_fns+=(install_pyenv) ;;
     --sdkman)   install_fns+=(install_sdkman) ;;
+    --zig)      install_fns+=(install_zig) ;;
     *)
       echo "unknown option: $opt"
       help

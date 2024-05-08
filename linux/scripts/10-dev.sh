@@ -57,6 +57,11 @@ function install_sdkman() {
   bash "$mac_dev_script" --sdkman
 }
 
+# zig
+function install_zig() {
+  bash "$mac_dev_script" --zig
+}
+
 
 #---------------------------------------------#
 # Print CLI usage
@@ -76,6 +81,7 @@ Usage: $0 [OPTIONS]
     --pgadmin4
     --pyenv
     --sdkman
+    --zig
 EOF
 }
 
@@ -107,6 +113,7 @@ for opt in "$@"; do
     --pgadmin4)   install_fns+=(install_pgadmin4) ;;
     --pyenv)      install_fns+=(install_pyenv) ;;
     --sdkman)     install_fns+=(install_sdkman) ;;
+    --zig)        install_fns+=(install_zig) ;;
     *)
       echo "unknown option: $opt"
       help
