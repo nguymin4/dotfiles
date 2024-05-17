@@ -3,9 +3,8 @@
 set -euo pipefail
 
 sudo add-apt-repository -y ppa:jonathonf/vim-daily
-sudo add-apt-repository -y ppa:neovim-ppa/unstable
-sudo apt install -y vim-gtk3 neovim libbz2-dev libreadline-dev libsqlite3-dev libssl-dev libffi-dev liblzma-dev tk-dev texlive texlive-luatex texlive-pictures texlive-latex-extra latexmk
-brew install ack efm-langserver golangci-lint jdtls shellcheck trash-cli
+sudo apt install -y vim-gtk3 libbz2-dev libreadline-dev libsqlite3-dev libssl-dev libffi-dev liblzma-dev tk-dev texlive texlive-luatex texlive-pictures texlive-latex-extra latexmk
+brew install neovim ack efm-langserver golangci-lint jdtls shellcheck trash-cli
 
 pip install -U pynvim
 zsh -c "source ~/.zshrc && vim +PlugInstall +qall"
