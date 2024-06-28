@@ -19,10 +19,7 @@ Plug 'hrsh7th/vim-vsnip'
 let g:vsnip_snippet_dir = expand('~/.vim/snippets')
 
 " Diagnostics
-" trouble.nvim is enabled even in vim which causes startup issue
-if has('nvim')
-  Plug 'folke/trouble.nvim'
-endif
+Plug 'folke/trouble.nvim'
 
 set hidden
 set nobackup
