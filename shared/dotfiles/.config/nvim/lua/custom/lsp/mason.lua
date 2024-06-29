@@ -1,10 +1,7 @@
 local mason_ok, mason = pcall(require, 'mason')
-if not mason_ok then
-  return
-end
-
 local mason_lspconfig_ok, mason_lspconfig = pcall(require, 'mason-lspconfig')
-if not mason_lspconfig_ok then
+
+if not mason_ok or not mason_lspconfig_ok then
   return
 end
 
@@ -38,3 +35,6 @@ mason_lspconfig.setup({
     'zls',
   },
 })
+
+local mason_install_servers = mason_lspconfig.get_installed_servers()
+return mason_install_servers

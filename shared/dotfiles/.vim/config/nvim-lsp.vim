@@ -1,9 +1,3 @@
-" Completion
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'onsails/lspkind.nvim'
-
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -12,6 +6,12 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'creativenull/efmls-configs-nvim'
+
+" Completion
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'onsails/lspkind.nvim'
 
 " vsnip
 Plug 'hrsh7th/cmp-vsnip'
@@ -29,8 +29,7 @@ set shortmess+=c
 set completeopt-=preview
 set signcolumn=yes
 
-function SetupNvimCmp()
-  lua require('custom/nvim-cmp')
-  lua require('custom/mason')
+function SetupNvimLSP()
   lua require('custom/lsp')
+  lua require('custom/nvim-cmp')
 endfunction

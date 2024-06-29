@@ -31,7 +31,7 @@ if !use_nvim_lsp && executable('node')
   source ~/.vim/config/coc.vim
 endif
 
-source ~/.vim/config/nvim-cmp.vim
+source ~/.vim/config/nvim-lsp.vim
 source ~/.vim/config/nvim-tree.vim
 source ~/.vim/config/languages.vim
 source ~/.vim/config/visual.vim
@@ -43,7 +43,7 @@ call plug#end()
 " Setup nvim after plugins are installed
 if has('nvim')
   if use_nvim_lsp
-    call SetupNvimCmp()
+    call SetupNvimLSP()
   endif
   call SetupNvimTree()
   call SetupTelescopeNvim()

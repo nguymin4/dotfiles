@@ -25,6 +25,25 @@ local function get_formatter()
   })
 end
 
+-- LSP function signature
+local lsp_signature_ok, lsp_signature = pcall(require, 'lsp_signature')
+if lsp_signature_ok then
+  lsp_signature.setup({
+    bind = true,
+    fix_pos = true,
+    hint_enable = false,
+    handler_opts = {
+      border = 'rounded',
+    },
+  })
+  vim.api.nvim_set_hl(0, 'LspSignatureActiveParameter', {
+    fg = '#a0c980',
+    bg = 'NONE',
+    ctermfg = 107,
+    ctermbg = 'NONE',
+  })
+end
+
 -- Completion
 local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
