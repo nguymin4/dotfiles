@@ -1,18 +1,16 @@
 local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
 local lsp_capabilities = require('custom.lsp.capabilities')
-local mason_installed_servers = require('custom.lsp.mason')
+local automatic_setup_servers = require('custom.lsp.mason')
 
 if not lspconfig_ok then
   return
 end
 
 -- LSP default settings
-for _, server_name in ipairs(mason_installed_servers) do
-  if server_name ~= 'pyright' then
-    lspconfig[server_name].setup({
-      capabilities = lsp_capabilities
-    })
-  end
+for _, server_name in ipairs(automatic_setup_servers) do
+  lspconfig[server_name].setup({
+    capabilities = lsp_capabilities
+  })
 end
 
 -- LSP custom settings
@@ -32,12 +30,6 @@ lspconfig.pyright.setup({
     },
   },
 })
-
-if vim.fn.executable('jdtls') == 1 then
-  lspconfig.jdtls.setup({
-    capabilities = lsp_capabilities
-  })
-end
 
 -- Other modules
 require('custom.lsp.actions')

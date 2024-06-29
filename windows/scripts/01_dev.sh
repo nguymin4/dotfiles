@@ -1,11 +1,5 @@
 set -euo pipefail
 
-# neovim LSP support
-function install_efm_ls() {
-  scoop install go
-  go install github.com/mattn/efm-langserver@latest
-}
-
 # fzf
 function install_fzf() {
   rm -rf ~/.fzf && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -26,7 +20,6 @@ Usage: $0 [OPTIONS]
 
     --help               Show this message
     --all                Install all dev tools
-    --efm-ls
     --fzf
     --python
 EOF
@@ -42,13 +35,11 @@ for opt in "$@"; do
       ;;
     --all)
       install_fns=(
-        install_efm_ls
         install_fzf
         install_python
       )
       break
       ;;
-    --efm-ls)   install_fns+=(install_efm_ls) ;;
     --fzf)      install_fns+=(install_fzf) ;;
     --python)   install_fns+=(install_python) ;;
     *)

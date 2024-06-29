@@ -1,4 +1,4 @@
--- EFM-langserver
+-- efm-langserver
 
 local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
 local efmls_configs_ok, _ = pcall(require, 'efmls-configs.defaults')
@@ -51,7 +51,9 @@ end
 -- Run initial setup for EFM-langserver synchronously
 -- and asynchronously update it with language-specific configs
 -- This prevents issue that efm client can't be attached to buffer sometimes
-lspconfig.efm.setup({})
+lspconfig.efm.setup({
+  filetypes = { 'python' }
+})
 
 function setup_efmls(filetypes)
   local efmls_languages = {}

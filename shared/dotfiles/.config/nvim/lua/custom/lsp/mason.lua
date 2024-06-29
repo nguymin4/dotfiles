@@ -22,10 +22,12 @@ mason_lspconfig.setup({
     'ansiblels',
     'bashls',
     'cssls',
+    'efm',
     'eslint',
     'golangci_lint_ls',
     'gopls',
     'html',
+    'jdtls',
     'jsonls',
     'julials',
     'pyright',
@@ -36,5 +38,17 @@ mason_lspconfig.setup({
   },
 })
 
-local mason_install_servers = mason_lspconfig.get_installed_servers()
-return mason_install_servers
+local manual_setup_servers = {
+  'efm',
+  'pyright',
+}
+
+local is_automatic_setup = function(server_name)
+  return vim.iter(manual_setup_servers):all(function(manual_setup_server)
+    return server_name ~= manual_setup_server
+  end)
+end
+
+local installed_servers = mason_lspconfig.get_installed_servers()
+local automatic_setup_servers = vim.iter(installed_servers):filter(is_automatic_setup):totable()
+return automatic_setup_servers
