@@ -25,12 +25,6 @@ else
   source ~/.vim/config/fzf.vim
 endif
 
-let use_nvim_lsp = 1
-if !use_nvim_lsp && executable('node')
-  " coc.nvim requires nodejs
-  source ~/.vim/config/coc.vim
-endif
-
 source ~/.vim/config/nvim-lsp.vim
 source ~/.vim/config/nvim-tree.vim
 source ~/.vim/config/languages.vim
@@ -42,9 +36,7 @@ call plug#end()
 
 " Setup nvim after plugins are installed
 if has('nvim')
-  if use_nvim_lsp
-    call SetupNvimLSP()
-  endif
+  call SetupNvimLSP()
   call SetupNvimTree()
   call SetupTelescopeNvim()
 else

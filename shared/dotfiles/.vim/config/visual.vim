@@ -7,7 +7,7 @@ let g:startify_list_order = ['dir', 'commands']
 Plug 'Yggdroot/indentLine'
 let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_setColors = 1
-let g:indentLine_fileTypeExclude  = ['help', 'startify', 'fzf', 'coc-explorer']
+let g:indentLine_fileTypeExclude  = ['help', 'startify', 'fzf']
 
 " quickscope
 Plug 'unblevable/quick-scope'
