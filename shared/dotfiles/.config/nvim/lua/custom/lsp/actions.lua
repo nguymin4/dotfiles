@@ -42,13 +42,3 @@ end, { desc = 'List workspace folders' })
 vim.api.nvim_create_user_command('LspWorkspaceRemove', function()
   vim.lsp.buf.remove_workspace_folder()
 end, { desc = 'Remove folder from workspace' })
-
-
--- Disable LSP watcher - Too slow on linux
--- TODO: Remove this https://github.com/neovim/neovim/issues/23291
-local lsp_wf_ok, lsp_wf = pcall(require, 'vim.lsp._watchfiles')
-if lsp_wf_ok then
-   lsp_wf._watchfunc = function()
-     return function() end
-   end
-end

@@ -2,6 +2,15 @@ local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
 local lsp_capabilities = require('custom.lsp.capabilities')
 local automatic_setup_servers = require('custom.lsp.mason')
 
+-- Disable LSP watcher - Too slow on linux
+-- TODO: Remove this https://github.com/neovim/neovim/issues/23291
+local lsp_wf_ok, lsp_wf = pcall(require, 'vim.lsp._watchfiles')
+if lsp_wf_ok then
+   lsp_wf._watchfunc = function()
+     return function() end
+   end
+end
+
 if not lspconfig_ok then
   return
 end

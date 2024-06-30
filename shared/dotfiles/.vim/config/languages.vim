@@ -1,6 +1,3 @@
-" snippets
-Plug 'rafamadriz/friendly-snippets'
-
 " Polygot
 " octave, matlab: syntax error
 " zig: outdated comparing to zig.vim
@@ -21,10 +18,3 @@ let g:livepreview_cursorhold_recompile = 0
 " Zig
 Plug 'ziglang/zig.vim'
 let g:zig_fmt_autosave = 0
-
-" Improve gf functionality
-Plug 'sam4llis/nvim-lua-gf'
-Plug 'tomarrell/vim-npr'
-let g:vim_npr_file_names = ['', '.js', '/index.js', '.ts', '/index.ts']
-let g:vim_npr_file_types = ['js', 'jsx', 'ts', 'tsx']
-autocmd BufEnter *.ts,*.tsx nmap <buffer> gf :call VimNPRFindFile('')<CR>
