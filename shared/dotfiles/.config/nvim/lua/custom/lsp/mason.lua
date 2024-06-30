@@ -32,6 +32,7 @@ mason_lspconfig.setup({
     'julials',
     'pyright',
     'terraformls',
+    'texlab',
     'tsserver',
     'yamlls',
     'zls',

@@ -13,6 +13,7 @@ nvim_treesitter.setup({
     'java',
     'javascript',
     'julia',
+    'latex',
     'lua',
     'markdown',
     'markdown_inline',
