@@ -10,7 +10,7 @@ echo \
   | sudo tee /etc/apt/sources.list.d/sur5r-i3.list > /dev/null
 sudo apt update
 sudo apt install -y --no-install-recommends i3 i3blocks polybar
-chmod u+x -R ~/.config/i3/blocks
+chmod u+x -R ~/.config/polybar/blocks
 
 # X11
 sudo add-apt-repository -y ppa:peek-developers/stable

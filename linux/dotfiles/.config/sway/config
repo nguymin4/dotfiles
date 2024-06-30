@@ -226,12 +226,12 @@ mode "$mode_sway_exit" {
 }
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioMute exec amixer -D pulse set Master toggle && pkill -RTMIN+1 i3blocks
-bindsym $mod+F3 exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
-bindsym $mod+F2 exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
-bindsym $mod+F1 exec amixer -D pulse set Master toggle && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%-
+bindsym XF86AudioMute exec amixer -D pulse set Master toggle
+bindsym $mod+F3 exec amixer -q -D pulse sset Master 5%+
+bindsym $mod+F2 exec amixer -q -D pulse sset Master 5%-
+bindsym $mod+F1 exec amixer -D pulse set Master toggle
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec "brightnessctl -c backlight set +10%"
