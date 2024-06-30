@@ -1,5 +1,7 @@
 " nvim-treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'mtdl9/vim-log-highlighting'
+Plug 'chrisbra/csv.vim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 
 set foldmethod=expr

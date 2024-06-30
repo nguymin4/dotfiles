@@ -20,6 +20,7 @@ nvim_treesitter.setup({
     'matlab',
     'python',
     'query',
+    'rust',
     'scala',
     'scss',
     'sql',
