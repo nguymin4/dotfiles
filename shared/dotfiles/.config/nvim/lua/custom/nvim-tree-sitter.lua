@@ -35,6 +35,63 @@ nvim_treesitter.setup({
     enable = true,
     additional_vim_regex_highlighting = false,
   },
+  textobjects = {
+    select = {
+      enable = true,
+      keymaps = {
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+        ["ad"] = "@conditional.outer",
+        ["id"] = "@conditional.inner",
+        ["ao"] = "@loop.outer",
+        ["io"] = "@loop.inner",
+      },
+    },
+    swap = {
+      enable = true,
+      swap_next = {
+        [")f"] = "@function.outer",
+        [")a"] = "@parameter.inner",
+      },
+      swap_previous = {
+        ["(f"] = "@function.outer",
+        ["(a"] = "@parameter.inner",
+      },
+    },
+    move = {
+      enable = true,
+      goto_next_start = {
+        ["]f"] = "@function.outer",
+        ["]d"] = "@conditional.outer",
+        ["]o"] = "@loop.outer",
+        ["]a"] = "@parameter.outer",
+        ["]c"] = "@class.outer"
+      },
+      goto_next_end = {
+        ["]F"] = "@function.outer",
+        ["]D"] = "@conditional.outer",
+        ["]O"] = "@loop.outer",
+        ["]A"] = "@parameter.outer",
+        ["]C"] = "@class.outer",
+      },
+      goto_previous_start = {
+        ["[f"] = "@function.outer",
+        ["[d"] = "@conditional.outer",
+        ["[o"] = "@loop.outer",
+        ["[a"] = "@parameter.outer",
+        ["[c"] = "@class.outer",
+      },
+      goto_previous_end = {
+        ["[F"] = "@function.outer",
+        ["[D"] = "@conditional.outer",
+        ["[O"] = "@loop.outer",
+        ["[A"] = "@parameter.outer",
+        ["[C"] = "@class.outer",
+      },
+    },
+  },
 })
 
 -- indent-blankline
