@@ -35,3 +35,23 @@ nvim_treesitter.setup({
     additional_vim_regex_highlighting = false,
   },
 })
+
+-- indent-blankline
+local ibl_ok, ibl = pcall(require, 'ibl')
+if ibl_ok then
+  ibl.setup({
+    indent = {
+      char = '┆',
+    },
+    scope = {
+      enabled = false,
+    },
+    exclude = {
+      filetypes = {
+        'help',
+        'startify',
+        'fzf',
+      }
+    }
+  })
+end

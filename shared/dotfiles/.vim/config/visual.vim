@@ -3,12 +3,6 @@ Plug 'mhinz/vim-startify'
 let g:startify_change_to_dir = 0
 let g:startify_list_order = ['dir', 'commands']
 
-" indentLine
-Plug 'Yggdroot/indentLine'
-let g:indentLine_showFirstIndentLevel = 1
-let g:indentLine_setColors = 1
-let g:indentLine_fileTypeExclude  = ['help', 'startify', 'fzf']
-
 " quickscope
 Plug 'unblevable/quick-scope'
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
