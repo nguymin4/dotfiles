@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-brew install bat coreutils fd git gnu-sed grep htop jq neofetch nmap ranger tig wget
+brew install bat coreutils fd gnu-sed grep htop jq neofetch nmap tig wget
 
 sudo ln -sf /opt/homebrew/bin/pip3 /opt/homebrew/bin/pip
 sudo ln -sf /opt/homebrew/bin/python3 /opt/homebrew/bin/python
