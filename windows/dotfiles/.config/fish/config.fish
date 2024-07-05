@@ -11,7 +11,7 @@ end
 
 alias backup-dotfiles='bash $HOME/dotfiles/backup.sh'
 alias check-gpu='glxinfo | egrep "OpenGL vendor|OpenGL renderer*"'
-alias mux=tmuxp
+alias mux=tmuxinator
 alias nvm=fnm
 alias system-clean='sudo apt autoremove --purge && sudo apt autoclean'
 alias system-update='sudo apt update && sudo apt full-upgrade -y'
