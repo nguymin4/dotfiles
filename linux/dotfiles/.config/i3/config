@@ -245,7 +245,6 @@ exec_always --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id polybar main -r -c ~/.config/polybar/config.ini
 exec --no-startup-id ibus-daemon -dxrR
 exec --no-startup-id albert
-exec --no-startup-id powerline-daemon --replace -q
 exec --no-startup-id variety 2>&1 1>/dev/null
 exec --no-startup-id nm-applet
 exec --no-startup-id xrandr --auto

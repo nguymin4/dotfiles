@@ -266,7 +266,6 @@ exec_always {
 exec waybar
 exec albert
 exec dunst
-exec powerline-daemon --replace -q
 exec nm-applet
 exec_always pkill kanshi; exec kanshi
 exec swayidle -w \
