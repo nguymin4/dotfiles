@@ -24,4 +24,4 @@ fi
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-brew install jq neofetch nnn tig
+brew install fastfetch jq nnn tig
