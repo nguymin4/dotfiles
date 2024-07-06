@@ -24,3 +24,9 @@ fi
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew install fastfetch jq nnn tig
+
+# Fonts
+brew tap homebrew/linux-fonts
+brew install font-ubuntu-nerd-font font-ubuntu-mono-nerd-font
+ln -s /home/linuxbrew/.linuxbrew/share/fonts -t ~/.local/share
+fc-cache -f

@@ -31,18 +31,6 @@ cd ~/Programs/arc-icon-theme
 ./autogen.sh --prefix=/usr
 sudo make install
 
-# Fonts
-# TODO: Use Homebrew/homebrew-linux-fonts, once the installation issue is fixed
-sudo apt install -y fonts-open-sans
-font_location=~/.local/share/fonts
-font_base_url="https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts"
-mkdir -p $font_location && cd $font_location
-curl -fLO $font_base_url/UbuntuMono/Regular/UbuntuMonoNerdFontMono-Regular.ttf
-curl -fLO $font_base_url/UbuntuMono/Regular-Italic/UbuntuMonoNerdFontMono-Italic.ttf
-curl -fLO $font_base_url/Ubuntu/Regular/UbuntuNerdFont-Regular.ttf
-fc-cache -f
-cd -
-
 # Optional utils
 # google-chrome, vscode, slack
 sudo apt install -y vlc pinta cmus piper ministat youtubedl-gui
