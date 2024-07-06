@@ -9,7 +9,6 @@ function install_fzf() {
 # python
 function install_python() {
   scoop install python310
-  pip install pynvim
   scoop install mambaforge
 }
 
