@@ -11,10 +11,9 @@ else
 fi
 
 # Install core dependencies
-sudo add-apt-repository -y ppa:git-core/ppa
 sudo add-apt-repository -y ppa:aslatter/ppa
 sudo apt update && sudo apt full-upgrade -y
-sudo apt install -y build-essential autoconf automake cmake git git-filter-repo git-lfs curl python3-dev python3-pip alacritty htop nmap
+sudo apt install -y build-essential autoconf automake cmake git curl python3-dev python3-pip alacritty htop nmap
 
 if [ -f /usr/bin/python3 ]
 then
