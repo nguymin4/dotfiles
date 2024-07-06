@@ -264,6 +264,7 @@ exec_always {
 }
 
 exec waybar
+exec swaybg
 exec albert
 exec dunst
 exec nm-applet

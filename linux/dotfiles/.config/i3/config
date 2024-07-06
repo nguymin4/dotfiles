@@ -174,6 +174,7 @@ mode "$mode_gaps_inner" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
 mode "$mode_gaps_outer" {
         bindsym plus  gaps outer current plus 5
         bindsym minus gaps outer current minus 5
@@ -192,10 +193,6 @@ bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
@@ -225,7 +222,6 @@ mode "$mode_i3_exit" {
 }
 
 bindsym $mod+Ctrl+l exec "dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock && xset dpms force off"
-# bindsym $mod+Ctrl+l exec "gnome-screensaver-command --lock && xset dpms force off"
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+
@@ -251,6 +247,6 @@ exec --no-startup-id xrandr --auto
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id /usr/bin/gnome-screensaver
 exec --no-startup-id xautolock -time 10 -detectsleep -locker "gnome-screensaver-command --lock && xset dpms force off"
-exec --no-startup-id picom -b --experimental-backends
+exec --no-startup-id picom -b
 exec --no-startup-id lxpolkit
 exec --no-startup-id pulseaudio --start
