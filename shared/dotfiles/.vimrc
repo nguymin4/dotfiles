@@ -21,16 +21,15 @@ source ~/.vim/config/ack.vim
 
 if has('nvim')
   source ~/.vim/config/nvim-tree-sitter.vim
+  source ~/.vim/config/nvim-lsp.vim
   source ~/.vim/config/telescope.vim
+  source ~/.vim/config/nvim-tree.vim
 else
   source ~/.vim/config/languages.vim
   source ~/.vim/config/fzf.vim
 endif
 
-source ~/.vim/config/nvim-lsp.vim
-source ~/.vim/config/nvim-tree.vim
 source ~/.vim/config/visual.vim
-source ~/.vim/config/theme.vim
 source ~/.vim/config/misc.vim
 
 call plug#end()
@@ -39,8 +38,8 @@ call plug#end()
 if has('nvim')
   call SetupNvimTreeSitter()
   call SetupNvimLSP()
-  call SetupNvimTree()
   call SetupTelescopeNvim()
+  call SetupNvimTree()
 else
   nnoremap <Leader>t :Lexplore<CR>
 endif
