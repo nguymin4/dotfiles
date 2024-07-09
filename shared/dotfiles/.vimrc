@@ -47,4 +47,5 @@ endif
 " Setup themes
 set termguicolors
 source ~/.vim/colorschemes/edge-dark.vim
+au OptionSet background AirlineTheme edge
 highlight HighlightedYankRegion cterm=reverse gui=reverse

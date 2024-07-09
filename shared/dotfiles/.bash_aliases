@@ -7,5 +7,5 @@ alias switch-monitor='[[ $(xrandr | grep -w connected | wc -l) -gt 1 ]] && xrand
 alias system-clean='sudo apt autoremove --purge && sudo apt autoclean'
 alias system-update='sudo apt update && sudo apt full-upgrade -y'
 alias test-truecolor='printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"'
-alias vi=nvim
+alias vi='nvim --listen /tmp/nvim.$(openssl rand -hex 3).pipe'
 alias vscode=code
