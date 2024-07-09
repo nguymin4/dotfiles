@@ -21,13 +21,12 @@ set timeoutlen=1000 ttimeoutlen=10
 set splitbelow
 set pastetoggle=<leader>1
 
-" Buffers
-nnoremap <leader>bd :%bd<bar>e#<bar>bd#<CR>
-nnoremap <leader>ls :ls<cr>:b
-
 noremap <C-s> :w!<CR>
 noremap <leader>5 :e!<CR>
 noremap <leader>3 :set hlsearch! hlsearch?<CR>
+
+" Close all buffers except current one
+command! BufOnly execute '%bdelete|edit#|bdelete#'
 
 " Improve vim history key
 cmap <C-N> <Up>
