@@ -7,13 +7,6 @@ Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'creativenull/efmls-configs-nvim'
 
-" Improve gf functionality
-Plug 'sam4llis/nvim-lua-gf'
-Plug 'tomarrell/vim-npr'
-let g:vim_npr_file_names = ['', '.js', '/index.js', '.ts', '/index.ts']
-let g:vim_npr_file_types = ['js', 'jsx', 'ts', 'tsx']
-autocmd BufEnter *.ts,*.tsx nmap <buffer> gf :call VimNPRFindFile('')<CR>
-
 " Diagnostics
 Plug 'folke/trouble.nvim'
 
@@ -37,11 +30,46 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
 let g:vsnip_snippet_dir = expand('~/.vim/snippets')
 
+function SetupNvimLSP()
+  lua require('custom/lsp')
+  lua require('custom/nvim-cmp')
+endfunction
+
 " Language specific
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 let g:livepreview_cursorhold_recompile = 0
 
-function SetupNvimLSP()
-  lua require('custom/lsp')
-  lua require('custom/nvim-cmp')
+" Improve gf functionality
+Plug 'sam4llis/nvim-lua-gf'
+nnoremap <silent> gf :call GoToFileOrDefinition()<CR>
+let g:gfgd_filetypes = ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'terraform']
+
+function! GoToFileOrDefinition()
+  " Get the filename under the cursor
+  let filename = expand('<cfile>')
+  " Expand the tilde in the file path
+  let expanded_filename = expand(filename)
+  " If the file path is relative, use cwd to create the full path
+  if expanded_filename =~# '^\.\{1,2\}\/'
+    let expanded_filename = expand('%:p:h') . '/' . expanded_filename
+  endif
+
+  let not_found = empty(glob(expanded_filename))
+  let is_dir = isdirectory(expanded_filename)
+  if index(g:gfgd_filetypes, &ft) >= 0
+    if not_found
+      lua vim.lsp.buf.definition()
+    elseif is_dir
+      lua vim.lsp.buf.definition()
+      execute "lua nvim_tree_find_file('".expanded_filename."')"
+    else
+      execute 'normal! gf'
+    endif
+  else
+    if is_dir
+      execute "lua nvim_tree_find_file('".expanded_filename."')"
+    else
+      execute 'normal! gf'
+    endif
+  endif
 endfunction

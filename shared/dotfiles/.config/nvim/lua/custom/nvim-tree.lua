@@ -6,9 +6,9 @@ end
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-local function on_attach(bufnr)
-  local api = require('nvim-tree.api')
+local api = require('nvim-tree.api')
 
+local function on_attach(bufnr)
   local function opts(desc)
     return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
   end
@@ -49,6 +49,10 @@ local function on_attach(bufnr)
 end
 
 nvim_tree.setup({
+  -- Avoid gf change root due to netrw
+  hijack_netrw = false,
+  -- Update root when running :cd path
+  sync_root_with_cwd = true,
   actions = {
     change_dir = {
       enable = true,
@@ -78,8 +82,30 @@ nvim_tree.setup({
   git = {
     ignore = false,
   },
+  notify = {
+    threshold = vim.log.levels.ERROR,
+  },
   on_attach = on_attach,
 })
+
+function nvim_tree_find_file(filepath)
+  local cwd = vim.fn.getcwd()
+  local is_in_scope = filepath:sub(1, #cwd) == cwd
+  if is_in_scope then
+    api.tree.find_file({
+      buf = filepath,
+      open = true,
+      focus = true,
+    })
+    api.tree.expand_all()
+  else
+    require('telescope.builtin').find_files({
+      cwd = filepath,
+      hidden = true,
+      prompt_title = 'List files in ' .. filepath:gsub(vim.env.HOME, "~")
+    })
+  end
+end
 
 -- Setup file icons for nvim tree
 local nvim_web_devicons_ok, nvim_web_devicons = pcall(require, 'nvim-web-devicons')
