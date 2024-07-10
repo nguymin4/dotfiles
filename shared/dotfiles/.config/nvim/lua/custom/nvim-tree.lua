@@ -37,7 +37,8 @@ end
 nvim_tree.setup({
   actions = {
     change_dir = {
-      enable = false,
+      enable = true,
+      global = true,
     },
     open_file = {
       window_picker = {
