@@ -15,10 +15,6 @@ enabled=true
 global_handler_enabled=true
 ignore_show_in_keys=true
 
-[applications_xdg]
-enabled=true
-ignore_show_in_keys=true
-
 [calculator]
 enabled=true
 
