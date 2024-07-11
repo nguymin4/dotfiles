@@ -13,25 +13,39 @@ local function on_attach(bufnr)
     return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
   end
 
-  -- default mappings
-  api.config.mappings.default_on_attach(bufnr)
-
-  -- remove some default keybindings to avoid conflicts
-  vim.keymap.del('n', '<C-k>', { buffer = bufnr })
-  vim.keymap.del('n', 'e', { buffer = bufnr })
-  vim.keymap.del('n', 'd', { buffer = bufnr })
-
-  -- custom mappings
-  vim.keymap.set('n', 'u', api.tree.change_root_to_parent, opts('Up'))
-  vim.keymap.set('n', 'cd', api.tree.change_root_to_node, opts('CD'))
-  vim.keymap.set('n', 'i', api.node.open.horizontal, opts('Open: Horizontal Split'))
-  vim.keymap.set('n', 's', api.node.open.vertical, opts('Open: Vertical Split'))
+  vim.keymap.set('n', 'a',  api.fs.create, opts('Create File Or Directory'))
   vim.keymap.set('n', 'dd', api.fs.cut, opts('Cut'))
   vim.keymap.set('n', 'yy', api.fs.copy.node, opts('Copy'))
   vim.keymap.set('n', 'yn', api.fs.copy.filename, opts('Copy Name'))
   vim.keymap.set('n', 'yp', api.fs.copy.relative_path, opts('Copy Relative Path'))
   vim.keymap.set('n', 'yP', api.fs.copy.absolute_path, opts('Copy Absolute Path'))
+  vim.keymap.set('n', 'D', api.fs.trash, opts('Trash'))
+  vim.keymap.set('n', 'p', api.fs.paste, opts('Paste'))
+  vim.keymap.set('n', 'r', api.fs.rename, opts('Rename'))
+
+  vim.keymap.set('n', 'bd', api.marks.bulk.delete, opts('Delete Bookmarked'))
+  vim.keymap.set('n', 'bD', api.marks.bulk.trash, opts('Trash Bookmarked'))
+  vim.keymap.set('n', 'bmv', api.marks.bulk.move, opts('Move Bookmarked'))
+  vim.keymap.set('n', 'm', api.marks.toggle, opts('Toggle Bookmark'))
+
+  vim.keymap.set('n', 'u', api.tree.change_root_to_parent, opts('Up'))
+  vim.keymap.set('n', 'cd', api.tree.change_root_to_node, opts('CD'))
+  vim.keymap.set('n', 'E', api.tree.expand_all, opts('Expand All'))
   vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
+  vim.keymap.set('n', 'H', api.tree.toggle_hidden_filter, opts('Toggle Filter: Hidden'))
+  vim.keymap.set('n', 'q', api.tree.close, opts('Close'))
+  vim.keymap.set('n', 'R', api.tree.reload, opts('Refresh'))
+
+  vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
+  vim.keymap.set('n', 'i', api.node.open.horizontal, opts('Open: Horizontal Split'))
+  vim.keymap.set('n', 's', api.node.open.vertical, opts('Open: Vertical Split'))
+  vim.keymap.set('n', ']e', api.node.navigate.diagnostics.next, opts('Next Diagnostic'))
+  vim.keymap.set('n', '[e', api.node.navigate.diagnostics.prev, opts('Prev Diagnostic'))
+  vim.keymap.set('n', 'K', api.node.navigate.sibling.first, opts('First Sibling'))
+  vim.keymap.set('n', 'J', api.node.navigate.sibling.last, opts('Last Sibling'))
+  vim.keymap.set('n', 'P', api.node.navigate.parent, opts('Parent Directory'))
+  vim.keymap.set('n', '[c', api.node.navigate.git.prev, opts('Prev Git'))
+  vim.keymap.set('n', ']c', api.node.navigate.git.next, opts('Next Git'))
 end
 
 nvim_tree.setup({
@@ -39,6 +53,11 @@ nvim_tree.setup({
     change_dir = {
       enable = true,
       global = true,
+      -- Need to disable so change_root_to_parent works
+      restrict_above_cwd = false,
+    },
+    expand_all = {
+      max_folder_discovery = 1,
     },
     open_file = {
       window_picker = {
