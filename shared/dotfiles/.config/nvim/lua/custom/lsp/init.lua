@@ -1,6 +1,9 @@
 local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
-local lsp_capabilities = require('custom.lsp.capabilities')
-local automatic_setup_servers = require('custom.lsp.mason')
+local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+local mason = require('custom.lsp.mason')
+local lsp_util = require('custom.lsp.util')
+require('custom.lsp.actions')
+require('custom.lsp.diagnostic')
 
 -- Disable LSP watcher - Too slow on linux
 -- TODO: Remove this https://github.com/neovim/neovim/issues/23291
@@ -11,20 +14,60 @@ if lsp_wf_ok then
    end
 end
 
-if not lspconfig_ok then
+-- Download and setup LSP servers
+if not mason or not cmp_nvim_lsp_ok then
   return
 end
 
--- LSP default settings
-for _, server_name in ipairs(automatic_setup_servers) do
-  lspconfig[server_name].setup({
-    capabilities = lsp_capabilities
-  })
+local lsp_capabilities = cmp_nvim_lsp.default_capabilities()
+
+mason.setup({
+  capabilities = lsp_capabilities,
+  ensure_installed = {
+    'ansiblels',
+    'bashls',
+    'cssls',
+    'efm',
+    'eslint',
+    'golangci_lint_ls',
+    'gopls',
+    'html',
+    'jdtls',
+    'jsonls',
+    'julials',
+    'pyright',
+    'terraformls',
+    'texlab',
+    'tsserver',
+    'yamlls',
+    'zls',
+  },
+  manual_setup_servers = {
+    'efm',
+    'pyright',
+  },
+})
+
+-- efm-langserver
+local efmls = require('custom.lsp.efmls')
+if efmls then
+  efmls.generate_configs(function(languages)
+    lspconfig.efm.setup({
+      capabilities = lsp_capabilities,
+      filetypes = vim.tbl_keys(languages),
+      settings = {
+        rootMarkers = { '.git/' },
+        languages = languages,
+      },
+      init_options = {
+        documentFormatting = true,
+        documentRangeFormatting = true,
+      },
+    })
+  end)
 end
 
--- LSP custom settings
-require('custom.lsp.efmls')
-
+-- pyright
 lspconfig.pyright.setup({
   capabilities = lsp_capabilities,
   settings = {
@@ -35,11 +78,30 @@ lspconfig.pyright.setup({
         diagnosticMode = 'openFilesOnly',
         typeCheckingMode = 'basic',
         useLibraryCodeForTypes = true,
+        -- Ignore all files for analysis to exclusively use Ruff for linting
+        ignore = {'*'},
       },
     },
   },
 })
 
--- Other modules
-require('custom.lsp.actions')
-require('custom.lsp.diagnostic')
+-- ruff
+if not lsp_util then
+  return
+end
+
+lsp_util.check_executable('ruff', vim.schedule_wrap(function(has_ruff)
+  if not has_ruff then
+    return
+  end
+
+  lspconfig.ruff.setup({
+    capabilities = lsp_capabilities,
+    on_attach = function(client, bufnr)
+      if client.name == 'ruff' then
+        -- Disable hover in favor of Pyright
+        client.server_capabilities.hoverProvider = false
+      end
+    end
+  })
+end))
