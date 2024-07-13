@@ -1,5 +1,9 @@
 live_config_reload = true
 
+import = [
+  "~/.config/alacritty/alacritty_dark.toml",
+]
+
 [bell]
 animation = "EaseOutExpo"
 color = "#ffffff"
@@ -7,33 +11,6 @@ duration = 0
 
 [colors]
 draw_bold_text_with_bright_colors = true
-
-[colors.bright]
-black = "0x8e908c"
-blue = "0x969896"
-cyan = "0xa3685a"
-green = "0xe0e0e0"
-magenta = "0x282a2e"
-red = "0xf5871f"
-white = "0x1d1f21"
-yellow = "0xd6d6d6"
-
-[colors.cursor]
-cursor = "0x4d4d4c"
-
-[colors.normal]
-black = "0xffffff"
-blue = "0x4271ae"
-cyan = "0x3e999f"
-green = "0x718c00"
-magenta = "0x8959a8"
-red = "0xc82829"
-white = "0x4d4d4c"
-yellow = "0xeab700"
-
-[colors.primary]
-background = "0xffffff"
-foreground = "0x4d4d4c"
 
 [cursor]
 unfocused_hollow = true
@@ -69,10 +46,10 @@ style = "Regular"
 x = 0
 y = 1
 
-[[keyboard.bindings]]
-chars = "\u0000"
-key = "Space"
-mods = "Control"
+[keyboard]
+bindings = [
+  { chars = "\u0000", key = "Space", mods = "Control" },
+]
 
 [mouse]
 hide_when_typing = false
@@ -84,13 +61,6 @@ mouse = "Middle"
 [selection]
 save_to_clipboard = false
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
-
-[window]
-decorations = "Full"
-dynamic_padding = false
-dynamic_title = true
-opacity = 1.0
-startup_mode = "Windowed"
 
 [window.class]
 general = "Alacritty"
