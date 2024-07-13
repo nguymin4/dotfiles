@@ -23,7 +23,7 @@ set pastetoggle=<leader>1
 
 noremap <C-s> :w!<CR>
 noremap <leader>5 :e!<CR>
-noremap <leader>3 :set hlsearch! hlsearch?<CR>
+noremap <leader>6 :set hlsearch! hlsearch?<CR>
 
 " Close all buffers except current one
 command! BufOnly execute '%bdelete|edit#|bdelete#'
