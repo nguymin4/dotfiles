@@ -40,6 +40,7 @@ if has('nvim')
   call SetupNvimLSP()
   call SetupTelescopeNvim()
   call SetupNvimTree()
+  call SetupGitSigns()
 else
   nnoremap <Leader>t :Lexplore<CR>
 endif

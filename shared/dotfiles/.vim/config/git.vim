@@ -1,9 +1,6 @@
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim'
 
-set updatetime=500
-let g:gitgutter_realtime = 1
-let g:gitgutter_eager = 1
-nmap <leader>gs <Plug>(GitGutterStageHunk)
-vmap <leader>gs <Plug>(GitGutterStageHunk)
-nnoremap <leader>4 :GitGutterLineHighlightsToggle<CR>
+function SetupGitSigns()
+  lua require('custom/gitsigns')
+endfunction

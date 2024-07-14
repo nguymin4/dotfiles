@@ -39,13 +39,13 @@ local function on_attach(bufnr)
   vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
   vim.keymap.set('n', 'i', api.node.open.horizontal, opts('Open: Horizontal Split'))
   vim.keymap.set('n', 's', api.node.open.vertical, opts('Open: Vertical Split'))
-  vim.keymap.set('n', ']e', api.node.navigate.diagnostics.next, opts('Next Diagnostic'))
-  vim.keymap.set('n', '[e', api.node.navigate.diagnostics.prev, opts('Prev Diagnostic'))
+  vim.keymap.set('n', ']w', api.node.navigate.diagnostics.next_recursive, opts('Next Diagnostic'))
+  vim.keymap.set('n', '[w', api.node.navigate.diagnostics.prev_recursive, opts('Prev Diagnostic'))
   vim.keymap.set('n', 'K', api.node.navigate.sibling.first, opts('First Sibling'))
   vim.keymap.set('n', 'J', api.node.navigate.sibling.last, opts('Last Sibling'))
   vim.keymap.set('n', 'P', api.node.navigate.parent, opts('Parent Directory'))
-  vim.keymap.set('n', '[c', api.node.navigate.git.prev, opts('Prev Git'))
-  vim.keymap.set('n', ']c', api.node.navigate.git.next, opts('Next Git'))
+  vim.keymap.set('n', ']g', api.node.navigate.git.next_recursive, opts('Next Git'))
+  vim.keymap.set('n', '[g', api.node.navigate.git.prev_recursive, opts('Prev Git'))
 end
 
 nvim_tree.setup({
