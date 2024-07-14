@@ -6,6 +6,7 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'creativenull/efmls-configs-nvim'
+Plug 'stevearc/aerial.nvim'
 
 " Diagnostics
 Plug 'folke/trouble.nvim'

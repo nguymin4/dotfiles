@@ -42,3 +42,18 @@ end, { desc = 'List workspace folders' })
 vim.api.nvim_create_user_command('LspWorkspaceRemove', function()
   vim.lsp.buf.remove_workspace_folder()
 end, { desc = 'Remove folder from workspace' })
+
+-- aerial.nvim
+local aerial_ok, aerial = pcall(require, 'aerial')
+if aerial_ok then
+  aerial.setup({
+    layout = {
+      min_width = 25,
+    },
+    on_attach = function(bufnr)
+      vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', { buffer = bufnr })
+      vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', { buffer = bufnr })
+    end,
+  })
+  vim.keymap.set('n', '<leader>o', '<cmd>AerialToggle!<CR>')
+end
