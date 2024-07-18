@@ -8,9 +8,6 @@ red = "0xe06c75"
 white = "0xeeeeec"
 yellow = "0xe5c07b"
 
-[colors.cursor]
-cursor = "0xffffff"
-
 [colors.normal]
 black = "0x2f343f"
 blue = "0x729fcf"
@@ -24,6 +21,9 @@ yellow = "0xe5c07b"
 [colors.primary]
 background = "0x2f343f"
 foreground = "0xeeeeec"
+
+[colors.cursor]
+cursor = "0xffffff"
 
 [window]
 decorations = "Full"
