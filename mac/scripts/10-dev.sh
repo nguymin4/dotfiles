@@ -35,7 +35,9 @@ function install_juliaup() {
 
 # misc
 function install_misc() {
-  brew install ansible ansible-lint libpq mkcert stress-ng tfenv watchman
+  brew install ansible ansible-lint libpq lefthook mkcert stress-ng tfenv watchman
+
+  # psql
   if ! grep -Fq 'libpq/bin' ~/.path; then
     # shellcheck disable=SC2016
     echo 'export PATH="$HOMEBREW_PREFIX/opt/libpq/bin:$PATH"' >> ~/.path
