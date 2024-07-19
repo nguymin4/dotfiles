@@ -13,6 +13,17 @@ local function on_attach(bufnr)
     return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
   end
 
+  -- Currently nvim-tree doesn't support this git move
+  local actions = require('nvim-tree.actions')
+  local function navigate_git(where)
+    return actions.moves.item.fn({
+      where = where,
+      what = 'git',
+      recurse = true,
+      skip_gitignored = true
+    })
+  end
+
   vim.keymap.set('n', 'a',  api.fs.create, opts('Create File Or Directory'))
   vim.keymap.set('n', 'dd', api.fs.cut, opts('Cut'))
   vim.keymap.set('n', 'yy', api.fs.copy.node, opts('Copy'))
@@ -44,8 +55,8 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'K', api.node.navigate.sibling.first, opts('First Sibling'))
   vim.keymap.set('n', 'J', api.node.navigate.sibling.last, opts('Last Sibling'))
   vim.keymap.set('n', 'P', api.node.navigate.parent, opts('Parent Directory'))
-  vim.keymap.set('n', ']g', api.node.navigate.git.next_recursive, opts('Next Git'))
-  vim.keymap.set('n', '[g', api.node.navigate.git.prev_recursive, opts('Prev Git'))
+  vim.keymap.set('n', ']g', navigate_git('next'), opts('Next Git'))
+  vim.keymap.set('n', '[g', navigate_git('prev'), opts('Prev Git'))
 end
 
 nvim_tree.setup({
@@ -88,6 +99,7 @@ nvim_tree.setup({
   on_attach = on_attach,
 })
 
+-- Used in conjunction with gf command
 function nvim_tree_find_file(filepath)
   local cwd = vim.fn.getcwd()
   local is_in_scope = filepath:sub(1, #cwd) == cwd
