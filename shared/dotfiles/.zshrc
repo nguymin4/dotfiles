@@ -32,7 +32,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Custom plugins
 source $ZSH_CUSTOM/color.zsh
-source $ZSH_CUSTOM/command-timestamp.zsh
 source $ZSH_CUSTOM/syntax-highlighting.zsh # Always before vi-mode.zsh
 source $ZSH_CUSTOM/vi-mode.zsh
 source $ZSH_CUSTOM/fzf.zsh # Always after vi-mode
@@ -92,6 +91,7 @@ else
   autoload -U promptinit; promptinit
   prompt pure
 fi
+source $ZSH_CUSTOM/command-timestamp.zsh
 
 # End profiling
 if [[ $ENABLE_PROFILING == 'true' ]]; then
