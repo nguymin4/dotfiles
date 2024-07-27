@@ -2,8 +2,7 @@
 
 set -o errexit
 
-TARGET_FOLDER=$(realpath -s "${1:-dotfiles}")
+DOTFILES_ROOT=$(dirname "$(realpath "$0")")
+TARGET_FOLDER=$(realpath "${1:-$DOTFILES_ROOT}")
 
-docker pull zricethezav/gitleaks
-
-docker run -v "${TARGET_FOLDER}":/dotfiles zricethezav/gitleaks:latest --path="/dotfiles" --no-git --verbose
+gitleaks detect --source "$TARGET_FOLDER" --verbose --redact
