@@ -27,6 +27,7 @@ if has('nvim')
 else
   source ~/.vim/config/languages.vim
   source ~/.vim/config/fzf.vim
+  nnoremap <Leader>t :Lexplore<CR>
 endif
 
 source ~/.vim/config/visual.vim
@@ -34,19 +35,17 @@ source ~/.vim/config/misc.vim
 
 call plug#end()
 
-" Setup nvim after plugins are installed
+" Setup theme first as some nvim plugins rely on theme color
+set termguicolors
+source ~/.vim/colorschemes/edge-dark.vim
+highlight HighlightedYankRegion cterm=reverse gui=reverse
+
+" Setup nvim plugins
 if has('nvim')
   call SetupNvimTreeSitter()
   call SetupNvimLSP()
   call SetupTelescopeNvim()
   call SetupNvimTree()
+  call SetupLualine()
   call SetupGitSigns()
-else
-  nnoremap <Leader>t :Lexplore<CR>
 endif
-
-" Setup themes
-set termguicolors
-source ~/.vim/colorschemes/edge-dark.vim
-au OptionSet background AirlineTheme edge
-highlight HighlightedYankRegion cterm=reverse gui=reverse
