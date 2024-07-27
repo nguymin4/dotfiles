@@ -1,5 +1,5 @@
 -- efm-langserver
-local efmls_configs_ok, _ = pcall(require, 'efmls-configs.defaults')
+local efmls_configs_ok, _ = pcall(require, 'efmls-configs')
 local lsp_util = require('custom.lsp.util')
 
 if not efmls_configs_ok or not lsp_util then
@@ -10,21 +10,16 @@ local M = {}
 
 local filetypes = {
   python = {
-    commands = { 'ruff', 'black', 'flake8', 'isort' },
+    commands = vim.iter({ 'black', 'flake8', 'isort' }):map(lsp_util.pyenv_which):totable(),
     list_config_names = function(commands)
       local efmls_configs = {}
       for _, command in ipairs(commands) do
-        -- If ruff exists, ignore all other tools
-        if command == "ruff" then
-          return {}
-        end
-
         -- Otherwise, load other tools if available
-        if command == "black" then
+        if string.find(command, 'black') then
           table.insert(efmls_configs, 'efmls-configs.formatters.black')
-        elseif command == "flake8" then
+        elseif string.find(command, 'flake8') then
           table.insert(efmls_configs, 'efmls-configs.linters.flake8')
-        elseif command == "isort" then
+        elseif string.find(command, 'isort') then
           table.insert(efmls_configs, 'efmls-configs.formatters.isort')
         end
       end

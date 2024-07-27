@@ -9,15 +9,18 @@ local M = {}
 -- Asynchronously check if a command is actually executable.
 -- The main reason for this complexity is due to pyenv using shims for black, flake8 etc.
 function M.check_executable(command, callback)
-  local ok, is_exe = pcall(vim.fn.executable, command)
+  local args = vim.split(command, ' ')
+  local cmd = table.remove(args, 1)
+
+  local ok, is_exe = pcall(vim.fn.executable, cmd)
   if not ok or 1 ~= is_exe then
     callback(false, command)
     return
   end
 
   Job:new({
-    command = command,
-    args = {'--version'},
+    command = cmd,
+    args = args,
     enable_handlers = false,
     on_exit = function(job, code)
       callback(code == 0, command)
@@ -45,5 +48,9 @@ function M.check_executables(executables, callback)
   end
 end
 
+-- Construct pyenv-which command to check if a tool exists
+function M.pyenv_which(tool)
+  return 'pyenv which '..tool..' --skip-advice'
+end
 
 return M

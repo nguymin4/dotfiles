@@ -48,25 +48,6 @@ mason.setup({
   },
 })
 
--- efm-langserver
-local efmls = require('custom.lsp.efmls')
-if efmls then
-  efmls.generate_configs(function(languages)
-    lspconfig.efm.setup({
-      capabilities = lsp_capabilities,
-      filetypes = vim.tbl_keys(languages),
-      settings = {
-        rootMarkers = { '.git/' },
-        languages = languages,
-      },
-      init_options = {
-        documentFormatting = true,
-        documentRangeFormatting = true,
-      },
-    })
-  end)
-end
-
 -- pyright
 lspconfig.pyright.setup({
   capabilities = lsp_capabilities,
@@ -85,23 +66,48 @@ lspconfig.pyright.setup({
   },
 })
 
--- ruff
+-- ruff and efm-langserver
 if not lsp_util then
   return
 end
 
-lsp_util.check_executable('ruff', vim.schedule_wrap(function(has_ruff)
-  if not has_ruff then
+local function setup_efmls()
+  local efmls = require('custom.lsp.efmls')
+  if not efmls then
     return
   end
 
-  lspconfig.ruff.setup({
-    capabilities = lsp_capabilities,
-    on_attach = function(client, bufnr)
-      if client.name == 'ruff' then
-        -- Disable hover in favor of Pyright
-        client.server_capabilities.hoverProvider = false
-      end
+  efmls.generate_configs(function(languages)
+    lspconfig.efm.setup({
+      capabilities = lsp_capabilities,
+      filetypes = vim.tbl_keys(languages),
+      settings = {
+        rootMarkers = { '.git/' },
+        languages = languages,
+      },
+      init_options = {
+        documentFormatting = true,
+        documentRangeFormatting = true,
+      },
+    })
+  end)
+end
+
+lsp_util.check_executable(
+  lsp_util.pyenv_which('ruff'),
+  vim.schedule_wrap(function(has_ruff)
+    if not has_ruff then
+      return setup_efmls()
     end
-  })
-end))
+
+    lspconfig.ruff.setup({
+      capabilities = lsp_capabilities,
+      on_attach = function(client, bufnr)
+        if client.name == 'ruff' then
+          -- Disable hover in favor of Pyright
+          client.server_capabilities.hoverProvider = false
+        end
+      end
+    })
+  end)
+)
