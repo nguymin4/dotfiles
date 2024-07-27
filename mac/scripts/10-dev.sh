@@ -35,7 +35,7 @@ function install_juliaup() {
 
 # misc
 function install_misc() {
-  brew install ansible ansible-lint gitleaks libpq lefthook mkcert stress-ng tfenv watchman
+  brew install ansible ansible-lint gitleaks hyperfine libpq lefthook mkcert stress-ng tfenv watchman
 
   # psql
   if ! grep -Fq 'libpq/bin' ~/.path; then
