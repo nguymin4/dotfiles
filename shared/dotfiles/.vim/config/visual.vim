@@ -17,7 +17,8 @@ function SetupLualine()
   lua require('custom/lualine')
 endfunction
 
-" quickscope
+" misc
+Plug 'terryma/vim-expand-region'
 Plug 'unblevable/quick-scope'
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 let g:qs_max_chars=180
@@ -25,13 +26,5 @@ let g:qs_max_chars=180
 " highlight yank
 if has('nvim')
   au TextYankPost * silent! lua vim.highlight.on_yank({ higroup="HighlightedYankRegion", timeout=250 })
-else
-  Plug 'machakann/vim-highlightedyank'
-  let g:highlightedyank_highlight_duration = 250
-  let g:highlightedyank_max_lines = 100
+  highlight HighlightedYankRegion cterm=reverse gui=reverse
 endif
-
-" misc
-Plug 'terryma/vim-expand-region'
-Plug 'dhruvasagar/vim-table-mode'
-let g:loaded_table_mode = 0
