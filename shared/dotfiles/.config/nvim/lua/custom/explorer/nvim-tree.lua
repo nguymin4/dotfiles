@@ -3,18 +3,10 @@ if not nvim_tree_ok then
   return
 end
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
-local api = require('nvim-tree.api')
-
 local function on_attach(bufnr)
-  local function opts(desc)
-    return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-  end
-
-  -- Currently nvim-tree doesn't support this git move
+  local api = require('nvim-tree.api')
   local actions = require('nvim-tree.actions')
+
   local function navigate_git(where)
     return actions.moves.item.fn({
       where = where,
@@ -22,6 +14,10 @@ local function on_attach(bufnr)
       recurse = true,
       skip_gitignored = true
     })
+  end
+
+  local function opts(desc)
+    return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
   end
 
   vim.keymap.set('n', 'a',  api.fs.create, opts('Create File Or Directory'))
@@ -98,26 +94,6 @@ nvim_tree.setup({
   },
   on_attach = on_attach,
 })
-
--- Used in conjunction with gf command
-function nvim_tree_find_file(filepath)
-  local cwd = vim.fn.getcwd()
-  local is_in_scope = filepath:sub(1, #cwd) == cwd
-  if is_in_scope then
-    api.tree.find_file({
-      buf = filepath,
-      open = true,
-      focus = true,
-    })
-    api.tree.expand_all()
-  else
-    require('telescope.builtin').find_files({
-      cwd = filepath,
-      hidden = true,
-      prompt_title = 'List files in ' .. filepath:gsub(vim.env.HOME, "~")
-    })
-  end
-end
 
 -- Setup file icons for nvim tree
 local nvim_web_devicons_ok, nvim_web_devicons = pcall(require, 'nvim-web-devicons')

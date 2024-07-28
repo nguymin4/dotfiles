@@ -26,7 +26,6 @@ telescope.setup({
         '--type', 'f',
         '--color', 'never',
         '--exclude', '.git',
-        '--exclude', '.terraform'
       }
     },
   }

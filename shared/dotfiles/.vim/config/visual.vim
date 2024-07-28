@@ -1,6 +1,5 @@
 " Theme
 Plug 'sainnhe/edge'
-Plug 'nvim-lualine/lualine.nvim'
 
 " misc
 Plug 'terryma/vim-expand-region'

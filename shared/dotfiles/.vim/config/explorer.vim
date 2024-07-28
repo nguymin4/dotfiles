@@ -1,3 +1,8 @@
+" netrw
+nnoremap <Leader>t :Lexplore<CR>
+nnoremap <Leader>e :let @/=expand("%:t") \| execute 'Explore' expand("%:p:h") \| normal n<CR>
+
+" fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -9,3 +14,8 @@ nnoremap <silent> <leader>b :Buffers<CR>
 let g:fzf_layout = { 'down' : '40%' }
 autocmd! FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+" startify
+Plug 'mhinz/vim-startify'
+let g:startify_change_to_dir = 0
+let g:startify_list_order = ['dir', 'commands']

@@ -22,12 +22,10 @@ source ~/.vim/config/ack.vim
 if has('nvim')
   source ~/.vim/config/nvim-tree-sitter.vim
   source ~/.vim/config/nvim-lsp.vim
-  source ~/.vim/config/telescope.vim
-  source ~/.vim/config/nvim-tree.vim
+  source ~/.vim/config/nvim-explorer.vim
 else
   source ~/.vim/config/languages.vim
-  source ~/.vim/config/fzf.vim
-  nnoremap <Leader>t :Lexplore<CR>
+  source ~/.vim/config/explorer.vim
 endif
 
 source ~/.vim/config/visual.vim
