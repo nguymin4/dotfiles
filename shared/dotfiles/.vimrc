@@ -24,7 +24,6 @@ if has('nvim')
   source ~/.vim/config/nvim-lsp.vim
   source ~/.vim/config/nvim-explorer.vim
 else
-  source ~/.vim/config/languages.vim
   source ~/.vim/config/explorer.vim
 endif
 
