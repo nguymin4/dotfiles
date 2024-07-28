@@ -16,8 +16,6 @@ call plug#begin('~/.vim/bundles')
 
 source ~/.vim/config/basic-settings.vim
 source ~/.vim/config/core-plugins.vim
-source ~/.vim/config/git.vim
-source ~/.vim/config/ack.vim
 
 if has('nvim')
   source ~/.vim/config/nvim-tree-sitter.vim
