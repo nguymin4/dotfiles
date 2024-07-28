@@ -14,8 +14,7 @@ Plug 'nvim-telescope/telescope-ui-select.nvim'
 nnoremap <leader>p <cmd>Telescope find_files<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
 
-" others
-Plug 'goolord/alpha-nvim'
+" lualine
 Plug 'nvim-lualine/lualine.nvim'
 
 " improve gf functionality
