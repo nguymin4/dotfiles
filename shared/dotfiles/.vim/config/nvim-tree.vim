@@ -12,7 +12,3 @@ else
   let g:startify_change_to_dir = 0
   let g:startify_list_order = ['dir', 'commands']
 endif
-
-function SetupNvimTree()
-  lua require('custom/nvim-tree')
-endfunction

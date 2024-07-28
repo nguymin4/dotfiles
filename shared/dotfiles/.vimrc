@@ -35,16 +35,6 @@ source ~/.vim/config/misc.vim
 
 call plug#end()
 
-" Setup theme first as some nvim plugins rely on theme color
+" Setup theme
 set termguicolors
 source ~/.vim/colorschemes/edge-dark.vim
-
-" Setup nvim plugins
-if has('nvim')
-  call SetupNvimTreeSitter()
-  call SetupNvimLSP()
-  call SetupTelescopeNvim()
-  call SetupNvimTree()
-  call SetupLualine()
-  call SetupGitSigns()
-endif

@@ -31,11 +31,6 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
 let g:vsnip_snippet_dir = expand('~/.vim/snippets')
 
-function SetupNvimLSP()
-  lua require('custom/lsp')
-  lua require('custom/nvim-cmp')
-endfunction
-
 " Language specific
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 let g:livepreview_cursorhold_recompile = 0

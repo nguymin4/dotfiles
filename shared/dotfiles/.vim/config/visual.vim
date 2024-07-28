@@ -2,10 +2,6 @@
 Plug 'sainnhe/edge'
 Plug 'nvim-lualine/lualine.nvim'
 
-function SetupLualine()
-  lua require('custom/lualine')
-endfunction
-
 " misc
 Plug 'terryma/vim-expand-region'
 Plug 'unblevable/quick-scope'
