@@ -131,3 +131,9 @@ if nvim_web_devicons_ok then
     }
   })
 end
+
+-- Start screen with alpha-nvim
+local alpha_ok, alpha = pcall(require, 'alpha')
+if alpha_ok then
+  alpha.setup(require('alpha.themes.startify').config)
+end

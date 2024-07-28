@@ -1,6 +1,7 @@
 " Theme
 Plug 'sainnhe/edge'
 
+" statusline and tabline
 if has('nvim')
   Plug 'nvim-lualine/lualine.nvim'
 else
@@ -15,11 +16,6 @@ endif
 function SetupLualine()
   lua require('custom/lualine')
 endfunction
-
-" startify
-Plug 'mhinz/vim-startify'
-let g:startify_change_to_dir = 0
-let g:startify_list_order = ['dir', 'commands']
 
 " quickscope
 Plug 'unblevable/quick-scope'
