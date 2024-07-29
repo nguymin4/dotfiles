@@ -9,6 +9,11 @@ Plug 'tpope/vim-unimpaired'
 Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'christoomey/vim-tmux-navigator'
 
+nnoremap <silent> [t :tabprev<CR>
+nnoremap <silent> ]t :tabnext<CR>
+nnoremap <silent> [T :tabfirst<CR>
+nnoremap <silent> ]T :tablast<CR>
+
 " search
 Plug 'mileszs/ack.vim'
 cnoreabbrev Ack Ack!
