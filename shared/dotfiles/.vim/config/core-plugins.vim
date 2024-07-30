@@ -4,7 +4,6 @@ packadd! cfilter
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-unimpaired'
 Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -12,11 +11,6 @@ Plug 'christoomey/vim-tmux-navigator'
 if !has('nvim')
   Plug 'tpope/vim-commentary'
 endif
-
-nnoremap <silent> [t :tabprev<CR>
-nnoremap <silent> ]t :tabnext<CR>
-nnoremap <silent> [T :tabfirst<CR>
-nnoremap <silent> ]T :tablast<CR>
 
 " search
 Plug 'mileszs/ack.vim'

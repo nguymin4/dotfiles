@@ -55,6 +55,6 @@ gitsigns.setup({
     end, 'Toggle line highlighting and deleted lines')
 
     -- Text object
-    map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>', 'Select textobject @hunk')
+    map({'o', 'x'}, 'ih', ':<C-u>Gitsigns select_hunk<CR>', 'Select textobject @hunk')
   end
 })
