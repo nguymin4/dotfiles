@@ -101,3 +101,18 @@ if ibl_ok then
     }
   })
 end
+
+-- nvim-ts-context-commentstring
+local ts_context_commentstring_ok, ts_context_commentstring = pcall(require, 'ts_context_commentstring')
+if ts_context_commentstring_ok then
+  ts_context_commentstring.setup({
+    enable_autocmd = false,
+  })
+
+  local vim_get_option = vim.filetype.get_option
+  vim.filetype.get_option = function(filetype, option)
+    return option == 'commentstring'
+      and require('ts_context_commentstring.internal').calculate_commentstring()
+      or vim_get_option(filetype, option)
+  end
+end

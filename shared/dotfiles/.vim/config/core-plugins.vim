@@ -4,10 +4,14 @@ packadd! cfilter
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
 Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'christoomey/vim-tmux-navigator'
+
+" nvim >=0.10 has built-in commenting
+if !has('nvim')
+  Plug 'tpope/vim-commentary'
+endif
 
 nnoremap <silent> [t :tabprev<CR>
 nnoremap <silent> ]t :tabnext<CR>
