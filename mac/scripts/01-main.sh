@@ -13,4 +13,4 @@ xattr -rd com.apple.quarantine /Applications/Alacritty.app
 xattr -rd com.apple.quarantine /Applications/SpaceId.app
 
 # Fonts
-brew install font-ubuntu-nerd-font font-ubuntu-mono-nerd-font
+brew install font-ubuntu-nerd-font font-ubuntu-mono-nerd-font font-codicon

@@ -23,14 +23,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end
 })
 
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = 'rounded'
-})
-
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = 'rounded', focusable = false,
-})
-
 vim.api.nvim_create_user_command('LspWorkspaceAdd', function()
   vim.lsp.buf.add_workspace_folder()
 end, { desc = 'Add folder to workspace' })
@@ -42,6 +34,27 @@ end, { desc = 'List workspace folders' })
 vim.api.nvim_create_user_command('LspWorkspaceRemove', function()
   vim.lsp.buf.remove_workspace_folder()
 end, { desc = 'Remove folder from workspace' })
+
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = 'rounded'
+})
+
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = 'rounded', focusable = false,
+})
+
+-- LSP function signature
+local lsp_signature_ok, lsp_signature = pcall(require, 'lsp_signature')
+if lsp_signature_ok then
+  lsp_signature.setup({
+    bind = true,
+    fix_pos = false,
+    hint_enable = false,
+    handler_opts = {
+      border = 'rounded',
+    },
+  })
+end
 
 -- aerial.nvim
 local aerial_ok, aerial = pcall(require, 'aerial')

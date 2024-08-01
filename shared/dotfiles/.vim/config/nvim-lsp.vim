@@ -6,10 +6,6 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'creativenull/efmls-configs-nvim'
-Plug 'stevearc/aerial.nvim'
-
-" Diagnostics
-Plug 'folke/trouble.nvim'
 
 " Completion
 Plug 'hrsh7th/nvim-cmp'
@@ -31,6 +27,8 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
 let g:vsnip_snippet_dir = expand('~/.vim/snippets')
 
-" Language specific
+" Misc
+Plug 'stevearc/aerial.nvim'
+Plug 'folke/trouble.nvim'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 let g:livepreview_cursorhold_recompile = 0

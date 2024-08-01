@@ -27,6 +27,6 @@ brew install fastfetch jq nnn tig
 
 # Fonts
 brew tap homebrew/linux-fonts
-brew install font-ubuntu-nerd-font font-ubuntu-mono-nerd-font
+brew install font-ubuntu-nerd-font font-ubuntu-mono-nerd-font font-codicon
 ln -s /home/linuxbrew/.linuxbrew/share/fonts -t ~/.local/share
 fc-cache -f
