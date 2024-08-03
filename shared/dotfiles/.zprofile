@@ -19,10 +19,3 @@ export PYENV_ROOT="$HOME/.pyenv"
 if command -v pyenv &> /dev/null; then
   eval "$(pyenv init --path)"
 fi
-
-# goenv
-if command -v goenv &> /dev/null; then
-  eval "$(goenv init -)"
-  export PATH="$GOROOT/bin:$PATH"
-  export PATH="$PATH:$GOPATH/bin"
-fi

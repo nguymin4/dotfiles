@@ -73,6 +73,13 @@ if command -v pyenv &> /dev/null; then
   eval "$(pyenv init - --no-rehash zsh)"
 fi
 
+# goenv
+if command -v goenv &> /dev/null; then
+  eval "$(goenv init -)"
+  export PATH="$GOROOT/bin:$PATH"
+  export PATH="$PATH:$GOPATH/bin"
+fi
+
 # >>> juliaup initialize >>>
 
 # !! Contents within this block are managed by juliaup !!
