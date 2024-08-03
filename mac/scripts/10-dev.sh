@@ -30,12 +30,12 @@ function install_goenv() {
 
 # juliaup
 function install_juliaup() {
-  curl -fsSL https://install.julialang.org | sh
+  brew install juliaup
 }
 
 # misc
 function install_misc() {
-  brew install ansible ansible-lint gitleaks hyperfine libpq lefthook mkcert stress-ng tfenv watchman
+  brew install act ansible ansible-lint gitleaks hyperfine libpq lefthook mkcert stress-ng tfenv watchman
 
   # psql
   if ! grep -Fq 'libpq/bin' ~/.path; then
@@ -47,19 +47,9 @@ function install_misc() {
   brew install freetds
 }
 
-
 # pyenv
 function install_pyenv() {
   brew install pyenv pyenv-virtualenv
-  if ! grep -Fq 'pyenv init' ~/.zprofile; then
-    cat <<-'EOH' >> ~/.zprofile
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-if command -v pyenv &> /dev/null; then
-  eval "$(pyenv init --path)"
-fi
-EOH
-  fi
 }
 
 # skdman
@@ -67,15 +57,17 @@ function install_sdkman() {
   brew tap sdkman/tap
   brew install sdkman-cli
 
-  # There is an issue with sdkman-init.sh unbound shell variables
-  set +u
   export SDKMAN_DIR="$HOMEBREW_PREFIX/opt/sdkman-cli/libexec"
   sdkman_init="${SDKMAN_DIR}/bin/sdkman-init.sh"
 
-  # shellcheck disable=SC1090
-  [[ -s "$sdkman_init" ]] && source "$sdkman_init"
-  sdk install java 11.0.19-ms
-  sdk install maven
+  # There is an issue with sdkman-init.sh unbound shell variables
+  set +u
+  if [[ -s "$sdkman_init" ]]; then
+    # shellcheck disable=SC1090
+    source "$sdkman_init"
+    sdk install java 11.0.19-ms
+    sdk install maven
+  fi
   set -u
 }
 
