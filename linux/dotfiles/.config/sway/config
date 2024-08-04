@@ -9,7 +9,8 @@ floating_modifier $mod
 focus_follows_mouse no
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec wezterm
+bindsym $mod+Shift+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -116,6 +117,7 @@ for_window [class="zoom" title="Zoom.*Meeting"] floating disable
 for_window [class="^.*"] border normal 0
 for_window [app_id="^.*" title=".+"] border normal 0
 for_window [app_id="Alacritty"] border pixel 1
+for_window [app_id="org.wezfurlong.wezterm"] border pixel 1
 for_window [class="zoom" title="zoom"] floating enable; border none
 for_window [floating title=".+"] border normal 1
 for_window [floating title=".*sharing your screen.*"] border none

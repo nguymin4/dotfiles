@@ -74,7 +74,9 @@ shift + ctrl - right: skhd -k "shift + alt - right"
 ctrl - backspace: skhd -k "cmd - backspace"
 
 # applications
-alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty -o \
-  font.size=16 \
-  window.decorations=buttonless \
-  window.padding.y=10
+alt - return : /Applications/WezTerm.app/Contents/MacOS/wezterm
+
+shift + alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty -o \
+  'font.size=16' \
+  'window.decorations="Buttonless"' \
+  'window.padding.y=4'

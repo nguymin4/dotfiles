@@ -25,6 +25,10 @@ fi
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew install fastfetch jq tig yazi
 
+# Wezterm
+brew tap wez/wezterm-linuxbrew
+brew install wezterm
+
 # Fonts
 brew tap homebrew/linux-fonts
 brew install font-ubuntu-nerd-font font-ubuntu-mono-nerd-font font-codicon
