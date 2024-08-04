@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-brew install bat coreutils fastfetch fd gnu-sed grep htop jq nnn nmap tig wget
+brew install bat coreutils fastfetch fd gnu-sed grep htop jq nmap tig wget yazi
 
 sudo ln -sf /opt/homebrew/bin/pip3 /opt/homebrew/bin/pip
 sudo ln -sf /opt/homebrew/bin/python3 /opt/homebrew/bin/python

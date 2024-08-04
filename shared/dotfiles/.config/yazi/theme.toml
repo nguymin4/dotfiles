@@ -1,0 +1,158 @@
+# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
+# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
+"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+
+# vim:fileencoding=utf-8:foldmethod=marker
+
+[flavor]
+use = ""
+
+[manager]
+cwd = { fg = "yellow" }
+
+# Hovered
+hovered         = { reversed = true }
+preview_hovered = { underline = false }
+
+# Find
+find_keyword  = { fg = "yellow", bold = true, italic = true, underline = true }
+find_position = { fg = "magenta", bg = "reset", bold = true, italic = true }
+
+# Marker
+marker_copied   = { fg = "lightgreen", bg = "lightgreen" }
+marker_cut      = { fg = "magenta", bg = "magenta" }
+marker_marked   = { fg = "red", bg = "red" }
+marker_selected = { fg = "lightyellow", bg = "lightyellow" }
+
+# Tab
+tab_active   = { reversed = true }
+tab_inactive = {}
+tab_width    = 1
+
+# Count
+count_copied   = { fg = "#fafafa", bg = "green" }
+count_cut      = { fg = "#fafafa", bg = "magenta" }
+count_selected = { fg = "darkgray", bg = "yellow" }
+
+# Border
+border_symbol = "│"
+border_style  = { fg = "gray" }
+
+# Highlighting
+syntect_theme = ""
+
+# : }}}
+
+
+# : Status {{{
+
+[status]
+separator_open  = ""
+separator_close = ""
+separator_style = { fg = "#eeeeec", bg = "#eeeeec" }
+
+# Mode
+mode_normal = { bg = "blue", fg = "#fafafa", bold = true }
+mode_select = { bg = "red", fg = "#fafafa", bold = true }
+mode_unset  = { bg = "red", fg = "#fafafa", bold = true }
+
+# Progress
+progress_label  = { bold = false }
+progress_normal = { fg = "blue", bg = "#fafafa" }
+progress_error  = { fg = "red", bg = "#fafafa" }
+
+# Permissions
+permissions_t = { fg = "green" }
+permissions_r = { fg = "yellow" }
+permissions_w = { fg = "red" }
+permissions_x = { fg = "cyan" }
+permissions_s = { fg = "darkgray" }
+
+# : }}}
+
+
+# : Select {{{
+
+[select]
+border   = { fg = "blue" }
+active   = { fg = "lightyellow" }
+inactive = {}
+
+# : }}}
+
+
+# : Input {{{
+
+[input]
+border   = { fg = "blue" }
+title    = {}
+value    = {}
+selected = { reversed = true }
+
+# : }}}
+
+
+# : Completion {{{
+
+[completion]
+border   = { fg = "blue" }
+active   = { reversed = true }
+inactive = {}
+
+# Icons
+icon_file    = ""
+icon_folder  = ""
+icon_command = ""
+
+# : }}}
+
+
+# : Tasks {{{
+
+[tasks]
+border  = { fg = "blue" }
+title   = {}
+hovered = { fg = "yellow", underline = true }
+
+# : }}}
+
+
+# : Which {{{
+
+[which]
+cols            = 2
+mask            = { bg = "reset" }
+cand            = { fg = "red", bold = true }
+rest            = { fg = "cyan", italic = true }
+desc            = { fg = "cyan", italic = true }
+separator       = "  "
+separator_style = { fg = "red", bold = true }
+
+# : }}}
+
+
+# : Help {{{
+
+[help]
+on      = { fg = "cyan" }
+run     = { fg = "magenta" }
+desc    = {}
+hovered = { reversed = true, bold = true }
+footer  = { fg = "black", bg = "#fafafa" }
+
+# : }}}
+
+
+# : Notify {{{
+
+[notify]
+title_info  = { fg = "green" }
+title_warn  = { fg = "yellow" }
+title_error = { fg = "red" }
+
+# Icons
+icon_info  = ""
+icon_warn  = ""
+icon_error = ""
+
+# : }}}
