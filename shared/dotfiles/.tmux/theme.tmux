@@ -17,10 +17,10 @@ LEFT_ARROW=''
 BLUE='blue'
 GREEN='#A7C080'
 WHITE='#FFFFFF'
-YELLOW='yellow'
+YELLOW='#E5C07B'
 
-STATUS_FG=#767676
-STATUS_BG=#464646
+STATUS_FG='#767676'
+STATUS_BG='#464646'
 
 case $(tmux_get '@tmux_theme' 'dark') in
   'dark' )
