@@ -25,7 +25,7 @@ STATUS_BG='#464646'
 case $(tmux_get '@tmux_theme' 'dark') in
   'dark' )
     FG='#626262'
-    BG='#262626'
+    BG='#2c2e3d'
     PANE_FG='#626262'
     ;;
   'light' )

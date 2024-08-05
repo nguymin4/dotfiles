@@ -32,10 +32,10 @@ local dark_theme = {
 
 local light_theme = {
   ansi = {
-    "#8790a0",
+    "#5a606d",
     "#d05858",
     "#608e32",
-    "#be7e05",
+    "#dba94a",
     "#5079be",
     "#b05ccc",
     "#3a8b84",
@@ -45,7 +45,7 @@ local light_theme = {
     "#4b505b",
     "#d05858",
     "#608e32",
-    "#d9b369",
+    "#dba94a",
     "#5079be",
     "#b05ccc",
     "#3a8b84",
