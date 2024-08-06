@@ -15,8 +15,8 @@ floating_modifier $mod
 focus_follows_mouse no
 
 # start a terminal
-bindsym $mod+Return exec wezterm
-bindsym $mod+Shift+Return exec alacritty
+bindsym $mod+Return exec "wezterm --config 'window_padding={left=2, right=2, top=10, bottom=10}'"
+bindsym $mod+Shift+Return exec "alacritty -o 'window.padding.y=4'"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -124,7 +124,8 @@ for_window [class="zoom" title="Zoom.*Meeting"] floating disable
 # - Alacritty: should not have title bar but have border on focused
 # - Albert: should not have title bar nor border
 for_window [class="^.*"] border normal 0
-for_window [class="Alacritty"] border pixel 1
+for_window [class="Alacritty"] border pixel 0
+for_window [class="org.wezfurlong.wezterm"] border pixel 0
 for_window [class="zoom" title="zoom"] border none
 for_window [floating] border normal 1
 for_window [floating title=".*sharing your screen.*"] border none
