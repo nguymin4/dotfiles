@@ -23,6 +23,7 @@ endif
 Plug 'mileszs/ack.vim'
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
+let g:ackprg = 'rg --vimgrep --color=never --hidden --glob=!.git/'
 let g:ackhighlight = 1
 
 " git

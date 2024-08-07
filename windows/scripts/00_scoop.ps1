@@ -4,7 +4,7 @@ scoop bucket add extras
 scoop bucket add versions
 
 # CLI
-scoop install git neovim starship ack wget fnm fd bat pwsh refreshenv msys2
+scoop install git neovim starship wget fnm fd bat pwsh refreshenv msys2
 
 # UI
 scoop install vscode alacritty glazewm flow-launcher autohotkey
