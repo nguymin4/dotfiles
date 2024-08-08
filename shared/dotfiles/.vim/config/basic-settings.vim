@@ -28,18 +28,6 @@ noremap <leader>6 :set hlsearch! hlsearch?<CR>
 " Close all buffers except current one
 command! BufOnly execute '%bdelete|edit#|bdelete#'
 
-" Navigate buffers
-nnoremap <silent> [b :bprev<CR>
-nnoremap <silent> ]b :bnext<CR>
-nnoremap <silent> [B :bfirst<CR>
-nnoremap <silent> ]B :blast<CR>
-
-" Navigate quickfixes
-nnoremap <silent> [q :<C-u>exec v:count1 . 'cprev'<CR><bar>:norm zv<CR>
-nnoremap <silent> ]q :<C-u>exec v:count1 . 'cnext'<CR><bar>:norm zv<CR>
-nnoremap <silent> [Q :cfirst<CR><bar>:norm zv<CR>
-nnoremap <silent> ]Q :clast<CR><bar>:norm zv<CR>
-
 " Navigate tabs
 nnoremap <silent> [t :tabprev<CR>
 nnoremap <silent> ]t :tabnext<CR>

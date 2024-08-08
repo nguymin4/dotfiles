@@ -4,6 +4,7 @@ packadd! cfilter
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-unimpaired'
 Plug 'inkarkat/vim-ReplaceWithRegister'
 
 " vim-tmux-navigator
