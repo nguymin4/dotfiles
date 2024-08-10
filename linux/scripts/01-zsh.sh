@@ -11,5 +11,5 @@ cd ~/.oh-my-zsh
 bash ./install-custom-plugins.sh
 
 # fzf
-brew install fzf fd bat
+brew install fzf bat
 "$HOMEBREW_PREFIX"/opt/fzf/install --all --no-update-rc

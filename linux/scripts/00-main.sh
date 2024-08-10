@@ -23,7 +23,8 @@ fi
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-brew install fastfetch jq tig yazi
+
+brew install fastfetch fd jq rg tig yazi
 
 # Wezterm
 brew tap wez/wezterm-linuxbrew

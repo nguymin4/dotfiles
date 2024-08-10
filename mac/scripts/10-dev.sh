@@ -2,22 +2,17 @@
 
 set -euo pipefail
 
-# docker
-function install_docker() {
-  brew install colima docker docker-buildx docker-compose kompose kubectl minikube
-  minikube config set driver docker
-
-  # docker plugins
-  mkdir -p ~/.docker/cli-plugins
-  ln -sfn "$HOMEBREW_PREFIX/opt/docker-buildx/bin/docker-buildx" ~/.docker/cli-plugins/docker-buildx
-  ln -sfn "$HOMEBREW_PREFIX/opt/docker-compose/bin/docker-compose" ~/.docker/cli-plugins/docker-compose
-}
-
 # fnm
 function install_fnm() {
   brew install fnm
   eval "$(fnm env --use-on-cd)"
   fnm install --lts && fnm use lts-latest && npm install -g yarn
+}
+
+# gcloud
+function install_gcloud() {
+  # Check cloud components installation
+  brew install --cask google-cloud-sdk
 }
 
 # goenv
@@ -35,7 +30,7 @@ function install_juliaup() {
 
 # misc
 function install_misc() {
-  brew install act ansible ansible-lint gitleaks hyperfine libpq lefthook mkcert stress-ng tfenv watchman
+  brew install act ansible ansible-lint gitleaks hyperfine libpq lefthook mkcert stress-ng tfenv
 
   # psql
   if ! grep -Fq 'libpq/bin' ~/.path; then
@@ -85,12 +80,14 @@ Usage: $0 [OPTIONS]
 
     --help               Show this message
     --all                Install all dev tools
-    --docker
     --fnm
+    --gcloud
+    --goenv
     --juliaup
     --misc
     --pyenv
     --sdkman
+    --zig
 EOF
 }
 
@@ -112,8 +109,8 @@ for opt in "$@"; do
       )
       break
       ;;
-    --docker)   install_fns+=(install_docker) ;;
     --fnm)      install_fns+=(install_fnm) ;;
+    --gcloud)   install_fns+=(install_gcloud) ;;
     --goenv)    install_fns+=(install_goenv) ;;
     --juliaup)  install_fns+=(install_juliaup) ;;
     --misc)     install_fns+=(install_misc) ;;

@@ -24,12 +24,6 @@ function install_goenv() {
   bash "$mac_dev_script" --goenv
 }
 
-# Heroku
-function install_heroku() {
-  curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
-  heroku plugins:install heroku-accounts
-}
-
 # juliaup
 function install_juliaup() {
   bash "$mac_dev_script" --juliaup
@@ -75,7 +69,6 @@ Usage: $0 [OPTIONS]
     --fnm
     --gcloud
     --goenv
-    --heroku
     --juliaup
     --misc
     --pgadmin4
@@ -107,7 +100,6 @@ for opt in "$@"; do
     --fnm)        install_fns+=(install_fnm) ;;
     --gcloud)     install_fns+=(install_gcloud) ;;
     --goenv)      install_fns+=(install_goenv) ;;
-    --heroku)     install_fns+=(install_heroku) ;;
     --juliaup)    install_fns+=(install_juliaup) ;;
     --misc)       install_fns+=(install_misc) ;;
     --pgadmin4)   install_fns+=(install_pgadmin4) ;;
