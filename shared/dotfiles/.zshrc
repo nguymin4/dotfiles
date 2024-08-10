@@ -80,14 +80,6 @@ if command -v goenv &> /dev/null; then
   export PATH="$PATH:$GOPATH/bin"
 fi
 
-# >>> juliaup initialize >>>
-
-# !! Contents within this block are managed by juliaup !!
-
-path=('/home/nguymin4/.juliaup/bin' $path)
-export PATH
-
-# <<< juliaup initialize <<<
 
 # Setup prompt
 if command -v starship &> /dev/null; then
