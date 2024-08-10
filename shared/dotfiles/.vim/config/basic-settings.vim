@@ -1,11 +1,14 @@
-set autoindent
-set smartindent
-set clipboard=unnamedplus
 set encoding=utf-8
 set fileencodings=utf-8
+set autoindent
+set smartindent
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 set foldlevel=99
 set foldmethod=syntax
 set nofoldenable
+set number
+set relativenumber
+set nocursorline
 set guicursor=
 set hlsearch
 set incsearch
@@ -13,12 +16,9 @@ set shortmess-=S
 set laststatus=2
 set mouse=
 set nrformats=
-set number
-set relativenumber
-set cursorline
-set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 set timeoutlen=1000 ttimeoutlen=10
 set splitbelow
+set clipboard=unnamedplus
 set pastetoggle=<leader>1
 
 noremap <C-s> :w!<CR>
