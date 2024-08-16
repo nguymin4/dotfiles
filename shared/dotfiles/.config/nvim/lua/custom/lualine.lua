@@ -40,7 +40,12 @@ local function setup_lualine()
           sections = { 'error', 'warn' },
         }
       },
-      lualine_c = {'filename'},
+      lualine_c = {
+        {
+          'filename',
+          path = 3,
+        }
+      },
       lualine_x = {'filetype'},
       lualine_y = {'encoding', 'fileformat'},
       lualine_z = {'progress', 'location'}
@@ -50,6 +55,8 @@ local function setup_lualine()
         {
           'buffers',
           mode = 4,
+          show_filename_only = false,
+          max_length = vim.o.columns,
           filetype_names = {
             aerial = 'Aerial',
             NvimTree = 'NvimTree',
