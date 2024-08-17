@@ -3,11 +3,11 @@ start-at-login = true
 key-mapping.preset = 'qwerty'
 
 after-login-command = []
-after-startup-command = []
+after-startup-command = ['exec-and-forget bash ${HOME}/.config/aerospace/uebersicht.sh']
 
-# exec-on-workspace-change = ['/bin/bash', '-c', 'bash ${HOME}/.config/aerospace/uebersicht.sh >/dev/null 2>&1']
+exec-on-workspace-change = ['/bin/bash', '-c', 'bash ${HOME}/.config/aerospace/uebersicht.sh spaces']
 
-on-focus-changed = ['exec-and-forget bash ${HOME}/.config/aerospace/uebersicht.sh >/dev/null 2>&1']
+on-focus-changed = ['exec-and-forget bash ${HOME}/.config/aerospace/uebersicht.sh windows']
 
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
