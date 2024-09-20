@@ -11,8 +11,8 @@ if [[ $ENABLE_PROFILING == 'true' ]]; then
 fi
 
 # Disable some default behaviours
-setopt ignoreeof # Disable Ctrl+D: logout and exit
-stty -ixon # Disable Ctrl+S: lock scroll
+setopt ignoreeof  # Disable Ctrl+D: logout and exit
+stty -ixon        # Disable Ctrl+S: lock scroll
 
 # OMZ
 export ZSH=~/.oh-my-zsh
@@ -32,7 +32,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Custom plugins
 source $ZSH_CUSTOM/color.zsh
-source $ZSH_CUSTOM/syntax-highlighting.zsh # Always before vi-mode.zsh
+source $ZSH_CUSTOM/syntax-highlighting.zsh
 source $ZSH_CUSTOM/vi-mode.zsh
 source $ZSH_CUSTOM/fzf.zsh # Always after vi-mode
 source $ZSH_CUSTOM/misc.zsh
@@ -75,9 +75,8 @@ fi
 
 # goenv
 if command -v goenv &> /dev/null; then
-  eval "$(goenv init -)"
-  export PATH="$GOROOT/bin:$PATH"
-  export PATH="$PATH:$GOPATH/bin"
+  source $ZSH_CUSTOM/goenv.zsh
+  eval "$(goenv init -)" && _goenv-set-path
 fi
 
 
