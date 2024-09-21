@@ -1,68 +1,54 @@
-#!/usr/bin/perl
-# Copyright 2014 Pierre Mavro <deimos@deimos.fr>
-# Copyright 2014 Vivien Didelot <vivien@didelot.org>
-# Copyright 2014 Andreas Guldstrand <andreas.guldstrand@gmail.com>
-# Copyright 2014 Benjamin Chretien <chretien at lirmm dot fr>
+#!/bin/bash
 
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-use strict;
-use warnings;
-use utf8;
-use Getopt::Long;
-
-binmode(STDOUT, ":utf8");
-
-# default values
-my $t_warn = 70;
-my $t_crit = 90;
-my $chip = "";
-my $temperature = -9999;
-
-sub help {
-    print "Usage: temperature [-w <warning>] [-c <critical>] [--chip <chip>]\n";
-    print "-w <number>: warning threshold to become yellow\n";
-    print "-c <number>: critical threshold to become red\n";
-    print "--chip <chip>: sensor chip\n";
-    exit 0;
+help() {
+cat << EOF
+Usage: $0 [--chip <chip>] [-w <warning>] [-c <critical>]
+    --help          Show this message
+    --chip <chip>   sensor chip
+    -w <number>     warning threshold to become yellow
+    -c <number>     critical threshold to become yellow
+EOF
 }
 
-GetOptions("help|h" => \&help,
-           "w=i"    => \$t_warn,
-           "c=i"    => \$t_crit,
-           "chip=s" => \$chip);
+args=$(getopt -a -o c:w: --long chip:,help -- "$@")
+if [[ $? -gt 0 ]]; then
+  help
+  exit 1
+fi
 
-# Get chip temperature
-open (SENSORS, "sensors -u $chip |") or die;
-while (<SENSORS>) {
-    if (/^\s+temp1_input:\s+[\+]*([\-]*\d+\.\d)/) {
-        $temperature = $1;
-        last;
-    }
-}
-close(SENSORS);
+# Main
+set -euo pipefail
 
-$temperature eq -9999 and die 'Cannot find temperature';
+chip=""
+t_crit=90
+t_warn=70
+
+eval set -- "${args}"
+while :
+do
+  case $1 in
+    --help) help; shift ;;
+    --chip) chip=$2; shift 2 ;;
+    -c)     t_crit=$2; shift 2 ;;
+    -w)     t_warn=$2; shift 2 ;;
+    --)     shift; break ;;
+    *)
+       echo "Unsupported option: $1"
+       help
+       exit 1
+       ;;
+  esac
+done
+
+temperature=$(sensors -u "$chip" | grep -oP 'temp1_input:\s+\K(\d+)')
 
 # Print short_text, full_text
-print "$temperature°C\n" x2;
+echo "$temperature°C"
+echo "$temperature°C"
 
-# Print class, if needed
-if ($temperature >= $t_crit) {
-    print "critical\n";
-} elsif ($temperature >= $t_warn) {
-    print "warning\n";
-}
-
-exit 0;
+# Print class if needed
+if [[ $temperature -gt $t_crit ]]; then
+  echo "critical"
+elif [[ $temperature -gt $t_warn ]]; then
+  echo "warning"
+fi
