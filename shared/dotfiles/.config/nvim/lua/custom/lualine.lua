@@ -10,21 +10,23 @@ local modules = require('lualine_require').lazy_require({
 local function generate_theme()
   local ok, edge_theme = pcall(modules.loader.load_theme, 'edge')
   if not ok or not edge_theme then
-    return 'auto'
+    return 'auto', nil
   end
 
   local configuration = vim.fn['edge#get_configuration']()
   local palette = vim.fn['edge#get_palette'](configuration.style, configuration.dim_foreground, configuration.colors_override)
 
   edge_theme["normal"]["a"] = { bg = palette.bg_green[1], fg = palette.bg0[1], gui = 'bold' }
-  return edge_theme
+  warning_color = { bg = palette.yellow[1], fg = palette.bg0[1], gui = 'bold' }
+  return edge_theme, warning_color
 end
 
 local function setup_lualine()
+  local theme, warning_color = generate_theme()
   lualine.setup({
     options = {
       icons_enabled = true,
-      theme = generate_theme(),
+      theme = theme,
       disabled_filetypes = {
         statusline = { "NvimTree" }
       },
@@ -46,9 +48,18 @@ local function setup_lualine()
           path = 3,
         }
       },
-      lualine_x = {'filetype'},
-      lualine_y = {'encoding', 'fileformat'},
-      lualine_z = {'progress', 'location'}
+      lualine_x = {'filetype', 'encoding', 'fileformat' },
+      lualine_y = {
+        {
+          function()
+            local space = vim.fn.search([[\s\+$]], 'nwc')
+            return space ~= 0 and string.format('trailing[%s]', space) or ""
+          end,
+          icon = 'Ξ',
+          color = warning_color,
+        },
+      },
+      lualine_z = { 'progress', 'location' },
     },
     tabline = {
       lualine_a = {
