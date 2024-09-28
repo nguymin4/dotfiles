@@ -35,3 +35,8 @@ let g:livepreview_cursorhold_recompile = 0
 
 " LLM
 Plug 'David-Kunz/gen.nvim'
+
+Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
+Plug 'nvim-lua/plenary.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'stevearc/dressing.nvim'
