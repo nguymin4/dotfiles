@@ -20,4 +20,5 @@ require('custom/nvim-cmp')
 require('custom/explorer/init')
 require('custom/gitsigns')
 require('custom/lualine')
+require('custom/ollama')
 EOF

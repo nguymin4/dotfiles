@@ -32,3 +32,6 @@ Plug 'stevearc/aerial.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 let g:livepreview_cursorhold_recompile = 0
+
+" LLM
+Plug 'David-Kunz/gen.nvim'
