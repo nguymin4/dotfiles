@@ -4,7 +4,9 @@ require('custom/lsp')
 require('custom/explorer')
 require('custom/gitsigns')
 require('custom/lualine')
+
 require('custom/ollama')
+require('custom/avante')
 
 -- Make scrolloff go past end of the file
 vim.o.scrolloff = math.floor(vim.fn.winheight(0) / 5)
