@@ -1,3 +1,9 @@
+-- Remove default mapping which interfere with ReplaceWithRegister plugin
+vim.keymap.del('n', 'gri')
+vim.keymap.del('n', 'gra')
+vim.keymap.del('x', 'gra')
+vim.keymap.del('n', 'grn')
+
 -- LSP actions
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
@@ -23,6 +29,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end
 })
 
+-- LSP workspace
 vim.api.nvim_create_user_command('LspWorkspaceAdd', function()
   vim.lsp.buf.add_workspace_folder()
 end, { desc = 'Add folder to workspace' })
@@ -35,6 +42,7 @@ vim.api.nvim_create_user_command('LspWorkspaceRemove', function()
   vim.lsp.buf.remove_workspace_folder()
 end, { desc = 'Remove folder from workspace' })
 
+-- LSP handlers
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = 'rounded'
 })
