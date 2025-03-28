@@ -4,8 +4,13 @@ packadd! cfilter
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-unimpaired'
 Plug 'inkarkat/vim-ReplaceWithRegister'
+
+" nvim >=0.11 has built-in commenting and vim-unimpaired
+if !has('nvim')
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-unimpaired'
+endif
 
 " vim-tmux-navigator
 Plug 'christoomey/vim-tmux-navigator'
@@ -14,11 +19,6 @@ nnoremap <silent> <c-h> :<C-U>TmuxNavigateLeft<cr>
 nnoremap <silent> <c-j> :<C-U>TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :<C-U>TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :<C-U>TmuxNavigateRight<cr>
-
-" nvim >=0.10 has built-in commenting
-if !has('nvim')
-  Plug 'tpope/vim-commentary'
-endif
 
 " search
 Plug 'mileszs/ack.vim'
