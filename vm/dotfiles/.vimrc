@@ -19,7 +19,6 @@ set relativenumber
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 set timeoutlen=1000 ttimeoutlen=10
 set splitbelow
-set pastetoggle=<leader>1
 
 noremap <C-s> :w!<CR>
 noremap <leader>5 :e!<CR>
