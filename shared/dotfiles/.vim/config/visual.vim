@@ -8,8 +8,12 @@ Plug 'mhinz/vim-startify'
 let g:startify_change_to_dir = 0
 let g:startify_list_order = ['dir', 'commands']
 
+" Simple command to format ASCII table
+command! -range FormatTable <line1>,<line2>! tr -s " " | column -t -s '|' -o '|'
+
 " misc
 Plug 'terryma/vim-expand-region'
+
 Plug 'unblevable/quick-scope'
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 let g:qs_max_chars = 180
