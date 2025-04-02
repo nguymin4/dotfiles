@@ -5,8 +5,10 @@ end
 
 nvim_treesitter.setup({
   ensure_installed = {
+    'bash',
     'c',
     'css',
+    'dockerfile',
     'go',
     'graphql',
     'html',
@@ -18,6 +20,7 @@ nvim_treesitter.setup({
     'markdown',
     'markdown_inline',
     'matlab',
+    'promql',
     'python',
     'query',
     'rust',
@@ -26,6 +29,7 @@ nvim_treesitter.setup({
     'sql',
     'terraform',
     'typescript',
+    'tsx',
     'vim',
     'vimdoc',
     'yaml',
