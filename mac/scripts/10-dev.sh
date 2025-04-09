@@ -2,6 +2,17 @@
 
 set -euo pipefail
 
+# core tools
+function install_core_tools() {
+  brew install gitleaks hyperfine libpq lefthook tfenv uv
+
+  # psql
+  if ! grep -Fq 'libpq/bin' ~/.path; then
+    # shellcheck disable=SC2016
+    echo 'export PATH="$HOMEBREW_PREFIX/opt/libpq/bin:$PATH"' >> ~/.path
+  fi
+}
+
 # fnm
 function install_fnm() {
   brew install fnm
@@ -23,20 +34,14 @@ function install_goenv() {
   goenv global "$latest_version"
 }
 
-# juliaup
-function install_juliaup() {
+# optional tools
+function install_optional_tools() {
+  brew install act
+  brew install ansible ansible-lint
   brew install juliaup
-}
-
-# misc
-function install_misc() {
-  brew install act ansible ansible-lint gitleaks hyperfine libpq lefthook mkcert stress-ng tfenv
-
-  # psql
-  if ! grep -Fq 'libpq/bin' ~/.path; then
-    # shellcheck disable=SC2016
-    echo 'export PATH="$HOMEBREW_PREFIX/opt/libpq/bin:$PATH"' >> ~/.path
-  fi
+  brew install mkcert
+  brew install stress-ng
+  brew install zig
 
   # To build python pymssql
   brew install freetds
@@ -66,11 +71,6 @@ function install_sdkman() {
   set -u
 }
 
-# zig
-function install_zig() {
-  brew install zig
-}
-
 
 #---------------------------------------------#
 # Print CLI usage
@@ -80,14 +80,13 @@ Usage: $0 [OPTIONS]
 
     --help               Show this message
     --all                Install all dev tools
+    --core-tools
     --fnm
     --gcloud
     --goenv
-    --juliaup
-    --misc
+    --optional-tools
     --pyenv
     --sdkman
-    --zig
 EOF
 }
 
@@ -101,22 +100,21 @@ for opt in "$@"; do
       ;;
     --all)
       install_fns=(
+        install_core_tools
         install_fnm
         install_goenv
-        install_misc
         install_pyenv
         install_sdkman
       )
       break
       ;;
-    --fnm)      install_fns+=(install_fnm) ;;
-    --gcloud)   install_fns+=(install_gcloud) ;;
-    --goenv)    install_fns+=(install_goenv) ;;
-    --juliaup)  install_fns+=(install_juliaup) ;;
-    --misc)     install_fns+=(install_misc) ;;
-    --pyenv)    install_fns+=(install_pyenv) ;;
-    --sdkman)   install_fns+=(install_sdkman) ;;
-    --zig)      install_fns+=(install_zig) ;;
+    --core-tools)     install_fns+=(install_core_tools) ;;
+    --fnm)            install_fns+=(install_fnm) ;;
+    --gcloud)         install_fns+=(install_gcloud) ;;
+    --goenv)          install_fns+=(install_goenv) ;;
+    --optional-tools) install_fns+=(install_optional_tools) ;;
+    --pyenv)          install_fns+=(install_pyenv) ;;
+    --sdkman)         install_fns+=(install_sdkman) ;;
     *)
       echo "unknown option: $opt"
       help

@@ -6,6 +6,10 @@ linux_script_folder=$(dirname "$(realpath "$0")")
 dotfiles_root="$linux_script_folder/../.."
 mac_dev_script=$(realpath "$dotfiles_root/mac/scripts/10-dev.sh")
 
+# core tools
+function install_core_tools() {
+  bash "$mac_dev_script" --core-tools
+}
 
 # fnm
 function install_fnm() {
@@ -29,9 +33,9 @@ function install_juliaup() {
   bash "$mac_dev_script" --juliaup
 }
 
-# misc
-function install_misc() {
-  bash "$mac_dev_script" --misc
+# optional tools
+function install_optional_tools() {
+  bash "$mac_dev_script" --optional-tools
 }
 
 # PgAdmin4
@@ -51,30 +55,22 @@ function install_sdkman() {
   bash "$mac_dev_script" --sdkman
 }
 
-# zig
-function install_zig() {
-  bash "$mac_dev_script" --zig
-}
-
 
 #---------------------------------------------#
 # Print CLI usage
 help() {
   cat << EOF
-
 Usage: $0 [OPTIONS]
 
     --help               Show this message
     --all                Install all dev tools
+    --core-tools
     --fnm
     --gcloud
     --goenv
-    --juliaup
-    --misc
-    --pgadmin4
+    --optional-tools
     --pyenv
     --sdkman
-    --zig
 EOF
 }
 
@@ -88,24 +84,21 @@ for opt in "$@"; do
       ;;
     --all)
       install_fns=(
+        install_core_tools
         install_fnm
         install_goenv
-        install_juliaup
-        install_misc
         install_pyenv
         install_sdkman
       )
       break
       ;;
-    --fnm)        install_fns+=(install_fnm) ;;
-    --gcloud)     install_fns+=(install_gcloud) ;;
-    --goenv)      install_fns+=(install_goenv) ;;
-    --juliaup)    install_fns+=(install_juliaup) ;;
-    --misc)       install_fns+=(install_misc) ;;
-    --pgadmin4)   install_fns+=(install_pgadmin4) ;;
-    --pyenv)      install_fns+=(install_pyenv) ;;
-    --sdkman)     install_fns+=(install_sdkman) ;;
-    --zig)        install_fns+=(install_zig) ;;
+    --core-tools)     install_fns+=(install_core_tools) ;;
+    --fnm)            install_fns+=(install_fnm) ;;
+    --gcloud)         install_fns+=(install_gcloud) ;;
+    --goenv)          install_fns+=(install_goenv) ;;
+    --optional-tools) install_fns+=(install_optional_tools) ;;
+    --pyenv)          install_fns+=(install_pyenv) ;;
+    --sdkman)         install_fns+=(install_sdkman) ;;
     *)
       echo "unknown option: $opt"
       help
