@@ -6,7 +6,11 @@ set -euo pipefail
 sudo apt install -y lxpolkit libcanberra-gtk-module
 
 # Core utils
-sudo apt install -y dunst lm-sensors variety
+sudo apt install -y dunst lm-sensors variety vlc
+
+# Optional utils
+# google-chrome, vscode, slack
+# cmus, ministat, pinta, piper, youtubedl-gui
 
 # Albert launcher
 albert_repo_url="http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_$(lsb_release -rs)"
@@ -30,10 +34,6 @@ rm -rf ~/Programs/arc-icon-theme && git clone https://github.com/horst3180/arc-i
 cd ~/Programs/arc-icon-theme
 ./autogen.sh --prefix=/usr
 sudo make install
-
-# Optional utils
-# google-chrome, vscode, slack
-sudo apt install -y vlc pinta cmus piper ministat youtubedl-gui
 
 # brightnessctl
 sudo apt install -y brightnessctl
