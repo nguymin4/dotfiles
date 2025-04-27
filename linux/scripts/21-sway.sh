@@ -19,11 +19,13 @@ fcitx5 -dr > /dev/null
 # Multi-GPU setup: Intel-Nvidia
 # Use integrated (Intel) card for sway as Nvidia is not officially supported
 # Node name `card1` is chosen by cross-checking /dev/dri/by-path and `lspci`
+# NOTE: 2025-04-27 WLR_DRM_DEVICES doesn't seem to work anymore and/or became redundant
 sudo tee /usr/share/wayland-sessions/sway-nvidia.desktop > /dev/null <<- 'EOH'
 [Desktop Entry]
 Name=Sway - Nvidia
 Comment=An i3-compatible Wayland compositor
-Exec=env WLR_DRM_DEVICES=/dev/dri/card1 sway --unsupported-gpu
+# Exec=env WLR_DRM_DEVICES=/dev/dri/card1 sway --unsupported-gpu
+Exec=sway --unsupported-gpu
 Type=Application
 DesktopNames=sway
 EOH
