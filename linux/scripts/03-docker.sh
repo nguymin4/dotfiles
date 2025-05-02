@@ -13,7 +13,7 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 sudo usermod -aG docker "$(whoami)"
 
 # kubernetes
-brew install kompose kubectl minikube
+brew install minikube kubectl helm kompose
 minikube config set driver docker
 minikube addons enable ingress
 minikube addons enable dashboard
