@@ -1,4 +1,3 @@
-local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
 local mason_ok, mason = pcall(require, 'mason')
 local mason_lspconfig_ok, mason_lspconfig = pcall(require, 'mason-lspconfig')
 
@@ -7,18 +6,6 @@ if not mason_ok or not mason_lspconfig_ok then
 end
 
 local M = {}
-
-local function setup_lsp(automatic_setup_servers, capabilities)
-  if not lspconfig_ok then
-    return
-  end
-
-  for _, server_name in ipairs(automatic_setup_servers) do
-    lspconfig[server_name].setup({
-      capabilities = lsp_capabilities
-    })
-  end
-end
 
 function M.setup(opts)
   mason.setup({
@@ -33,19 +20,25 @@ function M.setup(opts)
   })
 
   mason_lspconfig.setup({
-    automatic_installation = false,
     ensure_installed = opts.ensure_installed,
+    automatic_installation = false,
+    automatic_enable = false,
   })
 
-  local is_automatic_setup = function(server_name)
-    return vim.iter(opts.manual_setup_servers):all(function(manual_setup_server)
-      return server_name ~= manual_setup_server
+  -- Default automatic_enable.exclude in mason-lspconfig is very slow
+  -- Thus we will enable server manually
+  local is_automatically_enabled = function(server_name)
+    return vim.iter(opts.automatic_enable.exclude):all(function(excluded_server)
+      return server_name ~= excluded_server
     end)
   end
 
   local installed_servers = mason_lspconfig.get_installed_servers()
-  local automatic_setup_servers = vim.iter(installed_servers):filter(is_automatic_setup):totable()
-  setup_lsp(automatic_setup_servers, opts.capabilities)
+  for _, server_name in ipairs(installed_servers) do
+    if is_automatically_enabled(server_name) then
+      vim.lsp.enable(server_name)
+    end
+  end
 end
 
 return M
