@@ -29,7 +29,6 @@ let g:vsnip_snippet_dir = expand('~/.vim/snippets')
 
 " Misc
 Plug 'stevearc/aerial.nvim'
-Plug 'folke/trouble.nvim'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 let g:livepreview_cursorhold_recompile = 0
 
