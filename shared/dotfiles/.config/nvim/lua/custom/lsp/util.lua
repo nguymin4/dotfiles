@@ -12,8 +12,7 @@ function M.check_executable(command, callback)
   local args = vim.split(command, ' ')
   local cmd = table.remove(args, 1)
 
-  local ok, is_exe = pcall(vim.fn.executable, cmd)
-  if not ok or 1 ~= is_exe then
+  if vim.fn.executable(cmd) == 0 then
     callback(false, command)
     return
   end
@@ -48,9 +47,12 @@ function M.check_executables(executables, callback)
   end
 end
 
--- Construct pyenv-which command to check if a tool exists
-function M.pyenv_which(tool)
-  return 'pyenv which '..tool..' --skip-advice'
+-- Construct which command to check if a tool exists
+-- accounted for if pyenv exist due to complex shims
+local has_pyenv = vim.fn.executable("pyenv") == 1
+
+function M.which(tool)
+  return has_pyenv and 'pyenv which '..tool..' --skip-advice' or tool
 end
 
 return M
