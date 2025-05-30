@@ -78,7 +78,7 @@ local function setup_efmls()
 end
 
 lsp_util.check_executable(
-  lsp_util.pyenv_which('ruff --version'),
+  'ruff --version',
   vim.schedule_wrap(function(has_ruff)
     if not has_ruff then
       return setup_efmls()
