@@ -51,7 +51,7 @@ end
 -- accounted for if pyenv exist due to complex shims
 local has_pyenv = vim.fn.executable("pyenv") == 1
 
-function M.which(tool)
+function M.pyenv_which(tool)
   return has_pyenv and 'pyenv which '..tool..' --skip-advice' or tool
 end
 

@@ -10,7 +10,7 @@ local M = {}
 
 local filetypes = {
   python = {
-    commands = vim.iter({ 'black', 'flake8', 'isort' }):map(lsp_util.which):totable(),
+    commands = vim.iter({ 'black --version', 'flake8 --version', 'isort --version' }):map(lsp_util.pyenv_which):totable(),
     list_config_names = function(commands)
       local efmls_configs = {}
       for _, command in ipairs(commands) do

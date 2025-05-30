@@ -78,7 +78,7 @@ local function setup_efmls()
 end
 
 lsp_util.check_executable(
-  lsp_util.which('ruff'),
+  lsp_util.pyenv_which('ruff --version'),
   vim.schedule_wrap(function(has_ruff)
     if not has_ruff then
       return setup_efmls()
@@ -88,7 +88,7 @@ lsp_util.check_executable(
 )
 
 lsp_util.check_executable(
-  lsp_util.which('julia'),
+  'julia --version',
   vim.schedule_wrap(function(has_julia)
     if has_julia then
       vim.lsp.enable('julials')
