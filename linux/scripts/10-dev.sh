@@ -45,11 +45,6 @@ function install_pgadmin4() {
   sudo apt install -y pgadmin4
 }
 
-# pyenv
-function install_pyenv() {
-  bash "$mac_dev_script" --pyenv
-}
-
 # sdkman
 function install_sdkman() {
   bash "$mac_dev_script" --sdkman
@@ -69,7 +64,6 @@ Usage: $0 [OPTIONS]
     --gcloud
     --goenv
     --optional-tools
-    --pyenv
     --sdkman
 EOF
 }
@@ -87,7 +81,6 @@ for opt in "$@"; do
         install_core_tools
         install_fnm
         install_goenv
-        install_pyenv
         install_sdkman
       )
       break
@@ -97,7 +90,6 @@ for opt in "$@"; do
     --gcloud)         install_fns+=(install_gcloud) ;;
     --goenv)          install_fns+=(install_goenv) ;;
     --optional-tools) install_fns+=(install_optional_tools) ;;
-    --pyenv)          install_fns+=(install_pyenv) ;;
     --sdkman)         install_fns+=(install_sdkman) ;;
     *)
       echo "unknown option: $opt"
