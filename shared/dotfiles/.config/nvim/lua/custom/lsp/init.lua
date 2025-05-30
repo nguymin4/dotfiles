@@ -44,11 +44,12 @@ mason.setup({
   automatic_enable = {
     exclude = {
       'efm',
+      'julials',
     },
   }
 })
 
--- ruff vs efm-langserver
+-- Manual setup
 local lsp_util = require('custom.lsp.util')
 if not lsp_util then
   return
@@ -83,5 +84,14 @@ lsp_util.check_executable(
       return setup_efmls()
     end
     vim.lsp.enable('ruff')
+  end)
+)
+
+lsp_util.check_executable(
+  lsp_util.which('julia'),
+  vim.schedule_wrap(function(has_julia)
+    if has_julia then
+      vim.lsp.enable('julials')
+    end
   end)
 )
