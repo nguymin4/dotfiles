@@ -3,6 +3,8 @@ local mason = require('custom.lsp.mason')
 require('custom.lsp.actions')
 require('custom.lsp.diagnostic')
 
+vim.lsp.set_log_level('ERROR')
+
 -- Disable LSP watcher - Too slow on linux
 -- TODO: Remove this https://github.com/neovim/neovim/issues/23291
 local lsp_wf_ok, lsp_wf = pcall(require, 'vim.lsp._watchfiles')
@@ -62,6 +64,11 @@ local function setup_efmls()
   end
 
   efmls.generate_configs(function(languages)
+    -- Skip running efmls if there is nothing to setup
+    if #vim.tbl_keys(languages) == 0 then
+      return
+    end
+
     vim.lsp.config('efm', {
       filetypes = vim.tbl_keys(languages),
       settings = {

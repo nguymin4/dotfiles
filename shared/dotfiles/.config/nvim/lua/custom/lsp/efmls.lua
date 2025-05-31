@@ -40,10 +40,7 @@ function M.generate_configs(cb)
       end
     end
 
-    -- Skip running efmls if there is nothing to setup
-    if #vim.tbl_keys(languages) > 0 then
-      cb(languages)
-    end
+    return cb(languages)
   end)
 
   local remaining = #vim.tbl_keys(filetypes)
