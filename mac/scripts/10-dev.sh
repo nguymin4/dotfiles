@@ -24,6 +24,7 @@ function install_fnm() {
 function install_gcloud() {
   # Check cloud components installation
   brew install --cask google-cloud-sdk
+  gcloud components install gke-gcloud-auth-plugin
 }
 
 # goenv
