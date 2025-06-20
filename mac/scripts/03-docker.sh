@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-brew install colima docker docker-buildx docker-compose
+brew install colima lima-additional-guestagents docker docker-buildx docker-compose
 
 # docker plugins
 mkdir -p ~/.docker/cli-plugins
