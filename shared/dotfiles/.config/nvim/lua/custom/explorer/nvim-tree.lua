@@ -7,7 +7,42 @@ local function on_attach(bufnr)
   local api = require('nvim-tree.api')
   local actions = require('nvim-tree.actions')
 
-  local function navigate_git(where)
+  -- marked files operation
+  local bulk_cut = function()
+    local marks = api.marks.list()
+    if #marks == 0 then
+      table.insert(marks, api.tree.get_node_under_cursor())
+    end
+    -- Do not use api.marks.bulk.move to avoid using prompt to input destination path
+    for _, node in pairs(marks) do
+      api.fs.cut(node)
+    end
+    api.marks.clear()
+    api.tree.reload()
+  end
+
+  local bulk_copy = function()
+    local marks = api.marks.list()
+    if #marks == 0 then
+      table.insert(marks, api.tree.get_node_under_cursor())
+    end
+    for _, node in pairs(marks) do
+      api.fs.copy.node(node)
+    end
+    api.marks.clear()
+    api.tree.reload()
+  end
+
+  local bulk_trash = function()
+    local marks = api.marks.list()
+    if #marks == 0 then
+      table.insert(marks, api.tree.get_node_under_cursor())
+    end
+    api.marks.bulk.trash()
+  end
+
+  -- git
+  local navigate_git = function(where)
     return actions.moves.item.fn({
       where = where,
       what = 'git',
@@ -16,24 +51,22 @@ local function on_attach(bufnr)
     })
   end
 
-  local function opts(desc)
+  local opts = function(desc)
     return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
   end
 
   vim.keymap.set('n', 'a',  api.fs.create, opts('Create File Or Directory'))
-  vim.keymap.set('n', 'dd', api.fs.cut, opts('Cut'))
-  vim.keymap.set('n', 'yy', api.fs.copy.node, opts('Copy'))
+  vim.keymap.set('n', 'r', api.fs.rename, opts('Rename'))
   vim.keymap.set('n', 'yn', api.fs.copy.filename, opts('Copy Name'))
   vim.keymap.set('n', 'yp', api.fs.copy.relative_path, opts('Copy Relative Path'))
   vim.keymap.set('n', 'yP', api.fs.copy.absolute_path, opts('Copy Absolute Path'))
-  vim.keymap.set('n', 'D', api.fs.trash, opts('Trash'))
-  vim.keymap.set('n', 'p', api.fs.paste, opts('Paste'))
-  vim.keymap.set('n', 'r', api.fs.rename, opts('Rename'))
 
-  vim.keymap.set('n', 'bd', api.marks.bulk.delete, opts('Delete Bookmarked'))
-  vim.keymap.set('n', 'bD', api.marks.bulk.trash, opts('Trash Bookmarked'))
-  vim.keymap.set('n', 'bmv', api.marks.bulk.move, opts('Move Bookmarked'))
   vim.keymap.set('n', 'm', api.marks.toggle, opts('Toggle Bookmark'))
+  vim.keymap.set('n', 'p', api.fs.paste, opts('Paste'))
+  vim.keymap.set('n', 'dd', bulk_cut, opts('Cut File(s)'))
+  vim.keymap.set('n', 'yy', bulk_copy, opts('Copy File(s)'))
+  vim.keymap.set('n', 'D', bulk_trash, opts('Trash File(s)'))
+  vim.keymap.set('n', 'bD', api.marks.bulk.delete, opts('Remove File(s)'))
 
   vim.keymap.set('n', 'u', api.tree.change_root_to_parent, opts('Up'))
   vim.keymap.set('n', 'cd', api.tree.change_root_to_node, opts('CD'))
@@ -92,6 +125,13 @@ nvim_tree.setup({
   },
   notify = {
     threshold = vim.log.levels.ERROR,
+  },
+  ui = {
+    confirm = {
+      remove = true,
+      trash = true,
+      default_yes = false,
+    },
   },
   on_attach = on_attach,
 })
