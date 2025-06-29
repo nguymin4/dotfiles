@@ -49,6 +49,12 @@ local function on_attach(bufnr)
     end)
   end
 
+  -- create node and clear mark to avoid confusion for bulk operations
+  local create_node = function(args)
+    api.fs.create(args)
+    api.marks.clear()
+  end
+
   -- git
   local navigate_git = function(where)
     return actions.moves.item.fn({
@@ -63,7 +69,7 @@ local function on_attach(bufnr)
     return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
   end
 
-  vim.keymap.set('n', 'a',  api.fs.create, opts('Create File Or Directory'))
+  vim.keymap.set('n', 'a', create_node, opts('Create File Or Directory'))
   vim.keymap.set('n', 'r', api.fs.rename, opts('Rename'))
   vim.keymap.set('n', 'yn', api.fs.copy.filename, opts('Copy Name'))
   vim.keymap.set('n', 'yp', api.fs.copy.relative_path, opts('Copy Relative Path'))
