@@ -38,7 +38,15 @@ local function on_attach(bufnr)
     if #marks == 0 then
       table.insert(marks, api.tree.get_node_under_cursor())
     end
-    api.marks.bulk.trash()
+    vim.ui.input({ prompt = string.format("Trash %s files? [y/n] ", #marks) }, function(input)
+      if input == "y" then
+        for _, node in ipairs(marks) do
+          api.fs.trash(node)
+        end
+        api.marks.clear()
+        api.tree.reload()
+      end
+    end)
   end
 
   -- git
@@ -129,7 +137,7 @@ nvim_tree.setup({
   ui = {
     confirm = {
       remove = true,
-      trash = true,
+      trash = false, -- Implemented custom logic for confirmation
       default_yes = false,
     },
   },
