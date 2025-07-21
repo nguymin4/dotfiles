@@ -20,6 +20,10 @@ set timeoutlen=1000 ttimeoutlen=10
 set splitbelow
 set clipboard=unnamedplus
 
+let mapleader = " "
+nnoremap <Space> <Nop>
+vnoremap <Space> <Nop>
+
 noremap <C-s> :w!<CR>
 noremap <leader>5 :e!<CR>
 noremap <leader>6 :set hlsearch! hlsearch?<CR>
