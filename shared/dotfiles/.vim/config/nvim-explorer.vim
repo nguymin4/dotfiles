@@ -10,9 +10,8 @@ nnoremap <Leader>t :NvimTreeToggle<CR>
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-ui-select.nvim'
-
-nnoremap <leader>p <cmd>Telescope find_files<cr>
-nnoremap <leader>b <cmd>Telescope buffers<cr>
+Plug 'nvim-telescope/telescope-live-grep-args.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " lualine
 Plug 'nvim-lualine/lualine.nvim'
