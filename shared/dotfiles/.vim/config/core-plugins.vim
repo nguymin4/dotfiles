@@ -24,6 +24,7 @@ nnoremap <silent> <c-l> :<C-U>TmuxNavigateRight<cr>
 Plug 'mileszs/ack.vim'
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
+vnoremap <leader>a "sy:Ack! '<C-r>s'<CR>
 let g:ackprg = 'rg --vimgrep --color=never --hidden --glob=!.git/'
 let g:ackhighlight = 1
 
