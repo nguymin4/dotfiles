@@ -1,5 +1,6 @@
 require('custom/nvim-tree-sitter')
-require('custom/nvim-cmp')
+-- require('custom/nvim-cmp')
+require('custom/blink-cmp')
 require('custom/lsp')
 require('custom/explorer')
 require('custom/gitsigns')
