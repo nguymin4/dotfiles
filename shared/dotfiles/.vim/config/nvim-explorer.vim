@@ -16,6 +16,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 " Misc
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'stevearc/aerial.nvim'
+Plug 'Aasim-A/scrollEOF.nvim'
 
 " Improve gf functionality
 Plug 'sam4llis/nvim-lua-gf'
