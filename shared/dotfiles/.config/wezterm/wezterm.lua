@@ -66,7 +66,7 @@ local is_darwin = wezterm.target_triple:find('darwin') ~= nil
 return {
   automatically_reload_config = true,
   colors = current_theme,
-  bold_brightens_ansi_colors = 'BrightOnly',
+  bold_brightens_ansi_colors = 'BrightAndBold',
 
   -- Font settings
   font = wezterm.font('UbuntuMono Nerd Font Mono'),
@@ -76,6 +76,7 @@ return {
       italic = false,
       font = wezterm.font({
         family = 'UbuntuMono Nerd Font Mono',
+        weight = 'Bold'
       }),
     },
     {
@@ -83,6 +84,7 @@ return {
       italic = true,
       font = wezterm.font({
         family = 'UbuntuMono Nerd Font Mono',
+        weight = 'Bold',
         italic = true
       }),
     },
