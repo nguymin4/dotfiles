@@ -13,12 +13,4 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 
-lua << EOF
-require('custom/nvim-tree-sitter')
-require('custom/lsp/init')
-require('custom/nvim-cmp')
-require('custom/explorer/init')
-require('custom/gitsigns')
-require('custom/lualine')
-require('custom/ollama')
-EOF
+lua require('custom')
