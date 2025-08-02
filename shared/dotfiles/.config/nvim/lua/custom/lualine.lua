@@ -17,7 +17,7 @@ local function generate_theme()
   local palette = vim.fn['edge#get_palette'](configuration.style, configuration.dim_foreground, configuration.colors_override)
 
   edge_theme["normal"]["a"] = { bg = palette.bg_green[1], fg = palette.bg0[1], gui = 'bold' }
-  warning_color = { bg = palette.yellow[1], fg = palette.bg0[1], gui = 'bold' }
+  local warning_color = { bg = palette.yellow[1], fg = palette.bg0[1], gui = 'bold' }
   return edge_theme, warning_color
 end
 

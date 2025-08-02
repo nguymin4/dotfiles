@@ -24,10 +24,6 @@ local function get_formatter()
 end
 
 -- Completion
-local feedkey = function(key, mode)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-end
-
 cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },

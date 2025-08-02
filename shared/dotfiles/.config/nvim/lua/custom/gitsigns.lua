@@ -17,7 +17,7 @@ gitsigns.setup({
   },
   on_attach = function(bufnr)
     local function map(mode, l, r, desc)
-      opts = { desc = 'gitsigns: ' .. desc, buffer = bufnr }
+      local opts = { desc = 'gitsigns: ' .. desc, buffer = bufnr }
       vim.keymap.set(mode, l, r, opts)
     end
 
