@@ -1,4 +1,5 @@
-local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+-- local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+local blink_cmp_ok, blink_cmp = pcall(require, 'blink.cmp')
 local mason = require('custom.lsp.mason')
 require('custom.lsp.actions')
 require('custom.lsp.diagnostic')
@@ -15,12 +16,12 @@ if lsp_wf_ok then
 end
 
 -- Download and setup LSP servers
-if not mason or not cmp_nvim_lsp_ok then
+if not mason or not blink_cmp_ok then
   return
 end
 
 vim.lsp.config('*', {
-  capabilities = cmp_nvim_lsp.default_capabilities()
+  capabilities = blink_cmp.get_lsp_capabilities()
 })
 
 mason.setup({

@@ -16,7 +16,8 @@ source ~/.vimrc
 lua << EOF
 require('custom/nvim-tree-sitter')
 require('custom/lsp/init')
-require('custom/nvim-cmp')
+-- require('custom/nvim-cmp')
+require('custom/blink-cmp')
 require('custom/explorer/init')
 require('custom/gitsigns')
 require('custom/lualine')

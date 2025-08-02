@@ -14,6 +14,9 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'onsails/lspkind.nvim'
 
+" blink.cmp
+Plug 'Saghen/blink.cmp', { 'tag': '*' }
+
 " Snippets
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
