@@ -13,8 +13,13 @@ Plug 'nvim-telescope/telescope-ui-select.nvim'
 Plug 'nvim-telescope/telescope-live-grep-args.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
-" lualine
+" Misc
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'stevearc/aerial.nvim'
 
-" improve gf functionality
+" Improve gf functionality
 Plug 'sam4llis/nvim-lua-gf'
+
+" Latex
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+let g:livepreview_cursorhold_recompile = 0
