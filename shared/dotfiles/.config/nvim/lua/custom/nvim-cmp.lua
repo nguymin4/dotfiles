@@ -3,6 +3,11 @@ if not cmp_ok then
   return
 end
 
+local luasnip_ok, luasnip = pcall(require, 'luasnip')
+if luasnip_ok then
+  require('luasnip.loaders.from_vscode').lazy_load()
+end
+
 -- Completion menu
 local function get_formatter()
   local lspkind_ok, lspkind = pcall(require, 'lspkind')
@@ -35,7 +40,7 @@ cmp.setup({
         end
       }
     },
-    { name = 'vsnip' },
+    { name = 'luasnip' },
     { name = 'path' },
   }),
   matching = {
@@ -92,15 +97,15 @@ cmp.setup({
     ['<C-d>'] = cmp.mapping.scroll_docs(5),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<C-j>'] = cmp.mapping(function(fallback)
-      if vim.fn['vsnip#jumpable'](1) == 1 then
-        feedkey('<Plug>(vsnip-jump-next)', '')
+      if luasnip.locally_jumpable(1) then
+        luasnip.jump(1)
       else
         fallback()
       end
     end, { 'i', 's' }),
     ['<C-k>'] = cmp.mapping(function(fallback)
-      if vim.fn['vsnip#jumpable'](-1) == 1 then
-        feedkey('<Plug>(vsnip-jump-prev)', '')
+      if luasnip.locally_jumpable(-1) then
+        luasnip.jump(-1)
       else
         fallback()
       end
@@ -120,7 +125,7 @@ cmp.setup({
   }),
   snippet = {
     expand = function(args)
-      vim.fn['vsnip#anonymous'](args.body)
+      require('luasnip').lsp_expand(args.body)
     end,
   },
 })
