@@ -36,6 +36,7 @@ mason.setup({
     'jdtls',
     'jsonls',
     'julials',
+    'lua_ls',
     'pyright',
     'terraformls',
     'texlab',
