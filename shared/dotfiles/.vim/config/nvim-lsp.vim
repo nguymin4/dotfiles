@@ -1,6 +1,5 @@
 " LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'ray-x/lsp_signature.nvim'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'creativenull/efmls-configs-nvim'
@@ -13,6 +12,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'onsails/lspkind.nvim'
+Plug 'ray-x/lsp_signature.nvim'
 
 " Snippets
 Plug 'L3MON4D3/LuaSnip'

@@ -139,3 +139,24 @@ vim.api.nvim_create_autocmd('CmdWinLeave', {
     cmp.setup({ enabled = true })
   end
 })
+
+-- Setup default capabilities
+local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+if cmp_nvim_lsp_ok then
+  vim.lsp.config('*', {
+    capabilities = cmp_nvim_lsp.default_capabilities()
+  })
+end
+
+-- LSP function signature
+local lsp_signature_ok, lsp_signature = pcall(require, 'lsp_signature')
+if lsp_signature_ok then
+  lsp_signature.setup({
+    bind = true,
+    fix_pos = false,
+    hint_enable = false,
+    handler_opts = {
+      border = 'rounded',
+    },
+  })
+end

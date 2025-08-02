@@ -1,8 +1,7 @@
-local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 local mason = require('custom.lsp.mason')
 require('custom.lsp.actions')
-require('custom.lsp.diagnostic')
 
+vim.o.winborder = 'rounded'
 vim.lsp.set_log_level('ERROR')
 
 -- Disable LSP watcher - Too slow on linux
@@ -15,13 +14,9 @@ if lsp_wf_ok then
 end
 
 -- Download and setup LSP servers
-if not mason or not cmp_nvim_lsp_ok then
+if not mason then
   return
 end
-
-vim.lsp.config('*', {
-  capabilities = cmp_nvim_lsp.default_capabilities()
-})
 
 mason.setup({
   ensure_installed = {

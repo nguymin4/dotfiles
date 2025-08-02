@@ -1,3 +1,14 @@
+vim.o.winborder = 'rounded'
+
+-- Diagnostics
+vim.diagnostic.config({
+  float = {
+    border = 'rounded'
+  },
+  severity_sort = true,
+  virtual_text = false,
+})
+
 -- Remove default mapping which interfere with ReplaceWithRegister plugin
 vim.keymap.del('n', 'gri')
 vim.keymap.del('n', 'gra')
@@ -41,25 +52,3 @@ end, { desc = 'List workspace folders' })
 vim.api.nvim_create_user_command('LspWorkspaceRemove', function()
   vim.lsp.buf.remove_workspace_folder()
 end, { desc = 'Remove folder from workspace' })
-
--- LSP handlers
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = 'rounded'
-})
-
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = 'rounded', focusable = false,
-})
-
--- LSP function signature
-local lsp_signature_ok, lsp_signature = pcall(require, 'lsp_signature')
-if lsp_signature_ok then
-  lsp_signature.setup({
-    bind = true,
-    fix_pos = false,
-    hint_enable = false,
-    handler_opts = {
-      border = 'rounded',
-    },
-  })
-end
