@@ -10,37 +10,62 @@ local modules = require('lualine_require').lazy_require({
 local function generate_theme()
   local ok, edge_theme = pcall(modules.loader.load_theme, 'edge')
   if not ok or not edge_theme then
-    return 'auto', nil
+    return 'auto', {}
   end
 
-  local configuration = vim.fn['edge#get_configuration']()
-  local palette = vim.fn['edge#get_palette'](configuration.style, configuration.dim_foreground, configuration.colors_override)
+  local conf = vim.fn['edge#get_configuration']()
+  local palette = vim.fn['edge#get_palette'](conf.style, conf.dim_foreground, conf.colors_override)
 
-  edge_theme["normal"]["a"] = { bg = palette.bg_green[1], fg = palette.bg0[1], gui = 'bold' }
-  local warning_color = { bg = palette.yellow[1], fg = palette.bg0[1], gui = 'bold' }
-  return edge_theme, warning_color
+  local diagnostic_colors = {
+    warn = { bg = palette.yellow[1], fg = palette.bg0[1] },
+    error = { bg = palette.red[1], fg = palette.bg0[1] },
+  }
+
+  edge_theme['normal']['a'] = { bg = palette.filled_green[1], fg = palette.bg0[1], gui = 'bold' }
+  edge_theme['command']['a'] = { bg = palette.filled_purple[1], fg = palette.bg0[1], gui = 'bold' }
+  return edge_theme, diagnostic_colors
 end
 
 local function setup_lualine()
-  local theme, warning_color = generate_theme()
+  local theme, diagnostic_colors = generate_theme()
   lualine.setup({
     options = {
       icons_enabled = true,
       theme = theme,
       disabled_filetypes = {
-        statusline = { "NvimTree" }
+        statusline = { 'NvimTree' }
       },
     },
     sections = {
-      lualine_a = {'mode'},
+      lualine_a = { 'mode' },
       lualine_b = {
-        'branch',
-        'diff',
+        {
+          'branch',
+          separator = { right = '' },
+        },
+        {
+          'diff',
+          icon = '',
+          separator = { right = '' },
+        },
         {
           'diagnostics',
-          sources={'nvim_lsp', 'nvim_diagnostic', 'nvim_workspace_diagnostic'},
-          sections = { 'error', 'warn' },
-        }
+          sources = { 'nvim_diagnostic' },
+          sections = { 'warn' },
+          diagnostics_color = {
+            warn = diagnostic_colors['warn'],
+          },
+          separator = { right = '' },
+        },
+        {
+          'diagnostics',
+          sources = { 'nvim_diagnostic' },
+          sections = { 'error' },
+          diagnostics_color = {
+            error = diagnostic_colors['error'],
+          },
+          separator = { right = '' },
+        },
       },
       lualine_c = {
         {
@@ -48,15 +73,15 @@ local function setup_lualine()
           path = 3,
         }
       },
-      lualine_x = {'filetype', 'encoding', 'fileformat' },
+      lualine_x = { 'filetype', 'encoding', 'fileformat' },
       lualine_y = {
         {
           function()
             local space = vim.fn.search([[\s\+$]], 'nwc')
-            return space ~= 0 and string.format('trailing[%s]', space) or ""
+            return space ~= 0 and string.format('trailing[%s]', space) or ''
           end,
           icon = 'Ξ',
-          color = warning_color,
+          color = diagnostic_colors['warn'],
         },
       },
       lualine_z = { 'progress', 'location' },
@@ -75,9 +100,9 @@ local function setup_lualine()
           },
         }
       },
-      lualine_z = {'tabs'}
+      lualine_z = { 'tabs' }
     },
-    extensions = {'aerial', 'mason', 'quickfix'}
+    extensions = { 'aerial', 'mason', 'quickfix' }
   })
 end
 
