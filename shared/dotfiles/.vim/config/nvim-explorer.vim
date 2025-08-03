@@ -17,7 +17,3 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'stevearc/aerial.nvim'
 Plug 'Aasim-A/scrollEOF.nvim'
-
-" Latex
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-let g:livepreview_cursorhold_recompile = 0
