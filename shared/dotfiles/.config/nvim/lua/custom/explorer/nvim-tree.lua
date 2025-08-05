@@ -98,6 +98,7 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'K', api.node.navigate.sibling.first, opts('First Sibling'))
   vim.keymap.set('n', 'J', api.node.navigate.sibling.last, opts('Last Sibling'))
   vim.keymap.set('n', 'P', api.node.navigate.parent, opts('Parent Directory'))
+  vim.keymap.set('n', 'C', api.tree.toggle_git_clean_filter, opts('Toggle Filter: Git Clean'))
   vim.keymap.set('n', ']g', navigate_git('next'), opts('Next Git'))
   vim.keymap.set('n', '[g', navigate_git('prev'), opts('Prev Git'))
 end
