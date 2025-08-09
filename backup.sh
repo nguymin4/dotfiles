@@ -8,7 +8,6 @@ Usage: bash backup.sh [OPTIONS]
 --help        Show this message
 --linux
 --mac
---vm
 --windows
 EOF
 }
@@ -16,7 +15,7 @@ EOF
 PLATFORM=""
 for opt in "$@"; do
   case $opt in
-    --linux|--mac|--vm|--windows)
+    --linux|--mac|--windows)
       PLATFORM=$opt
       ;;
     --help)
@@ -59,9 +58,6 @@ case $PLATFORM in
   --mac)
     run_rsync shared
     run_rsync mac
-    ;;
-  --vm)
-    run_rsync vm
     ;;
   --windows)
     run_rsync shared

@@ -8,7 +8,6 @@ Usage: bash restore.sh [OPTIONS] [TARGET_FOLDER]
 --help        Show this message
 --linux
 --mac
---vm
 --windows
 EOF
 }
@@ -18,7 +17,7 @@ while getopts ':-:' flag; do
   case "${flag}" in
     -)
       case "${OPTARG}" in
-        linux|mac|vm|windows)
+        linux|mac|windows)
           PLATFORM=$OPTARG
           ;;
         help)
@@ -67,9 +66,6 @@ case $PLATFORM in
   mac)
     run_rsync shared
     run_rsync mac
-    ;;
-  vm)
-    run_rsync vm
     ;;
   windows)
     run_rsync shared
