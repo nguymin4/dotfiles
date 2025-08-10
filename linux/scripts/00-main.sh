@@ -31,7 +31,6 @@ brew tap wez/wezterm-linuxbrew
 brew install wezterm
 
 # Fonts
-brew tap homebrew/linux-fonts
-brew install font-ubuntu-nerd-font font-ubuntu-mono-nerd-font font-codicon
+brew install --cask font-ubuntu-nerd-font font-ubuntu-mono-nerd-font font-codicon
 ln -s /home/linuxbrew/.linuxbrew/share/fonts -t ~/.local/share
 fc-cache -f
