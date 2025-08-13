@@ -10,10 +10,11 @@ vim.diagnostic.config({
 })
 
 -- Remove default mapping which interfere with ReplaceWithRegister plugin
-vim.keymap.del('n', 'gri')
 vim.keymap.del('n', 'gra')
 vim.keymap.del('x', 'gra')
+vim.keymap.del('n', 'gri')
 vim.keymap.del('n', 'grn')
+vim.keymap.del('n', 'grt')
 
 -- LSP actions
 vim.api.nvim_create_autocmd('LspAttach', {
