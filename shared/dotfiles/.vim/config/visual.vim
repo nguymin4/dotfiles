@@ -20,7 +20,7 @@ let g:qs_max_chars = 180
 
 " highlight yank
 if has('nvim')
-  au TextYankPost * silent! lua vim.highlight.on_yank({ higroup='HighlightedYankRegion', timeout=250 })
+  au TextYankPost * silent! lua vim.hl.on_yank({ higroup='HighlightedYankRegion', timeout=250 })
 else
   Plug 'machakann/vim-highlightedyank'
   let g:highlightedyank_highlight_duration = 200
