@@ -79,7 +79,7 @@ COPY_MODE_MARKER="#[align=left#,fg=$YELLOW#,bg=default]$LEFT_ARROW#[fg=$STATUS_B
 tmux_set pane-border-format       "#{?$IS_COPY_MODE,$COPY_MODE_MARKER,$CWD}"
 tmux_set pane-border-lines        "heavy"
 tmux_set pane-border-style        "fg=$PANE_FG,bg=default"
-tmux_set pane-active-border-style "#{?$IS_COPY_MODE,fg=$YELLOW,bg=default,fg=$GREEN,bg=default}"
+tmux_set pane-active-border-style "#{?$IS_COPY_MODE,fg=$YELLOW,fg=$GREEN}"
 
 # Pane number indicator
 tmux_set display-panes-colour         "$PANE_FG"
@@ -89,3 +89,4 @@ tmux_set display-panes-active-colour  "$GREEN"
 tmux_set message-style          "fg=$STATUS_BG,bg=$YELLOW"
 tmux_set message-command-style  "fg=$STATUS_BG,bg=$YELLOW"
 tmux_set mode-style             "fg=$STATUS_BG,bg=$YELLOW"
+tmux_set prompt-cursor-colour   "$STATUS_BG"
