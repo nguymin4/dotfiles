@@ -70,6 +70,7 @@ export TFHUB_CACHE_DIR=$HOME/.tfhub_modules
 
 # goenv
 if command -v goenv &> /dev/null; then
+  export GOENV_PATH_ORDER=front
   source $ZSH_CUSTOM/goenv.zsh
   eval "$(goenv init -)" && _goenv-set-path
 fi
