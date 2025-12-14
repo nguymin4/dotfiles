@@ -1,12 +1,7 @@
-local nvim_treesitter_ok, nvim_treesitter = pcall(require, 'nvim-treesitter.configs')
-if not nvim_treesitter_ok then
-  return
-end
-
-nvim_treesitter.setup({
-  ensure_installed = {
+local nvim_treesitter_ok, nvim_treesitter = pcall(require, 'nvim-treesitter')
+if nvim_treesitter_ok then
+  nvim_treesitter.install({
     'bash',
-    'c',
     'css',
     'dockerfile',
     'go',
@@ -16,13 +11,9 @@ nvim_treesitter.setup({
     'javascript',
     'julia',
     'latex',
-    'lua',
-    'markdown',
-    'markdown_inline',
     'matlab',
     'promql',
     'python',
-    'query',
     'rust',
     'scala',
     'scss',
@@ -30,61 +21,37 @@ nvim_treesitter.setup({
     'terraform',
     'typescript',
     'tsx',
-    'vim',
-    'vimdoc',
     'yaml',
     'zig',
-  },
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-      },
-    },
-    swap = {
-      enable = true,
-      swap_next = {
-        [")f"] = "@function.outer",
-        [")a"] = "@parameter.inner",
-      },
-      swap_previous = {
-        ["(f"] = "@function.outer",
-        ["(a"] = "@parameter.inner",
-      },
-    },
-    move = {
-      enable = true,
-      goto_next_start = {
-        ["]f"] = "@function.outer",
-        ["]a"] = "@parameter.outer",
-        ["]c"] = "@class.outer"
-      },
-      goto_next_end = {
-        ["]F"] = "@function.outer",
-        ["]A"] = "@parameter.outer",
-        ["]C"] = "@class.outer",
-      },
-      goto_previous_start = {
-        ["[f"] = "@function.outer",
-        ["[a"] = "@parameter.outer",
-        ["[c"] = "@class.outer",
-      },
-      goto_previous_end = {
-        ["[F"] = "@function.outer",
-        ["[A"] = "@parameter.outer",
-        ["[C"] = "@class.outer",
-      },
-    },
-  },
-})
+  })
+
+  local nvim_default_parsers = {
+    'c',
+    'lua',
+    'markdown',
+    'markdown_inline',
+    'query',
+    'vim',
+    'vimdoc',
+  }
+
+  -- Automatically start treesitter for supported filetypes
+  vim.api.nvim_create_autocmd('FileType', {
+    callback = function(args)
+      local lang = vim.treesitter.language.get_lang(args.match) or args.match
+      local installed_parsers = nvim_treesitter.get_installed('parsers')
+      if vim.tbl_contains(nvim_default_parsers, lang) or vim.tbl_contains(installed_parsers, lang) then
+        -- syntax highlighting, provided by Neovim
+        vim.treesitter.start(args.buf)
+        -- folds, provided by Neovim
+        vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        vim.wo.foldmethod = 'expr'
+        -- indentation, provided by nvim-treesitter
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end
+    end,
+  })
+end
 
 -- indent-blankline
 local ibl_ok, ibl = pcall(require, 'ibl')
