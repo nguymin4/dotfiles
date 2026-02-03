@@ -28,11 +28,6 @@ function install_goenv() {
   bash "$mac_dev_script" --goenv
 }
 
-# juliaup
-function install_juliaup() {
-  bash "$mac_dev_script" --juliaup
-}
-
 # optional tools
 function install_optional_tools() {
   bash "$mac_dev_script" --optional-tools
