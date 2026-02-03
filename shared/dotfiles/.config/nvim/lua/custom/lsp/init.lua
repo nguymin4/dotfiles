@@ -33,6 +33,7 @@ mason.setup({
     'julials',
     'lua_ls',
     'pyright',
+    'rust_analyzer',
     'terraformls',
     'texlab',
     'ts_ls',

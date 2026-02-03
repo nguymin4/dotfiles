@@ -28,6 +28,11 @@ function install_goenv() {
   bash "$mac_dev_script" --goenv
 }
 
+# rustup
+function install_rustup() {
+  bash "$mac_dev_script" --rustup
+}
+
 # optional tools
 function install_optional_tools() {
   bash "$mac_dev_script" --optional-tools
@@ -58,6 +63,7 @@ Usage: $0 [OPTIONS]
     --fnm
     --gcloud
     --goenv
+    --rustup
     --optional-tools
     --sdkman
 EOF
@@ -84,6 +90,7 @@ for opt in "$@"; do
     --fnm)            install_fns+=(install_fnm) ;;
     --gcloud)         install_fns+=(install_gcloud) ;;
     --goenv)          install_fns+=(install_goenv) ;;
+    --rustup)         install_fns+=(install_rustup) ;;
     --optional-tools) install_fns+=(install_optional_tools) ;;
     --sdkman)         install_fns+=(install_sdkman) ;;
     *)

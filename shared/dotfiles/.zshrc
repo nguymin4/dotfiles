@@ -61,6 +61,10 @@ if command -v brew &> /dev/null; then
   export SDKMAN_DIR="$HOMEBREW_PREFIX/opt/sdkman-cli/libexec"
   sdkman_init="${SDKMAN_DIR}/bin/sdkman-init.sh"
   [[ -s "$sdkman_init" ]] && source "$sdkman_init"
+
+  # rustup
+  rustup_bin="$HOMEBREW_PREFIX/opt/rustup/bin"
+  [[ -d "$rustup_bin" ]] && export PATH="$rustup_bin:$PATH"
 fi
 
 # python
