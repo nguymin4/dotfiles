@@ -29,3 +29,7 @@ set cmdheight=1
 set shortmess+=c
 set completeopt-=preview
 set signcolumn=yes
+
+" Codecompanion
+Plug 'olimorris/codecompanion.nvim'
+Plug 'nvim-lua/plenary.nvim'
