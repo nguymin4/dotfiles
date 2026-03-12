@@ -29,6 +29,3 @@ set cmdheight=1
 set shortmess+=c
 set completeopt-=preview
 set signcolumn=yes
-
-" LLM
-Plug 'David-Kunz/gen.nvim'
