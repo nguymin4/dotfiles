@@ -102,7 +102,21 @@ local function setup_lualine()
       },
       lualine_z = { 'tabs' }
     },
-    extensions = { 'aerial', 'mason', 'quickfix' }
+    extensions = {
+      'aerial',
+      'mason',
+      'quickfix',
+      {
+        filetypes = { 'codecompanion' },
+        sections = {
+          lualine_a = { 'mode' },
+          lualine_b = {
+            function() return 'CodeCompanion ' end,
+          },
+          lualine_z = { 'progress', 'location' },
+        },
+      }
+    }
   })
 end
 

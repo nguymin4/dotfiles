@@ -13,7 +13,7 @@ codecompanion.setup({
       adapter = 'ollama',
     },
     agent = {
-      adapter = 'gemini_cli',
+      adapter = 'opencode',
     },
   },
   adapters = {
@@ -21,21 +21,18 @@ codecompanion.setup({
       gemini_cli = function()
         return require('codecompanion.adapters').extend('gemini_cli', {
           commands = {
-            default = {
-              'gemini',
-              '--acp',
-            },
-            yolo = {
-              'gemini',
-              '--yolo',
-              '--acp',
-            },
+            default = { 'gemini', '--acp' },
+            yolo = { 'gemini', '--yolo', '--acp' },
           },
           defaults = {
             auth_method = 'oauth-personal',
           },
         })
       end,
+      opencode = "opencode",
+      opts = {
+        show_presets = false
+      },
     },
     http = {
       ollama = function()
@@ -45,12 +42,15 @@ codecompanion.setup({
           },
         })
       end,
+      opts = {
+        show_presets = false
+      },
     },
   },
   display = {
     chat = {
       show_settings = false, -- Settings to true prevent changing adapter and model
-      start_in_insert_mode = true,
+      start_in_insert_mode = false,
       window = {
         layout = 'vertical',
         position = 'right',
@@ -65,3 +65,18 @@ vim.keymap.set('v', 'gA', '<cmd>CodeCompanionChat Add<cr>', { noremap = true, si
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
 vim.cmd([[cab cc CodeCompanion]])
+
+
+-- Setup status spinner
+local spinner_ok, spinner = pcall(require, 'codecompanion._extensions.spinner')
+if spinner_ok then
+  spinner.setup({
+    style = 'native',
+    native = {
+      done_timer = 1000,
+      win_options = {
+        winblend = 20,
+      },
+    },
+  })
+end
