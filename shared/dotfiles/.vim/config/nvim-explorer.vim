@@ -1,5 +1,5 @@
 " nvim-tree
-Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-tree/nvim-tree.lua', { 'tag': '*' }
 Plug 'nvim-tree/nvim-web-devicons'
 
 " Reveal file and change cwd - in case the file is out of scope of current cwd
