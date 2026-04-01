@@ -2,7 +2,7 @@ local mason = require('custom.lsp.mason')
 require('custom.lsp.actions')
 
 vim.o.winborder = 'rounded'
-vim.lsp.set_log_level('ERROR')
+vim.lsp.log.set_level('ERROR')
 
 -- Disable LSP watcher - Too slow on linux
 -- TODO: Remove this https://github.com/neovim/neovim/issues/23291
