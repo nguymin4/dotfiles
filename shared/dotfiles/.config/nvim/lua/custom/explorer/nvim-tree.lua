@@ -5,7 +5,6 @@ end
 
 local function on_attach(bufnr)
   local api = require('nvim-tree.api')
-  local actions = require('nvim-tree.actions')
 
   -- marked files operation
   local bulk_cut = function()
@@ -55,16 +54,6 @@ local function on_attach(bufnr)
     api.marks.clear()
   end
 
-  -- git
-  local navigate_git = function(where)
-    return actions.moves.item.fn({
-      where = where,
-      what = 'git',
-      recurse = true,
-      skip_gitignored = true
-    })
-  end
-
   local opts = function(desc)
     return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
   end
@@ -99,8 +88,8 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'J', api.node.navigate.sibling.last, opts('Last Sibling'))
   vim.keymap.set('n', 'P', api.node.navigate.parent, opts('Parent Directory'))
   vim.keymap.set('n', 'C', api.tree.toggle_git_clean_filter, opts('Toggle Filter: Git Clean'))
-  vim.keymap.set('n', ']g', navigate_git('next'), opts('Next Git'))
-  vim.keymap.set('n', '[g', navigate_git('prev'), opts('Prev Git'))
+  vim.keymap.set('n', ']g', api.node.navigate.git.next_recursive, opts('Next Git'))
+  vim.keymap.set('n', '[g', api.node.navigate.git.prev_recursive, opts('Prev Git'))
 end
 
 nvim_tree.setup({
