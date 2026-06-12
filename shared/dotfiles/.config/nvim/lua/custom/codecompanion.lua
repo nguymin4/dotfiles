@@ -59,8 +59,8 @@ codecompanion.setup({
   },
 })
 
-vim.keymap.set({ 'n', 'v' }, '<C-a>', '<cmd>CodeCompanionActions<cr>', { noremap = true, silent = true })
-vim.keymap.set({ 'n', 'v' }, '<leader>c', '<cmd>CodeCompanionChat Toggle<cr>', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>c', '<cmd>CodeCompanionActions<cr>', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>C', '<cmd>CodeCompanionChat Toggle<cr>', { noremap = true, silent = true })
 vim.keymap.set('v', 'gA', '<cmd>CodeCompanionChat Add<cr>', { noremap = true, silent = true })
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
