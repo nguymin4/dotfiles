@@ -31,6 +31,6 @@ set completeopt-=preview
 set signcolumn=yes
 
 " Codecompanion
-Plug 'olimorris/codecompanion.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'lalitmee/codecompanion-spinners.nvim'
+" Plug 'olimorris/codecompanion.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'lalitmee/codecompanion-spinners.nvim'
