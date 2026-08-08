@@ -8,8 +8,17 @@ Plug 'mhinz/vim-startify'
 let g:startify_change_to_dir = 0
 let g:startify_list_order = ['dir', 'commands']
 
-" Simple command to format ASCII table
-command! -range FormatTable <line1>,<line2>! tr -s " " | column -t -s '|' -o '|'
+" Format ASCII table
+Plug 'junegunn/vim-easy-align'
+
+function! FormatMarkdownTable() range
+  silent! execute a:firstline . ',' . a:lastline . 'EasyAlign *|'
+
+  " Swap spaces on line 2 (delimiter row) for hyphens - except spaces touching '|'
+  execute (a:firstline + 1) . 's/|\@<! |\@!/-/ge'
+endfunction
+
+command! -range FormatMarkdownTable <line1>,<line2>call FormatMarkdownTable()
 
 " misc
 Plug 'terryma/vim-expand-region'
