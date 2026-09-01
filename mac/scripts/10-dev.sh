@@ -4,7 +4,7 @@ set -euo pipefail
 
 # core tools
 function install_core_tools() {
-  brew install gitleaks hyperfine libpq lefthook tfenv uv
+  brew install checkov gitleaks hyperfine libpq lefthook tfenv tflint uv
 
   # psql
   if ! grep -Fq 'libpq/bin' ~/.path; then
@@ -29,7 +29,7 @@ function install_gcloud() {
 
 # goenv
 function install_goenv() {
-  brew install goenv
+  brew install goenv govulncheck
   latest_version=$(goenv install --list | tail -n1 | xargs)
   goenv install "$latest_version"
   goenv global "$latest_version"
@@ -37,7 +37,7 @@ function install_goenv() {
 
 # rustup
 function install_rustup() {
-  brew install rustup
+  brew install rustup cargo-audit
   rustup install stable
   rustup default stable
   rustup component add rust-src
