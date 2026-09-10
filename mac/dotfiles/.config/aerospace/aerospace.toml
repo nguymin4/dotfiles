@@ -1,4 +1,4 @@
-# Start AeroSpace at login
+config-version = 2
 start-at-login = true
 key-mapping.preset = 'qwerty'
 
