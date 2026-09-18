@@ -25,6 +25,3 @@ shift + alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty -o \
 
 # Keyboard change
 ctrl + alt - space : skhd -k "cmd - space" && curl -X POST http://localhost:7776/widget/keyboard/refresh/0
-
-# yabai specific
-# .load "yabai_skhdrc"
