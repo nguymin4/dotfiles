@@ -11,14 +11,17 @@ else
 fi
 
 # Install core dependencies
-sudo add-apt-repository -y ppa:aslatter/ppa
 sudo apt update && sudo apt full-upgrade -y
-sudo apt install -y build-essential autoconf automake cmake git curl python3-dev python3-pip alacritty htop nmap
+sudo apt install -y build-essential autoconf automake cmake git curl python3-dev python3-pip htop nmap
 
 if [ -f /usr/bin/python3 ]
 then
   sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 fi
+
+# alacritty
+sudo add-apt-repository -y ppa:aslatter/ppa
+sudo apt install -y alacritty
 
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

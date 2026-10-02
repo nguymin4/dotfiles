@@ -13,9 +13,16 @@ sudo apt install -y dunst lm-sensors variety vlc
 # cmus, ministat, pinta, piper, youtubedl-gui
 
 # Albert launcher
-albert_repo_url="http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_$(lsb_release -rs)"
-echo "deb ${albert_repo_url}/ /" | sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.list
-curl -fsSL "${albert_repo_url}/Release.key" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_manuelschneid3r.gpg > /dev/null
+albert_repo_url="https://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_$(lsb_release -rs)"
+albert_keyring_path='/etc/apt/keyrings/home_manuelschneid3r.gpg'
+curl -fsSL "${albert_repo_url}/Release.key" | sudo gpg --dearmor -o "$albert_keyring_path"
+sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.sources > /dev/null <<- EOH
+Types: deb
+URIs: ${albert_repo_url}
+Suites: /
+Components:
+Signed-By: ${albert_keyring_path}
+EOH
 sudo apt update && sudo apt install -y albert
 
 # thunar
