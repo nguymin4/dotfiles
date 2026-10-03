@@ -2,8 +2,11 @@
 
 set -euo pipefail
 
-sudo apt install -y vim-gtk3 libbz2-dev libreadline-dev libsqlite3-dev libssl-dev libffi-dev liblzma-dev tk-dev texlive texlive-luatex texlive-pictures texlive-latex-extra latexmk
+sudo apt install -y vim-gtk3
 brew install neovim tree-sitter-cli golangci-lint shellcheck
+
+# latex
+# sudo apt install -y texlive texlive-luatex texlive-pictures texlive-latex-extra latexmk
 
 zsh -c "source ~/.zshrc && nvim +PlugInstall +qall"
 
