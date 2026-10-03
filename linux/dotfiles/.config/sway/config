@@ -242,11 +242,12 @@ bindsym XF86MonBrightnessDown exec "[ $(brightnessctl -c backlight info -m | awk
 bindsym $mod+F12 exec "brightnessctl -c backlight set +10%"
 bindsym $mod+F11 exec "[ $(brightnessctl -c backlight info -m | awk -F ',' '{print int($4)}' | sort -n | head -1) -gt 10 ] && brightnessctl -c backlight set 10%-"
 
-input type:keyboard {
-  # Capslock key should work as escape key
-  # See /usr/share/X11/xkb/rules/xorg.lst for options
-  xkb_options caps:escape
-}
+# This doesn't work after upgrading to Ubuntu 26.04 and Sway 1.11
+# input type:keyboard {
+#   # Capslock key should work as escape key
+#   # See /usr/share/X11/xkb/rules/xorg.lst for options
+#   xkb_options caps:escape
+# }
 
 exec {
   # GTK+ applications takes too much time to start

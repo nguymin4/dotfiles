@@ -5,6 +5,18 @@ set -euo pipefail
 sudo apt install -y sway swaylock swayidle waybar slurp grimshot wl-clipboard wlr-randr kanshi
 chmod u+x -R ~/.config/waybar/blocks
 
+# keyd
+sudo apt install -y keyd
+sudo tee /etc/keyd/default.conf > /dev/null <<- 'EOH'
+[ids]
+*
+
+[main]
+capslock = escape
+EOH
+sudo systemctl enable keyd
+sudo systemctl restart keyd
+
 # Screen sharing via browser
 sudo apt install -y xdg-desktop-portal-wlr wireplumber
 
