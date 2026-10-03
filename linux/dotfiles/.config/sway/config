@@ -208,7 +208,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # lock session
-bindsym $mod+Ctrl+l exec 'swaylock --config ~/.config/swaylock/config'
+bindsym $mod+Ctrl+l exec 'f="$(cat ~/.config/variety/wallpaper/wallpaper.jpg.txt 2>/dev/null)"; [ -f "$f" ] && swaylock -i "$f" || swaylock'
 
 # query window info
 bindsym $mod+question exec "swayinfo | xargs -0 notify-send 'Window Info'"
