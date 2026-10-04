@@ -1,121 +1,171 @@
-/* =============================================================================
- *
- * Waybar configuration
- *
- * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
- *
- * =========================================================================== */
-
-/* -----------------------------------------------------------------------------
- * Base styles
- * -------------------------------------------------------------------------- */
-
-/* Reset all styles */
 * {
     border: none;
     border-radius: 0;
     min-height: 0;
     font-size: 1rem;
+    font-weight: normal;
 }
 
-/* The whole bar */
 #waybar {
     background: transparent;
     color: #f3f4f5;
     font-family: Ubuntu Nerd Font, sans-serif;
 }
 
+/* Left container */
 .modules-left {
     background: rgba(47, 52, 63, 0.85);
-    padding: 2px 0px;
-    margin: 1px 2px 0px 2px;
-    border-radius: 20px;
+    padding: 3px 4px;
+    margin: 3px 4px;
+    border-radius: 16px;
 }
 
-.modules-right {
-    background: rgba(47, 52, 63, 0.85);
-    margin: 1px 2px 0px 2px;
-    border-radius: 20px;
+/* Workspaces */
+#workspaces {
+    margin: 0px;
 }
 
-/* Each module */
-#battery,
-#clock,
-#cpu,
-#memory,
-#network,
-#custom-temperature,
-#date,
-#pulseaudio {
-    margin: 1px 0px;
-    padding: 6px 12px;
-    border-right: solid 1px #676e7d;
+#workspaces button {
+    background: transparent;
+    color: #7f8490;
+    border-radius: 50%;
+    padding: 2px 6px;
+    margin: 0px 1px;
 }
 
-/* -----------------------------------------------------------------------------
- * Module styles
- * -------------------------------------------------------------------------- */
-
-#cpu.warning,
-#memory.warning,
-#custom-temperature.warning,
-#battery.warning {
+/* Hovered workspace matches the active (focused) state: solid white background with dark text */
+#workspaces button:hover,
+#workspaces button.focused {
+    background-color: #f3f4f5;
     color: #2f343f;
-    background-color: #e5c07b;
-    border-color: #e5c07b;
 }
 
-#cpu.critical,
-#memory.critical,
-#custom-temperature.critical,
-#battery.critical {
+#workspaces button.urgent {
     background-color: #e06c75;
-    border-color: #e06c75;
+    color: #f3f4f5;
 }
 
-#cpu {
-    min-width: 50px;
+/* Taskbar */
+#taskbar {
+    margin: 0px;
+    padding: 0px;
+}
+
+#taskbar button {
+    padding: 3px 5px 3px 7px;
+    margin: 0px 2px;
+    border-radius: 0px;
+    background: transparent;
+}
+
+/* Clearance between workspaces and first icon */
+#taskbar button:first-child {
+    margin-left: 6px;
+}
+
+/* Clearance before outer capsule rounded corner */
+#taskbar button:last-child {
+    margin-right: 6px;
+}
+
+#taskbar button image {
+    padding: 0;
+    margin: 0;
+}
+
+/* Hovered application matches active application: solid white bottom line indicator */
+#taskbar button:hover,
+#taskbar button.active {
+    background: transparent;
+    border-radius: 0px;
+    box-shadow: inset 0 -2px 0 0 #ffffff;
 }
 
 #mode {
     background: #e06c75;
     color: #f3f4f5;
-    padding: 0px 10px;
-    margin: 0px 2px 0px 4px;
-    border-radius: 20px;
+    padding: 3px 8px;
+    margin: 0px 0px;
+    border-radius: 16px;
 }
 
+/* Right container */
+.modules-right {
+    background: rgba(47, 52, 63, 1);
+    padding: 4px;
+    margin: 3px 4px;
+    border-radius: 16px;
+}
+
+/* Right modules base */
+#battery,
+#clock,
+#cpu,
+#memory,
+#network,
+#temperature,
+#date,
+#pulseaudio,
+#tray {
+    background: #3c424f;
+    margin: 0px 2px;
+    padding: 6px 12px;
+    border-radius: 16px;
+}
+
+/* Audio */
 #pulseaudio {
-    margin-left: 8px;
+    color: #f3f4f5;
 }
 
 #pulseaudio.muted {
     color: #676e7d;
 }
 
-#tray {
-    margin: 1px 16px 1px 12px;
+/* System metrics */
+#cpu,
+#memory,
+#temperature {
+    color: #f3f4f5;
+    min-width: 36px;
 }
 
-#workspaces button {
-    font-size: 1rem;
-    padding: 0px 10px;
-    margin: 0px 2px;
-    color: #676e7d;
-    border-radius: 20px;
+#cpu.warning,
+#memory.warning,
+#temperature.warning {
+    background-color: #e5c07b;
+    color: #2f343f;
 }
 
-#workspaces button:hover {
-    background-color: #f3f4f5;
-    color: #676e7d;
-}
-
-#workspaces button.focused {
-    background-color: #f3f4f5;
-    color: #676e7d;
-}
-
-#workspaces button.urgent {
+#cpu.critical,
+#memory.critical,
+#temperature.critical {
     background-color: #e06c75;
     color: #f3f4f5;
+}
+
+/* Battery */
+#battery {
+    background-color: #98c379;
+    color: #2f343f;
+}
+
+#battery.warning {
+    background-color: #e5c07b;
+    color: #2f343f;
+}
+
+#battery.critical {
+    background-color: #e06c75;
+    color: #f3f4f5;
+}
+
+/* Clock & Tray */
+#clock {
+    background-color: #e5c07b;
+    color: #2f343f;
+}
+
+#tray {
+    padding: 3px 8px;
 }

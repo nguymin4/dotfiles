@@ -1,108 +1,119 @@
 {
-    "layer": "top",
-    "position": "top",
-    "modules-left": [
-        "sway/workspaces",
-        "sway/mode"
-    ],
-    "modules-center": [],
-    "modules-right": [
-        "pulseaudio",
-        "memory",
-        "cpu",
-        "custom/temperature",
-        "battery",
-        "clock#time",
-        "tray"
-    ],
-    // -------------------------------------------------------------------------
-    // Modules
-    // -------------------------------------------------------------------------
-    "battery": {
-        "interval": 10,
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "  {icon}  {capacity}%",
-        "format-time": "{H}:{M}",
-        "format-discharging": "{icon}  {capacity}% ({time})",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
-        "tooltip": false
-    },
-    "clock#time": {
-        "interval": 1,
-        "format": "  {:%e %b %Y  %H:%M:%S}",
-        "tooltip": false
-    },
-    "cpu": {
-        "interval": 5,
-        "format": "  {usage}%",
-        "states": {
-            "warning": 60,
-            "critical": 80
-        },
-        "min-length": 3,
-        "tooltip": false
-    },
-    "memory": {
-        "interval": 5,
-        "format": "  {}%",
-        "states": {
-            "warning": 70,
-            "critical": 90
-        },
-        "tooltip": false
-    },
-    "sway/mode": {
-        "format": "{}",
-        "tooltip": false
-    },
-    "sway/window": {
-        "format": "{}",
-        "max-length": 120
-    },
-    "sway/workspaces": {
-        "all-outputs": true,
-        "disable-scroll": true,
-        "format": "{value}",
-        "persistent_workspaces": {
-          "1: ": [],
-          "2: ": []
-        }
-    },
-    "pulseaudio": {
-        "scroll-step": 5,
-        "format": "{icon}  {volume}%  [{desc}]",
-        "format-icons": {
-            "muted": "󰖁",
-            "headphones": "",
-            "handsfree": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["󰕾"]
-        },
-        "on-click": "BLOCK_BUTTON=1 ~/.config/waybar/blocks/volume-pulseaudio -dF 1",
-        "on-click-middle": "BLOCK_BUTTON=2 ~/.config/waybar/blocks/volume-pulseaudio -dF 1",
-        "on-click-right": "BLOCK_BUTTON=3 ~/.config/waybar/blocks/volume-pulseaudio -dF 1",
-        "tooltip": false
-    },
-    "custom/temperature": {
-        "interval": 5,
-        "exec": "~/.config/waybar/blocks/temperature --chip coretemp-isa-0000 -w 65 -c 85",
-        "format": "  {}",
-        "tooltip": false
-    },
-    "tray": {
-        "icon-size": 18,
-        "spacing": 6
+  "layer": "top",
+  "position": "top",
+  "modules-left": [
+    "sway/workspaces",
+    "wlr/taskbar",
+    "sway/mode"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "pulseaudio",
+    "memory",
+    "cpu",
+    "temperature",
+    "battery",
+    "clock#time",
+    "tray"
+  ],
+  "sway/workspaces": {
+    "all-outputs": true,
+    "disable-scroll": true,
+    "format": "{name}",
+    "persistent-workspaces": {
+      "1": [],
+      "2": []
     }
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 16,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": []
+  },
+  "battery": {
+    "interval": 10,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": " {capacity}%",
+    "format-time": "{H}:{M}",
+    "format-discharging": "{icon} {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tooltip": false
+  },
+  "clock#time": {
+    "interval": 1,
+    "format": " {:%e %b %Y %H:%M:%S}",
+    "tooltip": false
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "<span foreground='#e5c07b'></span> {usage}%",
+    "format-warning": " {usage}%",
+    "format-critical": " {usage}%",
+    "states": {
+      "warning": 60,
+      "critical": 80
+    },
+    "tooltip": false
+  },
+  "memory": {
+    "interval": 5,
+    "format": "<span foreground='#e5c07b'></span> {}%",
+    "format-warning": " {}%",
+    "format-critical": " {}%",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    },
+    "tooltip": false
+  },
+  "sway/mode": {
+    "format": "{}",
+    "tooltip": false
+  },
+  "pulseaudio": {
+    "scroll-step": 5,
+    "format": "<span foreground='#e5c07b'>{icon}</span> {volume}% [{desc}]",
+    "format-muted": "{icon} {volume}% [{desc}]",
+    "format-icons": {
+      "muted": "󰖁",
+      "headphones": "",
+      "handsfree": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["󰕾"]
+    },
+    "on-click": "BLOCK_BUTTON=1 ~/.config/waybar/blocks/volume-pulseaudio -dF 1",
+    "on-click-middle": "BLOCK_BUTTON=2 ~/.config/waybar/blocks/volume-pulseaudio -dF 1",
+    "on-click-right": "BLOCK_BUTTON=3 ~/.config/waybar/blocks/volume-pulseaudio -dF 1",
+    "tooltip": false
+  },
+  "temperature": {
+    "interval": 5,
+    "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
+    "input-filename": "temp1_input",
+    "warning-threshold": 65,
+    "critical-threshold": 85,
+    "format": "<span foreground='#e5c07b'></span> {temperatureC}°C",
+    "format-warning": " {temperatureC}°C",
+    "format-critical": " {temperatureC}°C",
+    "tooltip": false
+  },
+  "tray": {
+    "icon-size": 20,
+    "spacing": 6
+  }
 }
