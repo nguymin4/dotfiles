@@ -14,6 +14,12 @@ global_handler_enabled=true
 enabled=true
 global_handler_enabled=true
 ignore_show_in_keys=true
+split_camel_case=true
+use_acronyms=true
+use_exec=false
+use_generic_name=true
+use_keywords=true
+use_non_localized_name=false
 
 [calculator]
 enabled=true
@@ -24,6 +30,9 @@ global_handler_enabled=true
 
 [calculator_qalculate]
 enabled=true
+
+[pluginregistry]
+global_handler_enabled=false
 
 [qmlboxmodel]
 windowPosition=@Point(2850 675)
@@ -55,8 +64,9 @@ title_suspend=Suspend
 trigger_enabled=true
 
 [widgetsboxmodel]
+action_item_font_size=10
 action_item_padding=6
-action_item_selection_border_radius=11
+action_item_selection_border_radius=12
 action_item_selection_border_width=0
 alwaysOnTop=true
 clearOnHide=true
@@ -68,19 +78,19 @@ displayScrollbar=false
 followCursor=true
 hideOnFocusLoss=true
 historySearch=true
-input_border_radius=11
+input_border_radius=12
 input_font_size=18
-input_padding=5
+input_padding=6
 itemCount=5
 lightTheme=
 quitOnClose=false
 result_item_horizontal_spacing=6
-result_item_icon_size=39
+result_item_icon_size=40
 result_item_padding=6
-result_item_selection_border_radius=11
+result_item_selection_border_radius=12
 result_item_selection_border_width=0
 result_item_subtext_font_size=8
-result_item_text_font_size=13
+result_item_text_font_size=14
 result_item_vertical_spacing=2
 showCentered=true
 showFallbacksOnEmpty=true
@@ -88,9 +98,9 @@ systemShadow=true
 theme=Arc Dark Blue
 windowPosition=@Point(2844 648)
 window_border_radius=18
-window_border_width=1
-window_padding=7
+window_border_width=0
+window_padding=6
 window_shadow_offset=8
 window_shadow_size=80
-window_spacing=7
+window_spacing=6
 window_width=640
