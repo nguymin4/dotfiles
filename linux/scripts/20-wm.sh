@@ -6,11 +6,7 @@ set -euo pipefail
 sudo apt install -y lxpolkit libcanberra-gtk-module
 
 # Core utils
-sudo apt install -y dunst flameshot lm-sensors variety vlc
-
-# Optional utils
-# google-chrome, vscode, slack
-# cmus, ministat, pinta, piper, youtubedl-gui
+sudo apt install -y dunst lm-sensors vlc
 
 # Albert launcher
 albert_repo_url="https://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_$(lsb_release -rs)"
@@ -29,6 +25,11 @@ sudo apt update && sudo apt install -y albert
 sudo apt install -y thunar thunar-archive-plugin
 xdg-mime default thunar.desktop inode/directory
 
+# Variety
+sudo add-apt-repository ppa:variety/stable
+sudo apt update
+sudo apt install -y variety
+
 # GTK theme
 sudo apt install -y lxappearance arc-theme breeze-cursor-theme
 
@@ -45,3 +46,7 @@ sudo make install
 # brightnessctl
 sudo apt install -y brightnessctl
 sudo usermod -aG video "$(whoami)"
+
+# Other apps/tools
+# google-chrome, vscode, slack
+# cmus, flameshot, ministat, pinta, piper, youtubedl-gui
