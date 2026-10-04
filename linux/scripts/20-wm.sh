@@ -6,7 +6,7 @@ set -euo pipefail
 sudo apt install -y lxpolkit libcanberra-gtk-module
 
 # Core utils
-sudo apt install -y dunst lm-sensors variety vlc
+sudo apt install -y dunst flameshot lm-sensors variety vlc
 
 # Optional utils
 # google-chrome, vscode, slack
