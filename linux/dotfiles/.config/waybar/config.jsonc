@@ -18,8 +18,46 @@
   ],
   "sway/workspaces": {
     "all-outputs": true,
-    "disable-scroll": true,
-    "format": "{name}"
+    "disable-scroll": false,
+    "format": "<span size='110%'>{name}</span>{windows}",
+    "format-window-separator": " ",
+    "window-rewrite-default": "   󰆍",
+    "window-rewrite": {
+      // Terminals
+      "class<.*(term|alacritty|kitty|ghostty|foot|pty|console|wezterm|st-256color).*": "   \uf120",
+
+      // Web browser
+      "class<firefox|org.mozilla.firefox>": "   󰈹",
+      "class<google-chrome|chromium>": "   ",
+      "class<.*(brave|zen|librewolf|waterfox|tor-browser|edge|opera|falkon|epiphany|mullvad|vivaldi).*": "   \udb81\udd9f",
+
+      // Editors & IDEs
+      "class<code|vscodium>": "   󰨞",
+      "title<.*NVIM.*>": "   ",
+
+      // Communication
+      "class<Slack|slack>": "   󰒱",
+      "class<mattermost|Mattermost>": "   󰒱",
+      "class<discord|vesktop|WebCord>": "   󰙯",
+      "class<org.telegram.desktop>": "   ",
+      "class<Signal>": "   󰭹",
+
+      // Microsoft Office & PWAs
+      "class<teams|com.microsoft.teams>": "   \udb80\udebb",
+      "class<outlook|microsoft outlook>": "   \udb83\udd22",
+      "class<word|microsoft word|libreoffice-writer>": "   \ue6a5",
+      "class<excel|microsoft excel|libreoffice-calc>": "   \udb84\udf8f",
+      "class<powerpoint|microsoft powerpoint>": "   󰈧",
+
+      // Media
+      "class<vlc>": "   󰕼",
+      "class<spotify|Spotify>": "   ",
+
+      // Utilities
+      "class<albert>": "   \ue68f",
+      "class<dolphin|Nautilus|Thunar|thunar>": "   \ue5fe",
+      "class<obsidian>": "   󱓧"
+    }
   },
   "wlr/taskbar": {
     "format": "{icon}",
