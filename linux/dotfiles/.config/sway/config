@@ -100,7 +100,6 @@ assign [class="Steam"] $workspace5
 assign [class="dota2"] $workspace6
 assign [class="hl2_linux"] $workspace6
 
-
 # set floating for certain windows
 for_window [window_role="browser"] floating disable
 for_window [window_role="pop-up"] floating enable
@@ -112,6 +111,10 @@ for_window [window_role="Preferences"] floating enable
 for_window [class="zoom"] floating enable
 for_window [class="zoom" title="Zoom.*Account"] floating disable
 for_window [class="zoom" title="Zoom.*Meeting"] floating disable
+
+# set urgent indicator for very new opened window
+for_window [app_id="^.*"] urgent enable
+for_window [class="^.*"] urgent enable
 
 # set borders for windows - order is important
 for_window [class="^.*"] border normal 0
