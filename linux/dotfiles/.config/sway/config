@@ -245,12 +245,9 @@ bindsym XF86MonBrightnessDown exec "[ $(brightnessctl -c backlight info -m | awk
 bindsym $mod+F12 exec "brightnessctl -c backlight set +10%"
 bindsym $mod+F11 exec "[ $(brightnessctl -c backlight info -m | awk -F ',' '{print int($4)}' | sort -n | head -1) -gt 10 ] && brightnessctl -c backlight set 10%-"
 
-# This doesn't work after upgrading to Ubuntu 26.04 and Sway 1.11
-# input type:keyboard {
-#   # Capslock key should work as escape key
-#   # See /usr/share/X11/xkb/rules/xorg.lst for options
-#   xkb_options caps:escape
-# }
+bar {
+  swaybar_command waybar
+}
 
 exec {
   # GTK+ applications takes too much time to start
@@ -270,7 +267,6 @@ exec_always {
   gsettings set org.gnome.desktop.interface font-name 'Ubuntu 11'
 }
 
-exec waybar
 exec swaybg
 exec albert
 exec dunst
@@ -281,4 +277,3 @@ exec swayidle -w \
   timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
 exec fcitx5 -dr
 exec variety > /dev/null 2>&1
-
