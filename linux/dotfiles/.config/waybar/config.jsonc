@@ -54,9 +54,19 @@
       "class<spotify|Spotify>": "   ",
 
       // Utilities
+      "class<.*disk.*>": "   \udb82\udd60",
       "class<albert>": "   \ue68f",
+      "class<com.ubuntu.SoftwareProperties|lxapperance|qt5ct|kvantummanager>": "   \ue5fc",
       "class<dolphin|Nautilus|Thunar|thunar>": "   \ue5fe",
-      "class<obsidian>": "   󱓧"
+      "class<gnome-power-statistics>": "   \uf240",
+      "class<nm-connection-editor>": "   \uf1eb",
+      "class<obsidian>": "   \ue6bb",
+      "class<org.gnome.Calendar>": "   \ueab0",
+      "class<org.gnome.Evince>": "   \ueaeb",
+      "class<org.gnome.Shotwell|variety>": "   \uf03e",
+      "class<org.gnome.font-viewer>": "   \ue659",
+      "title<.*Fcitx.*>": "   \uf11c",
+      "title<.*Volume Control.*>": "   \ue638",
     }
   },
   "wlr/taskbar": {
