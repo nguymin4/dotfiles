@@ -214,7 +214,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Ctrl+l exec 'f="$(cat ~/.config/variety/wallpaper/wallpaper.jpg.txt 2>/dev/null)"; [ -f "$f" ] && swaylock -i "$f" || swaylock'
 
 # query window info
-bindsym $mod+question exec "swayinfo | xargs -0 notify-send 'Window Info'"
+bindsym $mod+question exec notify-send "Window Info" "$(swaymsg -t get_tree | jq -r '.. | select(.focused? == true) | "\\napp_id: \(.app_id)\\nclass: \(.window_properties.class)"')"
 
 # take screenshot of current workspace
 bindsym $mod+insert exec "grimshot --notify save area"

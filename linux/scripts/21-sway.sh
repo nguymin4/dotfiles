@@ -41,6 +41,3 @@ Exec=sway --unsupported-gpu
 Type=Application
 DesktopNames=sway
 EOH
-
-# swayinfo similar to xprop
-pip install --user swaytools
